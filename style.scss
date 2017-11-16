@@ -3,43 +3,133 @@ $greenColor: #52B795;
 $redColor: #EF4B47;
 $blackColor: #282826;
 $whiteColor: #fdfdfc;
+$grayColor: #f7f7f7;
 
 body{
 	font-family: $mainFont;
+	margin: 0px;
 }
 
 p {
     font-size: 14px;
-    letter-spacing: 0.02em; 
-    color: $blackColor;   
+    letter-spacing: 0.02em;
+    line-height: 2;
+    color: $blackColor;
+    column-count: 2; 
+    column-gap: 50px;
 }
 nav{
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
+	padding-top: 30px;
 }
-.headline {
-    font-size: 35px;
+h1{
+	font-size: 70px;
+	letter-spacing: 0.2em; 
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
+h1 span{
+	background-color: $whiteColor;
+}
+h2{ 
+	font-size: 30px;
     letter-spacing: 0.04em;
     font-weight: bold;
-    text-align: center;
+    //text-align: center;
+    text-transform: uppercase;
 }
-
-#paragraph{
-	margin-right: 20%;
-	margin-left: 20%;
+h3{
+	font-size: 20px;
+	letter-spacing: 0.2em; 
+	font-weight: 400;
+	//	text-align: center;
 }
-
-#colorBox{
-	display: flex;	
+button{
+	border: solid 2px;
+    border-radius: 30px;
+    padding: 15px 48px 15px 48px;
+    font-size: 13px;
+    letter-spacing: 0.2em; 
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+    position:relative;
+    margin: 0 auto;
+    &:hover{
+    	color: $whiteColor;
+    	border-color: $redColor;
+    	background: $redColor;
+    }
+}
+#hoverBtn{
+	@extend button;
 	color: $whiteColor;
+	border-color: $redColor;
+	background: $redColor;
+	margin-left: 60px;
+}
+#attentionText{
+	display:flex;
+	justify-content:center;
+	flex-direction: column;
 	justify-content: center;
+	box-sizing: border-box;
+	width: 650px;
+	text-align: center;
+}
+#positionAbsolut{
+	position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    width: 95vw;
+}
 
+// .headline {
+//     font-size: 35px;
+//     letter-spacing: 0.04em;
+//     font-weight: bold;
+//     text-align: center;
+// }
+
+#topSection{
+	width:100vw;
+	max-width:100%; 
+	height:90vh;
+	//background-image: url("img/bg1.jpeg");
+	//background-position: inherit;
+	background-color: $greenColor;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 100px;
+}
+
+#colorsSection{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#colorBoxes{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 70px;
+	margin-bottom: 200px;
+	p{
+		color: $whiteColor;
+		font-size: 20px;
+	}
 	#redColor{
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 100px;
-		height: 100px;
+		width: 280px;
+		height: 175px;
 		background-color: $redColor;
 		margin: 5px;
 	}
@@ -56,15 +146,24 @@ nav{
 		background-color: $whiteColor;
 		border: solid 2px;
 		border-color: $blackColor;
-		color: $blackColor;
+		p{
+			color: $blackColor;
+		}
 	}
 
+}
+
+.colorName{ 
+	display: none;
+}
+.showcolor:hover .colorName{
+	display : flex;
 }
 
 a{
 	font-weight: bold;
 	text-decoration: none;
-	margin: 5px;
+	margin-left: 50px;
 }
 /* unvisited link */
 a:link {
@@ -84,4 +183,51 @@ a:hover {
 /* selected link */
 a:active {
     color: $redColor;
+}
+
+#typographySection{
+	@extend #colorsSection;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	background-color: $grayColor;
+}
+#fontTable{
+	display: flex;
+	flex-wrap: wrap;
+}
+.spacing{
+	margin-right: 20px;
+	margin-left: 20px;
+}
+#paragraphSection{
+	@extend #typographySection;
+	background-color: $whiteColor;
+}
+#paragraph{
+	margin-top: 70px;
+	text-align: justify;
+	margin-right: 20%;
+	margin-left: 20%;
+}
+#navSection{
+	@extend #typographySection;
+}
+#navExample{
+	margin-top: 70px;
+	width: 80vw;
+	padding: 0px 30px 30px 30px;
+	background-color: $greenColor;
+}
+#buttonSection{
+	@extend #paragraphSection;
+}
+#buttonsExample{
+	padding-top: 70px;
+}
+footer{
+	background-color: $greenColor;
+	height: 200px;
+	padding-top: 70px;
+	display: flex;
+	justify-content: center;
 }

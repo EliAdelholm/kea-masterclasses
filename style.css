@@ -1,51 +1,133 @@
 body {
-  font-family: Helvetica; }
+  font-family: Helvetica;
+  margin: 0px; }
 
 p {
   font-size: 14px;
   letter-spacing: 0.02em;
-  color: #282826; }
+  line-height: 2;
+  color: #282826;
+  column-count: 2;
+  column-gap: 50px; }
 
 nav {
   display: flex;
-  justify-content: center; }
+  justify-content: flex-end;
+  padding-top: 30px; }
 
-.headline {
-  font-size: 35px;
+h1 {
+  font-size: 70px;
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+  text-transform: uppercase; }
+
+h1 span {
+  background-color: #fdfdfc; }
+
+h2 {
+  font-size: 30px;
   letter-spacing: 0.04em;
   font-weight: bold;
+  text-transform: uppercase; }
+
+h3 {
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  font-weight: 400; }
+
+button, #hoverBtn {
+  border: solid 2px;
+  border-radius: 30px;
+  padding: 15px 48px 15px 48px;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: transparent;
+  position: relative;
+  margin: 0 auto; }
+  button:hover, #hoverBtn:hover {
+    color: #fdfdfc;
+    border-color: #EF4B47;
+    background: #EF4B47; }
+
+#hoverBtn {
+  color: #fdfdfc;
+  border-color: #EF4B47;
+  background: #EF4B47;
+  margin-left: 60px; }
+
+#attentionText {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 650px;
   text-align: center; }
 
-#paragraph {
-  margin-right: 20%;
-  margin-left: 20%; }
+#positionAbsolut {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  width: 95vw; }
 
-#colorBox {
+#topSection {
+  width: 100vw;
+  max-width: 100%;
+  height: 90vh;
+  background-color: #52B795;
   display: flex;
-  color: #fdfdfc;
-  justify-content: center; }
-  #colorBox #redColor, #colorBox #greenColor, #colorBox #blackColor, #colorBox #whiteColor {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px; }
+
+#colorsSection, #typographySection, #paragraphSection, #buttonSection, #navSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+
+#colorBoxes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 70px;
+  margin-bottom: 200px; }
+  #colorBoxes p {
+    color: #fdfdfc;
+    font-size: 20px; }
+  #colorBoxes #redColor, #colorBoxes #greenColor, #colorBoxes #blackColor, #colorBoxes #whiteColor {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 100px;
+    width: 280px;
+    height: 175px;
     background-color: #EF4B47;
     margin: 5px; }
-  #colorBox #greenColor {
+  #colorBoxes #greenColor {
     background-color: #52B795; }
-  #colorBox #blackColor {
+  #colorBoxes #blackColor {
     background-color: #282826; }
-  #colorBox #whiteColor {
+  #colorBoxes #whiteColor {
     background-color: #fdfdfc;
     border: solid 2px;
-    border-color: #282826;
-    color: #282826; }
+    border-color: #282826; }
+    #colorBoxes #whiteColor p {
+      color: #282826; }
+
+.colorName {
+  display: none; }
+
+.showcolor:hover .colorName {
+  display: flex; }
 
 a {
   font-weight: bold;
   text-decoration: none;
-  margin: 5px; }
+  margin-left: 50px; }
 
 /* unvisited link */
 a:link {
@@ -62,5 +144,43 @@ a:hover {
 /* selected link */
 a:active {
   color: #EF4B47; }
+
+#typographySection, #paragraphSection, #buttonSection, #navSection {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #f7f7f7; }
+
+#fontTable {
+  display: flex;
+  flex-wrap: wrap; }
+
+.spacing {
+  margin-right: 20px;
+  margin-left: 20px; }
+
+#paragraphSection, #buttonSection {
+  background-color: #fdfdfc; }
+
+#paragraph {
+  margin-top: 70px;
+  text-align: justify;
+  margin-right: 20%;
+  margin-left: 20%; }
+
+#navExample {
+  margin-top: 70px;
+  width: 80vw;
+  padding: 0px 30px 30px 30px;
+  background-color: #52B795; }
+
+#buttonsExample {
+  padding-top: 70px; }
+
+footer {
+  background-color: #52B795;
+  height: 200px;
+  padding-top: 70px;
+  display: flex;
+  justify-content: center; }
 
 /*# sourceMappingURL=style.css.map */
