@@ -56,11 +56,15 @@ button{
     background: transparent;
     position:relative;
     margin: 0 auto;
+    cursor: pointer;
     &:hover{
     	color: $whiteColor;
     	border-color: $redColor;
     	background: $redColor;
     }
+    a:hover {
+    color: $blackColor;
+	}
 }
 #hoverBtn{
 	@extend button;
@@ -160,10 +164,12 @@ button{
 	display : flex;
 }
 
+.extraMargin{
+	margin-left: 50px;
+}
 a{
 	font-weight: bold;
 	text-decoration: none;
-	margin-left: 50px;
 }
 /* unvisited link */
 a:link {
@@ -189,7 +195,7 @@ a:active {
 	@extend #colorsSection;
 	padding-top: 100px;
 	padding-bottom: 100px;
-	background-color: $grayColor;
+	background-color: $redColor;
 }
 #fontTable{
 	display: flex;
@@ -211,6 +217,7 @@ a:active {
 }
 #navSection{
 	@extend #typographySection;
+	background-color:$grayColor;
 }
 #navExample{
 	margin-top: 70px;
@@ -223,6 +230,10 @@ a:active {
 }
 #buttonsExample{
 	padding-top: 70px;
+}
+#iconSection{
+	@extend #navSection;
+	//background-color: $redColor;
 }
 footer{
 	background-color: $greenColor;
