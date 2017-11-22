@@ -55,8 +55,13 @@ button{
     text-transform: uppercase;
     background: transparent;
     position:relative;
+<<<<<<< HEAD:style.scss
     margin: 0 auto;
     cursor: pointer;
+=======
+	margin: 0 auto;
+	transition: background-color 0.5s ease, border 0.5s ease, color 0.5s ease;
+>>>>>>> 8094a1c4b7611ab5bc92b2871e6efe2263f51a90:style-guide/style.scss
     &:hover{
     	color: $whiteColor;
     	border-color: $redColor;
