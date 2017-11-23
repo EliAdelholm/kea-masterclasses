@@ -1,7 +1,7 @@
 var event = {}
 
-event.addEvents = ( aEvents, fcallback ) => {
-    global.db.collection('events').insertOne( aEvents , ( err ) => {
+event.createEvent = ( jEvent, fcallback ) => {
+    global.db.collection('events').insertOne( jEvent , ( err ) => {
       if( err ){
         var jError = { "status":"error","message":"ERROR -> event.js -> 001" }
         console.log( jError )
