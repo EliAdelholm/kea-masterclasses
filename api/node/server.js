@@ -91,6 +91,24 @@ app.get('/delete-event',(req,res) =>{
       }) 
 })
 
+//DISPLAY ALL EVENTS
+app.get('/display-all-events', function (req, res) {
+    event.getEvents( ( err , ajEvents )=>{
+        if( err ) {
+            console.log( err )
+            console.log( ajEvents )
+            res.send('<html><body>ERROR</body></html>')
+            return
+        }
+        var ajEventsNiceView =  "<pre><code>"+ JSON.stringify(ajEvents, null, 4) +"</code></pre>"
+        res.send( ajEventsNiceView )
+        return
+    })
+    
+})
+
+
+/*****************************************************************/
 // START SERVER
 app.listen(3333, (err) => {
     if (err) {
