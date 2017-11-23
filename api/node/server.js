@@ -77,7 +77,19 @@ app.get('/get-events', (req, res) => {
 // UPDATE EVENT
 
 // DELETE EVENT
-
+app.get('/delete-event',(req,res) =>{
+    var iEventId = req.query.id
+    event.removeCourse(iEventId, ( err, iEventId ) => {
+        if( err ){
+          console.log( iEventId )
+          res.send('<html><body>ERROR</body></html>')
+          return
+        }
+        console.log( 'DELETED EVENT WITH ID', iEventId )
+        res.send('<html><body>OK</body></html>')
+        return
+      }) 
+})
 
 // START SERVER
 app.listen(3333, (err) => {

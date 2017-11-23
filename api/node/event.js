@@ -1,5 +1,5 @@
 var event = {}
-
+/******************** SAVE EVENT ****************/
 event.createEvent = ( jEvent, fcallback ) => {
     global.db.collection('events').insertOne( jEvent , ( err ) => {
       if( err ){
@@ -13,4 +13,18 @@ event.createEvent = ( jEvent, fcallback ) => {
     })
   }
 
+/******************** DELETE EVENT ****************/
+event.removeCourse = (iEventId, fCallback) => {
+ var ObjectId = require('mongodb').ObjectID;
+  global.db.collection('events').deleteOne(
+      {"_id" : ObjectId(iEventId)},
+
+  function (err, results) {
+        console.log(results + " deleted")
+        console.log(err + " err")
+        return fCallback(err , iEventId)
+     })
+}
+
+  /**************************************************/
   module.exports = event
