@@ -28,15 +28,15 @@ mongo.connect(sDatabasePath, (err, db) => {
 
 
 // ADD PAST EVENTS
-app.get('/add-events', (req, res) => {
+app.get('/create-event', (req, res) => {
     // Fake data from frontend
-    var aEvents = {
+    var jEvent = {
             "title": "Photoshop art – retouching skills",
             "type": "UI",
             "location": {
-                "address": "Lygten 16, 2400 København NV",
-                "lat": null,
-                "lng": null
+                "type": "Point",
+                "coordinates": [null, null],
+                "room": "Tellus"
             },
             "time": "6 November at 13:30–15:00",
             "speaker": "Marie Christiansen",
@@ -48,7 +48,7 @@ app.get('/add-events', (req, res) => {
             "requirements": "Basic Photoshop skills and an eagerness to get inspired"
         }
 
-    event.addEvents(aEvents, (err, jStatus) => {
+    event.createEvent(jEvent, (err, jStatus) => {
         if (err) {
             console.log(jStatus)
             res.send('<html><body>ERROR</body></html>')

@@ -45,11 +45,6 @@ gulp.task('css', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('copy-fonts', function() {
-    return gulp.src('app/**/*.otf')
-    .pipe(gulp.dest('dist'))
-})
-
 gulp.task('img', function(){
     return gulp.src('app/assets/img/**/*.+(png|jpg|jpeg|gif|svg)')
     .pipe(imagemin({
