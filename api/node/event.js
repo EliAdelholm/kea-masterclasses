@@ -1,3 +1,4 @@
+var ObjectId = require('mongodb').ObjectID
 var event = {}
 /******************** SAVE EVENT ****************/
 event.createEvent = ( jEvent, fcallback ) => {
@@ -15,7 +16,6 @@ event.createEvent = ( jEvent, fcallback ) => {
 
   /******************** DELETE EVENT ****************/
 event.removeCourse = (iEventId, fCallback) => {
- var ObjectId = require('mongodb').ObjectID;
   global.db.collection('events').deleteOne(
       {"_id" : ObjectId(iEventId)},
 
@@ -40,5 +40,23 @@ event.getEvents = ( fCallback ) => {
         return fCallback( false , ajEvents )
   })
 }
+
+/******************** DISPLAY EVENT BY ID ************/
+event.displayEventById = (iEventId, fCallback) => {
+  global.db.collection('events').find({"_id": ObjectId(iEventId)}).toArray(( err , ajEvents) =>{
+    if( err ){
+        var jError = (err, "Can't Display Event")
+        console.log( jError )
+        return fCallback( true , jError )
+      }
+      if (ajEvents.length > 0 ){
+        return fCallback( false , ajEvents[0])
+      }
+      else {
+        return fCallback( false ,null)
+      }
+  })
+}
+
   /**************************************************/
   module.exports = event

@@ -107,7 +107,20 @@ app.get('/display-all-events', function (req, res) {
     
 })
 
-
+//DISPLAY EVENT BY ID
+app.get('/display-event',(req,res) =>{
+    var iEventId = req.query.id
+    event.displayEventById(iEventId, ( err, jEvent ) => {
+        if( err ){
+          console.log( iEventId )
+          res.send('<html><body>ERROR</body></html>')
+          return
+        }
+        var jEventNiceView =  "<pre><code>"+ JSON.stringify(jEvent, null, 4) +"</code></pre>"
+        res.send( jEventNiceView )
+        return
+      }) 
+})
 /*****************************************************************/
 // START SERVER
 app.listen(3333, (err) => {
