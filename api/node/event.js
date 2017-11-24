@@ -14,16 +14,21 @@ event.createEvent = ( jEvent, fcallback ) => {
     })
   }
 
-  /******************** DELETE EVENT ****************/
+/******************** DELETE EVENT ****************/
 event.removeCourse = (iEventId, fCallback) => {
   global.db.collection('events').deleteOne(
       {"_id" : ObjectId(iEventId)},
 
-  function (err, results) {
+      function (err, results) {
+        var jOk = { "status":"ok","message":"event.js -> deleted -> 002" }
+        //console.log(results + " deleted")
         console.log(results + " deleted")
-        console.log(err + " err")
+        var jError = {"status":"error","message":"ERROR -> event.js -> 003"}
+        //console.log(err + " err")
+        console.log(err + jError)
         return fCallback(err , iEventId)
-     })
+      })
+
 }
 
 /******************** DISPLAY ALL EVENTS *************/
@@ -31,11 +36,13 @@ event.getEvents = ( fCallback ) => {
   // get the data from the collection events
   global.db.collection('events').find().toArray( ( err , ajEvents) =>{
       if( err ){
-          var jError = (err, "Can't Display Events")
+          var jError = {"status":"Can't Display Events","message":"ERROR -> event.js -> 005"}
+          //var jError = (err, "Can't Display Events")
           console.log( jError )
           return fCallback( true , jError )
         }
-        var jOk = ('Displaying Events')
+        var jOk = { "status":"Displaying Events","message":"event.js -> Displaying Events -> 006" }
+        //var jOk = ('Displaying Events')
         console.log( jOk, ajEvents )
         return fCallback( false , ajEvents )
   })
@@ -45,7 +52,8 @@ event.getEvents = ( fCallback ) => {
 event.displayEventById = (iEventId, fCallback) => {
   global.db.collection('events').find({"_id": ObjectId(iEventId)}).toArray(( err , ajEvents) =>{
     if( err ){
-        var jError = (err, "Can't Display Event")
+        var jError = {"status":"Can't Display Event","message":"ERROR -> event.js -> 007"}
+        //var jError = (err, "Can't Display Event")
         console.log( jError )
         return fCallback( true , jError )
       }
