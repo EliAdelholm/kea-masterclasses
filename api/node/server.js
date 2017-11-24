@@ -27,7 +27,7 @@ mongo.connect(sDatabasePath, (err, db) => {
 ///////////// ROUTING //////////////
 
 
-// ADD PAST EVENTS
+// ADD EVENT
 app.get('/create-event', (req, res) => {
     // Fake data from frontend
     var jEvent = {
@@ -59,20 +59,6 @@ app.get('/create-event', (req, res) => {
         return
     })
 })
-
-// GET ALL EVENTS
-app.get('/get-events', (req, res) => {
-
-    event.getEvents((err, jStatus) => {
-        if (err) {
-            console.log(jStatus)
-            res.send('<html><body>ERROR</body></html>')
-            return
-        }
-    })
-})
-
-// CREATE EVENT
 
 // UPDATE EVENT
 
