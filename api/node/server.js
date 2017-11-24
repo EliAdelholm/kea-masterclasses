@@ -79,7 +79,7 @@ app.get('/get-events', (req, res) => {
 // DELETE EVENT
 app.get('/delete-event',(req,res) =>{
     var iEventId = req.query.id
-    event.removeCourse(iEventId, ( err, iEventId ) => {
+    event.deleteEvent(iEventId, ( err, iEventId ) => {
         if( err ){
           console.log( iEventId )
           res.send('<html><body>ERROR</body></html>')
