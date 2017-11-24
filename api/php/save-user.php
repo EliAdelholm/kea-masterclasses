@@ -7,7 +7,6 @@ $password = "root";
 // Please use the same database name
 $dbname = "kea_masterclasses";
 
-// INSERT INTO `USERS` (`id`, `name`, `password`, `notification`, `image`) VALUES ('521', 'Patrick', 'test', '1', 'test');
 
 
 
