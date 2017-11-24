@@ -1,0 +1,42 @@
+$mainFont: Helvetica;
+$greenColor: #52B795;
+$redColor: #EF4B47;
+$blackColor: #282826;
+$whiteColor: #fdfdfc;
+$grayColor: #f7f7f7;
+$yellowColor: #F9E131;
+
+nav{
+	display: flex;
+	justify-content: flex-end;
+	padding-top: 30px;
+	font: $mainFont;
+}
+
+.extraMargin{
+	margin-left: 50px;
+}
+
+a{
+	font-weight: bold;
+	text-decoration: none;
+}
+/* unvisited link */
+a:link {
+    color: $blackColor;
+}
+
+/* visited link */
+a:visited {
+    color: $blackColor;
+}
+
+/* mouse over link */
+a:hover {
+    color: $redColor;
+}
+
+/* selected link */
+a:active {
+    color: $redColor;
+}

@@ -1,0 +1,28 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 30px;
+  font: Helvetica; }
+
+.extraMargin {
+  margin-left: 50px; }
+
+a {
+  font-weight: bold;
+  text-decoration: none; }
+
+/* unvisited link */
+a:link {
+  color: #282826; }
+
+/* visited link */
+a:visited {
+  color: #282826; }
+
+/* mouse over link */
+a:hover {
+  color: #EF4B47; }
+
+/* selected link */
+a:active {
+  color: #EF4B47; }
