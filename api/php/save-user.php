@@ -7,7 +7,6 @@ $password = "";
 // Please use the same database name
 $dbname = "kea_masterclasses";
 
-// INSERT INTO `USERS` (`id`, `name`, `password`, `notification`, `image`) VALUES ('521', 'Patrick', 'test', '1', 'test');
 
 
 
@@ -19,7 +18,8 @@ $dbname = "kea_masterclasses";
 	move_uploaded_file( $_FILES['fileUserImage']['tmp_name'], $sSaveFileTo);
 
     // Get the data from the client
-    $sUserId = uniqid();
+    $oTime = new DateTime();
+    $iUserId = $oTime->getTimestamp();
     $sUserName = $_POST['txtSaveUserName'];
     $sUserEmail = $_POST['txtSaveUserEmail'];
     $sUserPassword = $_POST['txtSaveUserPassword'];
@@ -27,14 +27,17 @@ $dbname = "kea_masterclasses";
     $bNotification = $_POST['checkNotification'];
     $sFilePath = 'assets/img/'.$sFileName;
 
+    
     try {
                 // connect to the database
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                
+                // INSERT INTO USERS TABLE
                 // create a query
-                $query = $conn->prepare("INSERT INTO `USERS` (`id`, `name`, `password`, `notification`, `image`) VALUES (:id, :name, :password, :notification, :image)");
+                $query = $conn->prepare("INSERT INTO USERS (id, name, password, notification, image) VALUES (:id, :name, :password, :notification, :image)");
                 
                 // Bind param, this if for security
-                $query->bindParam( ':id' , $sUserId );
+                $query->bindParam( ':id' , $iUserId );
                 $query->bindParam( ':name' , $sUserName );
                 $query->bindParam(':password', $sUserPassword);
                 $query->bindParam(':notification' , $bNotification);
@@ -52,13 +55,37 @@ $dbname = "kea_masterclasses";
                 // Echo back to the client
                 echo $sjResponse; 
                 
+
+                // INSERT INTO EMAIL TABLE    
+        
+                $query = $conn->prepare("INSERT INTO users_email (email, user_id) VALUES (:email, :id)");
+                $query->bindParam(':email' , $sUserEmail);
+                $query->bindParam(':id' , $iUserId);
+                
+                $bResult = $query->execute();
+                
+                $sjResponse = $bResult ? '{"status":"ok, data saved to users_email table"}' : '{"status":"error, could not save data to users_email table"}' ;
+                
+                echo $sjResponse; 
+                
+                // INSERT INTO PHONE TABLE, SHOULD ONLY HAPPEN IF THEY GIVE A PHONE SO WE CHECK FOR IT
+                
+                if ($sUserPhone !== ""){
+                    
+                    $query = $conn->prepare("INSERT INTO users_phone (users_id, phone) VALUES (:id, :phone)");
+                    $query->bindParam(':id' , $iUserId);
+                    $query->bindParam(':phone' , $sUserPhone);
+                    
+                    $bResult = $query->execute();
+                    
+                    $sjResponse = $bResult ? '{"status":"ok, data saved to users_phone table"}' : '{"status":"error, could not save data to users_phone table"}' ;
+                    
+                    echo $sjResponse;
+                }
                 
             } catch (Exception $e) {
                 
                 echo "ERROR";
                 
-            }
-            
-
-
-            ?>
+            }  
+?>
