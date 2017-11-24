@@ -3,16 +3,12 @@
 <head>
 	<title>EVENTS</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="jquery.js"></script> 
-    <script> 
-	    $(function(){
-	      $("#nav").load("nav.html"); 
-	    });
-    </script> 
 </head>
 </head>
 <body>
-	<div id="nav"></div>
+	<?php
+		include 'nav.html';
+	?>
 <!-- 	<div id="positionAbsolut">
 		<nav>
 			<a href="#" class="extraMargin">HOME</a>
