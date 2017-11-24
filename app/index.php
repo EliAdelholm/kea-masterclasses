@@ -6,14 +6,17 @@
 </head>
 </head>
 <body>
-	<div id="positionAbsolut">
+	<?php
+		include 'nav.html';
+	?>
+<!-- 	<div id="positionAbsolut">
 		<nav>
 			<a href="#" class="extraMargin">HOME</a>
 			<a href="#" class="extraMargin">NEWS</a>
 			<a href="#" class="extraMargin">EVENTS</a>
 			<a href="#" class="extraMargin">CONTACT</a>
 		</nav>
-	</div>
+	</div> -->
 	<div id="topSection">
 		<div id="attentionText">
 			<h1><span> MASTERCLASSES <span></h1>
