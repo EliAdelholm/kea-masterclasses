@@ -1,6 +1,8 @@
-@include _vars;
+@import '_utils/_vars';
 
 
 #loginModal {
-    background-color: red;
+    display: none;
+    background-color: $redColor;
 }
+
