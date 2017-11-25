@@ -23,21 +23,13 @@ gulp.task('sass', function() {
 
 
 gulp.task('browserSync', function() {
-    connect.server({debug: true, root: path.resolve('./app')} //{ root: 'app',  port: 9091, index: "index.html", debug: true }
-        , function () {
+    connect.server({}, function () {
           browserSync({
-            // proxy: '127.0.0.1:8000',
-            server: {
-                baseDir: "app",
-                index: "index.html"
-            }
-            // server: 'app'
-            // index: 'index.html',
-            // root: 'app', 
+            proxy: '127.0.0.1:8000',
+            startPath: "/app/index.php",
           });
-    }
+        }
     );
-    // gulp.src('app/index.html');
 })
 
 gulp.task('js', function() {
