@@ -1,15 +1,25 @@
 @import '_utils/_vars';
 
+// Global stuff - should be moved 
+
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-    
+    font-family: $mainFont;
 }
 
-/* form specific formatting */
+h2{ 
+	  font-size: 30px;
+    letter-spacing: 0.04em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
 
 label {
   flex: none;
@@ -18,41 +28,85 @@ label {
 }
 
 input, textarea {
-    display: block;
-    width: 100%;
-}
-/* .form-group label.right-inline {
-  text-align: right;  
-  padding-right: 8px;
-  padding-left: 10px;
-  width: auto;
+    width: calc(100% - 15px);
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 5px 10px;
 }
 
-.form-group .input-control {
-  flex: 1 1 auto;
-  display: block;
-  margin-bottom: 10px;
-  margin-right: 8px;
-  padding: 4px;
-  margin-top: -4px;
+button{
+	border: solid 2px;
+    border-radius: 30px;
+    padding: 5px 15px 5px 15px;
+    font-size: 13px;
+    letter-spacing: 0.2em; 
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+    position:relative;
+    margin: 0 auto;
+    cursor: pointer;
+
+    &:hover{
+    	color: $whiteColor;
+    	border-color: $redColor;
+    	background: $redColor;
+    }
+
 }
 
-button {
-  padding: 5px 15px;
-  margin: 5px;
-  min-width: 100px
+.redBtn {
+  background-color: $redColor;
 }
 
-@media (max-width: 768px) {
-  .form-group {
+#filterUiBtn{
+	@extend button;
+	background-color: $greenColor;
+	    &:hover{
+    	color: $blackColor;
+    	border-color: $blackColor;
+    	background: darken( $greenColor, 10% );
+    }
+}
+
+#filterUxBtn{
+	@extend #filterUiBtn;
+	background-color: $redColor;
+	 &:hover{
+    	background: darken( $redColor, 10% );
+    }
+}
+
+#filterDevBtn{
+	@extend #filterUiBtn;
+	background-color: $yellowColor;
+	 &:hover{
+    	background: darken( $yellowColor, 10% );
+    }
+}
+
+// Form specific
+
+label.inline {
+  display: inline-block;
+  margin-bottom: 25px;
+  margin-right: 20px;
+}
+
+#formContainer{
+    width:100vw;
+    margin-top: 100px;
+	  max-width:100%; 
+	  display:flex;
+    margin-bottom: 100px;
     flex-direction: column;
-  }
-  .form-group .input-control {
-    margin-top: 2px;
-  }
-  .form-group label.right-inline {
-    text-align: left;  
-    padding-right: 0;
-    padding-left: 0;   
-  }
-} */
+    align-items: center;
+}
+
+#formContainer form {
+    width: 80%;
+    display: block;
+    border: 1px solid lightgray;
+    padding: 20px;
+}
