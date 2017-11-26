@@ -1,10 +1,4 @@
-$mainFont: Helvetica;
-$greenColor: #52B795;
-$redColor: #EF4B47;
-$blackColor: #282826;
-$whiteColor: #fdfdfc;
-$grayColor: #f7f7f7;
-$yellowColor: #F9E131;
+@import '_utils/_vars';
 
 body{
 	font-family: $mainFont;

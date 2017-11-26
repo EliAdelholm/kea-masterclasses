@@ -3,7 +3,7 @@
 // The database connection. You might need to change this if you're not using mamp!
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 // Please use the same database name
 $dbname = "kea_masterclasses";
 

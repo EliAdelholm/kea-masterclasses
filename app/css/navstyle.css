@@ -1,7 +1,7 @@
 nav {
   display: flex;
   justify-content: flex-end;
-  padding-top: 30px;
+  padding: 30px 30px 10px 30px;
   font-family: Helvetica; }
 
 .extraMargin {
@@ -11,8 +11,9 @@ nav {
   position: absolute;
   left: 0px;
   top: 0px;
-  z-index: 1;
-  width: 95vw; }
+  right: 0px;
+  background-color: #282826;
+  width: 100vw; }
 
 a {
   font-weight: bold;
@@ -20,11 +21,11 @@ a {
 
 /* unvisited link */
 a:link {
-  color: #282826; }
+  color: #fdfdfc; }
 
 /* visited link */
 a:visited {
-  color: #282826; }
+  color: #fdfdfc; }
 
 /* mouse over link */
 a:hover {

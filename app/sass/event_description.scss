@@ -1,3 +1,4 @@
+@import '_utils/_vars';
 
 body{
 	font-family: $mainFont;
@@ -10,7 +11,7 @@ p {
     line-height: 2;
     color: $blackColor;
     column-count: 2; 
-    column-gap: 50px;
+    //column-gap: 50px;
 }
 nav{
 	display: flex;
@@ -42,20 +43,14 @@ h3{
 button{
 	border: solid 2px;
     border-radius: 30px;
-    padding: 15px 48px 15px 48px;
+    padding: 10px;
     font-size: 13px;
     letter-spacing: 0.2em; 
     font-weight: bold;
     text-transform: uppercase;
     background: transparent;
-    position:relative;
-<<<<<<< HEAD:style.scss
     margin: 0 auto;
     cursor: pointer;
-=======
-	margin: 0 auto;
-	transition: background-color 0.5s ease, border 0.5s ease, color 0.5s ease;
->>>>>>> 8094a1c4b7611ab5bc92b2871e6efe2263f51a90:style-guide/style.scss
     &:hover{
     	color: $whiteColor;
     	border-color: $redColor;
@@ -72,15 +67,6 @@ button{
 	background: $redColor;
 	margin-left: 60px;
 }
-#attentionText{
-	display:flex;
-	justify-content:center;
-	flex-direction: column;
-	justify-content: center;
-	box-sizing: border-box;
-	width: 650px;
-	text-align: center;
-}
 #positionAbsolut{
 	position: absolute;
     left: 0px;
@@ -89,18 +75,11 @@ button{
     width: 95vw;
 }
 
-// .headline {
-//     font-size: 35px;
-//     letter-spacing: 0.04em;
-//     font-weight: bold;
-//     text-align: center;
-// }
-
 #topSection{
 	width:100vw;
 	max-width:100%; 
-	height:90vh;
-	//background-image: url("img/bg1.jpeg");
+	height:50vh;
+	//background-image: url("../app/img/bg1.jpeg");
 	//background-position: inherit;
 	background-color: $greenColor;
 	display:flex;
@@ -115,52 +94,6 @@ button{
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-}
-
-#colorBoxes{
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	margin-top: 70px;
-	margin-bottom: 200px;
-	p{
-		color: $whiteColor;
-		font-size: 20px;
-	}
-	#redColor{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 280px;
-		height: 175px;
-		background-color: $redColor;
-		margin: 5px;
-	}
-	#greenColor{
-		@extend #redColor;
-		background-color: $greenColor;
-	}
-	#blackColor{
-		@extend #redColor;
-		background-color: $blackColor;
-	}
-	#whiteColor{
-		@extend #redColor;
-		background-color: $whiteColor;
-		border: solid 2px;
-		border-color: $blackColor;
-		p{
-			color: $blackColor;
-		}
-	}
-
-}
-
-.colorName{ 
-	display: none;
-}
-.showcolor:hover .colorName{
-	display : flex;
 }
 
 .extraMargin{
@@ -214,29 +147,58 @@ a:active {
 	margin-right: 20%;
 	margin-left: 20%;
 }
-#navSection{
-	@extend #typographySection;
-	background-color:$grayColor;
+
+// Event description box
+
+#descriptionBox{
+	display: flex;
+	flex-wrap: wrap;
+    width:75%;
+    height:800px;
+    border:2px solid rgb(238, 238, 238);
+    margin: 0 auto;
+
+    .topBar{
+		width:100%;
+        background-color:rgb(238, 238, 238);
+        height:10vh;
+
+        ul{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+            li{
+                list-style: none;
+				padding:0 70px;
+            }
+        }
+	}
+
+					
+
+	#sTagName{
+		background-color:$greenColor;
+		//border:1px solid black;
+		border-radius:20px;
+		padding:10px 25px;
+	}
+	
+	.description{
+		display:flex;
+		flex-flow: row wrap;
+
+		.descriptionSection{
+			flex-grow:0;
+		}
+	}
 }
-#navExample{
-	margin-top: 70px;
-	width: 80vw;
-	padding: 0px 30px 30px 30px;
-	background-color: $greenColor;
-}
-#buttonSection{
-	@extend #paragraphSection;
-}
-#buttonsExample{
-	padding-top: 70px;
-}
-#iconSection{
-	@extend #navSection;
-	//background-color: $redColor;
-}
+
+
+
 footer{
 	background-color: $greenColor;
-	height: 200px;
+	height: 100px;
 	padding-top: 70px;
 	display: flex;
 	justify-content: center;

@@ -1,15 +1,9 @@
-$mainFont: Helvetica;
-$greenColor: #52B795;
-$redColor: #EF4B47;
-$blackColor: #282826;
-$whiteColor: #fdfdfc;
-$grayColor: #f7f7f7;
-$yellowColor: #F9E131;
+@import '_utils/_vars';
 
 nav{
 	display: flex;
 	justify-content: flex-end;
-	padding-top: 30px;
+	padding: 30px 30px 10px 30px;
 	font-family: $mainFont;
 }
 
@@ -18,11 +12,12 @@ nav{
 }
 
 #positionAbsolut{
-	position: absolute;
+    position: absolute;
     left: 0px;
     top: 0px;
-    z-index: 1;
-    width: 95vw;
+    right: 0px;
+    background-color: $blackColor;
+    width: 100vw;
 }
 
 a{
@@ -31,12 +26,12 @@ a{
 }
 /* unvisited link */
 a:link {
-    color: $blackColor;
+    color: $whiteColor;
 }
 
 /* visited link */
 a:visited {
-    color: $blackColor;
+    color: $whiteColor;
 }
 
 /* mouse over link */
