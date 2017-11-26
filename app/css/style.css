@@ -27,6 +27,9 @@ h2 {
   font-weight: bold;
   text-transform: uppercase; }
 
+p {
+  margin: 5px 0px 5px 0px; }
+
 button, #hoverBtn, #filterUiBtn, #filterUxBtn, #filterDevBtn, #filterPastEventBtn, #filterUpcommingEventBtn {
   border: solid 2px;
   border-radius: 30px;
@@ -96,10 +99,13 @@ a:active {
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  width: 650px;
   text-align: center; }
+  #attentionText h3 {
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto; }
 
-#eventFilterSection {
+#eventFilterSection, #myEventsStyle {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -108,16 +114,26 @@ a:active {
 
 #filerButtons {
   display: flex;
-  width: 100vw;
-  flex-wrap: wrap; }
+  width: 86vw;
+  flex-wrap: wrap;
+  justify-content: center; }
 
-section {
+#eventsByType {
   flex-grow: 1;
-  display: flex; }
+  display: flex;
+  margin-top: 10px;
+  justify-content: center; }
 
-aside {
+#eventsByTime {
   flex-basis: 360px;
-  flex-shrink: 0; }
+  flex-shrink: 0;
+  margin-top: 10px; }
+
+.eventsByTypeWidth {
+  max-width: 300px; }
+
+#searchEvent {
+  margin-top: 10px; }
 
 #filterUiBtn, #filterUxBtn, #filterDevBtn {
   background-color: #52B795; }
@@ -139,7 +155,7 @@ aside {
 #filterPastEventBtn:hover, #filterUpcommingEventBtn:hover {
   color: #282826;
   border-color: #282826;
-  background: transparent; }
+  background: #f7f7f7; }
 
 #search {
   border: solid 2px;
@@ -156,20 +172,44 @@ aside {
 
 #eventBoxes {
   display: flex;
-  justify-content: center;
+  width: 90vw;
+  justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 70px;
-  margin-bottom: 200px; }
+  margin-bottom: 200px;
+  cursor: pointer; }
 
-.eventBox {
-  max-width: 300px; }
+.eventDescription {
+  width: 330px; }
 
 .eventImg, .greenBorder {
-  height: 200px;
-  width: 300px;
+  height: 150px;
+  width: 350px;
   background-color: #f7f7f7; }
 
+.eventDetails {
+  padding-left: 20px; }
+
 .greenBorder {
+  margin-top: 50px;
+  margin-bottom: 20px;
   border: solid 10px;
   border-color: #52B795;
   border-radius: 5px; }
+
+.pastEventImg {
+  opacity: 0.5; }
+
+.pastEvent p {
+  opacity: 0.5; }
+
+.pastEvent span {
+  margin-top: 7px;
+  font-weight: bold; }
+
+@media only screen and (max-width: 800px) {
+  h1 {
+    font-size: 30px; }
+  #attentionText h3 {
+    width: 300px;
+    font-size: 15px; } }
