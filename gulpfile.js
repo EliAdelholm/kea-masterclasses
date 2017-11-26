@@ -1,6 +1,6 @@
 var gulp = require('gulp')
 var sass = require('gulp-sass')
-var browserSync = require('browser-sync').create()
+var browserSync = require('browser-sync')
 var useref = require('gulp-useref')
 var uglify = require('gulp-uglify')
 var gulpIf = require('gulp-if')
@@ -10,6 +10,9 @@ var autoprefixer = require('autoprefixer')
 var runSequence = require('run-sequence')
 var imagemin = require('gulp-imagemin')
 var htmlmin = require('gulp-htmlmin')
+var connect = require('gulp-connect-php')
+var path = require('path')
+
 
 gulp.task('sass', function() {
     return gulp.src('app/sass/**/*.scss')
@@ -18,13 +21,15 @@ gulp.task('sass', function() {
     .pipe(browserSync.stream())
 })
 
+
 gulp.task('browserSync', function() {
-    browserSync.init({
-        server: {
-            baseDir: 'app',
-            index: 'index.html'
+    connect.server({}, function () {
+          browserSync({
+            proxy: '127.0.0.1:8000',
+            startPath: "/app/index.php",
+          });
         }
-    })
+    );
 })
 
 gulp.task('js', function() {
@@ -66,7 +71,8 @@ gulp.task('optimize', function() {
 })
 
 gulp.task('watch', ['browserSync'], function() {
-    gulp.watch('app/sass/**/*.scss', ['sass'])
+    gulp.watch('app/sass/*.scss', ['sass'])
     gulp.watch('app/*.html', browserSync.reload())
     gulp.watch('app/*.php', browserSync.reload())
 })
+

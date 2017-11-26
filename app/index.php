@@ -6,14 +6,10 @@
 </head>
 </head>
 <body>
-	<div id="positionAbsolut">
-		<nav>
-			<a href="#" class="extraMargin">HOME</a>
-			<a href="#" class="extraMargin">NEWS</a>
-			<a href="#" class="extraMargin">EVENTS</a>
-			<a href="#" class="extraMargin">CONTACT</a>
-		</nav>
-	</div>
+	<?php
+		include 'nav.html';
+	?>
+
 	<div id="topSection">
 		<div id="attentionText">
 			<h1><span> MASTERCLASSES <span></h1>
@@ -21,6 +17,7 @@
 			<button>view events</button>
 		</div>
 	</div>
+
 	<div id="eventFilterSection">
 		<h2>events</h2>
 		<div id="filerButtons">
@@ -42,8 +39,13 @@
 				<div class="eventImg greenBorder"></div>
 				<p>Name:kadkkdj</p>
 				<p>Date:15.12.2017</p>
+				<p>Time:15:00</p>
+				<p>Description: Yes, all those months and years of planning, Valckes criticisms and Seth Balthermouth heartburn.</p>
 			</div>	
 		</div>
 	</div>
-</body>
+	<?php
+		include 'footer.html';
+	?>
+ </body>
 </html>
