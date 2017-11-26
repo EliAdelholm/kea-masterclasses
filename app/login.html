@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- This has to be the first thing in the body -->
+    <div id="ModalContainer">
+        <div id="Modal">
+            <div id="containerCloseModal">
+                <p id="closeModal">X
+                    <p>
+            </div>
+            <div id="divLogin">
+                <form id="frmLogin">
+                    <p> Login </p>
+                    <p>Username</p>
+                    <input type="text" placeholder="User name" name="txtUserLoginName">
+                    <p>Password</p>
+                    <input type="text" placeholder="Password" name="txtUserLoginPassword">
+                    <button id="btnLogin">Login</button>
+                </form>
+
+                <p> Don't have an account?</p>
+                <button id="btnSwitchToCreateAccount"> Create an account</button>
+            </div>
+            <div id="divCreateAccount">
+                <form id="frmCreateAccount">
+                    <p> Create an account </p>
+                    
+                    <p>Username</p>
+                    <input type="text" placeholder="User name" name="txtSaveUserName">
+                    <p>Password</p>
+                    <input type="text" placeholder="Password" name="txtSaveUserPassword">
+                    <button id="btnLogin">Login</button>
+                </form>
+
+                <p> Already have an account?</p>
+                <button id="btnSwitchToLogin"> Sign in</button>
+            </div>
+        </div>
+    </div>
+    <!-- *************** -->
+
+    <button id="btnOpenLogin">Login</button>
+    <p> test </p>
+    <p> test </p>
+    <p> test </p>
+    <p> test </p>
+    <p> test </p>
+    <p> test </p>
+    <button> test </button>
+    <p> test </p>
+
+
+    <script>
+
+        // Opening and closing the modal
+
+        btnOpenLogin.addEventListener("click", function () {
+            ModalContainer.style.display = "flex";
+        });
+
+        closeModal.addEventListener("click", function () {
+            ModalContainer.style.display = "none";
+        });
+
+        document.addEventListener("click", function (e) {
+            if (e.target.id == "ModalContainer") {
+                ModalContainer.style.display = "none";
+            }
+        });
+
+        // Switching between login and create account
+        
+        btnSwitchToCreateAccount.addEventListener("click", function(){
+            divLogin.style.display = "none";
+            divCreateAccount.style.display = "flex";
+        });
+
+        btnSwitchToLogin.addEventListener("click", function(){
+            divCreateAccount.style.display = "none";
+            divLogin.style.display = "flex";
+        });
+
+    </script>
+
+</body>
+
+</html>

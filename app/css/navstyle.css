@@ -1,0 +1,35 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 30px;
+  font-family: Helvetica; }
+
+.extraMargin {
+  margin-left: 50px; }
+
+#positionAbsolut {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  width: 95vw; }
+
+a {
+  font-weight: bold;
+  text-decoration: none; }
+
+/* unvisited link */
+a:link {
+  color: #282826; }
+
+/* visited link */
+a:visited {
+  color: #282826; }
+
+/* mouse over link */
+a:hover {
+  color: #EF4B47; }
+
+/* selected link */
+a:active {
+  color: #EF4B47; }

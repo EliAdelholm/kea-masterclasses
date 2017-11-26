@@ -1,9 +1,6 @@
-$mainFont: Helvetica;
-$greenColor: #52B795;
-$redColor: #EF4B47;
-$blackColor: #282826;
-$whiteColor: #fdfdfc;
-$grayColor: #f7f7f7;
+
+@import 'navstyle.scss';
+
 
 body{
 	font-family: $mainFont;
@@ -16,7 +13,7 @@ p {
     line-height: 2;
     color: $blackColor;
     column-count: 2; 
-    column-gap: 50px;
+    //column-gap: 50px;
 }
 nav{
 	display: flex;
@@ -48,13 +45,12 @@ h3{
 button{
 	border: solid 2px;
     border-radius: 30px;
-    padding: 15px 48px 15px 48px;
+    padding: 10px;
     font-size: 13px;
     letter-spacing: 0.2em; 
     font-weight: bold;
     text-transform: uppercase;
     background: transparent;
-    position:relative;
     margin: 0 auto;
     cursor: pointer;
     &:hover{
@@ -157,34 +153,47 @@ a:active {
 // Event description box
 
 #descriptionBox{
-    display: flex;
+	display: flex;
+	flex-wrap: wrap;
     width:75%;
-    height:90vh;
-    border:2px solid rgb(199, 199, 199);
+    height:800px;
+    border:2px solid rgb(238, 238, 238);
     margin: 0 auto;
 
     .topBar{
-        width:100%;
-        background-color:rgb(199, 199, 199);
+		width:100%;
+        background-color:rgb(238, 238, 238);
         height:10vh;
 
         ul{
-            display: flex;
-            align-content: baseline;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 
             li{
                 list-style: none;
-                padding:0 70px;
+				padding:0 70px;
             }
         }
-    }
+	}
 
-    .description{
-        display: flex;
-     
-        .descriptionSection{
-        }
-    }
+					
+
+	#sTagName{
+		background-color:$greenColor;
+		//border:1px solid black;
+		border-radius:20px;
+		padding:10px 25px;
+	}
+	
+	.description{
+		display:flex;
+		flex-flow: row wrap;
+
+		.descriptionSection{
+			flex-grow:0;
+		}
+	}
 }
 
 
