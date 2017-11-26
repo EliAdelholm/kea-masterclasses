@@ -68,4 +68,5 @@ gulp.task('optimize', function() {
 gulp.task('watch', ['browserSync'], function() {
     gulp.watch('app/sass/**/*.scss', ['sass'])
     gulp.watch('app/*.html', browserSync.reload())
+    gulp.watch('app/*.php', browserSync.reload())
 })
