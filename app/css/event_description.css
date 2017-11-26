@@ -1,3 +1,39 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 30px;
+  font-family: Helvetica; }
+
+.extraMargin {
+  margin-left: 50px; }
+
+#positionAbsolut {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  width: 95vw; }
+
+a {
+  font-weight: bold;
+  text-decoration: none; }
+
+/* unvisited link */
+a:link {
+  color: #282826; }
+
+/* visited link */
+a:visited {
+  color: #282826; }
+
+/* mouse over link */
+a:hover {
+  color: #EF4B47; }
+
+/* selected link */
+a:active {
+  color: #EF4B47; }
+
 body {
   font-family: Helvetica;
   margin: 0px; }
@@ -7,8 +43,7 @@ p {
   letter-spacing: 0.02em;
   line-height: 2;
   color: #282826;
-  column-count: 2;
-  column-gap: 50px; }
+  column-count: 2; }
 
 nav {
   display: flex;
@@ -38,13 +73,12 @@ h3 {
 button, #hoverBtn {
   border: solid 2px;
   border-radius: 30px;
-  padding: 15px 48px 15px 48px;
+  padding: 10px;
   font-size: 13px;
   letter-spacing: 0.2em;
   font-weight: bold;
   text-transform: uppercase;
   background: transparent;
-  position: relative;
   margin: 0 auto;
   cursor: pointer; }
   button:hover, #hoverBtn:hover {
@@ -125,29 +159,37 @@ a:active {
 
 #paragraph {
   margin-top: 70px;
-<<<<<<< HEAD
   text-align: justify;
   margin-right: 20%;
   margin-left: 20%; }
 
 #descriptionBox {
   display: flex;
+  flex-wrap: wrap;
   width: 75%;
-  height: 90vh;
-  border: 2px solid #c7c7c7;
+  height: 800px;
+  border: 2px solid #eeeeee;
   margin: 0 auto; }
   #descriptionBox .topBar {
     width: 100%;
-    background-color: #c7c7c7;
+    background-color: #eeeeee;
     height: 10vh; }
     #descriptionBox .topBar ul {
       display: flex;
-      align-content: baseline; }
+      align-items: center;
+      justify-content: center; }
       #descriptionBox .topBar ul li {
         list-style: none;
         padding: 0 70px; }
+  #descriptionBox #sTagName {
+    background-color: #52B795;
+    border-radius: 20px;
+    padding: 10px 25px; }
   #descriptionBox .description {
-    display: flex; }
+    display: flex;
+    flex-flow: row wrap; }
+    #descriptionBox .description .descriptionSection {
+      flex-grow: 0; }
 
 footer {
   background-color: #52B795;
@@ -155,13 +197,5 @@ footer {
   padding-top: 70px;
   display: flex;
   justify-content: center; }
-=======
-  margin-bottom: 200px; }
 
-.eventImg, .greenBorder {
-  height: 200px;
-  width: 300px;
-  background-color: #f7f7f7; }
->>>>>>> e27eab5077d162d02e803d36adb1eb8a80222c4a
-
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=event_description.css.map */
