@@ -125,6 +125,7 @@ a:active {
 
 #paragraph {
   margin-top: 70px;
+<<<<<<< HEAD
   text-align: justify;
   margin-right: 20%;
   margin-left: 20%; }
@@ -154,5 +155,13 @@ footer {
   padding-top: 70px;
   display: flex;
   justify-content: center; }
+=======
+  margin-bottom: 200px; }
+
+.eventImg, .greenBorder {
+  height: 200px;
+  width: 300px;
+  background-color: #f7f7f7; }
+>>>>>>> e27eab5077d162d02e803d36adb1eb8a80222c4a
 
 /*# sourceMappingURL=style.css.map */
