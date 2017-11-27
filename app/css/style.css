@@ -204,6 +204,7 @@ a:active {
 
 .pastEvent p {
   opacity: 0.5; }
+
 .pastEvent span {
   margin-top: 7px;
   font-weight: bold; }
@@ -211,9 +212,6 @@ a:active {
 @media only screen and (max-width: 950px) {
   h1 {
     font-size: 30px; }
-
   #attentionText h3 {
     width: 300px;
     font-size: 15px; } }
-
-/*# sourceMappingURL=style.css.map */

@@ -24,6 +24,7 @@ $dbname = "kea_masterclasses";
     $sUserPassword = $_POST['txtSaveUserPassword'];
     $sUserPhone = $_POST['txtSaveUserPhone'];
 
+    
     // Convert the value from the checkbox to an integer
     $bNotification = intval($_POST['checkNotification']);
     $sFilePath = 'assets/img/'.$sFileName;
