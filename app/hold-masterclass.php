@@ -110,19 +110,19 @@
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
       <script>
-      $( function() {
-        $( "#datepicker" ).datepicker();
-      } );
+          $( function() {
+            $( "#datepicker" ).datepicker();
+          } );
 
-     $('#timepicker').timepicker({
-        timeFormat: 'HH:mm',
-        interval: 60,
-        defaultTime: '15',
-        startTime: '3:00',
-        dynamic: true,
-        dropdown: true,
-        scrollbar: true
-    });
+         $('#timepicker').timepicker({
+            timeFormat: 'HH:mm',
+            interval: 60,
+            defaultTime: '15',
+            startTime: '3:00',
+            dynamic: true,
+            dropdown: true,
+            scrollbar: true
+        });
 
 
         var frmValid = false;
