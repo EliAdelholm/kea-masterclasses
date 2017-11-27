@@ -1,11 +1,8 @@
 body {
   font-family: Helvetica;
-  margin: 0px; }
-
-nav {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 30px; }
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; }
 
 h1 {
   font-size: 70px;
@@ -79,13 +76,6 @@ a:active {
 
 .extraMargin {
   margin-left: 50px; }
-
-#positionAbsolut {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 1;
-  width: 95vw; }
 
 #topSection {
   width: 100%;
@@ -214,7 +204,6 @@ a:active {
 
 .pastEvent p {
   opacity: 0.5; }
-
 .pastEvent span {
   margin-top: 7px;
   font-weight: bold; }
@@ -222,6 +211,9 @@ a:active {
 @media only screen and (max-width: 950px) {
   h1 {
     font-size: 30px; }
+
   #attentionText h3 {
     width: 300px;
     font-size: 15px; } }
+
+/*# sourceMappingURL=style.css.map */

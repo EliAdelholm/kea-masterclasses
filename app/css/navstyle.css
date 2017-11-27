@@ -12,8 +12,7 @@ nav {
   left: 0px;
   top: 0px;
   right: 0px;
-  background-color: #282826;
-  width: 100vw; }
+  background-color: #282826; }
 
 a {
   font-weight: bold;
@@ -34,3 +33,5 @@ a:hover {
 /* selected link */
 a:active {
   color: #e7607b; }
+
+/*# sourceMappingURL=navstyle.css.map */
