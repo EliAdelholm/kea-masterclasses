@@ -26,7 +26,7 @@ mongo.connect(sDatabasePath, (err, db) => {
 
 ///////////// ROUTING //////////////
 
-
+  
 // ADD EVENT
 app.post('/create-event', (req, res) => {
     // Fake data from frontend
