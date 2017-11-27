@@ -26,7 +26,7 @@ input, textarea {
   border-radius: 15px;
   padding: 5px 10px; }
 
-button, #filterUiBtn, #filterUxBtn, #filterDevBtn {
+button {
   border: solid 2px;
   border-radius: 30px;
   padding: 5px 15px 5px 15px;
@@ -38,7 +38,7 @@ button, #filterUiBtn, #filterUxBtn, #filterDevBtn {
   position: relative;
   margin: 0 auto;
   cursor: pointer; }
-  button:hover, #filterUiBtn:hover, #filterUxBtn:hover, #filterDevBtn:hover {
+  button:hover {
     color: #fdfdfc;
     border-color: #e7607b;
     background: #e7607b; }
@@ -46,22 +46,11 @@ button, #filterUiBtn, #filterUxBtn, #filterDevBtn {
 .redBtn {
   background-color: #e7607b; }
 
-#filterUiBtn, #filterUxBtn, #filterDevBtn {
-  background-color: #52B795; }
-  #filterUiBtn:hover, #filterUxBtn:hover, #filterDevBtn:hover {
-    color: #282826;
-    border-color: #282826;
-    background: #3f9779; }
-
-#filterUxBtn {
-  background-color: #e7607b; }
-  #filterUxBtn:hover {
-    background: #e03456; }
-
-#filterDevBtn {
-  background-color: #F9E131; }
-  #filterDevBtn:hover {
-    background: #f0d407; }
+.displayFlex {
+  display: flex;
+  margin-bottom: 20px; }
+  .displayFlex label {
+    margin-right: 20px; }
 
 label.inline {
   display: inline-block;
@@ -82,3 +71,6 @@ label.inline {
   display: block;
   border: 1px solid lightgray;
   padding: 20px; }
+
+#datepicker {
+  background-color: #fdfdfc; }

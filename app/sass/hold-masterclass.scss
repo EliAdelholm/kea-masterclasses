@@ -13,7 +13,7 @@ body {
 }
 
 h2{ 
-	  font-size: 30px;
+	font-size: 30px;
     letter-spacing: 0.04em;
     font-weight: bold;
     text-align: center;
@@ -60,33 +60,15 @@ button{
   background-color: $redColor;
 }
 
-#filterUiBtn{
-	@extend button;
-	background-color: $greenColor;
-	    &:hover{
-    	color: $blackColor;
-    	border-color: $blackColor;
-    	background: darken( $greenColor, 10% );
-    }
-}
-
-#filterUxBtn{
-	@extend #filterUiBtn;
-	background-color: $redColor;
-	 &:hover{
-    	background: darken( $redColor, 10% );
-    }
-}
-
-#filterDevBtn{
-	@extend #filterUiBtn;
-	background-color: $yellowColor;
-	 &:hover{
-    	background: darken( $yellowColor, 10% );
-    }
-}
-
 // Form specific
+
+.displayFlex{
+    display: flex;
+    margin-bottom: 20px;
+    label{
+        margin-right: 20px;
+    }
+}
 
 label.inline {
   display: inline-block;
@@ -109,4 +91,7 @@ label.inline {
     display: block;
     border: 1px solid lightgray;
     padding: 20px;
+}
+#datepicker{
+    background-color: $whiteColor;
 }

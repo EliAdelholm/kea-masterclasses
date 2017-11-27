@@ -23,24 +23,16 @@ h1 span{
 }
 
 h3{
-<<<<<<< HEAD
-	font-size: 20px;
-	letter-spacing: 0.2em; 
-	font-weight: 400;
-=======
 	font-size: 18px;
 	font-weight: 400;
 	text-transform: uppercase;
 	font-weight:bold;
->>>>>>> ef524a43c9187a6f04d3c674a0fc9aba0bafff68
-	//	text-align: center;
 }
 
 h2{ 
 	font-size: 30px;
     letter-spacing: 0.04em;
     font-weight: bold;
-    //text-align: center;
     text-transform: uppercase;
 }
 
@@ -49,10 +41,10 @@ p{
 	margin: 5px 0px 5px 0px;
 }
 
-<<<<<<< HEAD
-button{
-	border: solid 2px;
-=======
+// <<<<<<< HEAD
+// button{
+// 	border: solid 2px;
+// =======
 #paragraph{
 	text-align: justify;
 	font-size: 14px;
@@ -64,8 +56,6 @@ button{
 }
 
 button{
-	//border: solid 2px;
->>>>>>> ef524a43c9187a6f04d3c674a0fc9aba0bafff68
     border-radius: 30px;
     padding: 15px 48px 15px 48px;
     font-size: 13px;
@@ -76,11 +66,7 @@ button{
     position:relative;
     margin: 0 auto;
     cursor: pointer;
-<<<<<<< HEAD
 	transition: background-color 0.5s ease, border 0.5s ease, color 0.5s ease;
-=======
-	//transition: background-color 0.5s ease, border 0.5s ease, color 0.5s ease;
->>>>>>> ef524a43c9187a6f04d3c674a0fc9aba0bafff68
     &:hover{
     	color: $whiteColor;
     	border-color: $redColor;
@@ -91,15 +77,11 @@ button{
 	// }
 }
 
-<<<<<<< HEAD
 #topSectionBtn{
 	@extend button;
 	background-color: $redColor;
 }
 
-=======
-//BUTTON FOR CANCEL
->>>>>>> ef524a43c9187a6f04d3c674a0fc9aba0bafff68
 
 #hoverBtn{
 	@extend button;
@@ -146,7 +128,6 @@ a:active {
 }
 
 #topSection{
-<<<<<<< HEAD
 	//width:100vw;
 	width:100%; 
 	height:90vh;
@@ -157,14 +138,9 @@ a:active {
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin: 0 auto;
-=======
-	width:100vw;
-	max-width:100%; 
-	height:100vh;
 	//background-image: url("img/bg1.jpeg");
 	//background-position: inherit;
->>>>>>> ef524a43c9187a6f04d3c674a0fc9aba0bafff68
-	background-color: $greenColor;
+	// background-color: $greenColor;
 	display:flex;
 	justify-content: center;
 	align-items: center;
@@ -172,21 +148,14 @@ a:active {
 }
 
 #attentionText{
-<<<<<<< HEAD
 	padding-top: 400px;
 	padding-left: 20%;
-=======
->>>>>>> ef524a43c9187a6f04d3c674a0fc9aba0bafff68
 	display:flex;
 	justify-content:center;
 	flex-direction: column;
 	justify-content: center;
 	box-sizing: border-box;
 	text-align: center;
-<<<<<<< HEAD
-=======
-
->>>>>>> ef524a43c9187a6f04d3c674a0fc9aba0bafff68
 	h3 {
 		width: 650px;
 		margin-left: auto;
@@ -328,12 +297,7 @@ a:active {
 	}
 }
 
-
-<<<<<<< HEAD
 @media only screen and (max-width: 950px) {
-=======
-@media only screen and (max-width: 800px) {
->>>>>>> ef524a43c9187a6f04d3c674a0fc9aba0bafff68
     h1 {
         font-size: 30px;
     }

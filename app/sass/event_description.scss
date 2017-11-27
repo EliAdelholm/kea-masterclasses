@@ -56,11 +56,11 @@
 		padding:25px 0;
 	}
 	#btnCancel{
-		@extend button;
+		// @extend button;
 		background-color:grey;
 	}
 	#btnParticipate{
-		@extend button;
+		// @extend button;
 		background-color: $redColor;
 	}
 }
