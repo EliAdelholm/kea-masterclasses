@@ -33,6 +33,11 @@ h2{
     text-transform: uppercase;
 }
 
+
+p{
+	margin: 5px 0px 5px 0px;
+}
+
 button{
 	border: solid 2px;
     border-radius: 30px;
@@ -111,9 +116,14 @@ a:active {
 	flex-direction: column;
 	justify-content: center;
 	box-sizing: border-box;
-	width: 650px;
 	text-align: center;
+	h3 {
+		width: 650px;
+		margin-left: auto;
+    	margin-right: auto;
+	}
 }
+
 #eventFilterSection{
 	display: flex;
 	flex-direction: column;
@@ -121,22 +131,39 @@ a:active {
 	align-items: center;
 	flex-wrap: wrap;
 }
+
+#myEventsStyle{
+	@extend #eventFilterSection;
+}
+
 #filerButtons{
 	display: flex;
-	width: 100vw;
+	width: 86vw;
 	flex-wrap: wrap;
+	justify-content: center;
 
 }
 
-section {
+#eventsByType {
   flex-grow: 1;
   display: flex;
+  margin-top: 10px;
+  justify-content: center;
 }
 
-aside {
+#eventsByTime {
   flex-basis: 360px;
   flex-shrink: 0; 
+  margin-top: 10px;
 }
+.eventsByTypeWidth{
+	max-width:300px;
+}
+
+#searchEvent{
+	margin-top: 10px;
+}
+
 #filterUiBtn{
 	@extend button;
 	background-color: $greenColor;
@@ -168,7 +195,7 @@ aside {
 	&:hover{
     	color: $blackColor;
     	border-color: $blackColor;
-    	background: transparent;
+    	background: $grayColor;
     }
 }
 
@@ -191,23 +218,53 @@ aside {
 }
 #eventBoxes{
 	display: flex;
-	justify-content: center;
+	width: 90vw;
+	justify-content: space-around;
 	flex-wrap: wrap;
 	margin-top: 70px;
 	margin-bottom: 200px;
+	cursor: pointer;
 }
-.eventBox{
-	max-width:300px;
+.eventDescription{
+	width:330px;
 }
 .eventImg{
-	height:200px;
-	width:300px;
+	height:150px;
+	width:350px;
 	background-color: $grayColor;
 }
-
+.eventDetails{
+	padding-left: 20px;
+}
 .greenBorder{
 	@extend .eventImg;
+	margin-top: 50px;
+	margin-bottom: 20px;
 	border: solid 10px;
 	border-color: $greenColor;
 	border-radius: 5px;
+}
+.pastEventImg{
+	opacity: 0.5;
+}
+
+.pastEvent{
+	p{
+		opacity: 0.5;
+	}
+	span{
+		margin-top: 7px;
+		font-weight: bold;
+	}
+}
+
+
+@media only screen and (max-width: 800px) {
+    h1 {
+        font-size: 30px;
+    }
+    #attentionText h3 {
+    width: 300px;
+    font-size: 15px;
+	}
 }
