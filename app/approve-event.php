@@ -35,7 +35,7 @@
             <div class="form-group" style="display: flex;">
                 <div class="inline" style="width: 50%;">
                     <label>Date</label>
-                    <input class="input-control" />
+                    <input class="input-control"/>
                 </div>
 
                 <div class="inline" style="width: 50%;">
