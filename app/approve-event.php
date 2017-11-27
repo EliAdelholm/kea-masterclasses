@@ -12,7 +12,7 @@
 <body>
 
     <?php
-		include 'nav.html';
+		include 'nav.php';
 	?>
 
     <section id="formContainer">
