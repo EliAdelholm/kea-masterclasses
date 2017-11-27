@@ -47,15 +47,15 @@ button, #hoverBtn {
   cursor: pointer; }
   button:hover, #hoverBtn:hover {
     color: #fdfdfc;
-    border-color: #EF4B47;
-    background: #EF4B47; }
+    border-color: #e7607b;
+    background: #e7607b; }
   button a:hover, #hoverBtn a:hover {
     color: #282826; }
 
 #hoverBtn {
   color: #fdfdfc;
-  border-color: #EF4B47;
-  background: #EF4B47;
+  border-color: #e7607b;
+  background: #e7607b;
   margin-left: 60px; }
 
 #positionAbsolut {
@@ -99,16 +99,16 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-  color: #EF4B47; }
+  color: #e7607b; }
 
 /* selected link */
 a:active {
-  color: #EF4B47; }
+  color: #e7607b; }
 
 #typographySection, #paragraphSection {
   padding-top: 100px;
   padding-bottom: 100px;
-  background-color: #EF4B47; }
+  background-color: #e7607b; }
 
 #fontTable {
   display: flex;

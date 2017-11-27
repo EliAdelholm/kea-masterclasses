@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +18,7 @@
 		<div id="attentionText">
 			<h1><span> MASTERCLASSES <span></h1>
 			<h3>Lorem ipsum dolor sit amet, ut augue aliquam pede, arcu amet lorem, sed torquent</h3>
-			<button>view events</button>
+			<button id="topSectionBtn">view events</button>
 		</div>
 	</div>
 
@@ -115,7 +119,6 @@
 			  }
 			});
 		}
-
 	</script>
  </body>
 </html>
