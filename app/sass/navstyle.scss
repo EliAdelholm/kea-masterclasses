@@ -1,0 +1,46 @@
+@import '_utils/_vars';
+
+nav{
+    display: flex;
+	justify-content: flex-end;
+	padding: 30px 100px;
+	font-family: $mainFont;
+}
+
+.extraMargin{
+	margin-left: 50px;
+}
+
+#positionAbsolut{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    background-color: $blackColor;
+    width: 100%;
+    z-index: 1;
+}
+
+a{
+	font-weight: bold;
+	text-decoration: none;
+}
+/* unvisited link */
+a:link {
+    color: $whiteColor;
+}
+
+/* visited link */
+a:visited {
+    color: $whiteColor;
+}
+
+/* mouse over link */
+a:hover {
+    color: $redColor;
+}
+
+/* selected link */
+a:active {
+    color: $redColor;
+}
