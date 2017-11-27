@@ -1,0 +1,37 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 30px 100px;
+  font-family: Helvetica; }
+
+.extraMargin {
+  margin-left: 50px; }
+
+#positionAbsolut {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  background-color: #282826;
+  width: 100%;
+  z-index: 1; }
+
+a {
+  font-weight: bold;
+  text-decoration: none; }
+
+/* unvisited link */
+a:link {
+  color: #fdfdfc; }
+
+/* visited link */
+a:visited {
+  color: #fdfdfc; }
+
+/* mouse over link */
+a:hover {
+  color: #e7607b; }
+
+/* selected link */
+a:active {
+  color: #e7607b; }
