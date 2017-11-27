@@ -45,12 +45,12 @@
             <div class="form-group" style="display: flex;">
                 <div class="inline" style="width: 50%;">
                     <label>Date</label>
-                    <input required name="sDate" class="input-control" id="datepicker"/>
+                    <input required name="sDate" class="input-control" />
                 </div>
 
                 <div class="inline" style="width: 50%;">
                     <label class="right-inline">Time</label>
-                    <input  id="timepicker" required name="sTime" class="input-control" />
+                    <input required name="sTime" class="input-control" />
                 </div>
             </div>
 
@@ -102,27 +102,10 @@
 
     <?php
 		include 'footer.html';
-	?>
-
-
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-      <script>
-      $( function() {
-        $( "#datepicker" ).datepicker();
-      } );
-
-     $('#timepicker').timepicker({
-        timeFormat: 'HH:mm',
-        interval: 60,
-        defaultTime: '15',
-        startTime: '3:00',
-        dynamic: true,
-        dropdown: true,
-        scrollbar: true
-    });
-
+    ?>
+    
+    
+    <script>
 
         var frmValid = false;
 
@@ -159,7 +142,7 @@
         })
         
     </script>
-
+  
 </body>
 
 </html>
