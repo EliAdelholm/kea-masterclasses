@@ -1,7 +1,16 @@
 var express = require('express')
 var app = express()
 var formidable = require('express-formidable')
+var path = require('path')
+var fs = require('fs-extra')
 app.use(formidable())
+
+// ALLOW CROSS ORIGIN RESSOURCE SHARING
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 
 // GET EVENT CONTROLLER
@@ -26,36 +35,57 @@ mongo.connect(sDatabasePath, (err, db) => {
 
 ///////////// ROUTING //////////////
 
-
+  
 // ADD EVENT
 app.post('/create-event', (req, res) => {
-    // Fake data from frontend
+
+    // Handle image upload
+    // Get temporary file path:
+    var tempPath = req.files.sFile.path
+
+    // Generate new path, using timestamp to avoid duplication errors
+    var timestamp = + new Date()
+    var extName = path.extname(req.files.sFile.name)
+    var targetPath = path.resolve('../../app/assets/img/'+timestamp+extName)
+    
+    // Set the path that should be used by frontend:
+    var imagePath = "assets/img/" + timestamp+extName
+
+    // Actually move the file to permanent storage
+    fs.move(tempPath, targetPath, function(err) {
+        if (err) throw err;
+        console.log("Upload completed!");
+    });
+
+    // Create object from form data
     var jEvent = {
-        "title": "Photoshop art – retouching skills",
-        "type": "UI",
+        "title": req.fields.sTitle,
+        "type": req.fields.sType,
         "location": {
             "type": "Point",
             "coordinates": [null, null],
-            "room": "Tellus"
+            "room": req.fields.sRoom
         },
-        "time": "6 November at 13:30–15:00",
-        "speaker": "Marie Christiansen",
-        "organizer": "Jonas Fannikke Holbech",
-        "status": "active",
-        "image": "",
+        "time": req.fields.sTime,
+        "speaker": req.fields.sLecturer,
+        "organizer": req.fields.sResponsible,
+        "status": "pending",
+        "image": imagePath,
         "clickrate": 0,
-        "description": "What is Photoshop art and what does it take? We are going to look at some art pieces made in Photoshop and discuss what it actually takes to produce a piece. We will demonstrate tools like the Liquify filter, Content-aware fill and discuss cut out techniques.",
-        "requirements": "Basic Photoshop skills and an eagerness to get inspired"
+        "description": req.fields.sDescription,
+        "requirements": req.fields.sRequirements
     }
+
+    console.log(jEvent)
 
     event.createEvent(jEvent, (err, jStatus) => {
         if (err) {
             console.log(jStatus)
-            res.send('<html><body>ERROR</body></html>')
+            res.send('{"status": "error"}')
             return
         }
         console.log(jStatus)
-        res.send('<html><body>OK</body></html>')
+        res.send('{"status": "ok"}')
         return
     })
 })
@@ -95,7 +125,7 @@ app.get('/delete-event', (req, res) => {
 })
 
 //DISPLAY ALL EVENTS
-app.get('/display-all-events', (req, res) => {
+app.get('/events', (req, res) => {
     event.getEvents((err, jStatus, ajEvents) => {
         if (err) {
             console.log(jStatus)
@@ -110,7 +140,7 @@ app.get('/display-all-events', (req, res) => {
 })
 
 //DISPLAY EVENT BY ID
-app.get('/display-event/:id', (req, res) => {
+app.get('/event/:id', (req, res) => {
     var iEventId = req.query.id
     event.displayEventById(iEventId, (err, jStatus, jEvent) => {
         if (err) {

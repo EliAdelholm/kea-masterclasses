@@ -2,13 +2,6 @@ body {
   font-family: Helvetica;
   margin: 0px; }
 
-p {
-  font-size: 14px;
-  letter-spacing: 0.02em;
-  line-height: 2;
-  color: #282826;
-  column-count: 2; }
-
 nav {
   display: flex;
   justify-content: flex-end;
@@ -23,67 +16,46 @@ h1 {
 h1 span {
   background-color: #fdfdfc; }
 
+h3 {
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  font-weight: 400; }
+
 h2 {
   font-size: 30px;
   letter-spacing: 0.04em;
   font-weight: bold;
   text-transform: uppercase; }
 
-h3 {
-  font-size: 20px;
-  letter-spacing: 0.2em;
-  font-weight: 400; }
+p {
+  margin: 5px 0px 5px 0px; }
 
-button, #hoverBtn {
+button, #topSectionBtn, #hoverBtn, #filterUiBtn, #filterUxBtn, #filterDevBtn, #filterPastEventBtn, #filterUpcommingEventBtn, .description #btnCancel, .description #btnParticipate {
   border: solid 2px;
   border-radius: 30px;
-  padding: 10px;
+  padding: 15px 48px 15px 48px;
   font-size: 13px;
   letter-spacing: 0.2em;
   font-weight: bold;
   text-transform: uppercase;
   background: transparent;
+  position: relative;
   margin: 0 auto;
-  cursor: pointer; }
-  button:hover, #hoverBtn:hover {
+  cursor: pointer;
+  transition: background-color 0.5s ease, border 0.5s ease, color 0.5s ease; }
+  button:hover, #topSectionBtn:hover, #hoverBtn:hover, #filterUiBtn:hover, #filterUxBtn:hover, #filterDevBtn:hover, #filterPastEventBtn:hover, #filterUpcommingEventBtn:hover, .description #btnCancel:hover, .description #btnParticipate:hover {
     color: #fdfdfc;
     border-color: #e7607b;
     background: #e7607b; }
-  button a:hover, #hoverBtn a:hover {
-    color: #282826; }
+
+#topSectionBtn {
+  background-color: #e7607b; }
 
 #hoverBtn {
   color: #fdfdfc;
   border-color: #e7607b;
   background: #e7607b;
   margin-left: 60px; }
-
-#positionAbsolut {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 1;
-  width: 95vw; }
-
-#topSection {
-  width: 100vw;
-  max-width: 100%;
-  height: 50vh;
-  background-color: #52B795;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 100px; }
-
-#colorsSection, #typographySection, #paragraphSection {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap; }
-
-.extraMargin {
-  margin-left: 50px; }
 
 a {
   font-weight: bold;
@@ -105,35 +77,165 @@ a:hover {
 a:active {
   color: #e7607b; }
 
-#typographySection, #paragraphSection {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  background-color: #e7607b; }
+.extraMargin {
+  margin-left: 50px; }
 
-#fontTable {
+#positionAbsolut {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  width: 95vw; }
+
+#topSection {
+  width: 100%;
+  height: 90vh;
+  background-image: url("img/bg.jpg");
+  background-position: inherit;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  background-color: #52B795;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px; }
+
+#attentionText {
+  padding-top: 400px;
+  padding-left: 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center; }
+  #attentionText h3 {
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto; }
+
+#eventFilterSection, #myEventsStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap; }
 
-.spacing {
-  margin-right: 20px;
-  margin-left: 20px; }
+#filerButtons {
+  display: flex;
+  width: 86vw;
+  flex-wrap: wrap;
+  justify-content: center; }
 
-#paragraphSection {
-  background-color: #fdfdfc; }
+#eventsByType {
+  flex-grow: 1;
+  display: flex;
+  margin-top: 10px;
+  justify-content: center; }
 
-#paragraph {
+#eventsByTime {
+  flex-basis: 360px;
+  flex-shrink: 0;
+  margin-top: 10px; }
+
+.eventsByTypeWidth {
+  max-width: 300px; }
+
+#searchEvent {
+  margin-top: 10px; }
+
+#filterUiBtn, #filterUxBtn, #filterDevBtn {
+  background-color: #52B795; }
+  #filterUiBtn:hover, #filterUxBtn:hover, #filterDevBtn:hover {
+    color: #282826;
+    border-color: #282826;
+    background: #3f9779; }
+
+#filterUxBtn {
+  background-color: #e7607b; }
+  #filterUxBtn:hover {
+    background: #e03456; }
+
+#filterDevBtn {
+  background-color: #F9E131; }
+  #filterDevBtn:hover {
+    background: #f0d407; }
+
+#filterPastEventBtn:hover, #filterUpcommingEventBtn:hover {
+  color: #282826;
+  border-color: #282826;
+  background: #f7f7f7; }
+
+#search {
+  border: solid 2px;
+  border-radius: 30px;
+  padding: 15px 48px 15px 48px;
+  width: 255px;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: transparent;
+  position: relative;
+  margin: 0 auto; }
+
+#eventBoxes {
+  display: flex;
+  width: 90vw;
+  justify-content: space-around;
+  flex-wrap: wrap;
   margin-top: 70px;
-  text-align: justify;
-  margin-right: 20%;
-  margin-left: 20%; }
+  margin-bottom: 200px;
+  cursor: pointer; }
+
+.eventDescription {
+  width: 330px; }
+
+.eventImg, .greenBorder {
+  height: 150px;
+  width: 350px;
+  background-color: #f7f7f7; }
+
+.eventDetails {
+  padding-left: 20px; }
+
+.greenBorder {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  border: solid 10px;
+  border-color: #52B795;
+  border-radius: 5px; }
+
+.pastEventImg {
+  opacity: 0.5; }
+
+.pastEvent p {
+  opacity: 0.5; }
+
+.pastEvent span {
+  margin-top: 7px;
+  font-weight: bold; }
+
+@media only screen and (max-width: 950px) {
+  h1 {
+    font-size: 30px; }
+  #attentionText h3 {
+    width: 300px;
+    font-size: 15px; } }
+
+#topSection {
+  height: 70vh !important;
+  margin-bottom: 25px !important; }
 
 #descriptionBox {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   width: 75%;
-  height: 800px;
   border: 2px solid #eeeeee;
-  margin: 0 auto; }
+  margin: 50px auto; }
   #descriptionBox .topBar {
     width: 100%;
     background-color: #eeeeee;
@@ -145,19 +247,25 @@ a:active {
       #descriptionBox .topBar ul li {
         list-style: none;
         padding: 0 70px; }
-  #descriptionBox #sTagName {
+  #descriptionBox #filterUiBtn, #descriptionBox #filterUxBtn, #descriptionBox #filterDevBtn {
     background-color: #52B795;
     border-radius: 20px;
     padding: 10px 25px; }
-  #descriptionBox .description {
-    display: flex;
-    flex-flow: row wrap; }
-    #descriptionBox .description .descriptionSection {
-      flex-grow: 0; }
 
-footer {
-  background-color: #52B795;
-  height: 100px;
-  padding-top: 70px;
+.description {
   display: flex;
-  justify-content: center; }
+  flex-flow: row wrap;
+  padding: 5px 25px; }
+  .description .descriptionSection {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+    flex: 2 0 75%; }
+  .description .buttonSection {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 25px 0; }
+  .description #btnCancel {
+    background-color: grey; }
+  .description #btnParticipate {
+    background-color: #e7607b; }

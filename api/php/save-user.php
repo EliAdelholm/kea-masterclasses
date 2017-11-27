@@ -12,21 +12,21 @@ $dbname = "kea_masterclasses";
 
     // Save the image with a unique ID
     $sFileExtension = pathinfo($_FILES['fileUserImage']['name'], PATHINFO_EXTENSION);
+
 	$sFolder = '../../app/assets/img/';
 	$sFileName = 'userimage-'.uniqid().'.'.$sFileExtension;
 	$sSaveFileTo = $sFolder.$sFileName;
 	move_uploaded_file( $_FILES['fileUserImage']['tmp_name'], $sSaveFileTo);
 
     // Get the data from the client
-    $oTime = new DateTime();
-    $iUserId = $oTime->getTimestamp();
     $sUserName = $_POST['txtSaveUserName'];
     $sUserEmail = $_POST['txtSaveUserEmail'];
     $sUserPassword = $_POST['txtSaveUserPassword'];
     $sUserPhone = $_POST['txtSaveUserPhone'];
-    $bNotification = $_POST['checkNotification'];
-    $sFilePath = 'assets/img/'.$sFileName;
 
+    // Convert the value from the checkbox to an integer
+    $bNotification = intval($_POST['checkNotification']);
+    $sFilePath = 'assets/img/'.$sFileName;
     
     try {
                 // connect to the database
@@ -34,10 +34,9 @@ $dbname = "kea_masterclasses";
                 
                 // INSERT INTO USERS TABLE
                 // create a query
-                $query = $conn->prepare("INSERT INTO USERS (id, name, password, notification, image) VALUES (:id, :name, :password, :notification, :image)");
+                $query = $conn->prepare("INSERT INTO USERS (name, password, notification, image) VALUES (:name, :password, :notification, :image)");
                 
                 // Bind param, this if for security
-                $query->bindParam( ':id' , $iUserId );
                 $query->bindParam( ':name' , $sUserName );
                 $query->bindParam(':password', $sUserPassword);
                 $query->bindParam(':notification' , $bNotification);
@@ -55,10 +54,13 @@ $dbname = "kea_masterclasses";
                 // Echo back to the client
                 echo $sjResponse; 
                 
+                
+                // Get the ID that was just inserted with the auto increment, so we can use it in the other tables
+                $iUserId = $conn->lastInsertId();
 
                 // INSERT INTO EMAIL TABLE    
         
-                $query = $conn->prepare("INSERT INTO users_email (email, user_id) VALUES (:email, :id)");
+                $query = $conn->prepare("INSERT INTO users_emails (email, user_id) VALUES (:email, :id)");
                 $query->bindParam(':email' , $sUserEmail);
                 $query->bindParam(':id' , $iUserId);
                 
@@ -72,7 +74,7 @@ $dbname = "kea_masterclasses";
                 
                 if ($sUserPhone !== ""){
                     
-                    $query = $conn->prepare("INSERT INTO users_phone (users_id, phone) VALUES (:id, :phone)");
+                    $query = $conn->prepare("INSERT INTO users_phones (users_id, phone) VALUES (:id, :phone)");
                     $query->bindParam(':id' , $iUserId);
                     $query->bindParam(':phone' , $sUserPhone);
                     
@@ -88,4 +90,5 @@ $dbname = "kea_masterclasses";
                 echo "ERROR";
                 
             }  
+            
 ?>
