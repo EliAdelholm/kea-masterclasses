@@ -1,11 +1,12 @@
 footer {
-  background-color: #52B795;
+  background-color: #282826;
   padding-top: 50px;
   padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  color: #fdfdfc; }
   footer p {
     margin-top: 0px;
     margin-bottom: 6px; }

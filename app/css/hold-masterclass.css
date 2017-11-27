@@ -40,11 +40,11 @@ button, #filterUiBtn, #filterUxBtn, #filterDevBtn {
   cursor: pointer; }
   button:hover, #filterUiBtn:hover, #filterUxBtn:hover, #filterDevBtn:hover {
     color: #fdfdfc;
-    border-color: #EF4B47;
-    background: #EF4B47; }
+    border-color: #e7607b;
+    background: #e7607b; }
 
 .redBtn {
-  background-color: #EF4B47; }
+  background-color: #e7607b; }
 
 #filterUiBtn, #filterUxBtn, #filterDevBtn {
   background-color: #52B795; }
@@ -54,9 +54,9 @@ button, #filterUiBtn, #filterUxBtn, #filterDevBtn {
     background: #3f9779; }
 
 #filterUxBtn {
-  background-color: #EF4B47; }
+  background-color: #e7607b; }
   #filterUxBtn:hover {
-    background: #eb1d18; }
+    background: #e03456; }
 
 #filterDevBtn {
   background-color: #F9E131; }
