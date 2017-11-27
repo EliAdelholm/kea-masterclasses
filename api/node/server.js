@@ -95,7 +95,7 @@ app.get('/delete-event', (req, res) => {
 })
 
 //DISPLAY ALL EVENTS
-app.get('/display-all-events', (req, res) => {
+app.get('/events', (req, res) => {
     event.getEvents((err, jStatus, ajEvents) => {
         if (err) {
             console.log(jStatus)
@@ -110,7 +110,7 @@ app.get('/display-all-events', (req, res) => {
 })
 
 //DISPLAY EVENT BY ID
-app.get('/display-event/:id', (req, res) => {
+app.get('/event/:id', (req, res) => {
     var iEventId = req.query.id
     event.displayEventById(iEventId, (err, jStatus, jEvent) => {
         if (err) {
