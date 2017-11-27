@@ -7,6 +7,7 @@
 <head>
 	<title>MY EVENTS</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/eventStyle.css">
 	<link rel="stylesheet" type="text/css" href="css/starRatingStyle.css">
 </head>
 </head>

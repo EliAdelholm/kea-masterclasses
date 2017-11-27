@@ -1,0 +1,136 @@
+#topSection {
+  width: 100%;
+  height: 90vh;
+  background-image: url("img/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px; }
+
+#attentionText {
+  padding-top: 400px;
+  padding-left: 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center; }
+  #attentionText h3 {
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto; }
+
+#topSectionBtn {
+  background-color: #e7607b; }
+
+#eventFilterSection, #myEventsStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+
+#filerButtons {
+  display: flex;
+  width: 86vw;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+#eventsByType {
+  flex-grow: 1;
+  display: flex;
+  margin-top: 10px;
+  justify-content: center; }
+
+#eventsByTime {
+  flex-basis: 360px;
+  flex-shrink: 0;
+  margin-top: 10px; }
+
+.eventsByTypeWidth {
+  max-width: 300px; }
+
+#searchEvent {
+  margin-top: 10px; }
+
+#filterUiBtn, #filterUxBtn, #filterDevBtn {
+  background-color: #52B795; }
+  #filterUiBtn:hover, #filterUxBtn:hover, #filterDevBtn:hover {
+    color: #282826;
+    border-color: #282826;
+    background: #3f9779; }
+
+#filterUxBtn {
+  background-color: #e7607b; }
+  #filterUxBtn:hover {
+    background: #e03456; }
+
+#filterDevBtn {
+  background-color: #F9E131; }
+  #filterDevBtn:hover {
+    background: #f0d407; }
+
+#filterPastEventBtn:hover, #filterUpcommingEventBtn:hover {
+  color: #282826;
+  border-color: #282826;
+  background: #f7f7f7; }
+
+#search {
+  border: solid 2px;
+  border-radius: 30px;
+  padding: 15px 48px 15px 48px;
+  width: 255px;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: transparent;
+  position: relative;
+  margin: 0 auto; }
+
+#eventBoxes {
+  display: flex;
+  width: 90vw;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 70px;
+  margin-bottom: 200px;
+  cursor: pointer; }
+
+.eventDescription {
+  width: 330px; }
+
+.eventImg, .greenBorder {
+  height: 150px;
+  width: 350px;
+  background-color: #f7f7f7; }
+
+.eventDetails {
+  padding-left: 20px; }
+
+.greenBorder {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  border: solid 10px;
+  border-color: #52B795;
+  border-radius: 5px; }
+
+.pastEventImg {
+  opacity: 0.5; }
+
+.pastEvent p {
+  opacity: 0.5; }
+
+.pastEvent span {
+  margin-top: 7px;
+  font-weight: bold; }
+
+@media only screen and (max-width: 950px) {
+  h1 {
+    font-size: 30px; }
+  #attentionText h3 {
+    width: 300px;
+    font-size: 15px; } }

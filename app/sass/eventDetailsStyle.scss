@@ -41,6 +41,7 @@ textarea{
 	margin-bottom: 30px;
 	resize:none;
 }
+
 input{
 	@extend textarea;
 }
@@ -57,4 +58,16 @@ input{
     font-weight: bold;
     text-transform: uppercase;
     background-color: $greenColor;
+}
+#displayFlex{
+	display: flex;
+}
+#cancelBtn{
+	display: none;
+    background: $grayColor;
+      &:hover{
+    	color: $blackColor;
+    	border-color: $blackColor;
+    	background: $grayColor;
+    }
 }

@@ -52,3 +52,14 @@ textarea, input {
   font-weight: bold;
   text-transform: uppercase;
   background-color: #52B795; }
+
+#displayFlex {
+  display: flex; }
+
+#cancelBtn {
+  display: none;
+  background: #f7f7f7; }
+  #cancelBtn:hover {
+    color: #282826;
+    border-color: #282826;
+    background: #f7f7f7; }

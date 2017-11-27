@@ -28,22 +28,18 @@
 	            <div class="form-group">
 	                <label><strong>REQUIREMENTS:</strong></label>
 	                <textarea name="Text1" cols="40" rows="1">Lorem ipsum dolor sit amet</textarea>
-	                <!-- <input type="text" value="Lorem ipsum dolor sit amet"> -->
 	            </div>
 				<div class="extraMarginBottom"><strong>ALREADY GOING:</strong> 20</div>
 				<div class="form-group">
 	                <label><strong>TO DO BEFORE EVENT:</strong></label>
 	                <textarea name="Text1" cols="40" rows="1">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat</textarea>
-	                <!-- <input type="text" value="Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat"> -->
 	            </div>
 	            <div id="showToAdmin">
-<!-- 	            	<button>save changes</button>
-	            	<hr> -->
 	            </div>
             </form>
-            <div>
-            	<button>participate in event</button>
-            	<button>cancel</button>
+            <div id="displayFlex">
+            	<button class="attedenceBtn">participate in event</button>
+            	<button class="attedenceBtn" id="cancelBtn">cancel my attendence</button>
             </div>
 		</div>
 
@@ -58,6 +54,20 @@
 			var appendToForm = '<button>save changes</button><hr>';
 			showToAdmin.insertAdjacentHTML('beforeend', appendToForm);
 		}
+
+		var attedenceBtn = document.getElementsByClassName("attedenceBtn");
+		for ( i = 0; i < attedenceBtn.length; i++){
+			attedenceBtn[i].addEventListener("click", function(e){
+			  for ( j = 0; j < attedenceBtn.length; j++){
+			  	if (e.target == attedenceBtn[j]){
+			  		attedenceBtn[j].style.display = "none";
+			  	} else {
+			  		attedenceBtn[j].style.display = "inherit";
+			  	}
+			  }
+			});
+		}
+
 	</script>
 </body>
 </html>
