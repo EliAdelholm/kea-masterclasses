@@ -46,17 +46,15 @@
 			</div>
 			<hr>
 			<h3>ADDITIONAL INFORMATION</h3>
-			<div class="form-group">
-                <label>Second email</label>
-                <input class="input-control"/>
+			<div id="addMoreEmailsDiv" class="form-group">
+            	<label>Additional email</label>
+            	<input class="input-control"/>
+            	<button id="addMoreEmailsBtn" type="button">more emails</button>
             </div>
-            <div class="form-group">
+            <div id="addMorePhonesDiv" class="form-group">
                 <label>Main phone</label>
                 <input class="input-control"/>
-            </div>
-            <div class="form-group">
-                <label>Second phone</label>
-                <input class="input-control"/>
+                <button id="addMorePhoneBtn" type="button">more phones</button>
             </div>
             <div class="form-group">
                 <label>Description</label>
@@ -68,8 +66,30 @@
         </form>
 	</div>
 
+
 	<?php
 		include 'footer.html';
 	?>
+	<script>
+		var clickCountEmails = 0;
+		var clickCountPhones = 0;
+
+		addMoreEmailsBtn.addEventListener("click", function(){
+			clickCountEmails += 1;
+			if(clickCountEmails < 3){
+				var inputField = '<div class="transitionStyle"><label>Additional email</label><input class="input-control"/></div>';
+				addMoreEmailsDiv.insertAdjacentHTML('beforeend', inputField);
+			}
+		})
+
+		addMorePhoneBtn.addEventListener("click", function(){
+			clickCountPhones += 1;
+			if(clickCountPhones < 3){
+				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input class="input-control"/></div>';
+				addMorePhonesDiv.insertAdjacentHTML('beforeend', inputField);
+			}	
+		})
+	
+	</script>
 </body>
 </html>

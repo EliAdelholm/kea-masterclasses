@@ -28,3 +28,6 @@ hr {
 
 h3 {
   margin-bottom: 30px; }
+
+#addMoreEmailsBtn, #addMorePhoneBtn {
+  margin-bottom: 30px; }
