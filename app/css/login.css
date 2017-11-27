@@ -44,4 +44,21 @@ body {
     margin-top: 10px;
     width: 40%; }
 
+button {
+  border: solid 2px;
+  border-radius: 30px;
+  padding: 5px 15px 5px 15px;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: transparent;
+  position: relative;
+  margin: 0 auto;
+  cursor: pointer; }
+  button:hover {
+    color: #fdfdfc;
+    border-color: #EF4B47;
+    background: #EF4B47; }
+
 /*# sourceMappingURL=login.css.map */
