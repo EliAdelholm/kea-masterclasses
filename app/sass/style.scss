@@ -41,10 +41,7 @@ p{
 	margin: 5px 0px 5px 0px;
 }
 
-// <<<<<<< HEAD
-// button{
-// 	border: solid 2px;
-// =======
+
 #paragraph{
 	text-align: justify;
 	font-size: 14px;
@@ -81,7 +78,6 @@ button{
 	@extend button;
 	background-color: $redColor;
 }
-
 
 #hoverBtn{
 	@extend button;
@@ -128,7 +124,6 @@ a:active {
 }
 
 #topSection{
-	//width:100vw;
 	width:100%; 
 	height:90vh;
 	background-image: url("img/bg.jpg");
@@ -140,6 +135,13 @@ a:active {
 	margin: 0 auto;
 	//background-image: url("img/bg1.jpeg");
 	//background-position: inherit;
+	// background-color: $greenColor;
+
+	// width:100vw;
+	// max-width:100%; 
+	// height:100vh;
+	// //background-image: url("img/bg1.jpeg");
+	// //background-position: inherit;
 	// background-color: $greenColor;
 	display:flex;
 	justify-content: center;
@@ -156,6 +158,7 @@ a:active {
 	justify-content: center;
 	box-sizing: border-box;
 	text-align: center;
+
 	h3 {
 		width: 650px;
 		margin-left: auto;

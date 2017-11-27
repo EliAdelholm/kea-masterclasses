@@ -1,10 +1,5 @@
 @import '_utils/_vars';
 
-// Event description box
-#topSection{
-	height:70vh !important;
-	margin-bottom:25px !important;
-}
 
 
 #descriptionBox{
@@ -12,7 +7,8 @@
 	flex-flow: column wrap;
     width:75%;
     border:2px solid rgb(238, 238, 238);
-	margin: 50px auto;
+	margin: 0px auto;
+	padding-bottom:25px;
 
     .topBar{
 		width:100%;
@@ -50,17 +46,22 @@
 		align-items: baseline;
 		flex:2 0 75%;
 	}
-	.buttonSection{
-		display:flex;
-		flex-flow:row wrap;
-		padding:25px 0;
-	}
+}
+
+.buttonSection{
+	padding:0 25px;
 	#btnCancel{
+<<<<<<< HEAD
 		// @extend button;
 		background-color:grey;
 	}
 	#btnParticipate{
 		// @extend button;
+=======
+		background-color:grey;
+	}
+	#btnParticipate{
+>>>>>>> 79a834c86e16cc47e091673611d1f539195d2360
 		background-color: $redColor;
 	}
 }

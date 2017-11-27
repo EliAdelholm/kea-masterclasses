@@ -1,13 +1,17 @@
+<<<<<<< HEAD
 #topSection {
   height: 70vh !important;
   margin-bottom: 25px !important; }
 
+=======
+>>>>>>> 79a834c86e16cc47e091673611d1f539195d2360
 #descriptionBox {
   display: flex;
   flex-flow: column wrap;
   width: 75%;
   border: 2px solid #eeeeee;
-  margin: 50px auto; }
+  margin: 0px auto;
+  padding-bottom: 25px; }
   #descriptionBox .topBar {
     width: 100%;
     background-color: #eeeeee;
@@ -33,11 +37,12 @@
     flex-flow: row wrap;
     align-items: baseline;
     flex: 2 0 75%; }
-  .description .buttonSection {
-    display: flex;
-    flex-flow: row wrap;
-    padding: 25px 0; }
-  .description #btnCancel {
+
+.buttonSection {
+  padding: 0 25px; }
+  .buttonSection #btnCancel {
     background-color: grey; }
-  .description #btnParticipate {
+  .buttonSection #btnParticipate {
     background-color: #e7607b; }
+
+/*# sourceMappingURL=event_description.css.map */
