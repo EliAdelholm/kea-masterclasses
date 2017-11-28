@@ -1,5 +1,57 @@
 @import '_utils/_vars';
 
+// INPUT STYLING
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box; }
+  
+  label {
+	flex: none;
+	display: block;
+	text-transform: uppercase; }
+  
+  input, textarea {
+	width: calc(100% - 15px);
+	margin-bottom: 20px;
+	border: 2px solid black;
+	border-radius: 15px;
+	padding: 5px 10px; }
+  
+  .redBtn {
+	background-color: #e7607b; }
+  
+  .displayFlex {
+	display: flex;
+	margin-bottom: 20px; }
+	.displayFlex label {
+	  margin-right: 20px; }
+  
+  label.inline {
+	display: inline-block;
+	margin-bottom: 25px;
+	margin-right: 20px; }
+  
+  #formContainer {
+	width: 100vw;
+	margin-top: 100px;
+	max-width: 100%;
+	display: flex;
+	margin-bottom: 100px;
+	flex-direction: column;
+	align-items: center; }
+  
+  #formContainer form {
+	width: 80%;
+	display: block;
+	border: 1px solid lightgray;
+	padding: 20px; }
+  
+  #datepicker {
+	background-color: #fdfdfc; }
+  
+
 
 // GENERAL STYLES
 body {
@@ -159,4 +211,60 @@ footer {
 		margin-top: 0px;
 		margin-bottom: 6px;
 	}
+}
+
+/* STYLING FOR THE LOGIN */
+
+
+#ModalContainer {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: RGBA(0,0,0, 0.7)
+}
+
+#Modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 500px;
+    padding: 15px;
+}
+
+#containerCloseModal {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#closeModal {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#divLogin, #divCreateAccount {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+#divCreateAccount {
+    display: none;
+}
+
+#frmLogin, #frmCreateAccount {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+
+    #btnLogin, #btnCreateAccount {
+        margin-top: 10px;
+        width: 40%;
+    }
 }
