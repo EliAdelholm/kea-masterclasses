@@ -70,10 +70,6 @@ h1 span {
 	background-color: $whiteColor;
 }
 
-h3 {
-	font-size: 18px;
-	font-weight: 400;
-}
 
 h2 { 
 	font-size: 30px;
@@ -82,16 +78,11 @@ h2 {
     text-transform: uppercase;
 }
 
+h3 {
+	font-size: 18px;
+	font-weight: 400;
+}
 
-// #paragraph{
-// 	text-align: justify;
-// 	font-size: 14px;
-//     letter-spacing: 0.02em;
-// 	line-height: 2;
-//     color: $blackColor;
-//     column-count: 2; 
-//     column-gap: 50px;
-// }
 
 button{
 	border: solid 2px;
@@ -111,6 +102,11 @@ button{
     	border-color: $redColor;
     	background: $redColor;
     }
+}
+
+.main-container {
+    max-width: $containerWidth;
+    margin: 0 auto;
 }
 
 #hoverBtn{
@@ -155,10 +151,6 @@ nav{
 	justify-content: flex-end;
 	padding: 30px 100px;
 	font-family: $mainFont;
-}
-
-.extraMargin{
-	margin-left: 50px;
 }
 
 #positionAbsolut{
@@ -230,9 +222,28 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: $greenColor;
     width: 500px;
-    padding: 15px;
+	padding: 15px;
+	border-radius: 5px;
+	
+	p {
+		margin: 5px 0 5px 0;
+	}
+
+	h2 {
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+	button {
+		color: $whiteColor;
+    	border-color: $blackColor;
+		background-color: $redColor;
+		&:hover {
+			background-color: darken($redColor, 20%);
+		}
+	}
 }
 
 #containerCloseModal {
@@ -261,10 +272,19 @@ footer {
 #frmLogin, #frmCreateAccount {
     display: flex;
     flex-direction: column;
-    width: 80%;
+	width: 80%;
+	
+
+	// Need this to align the checkbox left
+	#checkNotification {
+		width: 5%;
+	}
+
+	#divLoginResponse {
+		color: $redColor;
+	}
 
     #btnLogin, #btnCreateAccount {
-        margin-top: 10px;
-        width: 40%;
-    }
+		margin-bottom: 30px;
+	}
 }
