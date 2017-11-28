@@ -88,28 +88,45 @@
 			 var ajEvents = JSON.parse(sajEvents); 
  			 //console.log("ajEvents ", ajEvents);
 			 for (var i = 0; i<ajEvents.length; i++){
+				var id = ajEvents[i]._id
 				var img = ajEvents[i].image;
+				var sType = ajEvents[i].type;
 				var sTitle = ajEvents[i].title;
-				var sDate = 'not given';
+				var sDate = '12.12.2016';
 				var sTime = ajEvents[i].time;
 				var sDescription = ajEvents[i].description;
-				var sEventDescription = sTitle +' '+ sDate +' '+ sTime +' '+ sDescription
+				var sEventDescription = img+' '+sType+' '+sTitle +' '+ sDate +' '+ sTime +' '+ sDescription
 				console.log("sEventDescription ", sEventDescription);
-				
-				var oEvent = '<div class="eventBox">\
-								<div class="eventImg greenBorder"></div>\
+
+				var oEvent = '<div class="eventBox" id="'+id+'">\
+								<div class="eventImg greenBorder"><img src='+ img +'></div>\
 								<div class="eventDetails">\
 									<p>Name: '+ sTitle +'</p>\
 									<p>Date: '+ sDate +'</p>\
 									<p>Time: '+ sTime +'</p>\
 									<p class="eventDescription">Description: '+ sDescription +'</p>\
-							</div>'
+							</div>';
 				eventBoxes.insertAdjacentHTML('beforeend', oEvent);
+				checkPastDate(sDate, id);
 			 }
 		}
 		}
 		ajax.open( "GET", "../api/php/get-all-events.php", true );
 		ajax.send();
+
+
+		function checkPastDate(sDate, id){
+			var date = sDate.split("-");
+			if (Date.parse(date[0]) < Date.now()) {
+				console.log("event has past date");
+				var pastEvent = document.getElementById(id)
+				pastEvent.style.opacity = "0.5";
+				pastEvent.classList.add("pastEvent");
+			}
+		}
+		
+		
+		
 	</script>
  </body>
 </html>
