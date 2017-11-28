@@ -6,7 +6,7 @@
 <html>
 <head>
 	<title>EVENTS</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/eventStyle.css">
 </head>
 </head>
