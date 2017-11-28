@@ -133,7 +133,7 @@ app.get('/events', (req, res) => {
             return
         }
         console.log(jStatus)
-        var ajEventsNiceView = "<pre><code>" + JSON.stringify(ajEvents, null, 4) + "</code></pre>"
+        var ajEventsNiceView = JSON.stringify(ajEvents, null, 4)
         res.send(ajEventsNiceView)
         return
     })

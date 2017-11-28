@@ -1,0 +1,41 @@
+@import '_utils/_vars';
+
+#stats-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stats-column {
+    width: 45%;
+    display: inline-block;
+
+    ol {
+        padding: 20px 10px 0px 30px;
+    }
+
+    li {
+        padding-bottom: 10px;
+    }
+}
+
+.stats-item {
+    background-color: $grayColor;
+    padding: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.stats-item-count {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 15px;
+    border-left: 2px solid $blackColor;
+    width: 60px;
+}
+
+.charts-item {
+    margin-top: 20px;
+    height: 50%;
+}

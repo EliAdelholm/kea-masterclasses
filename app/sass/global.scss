@@ -104,6 +104,11 @@ button{
     }
 }
 
+.main-container {
+    max-width: $containerWidth;
+    margin: 0 auto;
+}
+
 #hoverBtn{
 	@extend button;
 	color: $whiteColor;
@@ -146,10 +151,6 @@ nav{
 	justify-content: flex-end;
 	padding: 30px 100px;
 	font-family: $mainFont;
-}
-
-.extraMargin{
-	margin-left: 50px;
 }
 
 #positionAbsolut{

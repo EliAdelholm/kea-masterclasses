@@ -1,5 +1,5 @@
 <div id="positionAbsolut">
-	<nav>
+	<nav class="main-container">
 		<a href="index.php" class="extraMargin">EVENTS</a>
 		<a href="hold-masterclass.php" class="extraMargin">HOLD MASTERCLASS</a>
 		<?php
