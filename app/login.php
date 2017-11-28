@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/global.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -22,8 +22,8 @@
             </div>
             <div id="divLogin">
                 <form id="frmLogin">
-                    <p> Login </p>
-                    <p>Username</p>
+                    <h2> Login </h2>
+                    <p> Username </p>
                     <input type="text" placeholder="User name" name="txtUserLoginName">
                     <p>Password</p>
                     <input type="text" placeholder="Password" name="txtUserLoginPassword">
@@ -36,7 +36,7 @@
             </div>
             <div id="divCreateAccount">
                 <form id="frmCreateAccount">
-                    <p> Create an account </p>
+                    <h2> Create an account </h2>
 
                     <p>Username</p>
                     <input type="text" placeholder="User name" name="txtSaveUserName">
@@ -50,7 +50,7 @@
                     <input type="file" name="fileUserImage">
                     <p> Subscribe to newsletter </p>
                     <input id="checkNotification" value="0" type="checkbox" name="checkNotification">
-                    <button id="btnCreateAccount" type="button">Create account</button>
+                    <button id="btnCreateAccount" type="button"> Submit </button>
                 </form>
                 <div id="divCreateAccountResponse"></div>
                 <p> Already have an account?</p>

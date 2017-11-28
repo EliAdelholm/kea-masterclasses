@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `attendance`;
 CREATE TABLE `attendance` (
   `event_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `rating` int(11) DEFAULT NULL,
+  `rating` char(1) DEFAULT NULL,
   KEY `fk_users_events_users1_idx` (`user_id`),
   CONSTRAINT `fk_users_events_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
   `password` varchar(45) NOT NULL,
   `notification` tinyint(4) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `users` (
   `description` varchar(2000) DEFAULT NULL,
   `admin` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,17 +65,18 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'A','A',1,'assets/img/userimage-5a1bf0ed5cc39.png',NULL,0),(2,'A','A',0,'assets/img/userimage-5a1bf0fb4ae17.png',NULL,0),(3,'B','F',1,'assets/img/userimage-5a1c0402690aa.jpg',NULL,1),(4,'','',0,'assets/img/userimage-5a1d2d0e1ccbc.',NULL,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `users_email`
+-- Table structure for table `users_emails`
 --
 
-DROP TABLE IF EXISTS `users_email`;
+DROP TABLE IF EXISTS `users_emails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users_email` (
+CREATE TABLE `users_emails` (
   `email` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL,
   KEY `fk_users_email_users` (`user_id`),
@@ -84,12 +85,13 @@ CREATE TABLE `users_email` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users_email`
+-- Dumping data for table `users_emails`
 --
 
-LOCK TABLES `users_email` WRITE;
-/*!40000 ALTER TABLE `users_email` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users_email` ENABLE KEYS */;
+LOCK TABLES `users_emails` WRITE;
+/*!40000 ALTER TABLE `users_emails` DISABLE KEYS */;
+INSERT INTO `users_emails` VALUES ('A',1),('A',2),('F',3),('',4);
+/*!40000 ALTER TABLE `users_emails` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -117,13 +119,13 @@ LOCK TABLES `users_interests` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `users_phone`
+-- Table structure for table `users_phones`
 --
 
-DROP TABLE IF EXISTS `users_phone`;
+DROP TABLE IF EXISTS `users_phones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users_phone` (
+CREATE TABLE `users_phones` (
   `users_id` int(11) NOT NULL,
   `phone` varchar(50) NOT NULL,
   KEY `fk_users_phone_users1` (`users_id`),
@@ -132,12 +134,13 @@ CREATE TABLE `users_phone` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users_phone`
+-- Dumping data for table `users_phones`
 --
 
-LOCK TABLES `users_phone` WRITE;
-/*!40000 ALTER TABLE `users_phone` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users_phone` ENABLE KEYS */;
+LOCK TABLES `users_phones` WRITE;
+/*!40000 ALTER TABLE `users_phones` DISABLE KEYS */;
+INSERT INTO `users_phones` VALUES (1,'2424151'),(2,'2424151'),(3,'G');
+/*!40000 ALTER TABLE `users_phones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -149,4 +152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-24 11:12:11
+-- Dump completed on 2017-11-28 11:08:07

@@ -27,6 +27,8 @@ $dbname = "kea_masterclasses";
     
     // Convert the value from the checkbox to an integer
     $bNotification = intval($_POST['checkNotification']);
+
+    //Save the path to the users image in the database
     $sFilePath = 'assets/img/'.$sFileName;
     
     try {
