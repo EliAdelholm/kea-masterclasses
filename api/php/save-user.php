@@ -1,4 +1,4 @@
-<?
+<?php
 
 // The database connection. You might need to change this if you're not using mamp!
 $servername = "localhost";
@@ -69,7 +69,7 @@ $dbname = "kea_masterclasses";
                 
                 $bResult = $query->execute();
                 
-                $sjResponse = $bResult ? '{"status":"ok, data saved to users_email table"}' : '{"status":"error, could not save data to users_email table"}' ;
+                $sjResponse = $bResult ? '{"status":"ok, data saved to users_emails table"}' : '{"status":"error, could not save data to users_emails table"}' ;
                 
                 echo $sjResponse; 
                 
@@ -83,7 +83,7 @@ $dbname = "kea_masterclasses";
                     
                     $bResult = $query->execute();
                     
-                    $sjResponse = $bResult ? '{"status":"ok, data saved to users_phone table"}' : '{"status":"error, could not save data to users_phone table"}' ;
+                    $sjResponse = $bResult ? '{"status":"ok, data saved to users_phones table"}' : '{"status":"error, could not save data to users_phones table"}' ;
                     
                     echo $sjResponse;
                 }
