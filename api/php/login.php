@@ -18,7 +18,7 @@ $sPassword = $_POST['txtUserLoginPassword'];
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 // create a query
-$query = $conn->prepare("SELECT id FROM users WHERE name = :name  AND password = :password");
+$query = $conn->prepare("SELECT id, admin FROM users WHERE name = :name  AND password = :password");
 
 $query->bindParam(':name' , $sUserName);
 $query->bindParam(':password' , $sPassword);
@@ -40,6 +40,10 @@ if ($query->rowCount() > 0) {
 $query->setFetchMode(PDO::FETCH_OBJ);
 
 $jUser = $query->fetch();
+if ($jUser->admin == 1){
+  $_SESSION['bAdmin'] = true;
+}
+
 $iUserId = $jUser->id;
 
 $_SESSION['sUserId'] = $iUserId;

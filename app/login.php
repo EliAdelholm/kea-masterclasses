@@ -66,6 +66,14 @@
 <!-- *************** -->
 
 <button id="btnOpenLogin">Login</button>
+<button id="btnLogout">Logout</button>
+
+<?php 
+
+    echo $_SESSION['sUserId'];
+    echo $_SESSION['bAdmin'];
+
+?>
 
 <script>
     
@@ -134,6 +142,22 @@
         // What am I posting ?????
         var jFrmCreateAccount = new FormData(frmCreateAccount);
         ajax.send(jFrmCreateAccount);
+    })
+
+    // AJAX FOR LOGGING OUT
+    btnLogout.addEventListener("click", function () {
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var sResponse = this.responseText;
+                console.log(sResponse);
+                if (sResponse == "Logged out") {
+                    location.reload();
+                }
+            }
+        }
+        ajax.open("GET", "../api/php/logout.php", true);
+        ajax.send();
     })
 
     // Setting the notification value for true and false
