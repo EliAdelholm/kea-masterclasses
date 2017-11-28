@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +28,7 @@
                     <p>Password</p>
                     <input type="text" placeholder="Password" name="txtUserLoginPassword">
                     <button id="btnLogin" type="button">Login</button>
+                    <div id="divLoginResponse"></div>
                 </form>
 
                 <p> Don't have an account?</p>
@@ -93,8 +97,29 @@
         divLogin.style.display = "flex";
     });
     
-    
-    // AJAX FOR CONNECTING TO SAVE USER
+    // AJAX FOR INTERACTING WITH LOGIN
+    btnLogin.addEventListener("click", function () {
+        divCreateAccountResponse.innerHTML = "Logging you in..."
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // Response will either be 'Logging in' or 'Account does not exist'
+                var sResponse = this.responseText;
+                console.log(sResponse);
+                divLoginResponse.innerHTML = sResponse;
+                if (sResponse == "Logging in") {
+                location.reload();
+                }
+            }
+        }
+        ajax.open("POST", "../api/php/login.php", true);
+        // What am I posting ?????
+        var jFrmLogin = new FormData(frmLogin);
+        ajax.send(jFrmLogin);
+    })
+
+
+    // AJAX FOR INTERACTING WITH SAVE USER
     btnCreateAccount.addEventListener("click", function () {
         divCreateAccountResponse.innerHTML = "Creating Account..."
         var ajax = new XMLHttpRequest();
