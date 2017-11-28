@@ -120,6 +120,15 @@
 			  }
 			});
 		}
+		var ajax = new XMLHttpRequest();
+		ajax.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var sDataFromServer = this.responseText;
+ 			console.log("sDataFromServer ", sDataFromServer);
+		}
+		}
+		ajax.open( "GET", "../api/php/get-all-events.php", true );
+		ajax.send();
 	</script>
  </body>
 </html>
