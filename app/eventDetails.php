@@ -34,12 +34,12 @@
 	                <label><strong>TO DO BEFORE EVENT:</strong></label>
 	                <textarea name="Text1" cols="40" rows="1">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat</textarea>
 	            </div>
-	            <div id="showToAdmin">
-	            </div>
+	            	<div id="showToAdmin"></div>
             </form>
-            <div id="displayFlex">
-            	<button class="attedenceBtn">participate in event</button>
-            	<button class="attedenceBtn" id="cancelBtn">cancel my attendence</button>
+            <hr>
+            <div id="attedenceBtns">
+            	<button class="attedenceBtn">register in event</button>
+            	<button class="attedenceBtn" id="cancelBtn">unregister in event</button>
             </div>
 		</div>
 
@@ -51,7 +51,7 @@
 	<script>
 		var amin = false;
 		if(amin){
-			var appendToForm = '<button>save changes</button><hr>';
+			var appendToForm = '<button>save changes</button><button>cancel event</button>';
 			showToAdmin.insertAdjacentHTML('beforeend', appendToForm);
 		}
 

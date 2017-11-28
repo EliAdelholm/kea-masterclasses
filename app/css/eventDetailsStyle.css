@@ -39,6 +39,11 @@ textarea, input {
   margin-bottom: 30px;
   resize: none; }
 
+#showToAdmin {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .extraMarginBottom {
   margin-bottom: 30px; }
 
@@ -53,7 +58,10 @@ textarea, input {
   text-transform: uppercase;
   background-color: #52B795; }
 
-#displayFlex {
+hr {
+  margin: 30px 0px 30px 0px; }
+
+#attedenceBtns {
   display: flex; }
 
 #cancelBtn {
