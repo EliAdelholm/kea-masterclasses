@@ -76,7 +76,7 @@
 #filterPastEventBtn:hover, #filterUpcommingEventBtn:hover {
   color: #282826;
   border-color: #282826;
-  background: #f7f7f7; }
+  background: #f2eeee; }
 
 #search {
   border: solid 2px;
@@ -106,7 +106,7 @@
 .eventImg, .greenBorder {
   height: 150px;
   width: 350px;
-  background-color: #f7f7f7; }
+  background-color: #f2eeee; }
 
 .eventDetails {
   padding-left: 20px; }

@@ -108,7 +108,7 @@
 				console.log("sEventDescription ", sEventDescription);
 
 				var oEvent = '<div class="eventBox" id="'+id+'">\
-								<div class="eventImg greenBorder"><img src='+ img +'></div>\
+								<div><img src='+ img +' class="eventImg greenBorder"></div>\
 								<div class="eventDetails">\
 									<p>Name: '+ sTitle +'</p>\
 									<p>Date: '+ sDate +'</p>\
