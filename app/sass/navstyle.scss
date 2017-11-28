@@ -1,9 +1,9 @@
 @import '_utils/_vars';
 
 nav{
-	display: flex;
+    display: flex;
 	justify-content: flex-end;
-	padding: 30px 30px 10px 30px;
+	padding: 30px 100px;
 	font-family: $mainFont;
 }
 
@@ -17,6 +17,8 @@ nav{
     top: 0px;
     right: 0px;
     background-color: $blackColor;
+    width: 100%;
+    z-index: 1;
 }
 
 a{
