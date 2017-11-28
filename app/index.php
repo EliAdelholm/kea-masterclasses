@@ -68,31 +68,40 @@
 			});
 		}
 		
-		var filterByTime = document.getElementsByClassName("filterByTime");
-		for ( i = 0; i < filterByTime.length; i++){
-			filterByTime[i].addEventListener("click", function(e){
-			  for ( j = 0; j < filterByTime.length; j++){
-			  	if (e.target == filterByTime[j]){
-			  		filterByTime[j].style.background = "inherit";
-			  	} else {
-			  		filterByTime[j].style.background = "#c1c1c1";
-			  	}
-			  }
-			});
-		}
+		// var filterByTime = document.getElementsByClassName("filterByTime");
+		// for ( i = 0; i < filterByTime.length; i++){
+		// 	filterByTime[i].addEventListener("click", function(e){
+		// 	  for ( j = 0; j < filterByTime.length; j++){
+		// 	  	if (e.target == filterByTime[j]){
+		// 	  		filterByTime[j].style.background = "inherit";
+		// 	  	} else {
+		// 	  		filterByTime[j].style.background = "#c1c1c1";
+		// 	  	}
+		// 	  }
+		// 	});
+		// }
+
 		var ajax = new XMLHttpRequest();
 		ajax.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var sajEvents = this.responseText;
 			 //console.log("sajEvents ", sajEvents);
 			 var ajEvents = JSON.parse(sajEvents); 
- 			 //console.log("ajEvents ", ajEvents);
+			  //console.log("ajEvents ", ajEvents);
+			  displayEvents(ajEvents);
+			 }
+		}
+		ajax.open( "GET", "../api/php/get-all-events.php", true );
+		ajax.send();
+
+
+		function displayEvents(ajEvents){
 			 for (var i = 0; i<ajEvents.length; i++){
 				var id = ajEvents[i]._id
 				var img = ajEvents[i].image;
 				var sType = ajEvents[i].type;
 				var sTitle = ajEvents[i].title;
-				var sDate = '12.12.2016';
+				var sDate = '12.10.2017';
 				var sTime = ajEvents[i].time;
 				var sDescription = ajEvents[i].description;
 				var sEventDescription = img+' '+sType+' '+sTitle +' '+ sDate +' '+ sTime +' '+ sDescription
@@ -108,25 +117,46 @@
 							</div>';
 				eventBoxes.insertAdjacentHTML('beforeend', oEvent);
 				checkPastDate(sDate, id);
-			 }
-		}
-		}
-		ajax.open( "GET", "../api/php/get-all-events.php", true );
-		ajax.send();
-
+			}
+		};
 
 		function checkPastDate(sDate, id){
 			var date = sDate.split("-");
 			if (Date.parse(date[0]) < Date.now()) {
 				console.log("event has past date");
-				var pastEvent = document.getElementById(id)
+				var pastEvent = document.getElementById(id);
 				pastEvent.style.opacity = "0.5";
 				pastEvent.classList.add("pastEvent");
+			}else {
+				var upcommingEvent = document.getElementById(id);
+				upcommingEvent.classList.add("upcommingEvent");
 			}
 		}
+		var aUpcommingEvents = document.getElementsByClassName("upcommingEvent");
+		var aPastEvents = document.getElementsByClassName("pastEvent");
+		filterPastEventBtn.addEventListener("click", function(){
+			filterUpcommingEventBtn.style.background = "#c1c1c1";
+			filterPastEventBtn.style.background = "inherit";
+			 for (var i = 0; i<aUpcommingEvents.length; i++){
+				aUpcommingEvents[i].style.display = "none";
+			 }
+			 for (var i = 0; i<aPastEvents.length; i++){
+				aPastEvents[i].style.display = "block";
+			 }
+		});
+
+		filterUpcommingEventBtn.addEventListener("click", function(){
+			filterPastEventBtn.style.background = "#c1c1c1";
+			filterUpcommingEventBtn.style.background = "inherit";
+			 for (var i = 0; i<aPastEvents.length; i++){
+				aPastEvents[i].style.display = "none";
+			 }
+			 for (var i = 0; i<aUpcommingEvents.length; i++){
+				aUpcommingEvents[i].style.display = "block";
+			 }	
+		});
 		
-		
-		
+
 	</script>
  </body>
 </html>
