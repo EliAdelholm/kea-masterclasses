@@ -20,8 +20,14 @@
   text-align: center; }
   #attentionText h3 {
     width: 650px;
-    margin-left: auto;
-    margin-right: auto; }
+    margin-right: 70%;
+    margin-bottom: 30px; }
+
+span {
+  padding: 5px; }
+
+.subtitleMargin {
+  margin-bottom: 30px; }
 
 #topSectionBtn {
   background-color: #e7607b; }
