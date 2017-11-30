@@ -17,14 +17,16 @@
 
 	<div id="topSection">
 		<div id="attentionText">
-			<h1><span> MASTERCLASSES <span></h1>
-			<h3>Lorem ipsum dolor sit amet, ut augue aliquam pede, arcu amet lorem, sed torquent</h3>
+			<h2><span>IN</span></h2>
+			<h1><span> MASTERCLASSES</span></h1>
+			<h2><span>I LEARN</span></h2>
+			<h3><span>INTERRESTING STUFF</span></h3>
 			<button id="topSectionBtn">view events</button>
 		</div>
 	</div>
 
 	<div id="eventFilterSection">
-		<h2>events</h2>
+		<h2 class="subtitleMargin">events</h2>
 		<div id="filerButtons">
 			<div id="eventsByTime">
 				<button id="filterPastEventBtn" class="filterByTime">past</button>
@@ -108,7 +110,7 @@
 				console.log("sEventDescription ", sEventDescription);
 
 				var oEvent = '<div class="eventBox" id="'+id+'">\
-								<div class="eventImg greenBorder"><img src='+ img +'></div>\
+								<div><img src='+ img +' class="eventImg greenBorder"></div>\
 								<div class="eventDetails">\
 									<p>Name: '+ sTitle +'</p>\
 									<p>Date: '+ sDate +'</p>\
@@ -135,8 +137,8 @@
 		var aUpcommingEvents = document.getElementsByClassName("upcommingEvent");
 		var aPastEvents = document.getElementsByClassName("pastEvent");
 		filterPastEventBtn.addEventListener("click", function(){
-			filterUpcommingEventBtn.style.background = "#c1c1c1";
-			filterPastEventBtn.style.background = "inherit";
+			filterUpcommingEventBtn.style.opacity = "0.5";
+			filterPastEventBtn.style.opacity = "1";
 			 for (var i = 0; i<aUpcommingEvents.length; i++){
 				aUpcommingEvents[i].style.display = "none";
 			 }
@@ -146,8 +148,8 @@
 		});
 
 		filterUpcommingEventBtn.addEventListener("click", function(){
-			filterPastEventBtn.style.background = "#c1c1c1";
-			filterUpcommingEventBtn.style.background = "inherit";
+			filterPastEventBtn.style.opacity = "0.5";
+			filterUpcommingEventBtn.style.opacity = "1";
 			 for (var i = 0; i<aPastEvents.length; i++){
 				aPastEvents[i].style.display = "none";
 			 }
