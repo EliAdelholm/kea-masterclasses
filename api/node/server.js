@@ -53,10 +53,8 @@ app.post('/create-event', (req, res) => {
 
         // Generate new path, using timestamp to avoid duplication errors
         var timestamp = + new Date()
-        var targetPath = path.resolve('../../app/assets/img/'+timestamp+extName)
-        
-        // Set the path that should be used by frontend:
-        var imagePath = "assets/img/" + timestamp+extName
+        var imagePath = "assets/img/" + timestamp + extName
+        var targetPath = path.resolve('app/' + imagePath)
 
         // Actually move the file to permanent storage
         fs.move(tempPath, targetPath, function(err) {
@@ -65,7 +63,6 @@ app.post('/create-event', (req, res) => {
         });
     } else {
         console.log("No valid image")
-        
         // Set the path for default image
         imagePath = "assets/img/userimage-5a1d3bce0ad1d.png";
     }
@@ -76,7 +73,8 @@ app.post('/create-event', (req, res) => {
         "type": req.fields.sType,
         "location": {
             "type": "Point",
-            "coordinates": [null, null],
+            "address": req.fields.sAddress,
+            "coordinates": [req.fields.sLat, req.fields.sLng],
             "room": req.fields.sRoom
         },
         "date": req.fields.sDate,
