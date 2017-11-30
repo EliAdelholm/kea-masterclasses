@@ -37,7 +37,7 @@ $dbname = "kea_masterclasses";
                 
                 // INSERT INTO USERS TABLE
                 // create a query
-                $query = $conn->prepare("INSERT INTO USERS (name, password, notification, image) VALUES (:name, :password, :notification, :image)");
+                $query = $conn->prepare("INSERT INTO users (name, password, notification, image) VALUES (:name, :password, :notification, :image)");
                 
                 // Bind param, this if for security
                 $query->bindParam( ':name' , $sUserName );
