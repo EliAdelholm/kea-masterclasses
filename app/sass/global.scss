@@ -174,29 +174,46 @@ nav{
     z-index: 1;
 }
 
-nav a {
+.nav a {
 	font-weight: bold;
 	text-decoration: none;
 }
 
 /* unvisited link */
-nav a:link {
+.nav a:link {
     color: $whiteColor;
 }
 
 /* visited link */
-nav a:visited {
+.nav a:visited {
     color: $whiteColor;
 }
 
 /* mouse over link */
-nav a:hover {
+.nav a:hover {
     color: $redColor;
 }
 
 /* selected link */
-nav a:active {
+.nav a:active {
     color: $redColor;
+}
+
+#nav-dropdown {
+	display: none;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background-color: #282826;
+	color: #fdfdfc;
+	width: 130px;
+	padding: 15px 20px 0px 20px;
+	text-align: center;
+	
+	a {
+		display: block;
+		margin-bottom: 15px;
+	}
 }
 
 
@@ -226,7 +243,9 @@ footer {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: RGBA(0,0,0, 0.7)
+	background-color: RGBA(0,0,0, 0.7);
+	z-index: 100;
+	top: 0;
 }
 
 #Modal {

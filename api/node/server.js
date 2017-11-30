@@ -39,27 +39,7 @@ mongo.connect(sDatabasePath, (err, db) => {
 
 // ADD EVENT
 app.post('/create-event', (req, res) => {
-// <<<<<<< HEAD
-    
-//     // Handle image upload
-//     // Get temporary file path:
-//     var tempPath = req.files.sFile.path
-    
-//     // Generate new path, using timestamp to avoid duplication errors
-//     var timestamp = + new Date()
-//     var extName = path.extname(req.files.sFile.name)
-//     var targetPath = path.resolve('../../app/assets/img/' + timestamp + extName)
-    
-//     // Set the path that should be used by frontend:
-//     var imagePath = "assets/img/" + timestamp + extName
-    
-//     // Actually move the file to permanent storage
-//     fs.move(tempPath, targetPath, function (err) {
-//         if (err) throw err;
-//         console.log("Upload completed!");
-//     });
-    
-// =======
+
 
     // Check file extension if any
     var extName = path.extname(req.files.sFile.name)

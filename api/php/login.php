@@ -47,5 +47,6 @@ if ($jUser->admin == 1){
 $iUserId = $jUser->id;
 
 $_SESSION['sUserId'] = $iUserId;
+$_SESSION['bAdmin'] = true;
 
 ?>

@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +12,7 @@
 <body>
 	<?php
 		include 'nav.php';
+		include 'login.html';
 	?>
 	<div id="topImageSection">
 		<h1><span>DB EVENT</span></h1>
@@ -48,6 +53,7 @@
 	<?php
 		include 'footer.html';
 	?>
+	<script src="js/login.js"></script>
 	<script>
 		var amin = false;
 		if(amin){
