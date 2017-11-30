@@ -31,15 +31,11 @@
         <form id="frmHoldMasterclass" action="">
             <div class="form-group displayFlex">
                 <label>Select Tag</label>
-                <select name="tagList" class="form-group">
-                  <option value="volvo">ui</option>
-                  <option value="saab">ux</option>
-                  <option value="opel">dev</option>
+                <select required name="sType" class="form-group">
+                  <option value="ui">ui</option>
+                  <option value="ux">ux</option>
+                  <option value="dev">dev</option>
                 </select>
-               <!--  <label class="inline">Select tag</label>
-                <button id="filterUiBtn">ui</button>
-                <button id="filterUxBtn">ux</button>
-                <button id="filterDevBtn">dev</button> -->
             </div>
 
             <div class="form-group">

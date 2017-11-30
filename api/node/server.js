@@ -39,23 +39,34 @@ mongo.connect(sDatabasePath, (err, db) => {
 // ADD EVENT
 app.post('/create-event', (req, res) => {
 
-    // Handle image upload
-    // Get temporary file path:
-    var tempPath = req.files.sFile.path
-
-    // Generate new path, using timestamp to avoid duplication errors
-    var timestamp = + new Date()
+    // Check file extension if any
     var extName = path.extname(req.files.sFile.name)
-    var targetPath = path.resolve('../../app/assets/img/'+timestamp+extName)
-    
-    // Set the path that should be used by frontend:
-    var imagePath = "assets/img/" + timestamp+extName
 
-    // Actually move the file to permanent storage
-    fs.move(tempPath, targetPath, function(err) {
-        if (err) throw err;
-        console.log("Upload completed!");
-    });
+    if ( ['.png', '.jpg', '.jpeg'].includes(extName) ) {
+        console.log("Valid image was uploaded")
+
+        // Handle image upload
+        // Get temporary file path
+        var tempPath = req.files.sFile.path
+
+        // Generate new path, using timestamp to avoid duplication errors
+        var timestamp = + new Date()
+        var targetPath = path.resolve('../../app/assets/img/'+timestamp+extName)
+        
+        // Set the path that should be used by frontend:
+        var imagePath = "assets/img/" + timestamp+extName
+
+        // Actually move the file to permanent storage
+        fs.move(tempPath, targetPath, function(err) {
+            if (err) throw err;
+            console.log("Upload completed!");
+        });
+    } else {
+        console.log("No valid image")
+        
+        // Set the path for default image
+        imagePath = "assets/img/userimage-5a1d3bce0ad1d.png";
+    }
 
     // Create object from form data
     var jEvent = {
@@ -66,6 +77,7 @@ app.post('/create-event', (req, res) => {
             "coordinates": [null, null],
             "room": req.fields.sRoom
         },
+        "date": req.fields.sDate,
         "time": req.fields.sTime,
         "speaker": req.fields.sLecturer,
         "organizer": req.fields.sResponsible,
