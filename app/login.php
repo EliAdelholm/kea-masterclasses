@@ -68,12 +68,6 @@
 <button id="btnOpenLogin">Login</button>
 <button id="btnLogout">Logout</button>
 
-<?php 
-
-    echo $_SESSION['sUserId'];
-    echo $_SESSION['bAdmin'];
-
-?>
 
 <script>
     
