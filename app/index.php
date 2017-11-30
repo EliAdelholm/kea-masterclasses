@@ -112,9 +112,11 @@
 				var oEvent = '<div class="eventBox" id="'+id+'">\
 								<div><img src='+ img +' class="eventImg greenBorder"></div>\
 								<div class="eventDetails">\
-									<p>Name: '+ sTitle +'</p>\
-									<p>Date: '+ sDate +'</p>\
-									<p>Time: '+ sTime +'</p>\
+									<h3 class="eventTitleStyle"><strong>'+ sTitle +'</strong></h3>\
+									<div class="dateTimeStyle">\
+										<p>Date: '+ sDate +'</p>\
+										<p>Time: '+ sTime +'</p>\
+									</div>\
 									<p class="eventDescription">Description: '+ sDescription +'</p>\
 							</div>';
 				eventBoxes.insertAdjacentHTML('beforeend', oEvent);
