@@ -1,8 +1,8 @@
 @import '_utils/_vars';
 
 #topSection{
-	width:100%; 
-	height:90vh;
+	width:$indexTopSectionWidth; 
+	height:$indexTopSectionHeith;
 	background-image: url("img/bg.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -13,8 +13,8 @@
 }
 
 #attentionText{
-	padding-top: 400px;
-	padding-left: 20%;
+	padding-top: $indexTopSectionHeith * 0.5;
+	padding-left: $indexTopSectionWidth * 0.2;
 	display:flex;
 	justify-content:center;
 	flex-direction: column;
@@ -22,8 +22,7 @@
 	box-sizing: border-box;
 	text-align: center;
 	h3 {
-		width: 650px;
-		margin-right: 70%;
+		width: $indexTopSectionWidth * 0.8;
 		margin-bottom: 30px;
 	}
 }
@@ -119,7 +118,7 @@ span{
 
 #search{	
 	border: solid 2px;
-    border-radius: 30px;
+    border-radius: 5px;
     padding: 15px 48px 15px 48px;
     width: 255px;
     font-size: 13px;

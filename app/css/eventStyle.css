@@ -10,7 +10,7 @@
   margin-bottom: 100px; }
 
 #attentionText {
-  padding-top: 400px;
+  padding-top: 45vh;
   padding-left: 20%;
   display: flex;
   justify-content: center;
@@ -19,8 +19,7 @@
   box-sizing: border-box;
   text-align: center; }
   #attentionText h3 {
-    width: 650px;
-    margin-right: 70%;
+    width: 80%;
     margin-bottom: 30px; }
 
 span {
@@ -86,7 +85,7 @@ span {
 
 #search {
   border: solid 2px;
-  border-radius: 30px;
+  border-radius: 5px;
   padding: 15px 48px 15px 48px;
   width: 255px;
   font-size: 13px;
