@@ -40,6 +40,7 @@ mongo.connect(sDatabasePath, (err, db) => {
 // ADD EVENT
 app.post('/create-event', (req, res) => {
 
+
     // Check file extension if any
     var extName = path.extname(req.files.sFile.name)
 
@@ -68,7 +69,7 @@ app.post('/create-event', (req, res) => {
         // Set the path for default image
         imagePath = "assets/img/userimage-5a1d3bce0ad1d.png";
     }
-    
+
     // Create object from form data
     var jEvent = {
         "title": req.fields.sTitle,
