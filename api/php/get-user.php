@@ -33,7 +33,6 @@ $dbname = "kea_masterclasses";
 
                 // Echo it back to the client
                 echo $saUser;
-
     }
 
     catch(PDOException $e) {

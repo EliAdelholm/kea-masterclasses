@@ -49,14 +49,14 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(80) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
   `notification` tinyint(4) NOT NULL,
-  `image` varchar(200) DEFAULT NULL,
+  `image` varchar(60) DEFAULT NULL,
   `description` varchar(2000) DEFAULT NULL,
   `admin` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'A','A',1,'assets/img/userimage-5a1bf0ed5cc39.png',NULL,0),(2,'A','A',0,'assets/img/userimage-5a1bf0fb4ae17.png',NULL,0),(3,'B','F',1,'assets/img/userimage-5a1c0402690aa.jpg',NULL,1),(4,'','',0,'assets/img/userimage-5a1d2d0e1ccbc.',NULL,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,7 +76,7 @@ DROP TABLE IF EXISTS `users_emails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users_emails` (
-  `email` varchar(100) NOT NULL,
+  `email` varchar(40) NOT NULL,
   `user_id` int(11) NOT NULL,
   KEY `fk_users_email_users` (`user_id`),
   CONSTRAINT `fk_users_email_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -90,7 +89,6 @@ CREATE TABLE `users_emails` (
 
 LOCK TABLES `users_emails` WRITE;
 /*!40000 ALTER TABLE `users_emails` DISABLE KEYS */;
-INSERT INTO `users_emails` VALUES ('A',1),('A',2),('F',3),('',4);
 /*!40000 ALTER TABLE `users_emails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +101,7 @@ DROP TABLE IF EXISTS `users_interests`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users_interests` (
   `users_id` int(11) NOT NULL,
-  `interests` varchar(45) NOT NULL,
+  `interests` varchar(3) NOT NULL,
   KEY `fk_users_interests_users1_idx` (`users_id`),
   CONSTRAINT `fk_users_interests_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -127,7 +125,7 @@ DROP TABLE IF EXISTS `users_phones`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users_phones` (
   `users_id` int(11) NOT NULL,
-  `phone` varchar(50) NOT NULL,
+  `phone` varchar(19) NOT NULL,
   KEY `fk_users_phone_users1` (`users_id`),
   CONSTRAINT `fk_users_phone_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -139,7 +137,6 @@ CREATE TABLE `users_phones` (
 
 LOCK TABLES `users_phones` WRITE;
 /*!40000 ALTER TABLE `users_phones` DISABLE KEYS */;
-INSERT INTO `users_phones` VALUES (1,'2424151'),(2,'2424151'),(3,'G');
 /*!40000 ALTER TABLE `users_phones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -152,4 +149,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-28 11:08:07
+-- Dump completed on 2017-11-30  9:13:47
