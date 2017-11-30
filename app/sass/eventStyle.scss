@@ -21,12 +21,19 @@
 	justify-content: center;
 	box-sizing: border-box;
 	text-align: center;
-
 	h3 {
 		width: 650px;
-		margin-left: auto;
-    	margin-right: auto;
+		margin-right: 70%;
+		margin-bottom: 30px;
 	}
+}
+
+span{
+	padding: 5px;
+}
+
+.subtitleMargin{
+	margin-bottom: 30px;
 }
 
 #topSectionBtn{
