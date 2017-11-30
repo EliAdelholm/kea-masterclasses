@@ -3,6 +3,8 @@
 	
 		<!-- ADMIN NAV ITEMS -->
 		<?php 
+		error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 			if($_SESSION['bAdmin']) {
 				echo '<a href="#" class="extraMargin">STATS</a>
 					  <a href="#" class="extraMargin">PENDING</a>';
