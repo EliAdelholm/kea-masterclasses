@@ -16,8 +16,9 @@
 	width: calc(100% - 15px);
 	margin-bottom: 20px;
 	border: 2px solid black;
-	border-radius: 15px;
-	padding: 5px 10px; }
+	border-radius: 5px;
+	padding: 5px 10px;
+ }
   
   .redBtn {
 	background-color: #e7607b; }
@@ -34,19 +35,17 @@
 	margin-right: 20px; }
   
   #formContainer {
-	width: 100vw;
 	margin-top: 100px;
-	max-width: 100%;
 	display: flex;
 	margin-bottom: 100px;
 	flex-direction: column;
 	align-items: center; }
   
   #formContainer form {
-	width: 80%;
+	width: 100%;
 	display: block;
 	border: 1px solid lightgray;
-	padding: 20px; }
+  }
   
   #datepicker {
 	background-color: #fdfdfc; }
