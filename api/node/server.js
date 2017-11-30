@@ -6,7 +6,7 @@ var fs = require('fs-extra')
 app.use(formidable())
 
 // ALLOW CROSS ORIGIN RESSOURCE SHARING
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -33,11 +33,33 @@ mongo.connect(sDatabasePath, (err, db) => {
 })
 
 
+
+
 ///////////// ROUTING //////////////
 
-  
 // ADD EVENT
 app.post('/create-event', (req, res) => {
+<<<<<<< HEAD
+    
+    // Handle image upload
+    // Get temporary file path:
+    var tempPath = req.files.sFile.path
+    
+    // Generate new path, using timestamp to avoid duplication errors
+    var timestamp = + new Date()
+    var extName = path.extname(req.files.sFile.name)
+    var targetPath = path.resolve('../../app/assets/img/' + timestamp + extName)
+    
+    // Set the path that should be used by frontend:
+    var imagePath = "assets/img/" + timestamp + extName
+    
+    // Actually move the file to permanent storage
+    fs.move(tempPath, targetPath, function (err) {
+        if (err) throw err;
+        console.log("Upload completed!");
+    });
+    
+=======
 
     // Check file extension if any
     var extName = path.extname(req.files.sFile.name)
@@ -68,6 +90,7 @@ app.post('/create-event', (req, res) => {
         imagePath = "assets/img/userimage-5a1d3bce0ad1d.png";
     }
 
+>>>>>>> 74b6ef916825b06e04a17aee0dc4e874d34e92f6
     // Create object from form data
     var jEvent = {
         "title": req.fields.sTitle,
@@ -87,9 +110,9 @@ app.post('/create-event', (req, res) => {
         "description": req.fields.sDescription,
         "requirements": req.fields.sRequirements
     }
-
+    
     console.log(jEvent)
-
+    
     event.createEvent(jEvent, (err, jStatus) => {
         if (err) {
             console.log(jStatus)
@@ -107,7 +130,7 @@ app.post('/update-event', (req, res) => {
     var jEvent = {
         "id": req.query.id
         // Add all fields to update
-    } 
+    }
     event.updateEvent(jEvent, (err, jStatus, jEvent) => {
         if (err) {
             console.log(jStatus)
@@ -166,6 +189,42 @@ app.get('/event/:id', (req, res) => {
         return
     })
 })
+
+///////////// CREATE INDEX FOR TYPE OF EVENT //////////////
+
+// CURRENTLY WE ARE NOT ACTUALLY USING THIS BUT IT'S A REQUIREMENT FOR THE ASSIGNMENT
+
+// iF WE WANT TO QUERY FOR ALL THE EVENTS OF A CERTAIN TYPE IN THE FUTURE IT WILL BE USEFUL
+
+var indexByType = function (fCallback) {
+    global.db.collection('events').createIndex(
+        // type 1 is an ascending index, type -1 is a descending index
+        { "type": 1 },
+        null,
+        (err, jResult) => {
+            if (err) {
+                console.log('err ' + err)
+                return fCallback(false);
+            }
+            console.log(jResult);
+            return fCallback(true);
+        }
+    );
+};
+
+// GO TO THIS ROUTE TO CREATE THE INDEX
+app.get('/index-events', (req,res) => {
+    
+    indexByType((err) => {
+        if (err) {
+            console.log("Indexed collection 'events' by type")
+            return
+        }
+            console.log("Collection 'events' indexed by type")
+            return
+    });
+  
+});
 
 /*****************************************************************/
 

@@ -90,7 +90,7 @@ $dbname = "kea_masterclasses";
                 
             } catch (Exception $e) {
                 
-                echo "ERROR";
+                echo "ERROR - could not connect to database";
                 
             }  
             
