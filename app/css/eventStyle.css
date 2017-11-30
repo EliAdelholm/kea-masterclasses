@@ -10,7 +10,7 @@
   margin-bottom: 100px; }
 
 #attentionText {
-  padding-top: 400px;
+  padding-top: 45vh;
   padding-left: 20%;
   display: flex;
   justify-content: center;
@@ -19,9 +19,7 @@
   box-sizing: border-box;
   text-align: center; }
   #attentionText h3 {
-    width: 650px;
-    margin-right: 70%;
-    margin-bottom: 30px; }
+    width: 50%; }
 
 span {
   padding: 5px; }
