@@ -72,7 +72,7 @@ h1 span {
 h2 span {
 	background-color: $whiteColor;
 	letter-spacing: 0.2em;
-	margin-right: 30%;
+	margin-right: $indexTopSectionWidth * 0.5;
 }
 
 h3 span {

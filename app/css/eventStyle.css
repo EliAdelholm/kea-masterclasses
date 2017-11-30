@@ -19,7 +19,8 @@
   box-sizing: border-box;
   text-align: center; }
   #attentionText h3 {
-    width: 50%; }
+    width: 80%;
+    margin-bottom: 30px; }
 
 span {
   padding: 5px; }

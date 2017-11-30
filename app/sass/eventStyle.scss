@@ -1,6 +1,4 @@
 @import '_utils/_vars';
-$indexindexTopSectionHeith: 90vh;
-$indexTopSectionWidth: 100%;
 
 #topSection{
 	width:$indexTopSectionWidth; 
@@ -24,7 +22,7 @@ $indexTopSectionWidth: 100%;
 	box-sizing: border-box;
 	text-align: center;
 	h3 {
-		width: $indexTopSectionWidth * 0.5;
+		width: $indexTopSectionWidth * 0.8;
 		margin-bottom: 30px;
 	}
 }
