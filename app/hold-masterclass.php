@@ -4,16 +4,13 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOLD MASTERCLASS</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
-    
 </head>
 </head>
 
@@ -24,9 +21,18 @@
         include 'nav.php';
     ?>
 
+    <section id="topBanner">
+        <h1><span>CREATE EVENT</span></h1>
+    </section>
+
     <section id="formContainer" class="main-container">
 
-        <h2>HOLD MASTERCLASS</h2>
+        <article class="main-container textColumns">
+            <p>At noon they sat down by the roadside, near a little brook, and Dorothy opened her basket and got out some bread.  She offered a piece to the Scarecrow, but he refused.</p>
+            <p>&ldquo;I am never hungry,&rdquo; he said, &ldquo;and it is a lucky thing I am not, for my mouth is only painted, and if I should cut a hole in it so I could eat, the straw I am stuffed with would come out, and that would spoil the shape of my head.&rdquo;</p>
+            <p>Dorothy saw at once that this was true, so she only nodded and went on eating her bread.</p>
+            <p>&ldquo;Tell me something about yourself and the country you came from,&rdquo; said the Scarecrow, when she had finished her dinner.  So she told him all about Kansas, and how gray everything was there, and how the cyclone had carried her to this queer Land of Oz.</p>
+        </article>
 
         <form id="frmHoldMasterclass" action="">
             <div class="form-group displayFlex">
@@ -68,7 +74,8 @@
             <div class="form-group" style="display: flex;">
                 <div class="inline" style="width: 70%;">
                     <label>Address</label>
-                    <input required name="sAddress" class="input-control" />
+                    <input required name="sAddress" class="input-control" id="autocomplete" placeholder="Enter your address"
+                           onFocus="geolocate()" type="text" />
                 </div>
 
                 <div class="inline" style="width: 30%;">
@@ -104,6 +111,11 @@
     <?php
         include 'footer.html';
     ?>
+
+    <script src="js/googlePlacesAutocomplete.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlyupCC9WLDzTBU_rwfqydgqnvUQX8F60&libraries=places&callback=initAutocomplete"
+    async defer></script>
 
     <script src="js/login.js"></script>
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -150,7 +162,10 @@
                 msgError.innerHTML = "Please fill out all required fields"
             } else {
                 var frmData = new FormData(frmHoldMasterclass)
-                console.log(frmData)
+                frmData.append("sAddress", sTextAddress);
+                frmData.append("sLat", sLatitude);
+                frmData.append("sLng", sLongitude);
+
                 var ajax = new XMLHttpRequest();
                 ajax.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
