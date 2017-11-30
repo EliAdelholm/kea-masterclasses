@@ -140,9 +140,9 @@ span{
 	cursor: pointer;
 }
 .eventDescription{
-	//width:330px;
 	justify-content: justify;
 	margin: 20px 20px 0px 20px;
+	line-height: 130%;
 }
 .eventImg{
 	height:150px;
@@ -160,7 +160,7 @@ span{
 }
 .eventDetails{
 	//padding-left: 20px;
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 .greenBorder{
 	@extend .eventImg;
