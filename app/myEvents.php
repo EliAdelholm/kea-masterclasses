@@ -14,6 +14,7 @@
 <body>
 	<?php
 		include 'nav.php';
+		include 'login.html';
 	?>
 	<div id="myEventsStyle">
 		<div id="eventBoxes">
@@ -87,5 +88,7 @@
 	<?php
 		include 'footer.html';
 	?>
+
+	<script src="js/login.js"></script>
  </body>
 </html>

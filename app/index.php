@@ -13,6 +13,7 @@
 <body>
 	<?php
 		include 'nav.php';
+		include 'login.html';
 	?>
 
 	<div id="topSection">
@@ -50,6 +51,8 @@
 	<?php
 		include 'footer.html';
 	?>
+
+	<script src="js/login.js"></script>
 
 	<script>
 		var filterByType = document.getElementsByClassName("filterByType");

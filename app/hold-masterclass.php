@@ -20,6 +20,7 @@
 <body>
 
     <?php
+        include 'login.html';
         include 'nav.php';
     ?>
 
@@ -104,7 +105,7 @@
         include 'footer.html';
     ?>
 
-
+    <script src="js/login.js"></script>
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>

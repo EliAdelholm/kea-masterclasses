@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +16,7 @@
 
     <?php
         include 'nav.php';
+        include 'login.php';
     ?>
 
     <div id="stats-container" class="main-container" style="margin-top: 100px;">
@@ -72,6 +77,7 @@
         include 'footer.html';
     ?>
 
+    <script src="js/login.js"></script>
     <!-- INCLUDE CHART.JS AND CHART SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
     <script src="js/attendanceChart.js"></script>

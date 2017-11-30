@@ -13,6 +13,7 @@
 <body>
 	<?php
 		include 'nav.php';
+		include 'login.html';
 	?>
 
 	<div id="profileContentBox">
@@ -70,6 +71,7 @@
 	<?php
 		include 'footer.html';
 	?>
+	<script src="js/login.js"></script>
 	<script>
 		var clickCountEmails = 0;
 		var clickCountPhones = 0;
