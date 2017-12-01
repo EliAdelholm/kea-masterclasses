@@ -54,7 +54,10 @@ app.post('/create-event', (req, res) => {
         // Generate new path, using timestamp to avoid duplication errors
         var timestamp = + new Date()
         var imagePath = "assets/img/" + timestamp + extName
-        var targetPath = path.resolve('app/' + imagePath)
+        // File path for linux users
+        //var targetPath = path.resolve('app/' + imagePath)
+        //For windows master race
+        var targetPath = path.resolve('../../app/' + imagePath)
 
         // Actually move the file to permanent storage
         fs.move(tempPath, targetPath, function(err) {

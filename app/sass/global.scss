@@ -272,6 +272,8 @@ footer {
 	top: 0;
 }
 
+
+
 #Modal {
     display: flex;
     flex-direction: column;
@@ -281,12 +283,23 @@ footer {
 	padding: 15px;
 	border-radius: 5px;
 	
+	form {
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 2px solid darken($greenColor, 20%);
+	}
+
+	input {
+		height: 40px;
+	}
+
 	p {
 		margin: 5px 0 5px 0;
+		font-weight: bold;
 	}
 
 	h2 {
-		margin-bottom: 30px;
+		margin-bottom: 25px;
 		text-align: center;
 	}
 
@@ -310,6 +323,11 @@ footer {
     &:hover {
         cursor: pointer;
     }
+}
+
+.smallBtn {
+	padding: 10px 30px;
+	font-size: 10px;
 }
 
 #divLogin, #divCreateAccount {
@@ -338,7 +356,4 @@ footer {
 		color: $redColor;
 	}
 
-    #btnLogin, #btnCreateAccount {
-		margin-bottom: 30px;
-	}
 }

@@ -129,7 +129,7 @@
 				var sEventDescription = img+' '+sType+' '+sTitle +' '+ sDate +' '+ sTime +' '+ sDescription
 				console.log("sEventDescription ", sEventDescription);
 
-				var oEvent = '<div class="eventBox" id="'+id+'">\
+				var oEvent = '<a href="event.php?id='+id+'"><div class="eventBox" id="'+id+'">\
 								<div><img src='+ img +' class="eventImg greenBorder"></div>\
 								<div class="eventDetails">\
 									<h3 class="eventTitleStyle"><strong>'+ sTitle +'</strong></h3>\
@@ -138,7 +138,7 @@
 										<p>Time: '+ sTime +'</p>\
 									</div>\
 									<p class="eventDescription">Description: '+ sDescription +'</p>\
-							</div>';
+							</div></a>';
 				eventBoxes.insertAdjacentHTML('beforeend', oEvent);
 				checkPastDate(sDate, id);
 			}
