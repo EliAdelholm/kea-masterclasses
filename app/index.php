@@ -45,15 +45,17 @@
 			</div>
 		</div>
 
-		<div id="grayTestDiv">
-			<div class="mainContainer">
-				<p id="upcomingBtn">UPCOMING</p>
-				<p id="pastBtn">PAST</p>
+		<!-- <div id="filters">
+			<div id="categories">
 				<p id="uiBtn">UI</p>
 				<p id="uxBtn">UX</p>
 				<p id="devBtn">DEV</p>
 			</div>
-		</div>
+			<div id="timeFilters">
+				<p id="upcomingBtn">UPCOMING</p>
+				<p id="pastBtn">PAST</p>
+			</div>
+		</div> -->
 		<div id="eventBoxes">
 			<!-- <div>{{eventBox}}</div> -->		
 		</div>
@@ -116,7 +118,7 @@
 				var img = ajEvents[i].image;
 				var sType = ajEvents[i].type;
 				var sTitle = ajEvents[i].title;
-				var sDate = '12.10.2017';
+				var sDate = ajEvents[i].date;
 				var sTime = ajEvents[i].time;
 				var sDescription = ajEvents[i].description;
 				var sEventDescription = img+' '+sType+' '+sTitle +' '+ sDate +' '+ sTime +' '+ sDescription
