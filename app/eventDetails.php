@@ -53,7 +53,14 @@
 	<?php
 		include 'footer.html';
 	?>
-	<script src="js/login.js"></script>
+	<?php
+	if (!isset($_SESSION['sUserId'])) {
+		echo '<script src="js/login.js"></script>';
+	}
+	else {
+		echo '<script src="js/logout.js"></script>';
+	}
+	?>
 	<script>
 		var amin = false;
 		if(amin){

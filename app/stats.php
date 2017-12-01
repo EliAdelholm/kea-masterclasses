@@ -70,13 +70,20 @@
         <h3>AVERAGE RATING</h3>
         <canvas id="ratingChart" class="charts-item"></canvas>
     </div>
-    
 
     <?php
         include 'footer.html';
     ?>
 
-    <script src="js/login.js"></script>
+<?php
+	if (!isset($_SESSION['sUserId'])) {
+		echo '<script src="js/login.js"></script>';
+	}
+	else {
+		echo '<script src="js/logout.js"></script>';
+	}
+?>
+
     <!-- INCLUDE CHART.JS AND CHART SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
     <script src="js/attendanceChart.js"></script>
