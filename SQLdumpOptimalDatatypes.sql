@@ -166,7 +166,7 @@ GROUP BY event_id
 
 
 
--- TRIGGER
+-- TRIGGERS
 -- EVENTS REGISTRATIONS COUNT  
 
 ALTER TABLE users
@@ -181,6 +181,20 @@ BEGIN
   UPDATE users
     SET events_registrations = events_registrations +1
     WHERE id = new.user_id;
+END |
+
+delimiter ;
+
+
+delimiter |
+
+DROP TRIGGER IF EXISTS decrease_event_registration_trigger|
+CREATE TRIGGER decrease_event_registration_trigger AFTER DELETE on attendance
+FOR EACH ROW
+BEGIN
+  UPDATE users
+    SET events_registrations = events_registrations -1
+    WHERE id = old.user_id;
 END |
 
 delimiter ;
