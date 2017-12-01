@@ -60,15 +60,17 @@ event.getEvents = (fCallback) => {
 
 /******************** DISPLAY EVENT BY ID ************/
 event.displayEventById = (iEventId, fCallback) => {
+	console.log(iEventId);
 	global.db.collection('events').find({ "_id": ObjectId(iEventId) }).toArray((err, ajEvents) => {
-		if (err || ajEvents.length > 0) {
+		if (err || ajEvents.length != 1) {
+ 			console.log("ajEvents ", ajEvents);
 			var jError = { "status": "error", "message": "ERROR -> event.js -> 009" }
-			//var jError = (err, "Can't Display Event")
+			// var jError = (err, "Can't Display Event")
 			console.log(jError)
 			return fCallback(true, jError)
 		}
 		var jOk = { "status": "ok", "message": "OK -> event.js -> Displaying Requested Event -> 008" }
-		return fCallback(false, jOK, ajEvents[0])
+		return fCallback(false, jOk, ajEvents[0])
 	})
 }
 

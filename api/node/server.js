@@ -153,7 +153,10 @@ app.get('/events', (req, res) => {
 
 //DISPLAY EVENT BY ID
 app.get('/event/:id', (req, res) => {
-    var iEventId = req.query.id
+ //console.log("req ", req);
+    var iEventId = req.params.id
+    //console.log("iEventId ", iEventId)
+
     event.displayEventById(iEventId, (err, jStatus, jEvent) => {
         if (err) {
             console.log(jStatus)
