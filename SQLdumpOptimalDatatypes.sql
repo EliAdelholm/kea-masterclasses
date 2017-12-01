@@ -152,3 +152,35 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2017-11-30  9:13:47
+
+
+
+-- VIEW  
+-- AVG EVENT RATING
+DROP VIEW IF EXISTS avg_event_rating;
+CREATE VIEW avg_event_rating AS
+
+SELECT event_id, AVG(rating) 
+FROM  attendance
+GROUP BY event_id
+
+
+
+-- TRIGGER
+-- EVENTS REGISTRATIONS COUNT  
+
+ALTER TABLE users
+ADD evetnts_registrations int(10) DEFAULT 0;
+
+delimiter |
+
+DROP TRIGGER IF EXISTS user_event_registration_trigger|
+CREATE TRIGGER user_event_registration_trigger AFTER INSERT on attendance
+FOR EACH ROW
+BEGIN
+  UPDATE users
+    SET events_registrations = events_registrations +1
+    WHERE id = new.user_id;
+END |
+
+delimiter ;
