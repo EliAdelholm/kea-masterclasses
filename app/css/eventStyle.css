@@ -100,6 +100,7 @@ span {
 #eventBoxes {
   display: flex;
   width: 90vw;
+  max-width: 1500px;
   justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 70px;
@@ -157,3 +158,36 @@ span {
   #attentionText h3 {
     width: 300px;
     font-size: 15px; } }
+
+#grayTestDiv {
+  height: 60px;
+  width: 100%;
+  background-color: #e2e2e2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 9%;
+  margin-top: 20px; }
+
+#devBtn, #uxBtn, #uiBtn, #pastBtn, #upcomingBtn {
+  padding: 0px 10px 0px 10px;
+  font-weight: bold; }
+  #devBtn:hover, #uxBtn:hover, #uiBtn:hover, #pastBtn:hover, #upcomingBtn:hover {
+    color: #c4b510;
+    transition: color 0.5s ease;
+    cursor: pointer; }
+
+#uxBtn:hover {
+  color: #e7607b; }
+
+#uiBtn:hover {
+  color: #52B795; }
+
+#pastBtn:hover {
+  color: #F5860C; }
+
+#upcomingBtn:hover {
+  color: #0969B2; }

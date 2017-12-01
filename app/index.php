@@ -44,6 +44,16 @@
 				<input id="search" type="text" name="" placeholder="SEARCH">
 			</div>
 		</div>
+
+		<div id="grayTestDiv">
+			<div class="mainContainer">
+				<p id="upcomingBtn">UPCOMING</p>
+				<p id="pastBtn">PAST</p>
+				<p id="uiBtn">UI</p>
+				<p id="uxBtn">UX</p>
+				<p id="devBtn">DEV</p>
+			</div>
+		</div>
 		<div id="eventBoxes">
 			<!-- <div>{{eventBox}}</div> -->		
 		</div>
