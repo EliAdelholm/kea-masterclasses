@@ -219,8 +219,12 @@ nav{
     color: $redColor;
 }
 
-#nav-dropdown {
+#navDropdown {
 	display: none;
+}
+
+#nav-dropdown {
+	display: block;
 	position: absolute;
 	top: 0px;
 	right: 0px;

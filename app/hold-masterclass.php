@@ -112,12 +112,23 @@
         include 'footer.html';
     ?>
 
+<<<<<<< HEAD
+<?php
+	if (!isset($_SESSION['sUserId'])) {
+		echo '<script src="js/login.js"></script>';
+	}
+	else {
+		echo '<script src="js/logout.js"></script>';
+	}
+	?>
+=======
     <script src="js/googlePlacesAutocomplete.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlyupCC9WLDzTBU_rwfqydgqnvUQX8F60&libraries=places&callback=initAutocomplete"
     async defer></script>
 
     <script src="js/login.js"></script>
+>>>>>>> ef7d350e7a4bf7d3d2a32f63abfa8de713338204
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
