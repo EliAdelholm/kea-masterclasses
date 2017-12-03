@@ -65,9 +65,8 @@ hr {
   display: flex; }
 
 #cancelBtn {
-  display: none;
   background: #f2eeee; }
   #cancelBtn:hover {
-    color: #282826;
+    color: #e7607b;
     border-color: #282826;
-    background: #f2eeee; }
+    background: #282826; }

@@ -19,21 +19,21 @@
 	<div id="profileContentBox">
 		<div id="profilePicture"></div>
 
-		<form id="frmUpdateProfile" action="">
+		<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">
 
             <div class="form-group">
                 <label for="">Update profile picture</label>
-                <input type="file" class="input-control" />
+                <input type="file" class="input-control" name="img"/>
             </div>
 
             <div class="form-group">
                 <label>Name</label>
-                <input type="text">
+                <input type="text" name="name">
             </div>
 
             <div class="form-group">
                 <label>E-mail</label>
-                <input type="text">
+                <input type="text" name="email">
             </div>
 
             <div class="form-group">
@@ -43,7 +43,7 @@
 
             <div class="form-group displayFlex">
 			    <label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
-			    <input type="checkbox">
+			    <input type="checkbox" name="notif">
 			</div>
 			<hr>
 			<h3>ADDITIONAL INFORMATION</h3>
@@ -59,12 +59,15 @@
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <input class="input-control"/>
+                <input class="input-control" name="desc"/>
             </div>
             <div class="form-group">
                 <button class="redBtn">Save changes</button>
             </div>
-        </form>
+		</form>
+		<a href="../api/php/delete_profile.php">
+			<button>DELETE PROFILE</button>
+		</a>
 	</div>
 
 
