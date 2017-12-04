@@ -16,7 +16,7 @@
 		include 'login.html';
 	?>
 
-	<div id="profileContentBox">
+	<div id="profileContentBox" class="main-container">
 
 		<div class="column1 displayFlex margin">
 			<div id="profilePicture"></div>
@@ -58,7 +58,7 @@
 			<textarea name="bio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
 			</div>
 		</form>
-		<button id="btnSaveChanges" class="greenBtn">Save changes</button>
+		<button id="btnSaveChanges" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
 		<a href="../api/php/delete_profile.php">
 			<button id="btnDeleteProfile">DELETE PROFILE</button>
 		</a>
