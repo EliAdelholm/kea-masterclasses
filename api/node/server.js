@@ -3,6 +3,7 @@ var app = express()
 var formidable = require('express-formidable')
 var path = require('path')
 var fs = require('fs-extra')
+var os = require('os')
 app.use(formidable())
 
 // ALLOW CROSS ORIGIN RESSOURCE SHARING
@@ -54,16 +55,22 @@ app.post('/create-event', (req, res) => {
         // Generate new path, using timestamp to avoid duplication errors
         var timestamp = + new Date()
         var imagePath = "assets/img/" + timestamp + extName
-        // File path for linux users
-        //var targetPath = path.resolve('app/' + imagePath)
-        //For windows master race
-        var targetPath = path.resolve('../../app/' + imagePath)
+
+        // Handle OS file system differences
+        if (os.platform() == 'linux') {
+            // File path for linux users
+            var targetPath = path.resolve('app/' + imagePath)
+        } else {
+            // For windows n00bs
+            var targetPath = path.resolve('../../app/' + imagePath)
+        }
 
         // Actually move the file to permanent storage
         fs.move(tempPath, targetPath, function(err) {
             if (err) throw err;
             console.log("Upload completed!");
         });
+        
     } else {
         console.log("No valid image")
         // Set the path for default image

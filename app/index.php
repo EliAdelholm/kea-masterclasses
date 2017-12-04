@@ -26,7 +26,7 @@
 		</div>
 	</div>
 
-	<div id="eventFilterSection">
+	<div id="eventFilterSection" class="main-container">
 		<h2 class="subtitleMargin">events</h2>
 		<div id="filerButtons">
 			<div id="eventsByTime">
@@ -119,28 +119,36 @@
 		ajax.send();
 
 
-		function displayEvents(ajEvents){
-			 for (var i = 0; i<ajEvents.length; i++){
+		function displayEvents(ajEvents) {
+			 for (var i = 0; i<ajEvents.length; i++) {
 				var id = ajEvents[i]._id
 				var img = ajEvents[i].image;
 				var sType = ajEvents[i].type;
 				var sTitle = ajEvents[i].title;
 				var sDate = ajEvents[i].date;
+				var sMonth = sDate.split("-")[1];
+				var sDay = sDate.split("-")[0];
 				var sTime = ajEvents[i].time;
-				var sDescription = ajEvents[i].description;
-				var sEventDescription = img+' '+sType+' '+sTitle +' '+ sDate +' '+ sTime +' '+ sDescription
-				console.log("sEventDescription ", sEventDescription);
+				var sAddress = ajEvents[i].location.address +", " +ajEvents[i].location.room;
+				var sSpeaker = ajEvents[i].speaker;
 
-				var oEvent = '<a href="event.php?id='+id+'"><div class="eventBox" id="'+id+'">\
-								<div><img src='+ img +' class="eventImg greenBorder"></div>\
-								<div class="eventDetails">\
-									<h3 class="eventTitleStyle"><strong>'+ sTitle +'</strong></h3>\
-									<div class="dateTimeStyle">\
-										<p>Date: '+ sDate +'</p>\
-										<p>Time: '+ sTime +'</p>\
+				var borderColor = sType == "ui" ? "greenBorder" : sType == "ux" ? "redBorder" : "yellowBorder";
+
+				var oEvent = '<div class="eventBox" id="'+id+'">\
+								<a href="event.php?id='+id+'">\
+									<div style="background-image: url('+img+')" class="eventImg '+ borderColor +'"></div>\
+									<div class="eventDate">\
+										<h3 class="month">'+ sMonth +'</h3>\
+										<p class="day">'+ sDay +'</p>\
 									</div>\
-									<p class="eventDescription">Description: '+ sDescription +'</p>\
-							</div></a>';
+									<div class="eventDetails">\
+										<h3 class="eventTitle">'+ sTitle +'</h3>\
+										<p>'+ sAddress +'</p>\
+										<p>Held by '+ sSpeaker +'</p>\
+										<p>'+ sTime +'</p>\
+									</div>\
+								</a>\
+							</div>';
 				eventBoxes.insertAdjacentHTML('beforeend', oEvent);
 				checkPastDate(sDate, id);
 			}
@@ -148,7 +156,7 @@
 
 		function checkPastDate(sDate, id){
 			var date = sDate.split("-");
-			if (Date.parse(date[0]) < Date.now()) {
+			if (Date.parse(date) < Date.now()) {
 				console.log("event has past date");
 				var pastEvent = document.getElementById(id);
 				pastEvent.style.opacity = "0.5";

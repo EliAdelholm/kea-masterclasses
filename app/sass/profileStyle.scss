@@ -1,22 +1,58 @@
 @import '_utils/_vars';
 
 #profileContentBox{
-	margin-top: 150px;
+	margin:150px 50px;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex: 1 0 100%;
 }
-#profilePicture{
-	width: 300px;
-	height: 300px;
-	border-radius: 50%;
-	background-color: $greenColor;
-	margin-bottom: 100px;
+
+.column1{
+	flex-flow:column wrap;
+	flex: 1 0 5%;
+
+	#profilePicture{
+		width: 175px;
+		height: 175px;
+		border-radius: 50%;
+		background-color: $greenColor;
+		margin-bottom: 25px;
+	}
+
 }
+.column2{
+	flex-flow:column wrap;
+	flex: 1 0 33.3%;
+
+	.greenBtn{
+		border:none !important;
+		background-color:$greenColor !important;
+		padding:15px 30px;
+	}
+	
+	#btnDeleteProfile{
+		background-color:$redColor;
+		border:none;
+		padding:15px 30px;
+	}
+
+}
+.column3{
+	flex-flow:column wrap;
+	flex: 1 0 33.3%;
+	
+}
+
+.margin{
+	margin-right:5%;
+}
+
 .displayFlex{
 	display: flex;
 }
+
 
 form{
 	margin-bottom: 100px;
@@ -24,22 +60,79 @@ form{
 
 input[type=checkbox] {
     transform: scale(2);
-    margin-top: 2px;
-    margin-left: 50px;
-}
-
-hr{
-	margin: 30px 0px 30px 0px;
+    //margin-top: 2px;
+    margin-left: 0px;
 }
 
 h3{
-	margin-bottom: 30px;
+	margin-bottom: 20px;
+	font-size:20px;
+	font-weight: bold;
+	color:$greenColor;
+
+}
+
+input{
+	border-radius:5px !important;
+	border:1px solid $greenColor !important;
+	padding:10px !important;
+	background-color:#f2eeee
+}
+
+textarea{
+	border-radius:5px !important;
+	border:1px solid $greenColor !important;
+	padding:10px !important;
+	background-color:#f2eeee;
+}
+
+label{
+	font-weight:bold;
+}
+
+// Upload image styling
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+    max-width: 100%;
+	cursor: pointer;	
+	padding: 15px 25px;
+	display: inline-block;
+	white-space: nowrap;
+	border-radius:5px;
+}
+
+.inputfile + label svg {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    fill: currentColor;
+	margin-right:10px;
+}
+
+.inputfile-1 + label {
+    color: #f1e5e6;
+    background-color: #d3394c;
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+    background-color: #722040;
 }
 
 #addMoreEmailsBtn{
 	margin-bottom: 30px;
+	padding:15px 30px;
 }
 
 #addMorePhoneBtn{
 	@extend #addMoreEmailsBtn;
 }
+
