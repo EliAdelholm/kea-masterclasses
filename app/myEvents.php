@@ -11,14 +11,14 @@
 	$query->execute();        
 	
 	$aEvents = array();
+	$aRatings = array();
 	if ($query->execute()) {
 		while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-			$aEvents[] = $row;
+			$sEventId = $row['event_id'];
+			$aEvents[] = $sEventId;
+			$aRatings[$sEventId] = $row['rating'];
 		}
 	}
-	
-	$jaEvents = json_encode($aEvents);
-	echo var_dump($jaEvents);
 ?>
 
 <!DOCTYPE html>
@@ -39,46 +39,72 @@
 	<div id="myEventsStyle">
 		<div id="eventBoxes">
 
-			<div class="eventBox">
-				<div class="eventImg greenBorder"></div>
-				<div class="eventDetails">
-					<p>Name:kadkkdj</p>
-					<p>Date:15.12.2017</p>
-					<p>Time:15:00</p>
-					<p class="eventDescription">Description: Yes, all those months and years of planning, Valckes criticisms and Seth Balthermouth heartburn.</p>
-				</div>	
-			</div>
+			<?php
 
-			<div class="eventBox">
-				<div class="eventImg greenBorder pastEventImg"></div>
-				<div class="eventDetails pastEvent">
-					<p>Name:kadkkdj</p>
-					<p>Date:15.12.2017</p>
-					<p>Time:15:00</p>
-					<p class="eventDescription">Description: Yes, all those months and years of planning, Valckes criticisms and Seth Balthermouth heartburn.</p>
-					<div class="ratingContainer">
-						<span>RATE:</span>
-						<form class="rating">
-							<input type="radio" id="star5" name="rating" value="5" class=" starRating"/>
-							<label class = "full" for="star5"></label>
-							
-							<input type="radio" id="star4" name="rating" value="4"  class=" starRating"/>
-							<label class = "full" for="star4"></label>
+			// ini_set('display_errors', 1);
+			// ini_set('display_startup_errors', 1);
+			// error_reporting(E_ALL);
 
-							<input type="radio" id="star3" name="rating" value="3"  class=" starRating"/>
-							<label class = "full" for="star3"></label>
-							
-							<input type="radio" id="star2" name="rating" value="2"  class=" starRating"/>
-							<label class = "full" for="star2"></label>
+				for($i = 0; $i < count($aEvents); $i++) {
+					$sEventId =  $aEvents[$i];
+					$sEvent = file_get_contents("http://localhost:3333/event/" . $sEventId);
+					$oEvent = json_decode($sEvent);
+					echo $sEvent;
+					$dt2 = DateTime::createFromFormat("j-M-Y H:i",  $oEvent -> date . " " . $oEvent -> time, new DateTimeZone('CET'));
 
-							<input type="radio" id="star1" name="rating" value="1"  class=" starRating"/>
-							<label class = "full" for="star1"></label>
+					$eventTime = $dt2 -> getTimestamp();
+					$currentTime = time();
 
-						</form>
-					</div>
-				</div>	
-			</div>	
+					if($eventTime < $currentTime) {
+						$rating = $aRatings[$sEventId];
+						echo "Ratings: " . var_dump( $aRatings);
+						echo "Rating: " . $rating;
+						?> 
+							<div class="eventBox">
+								<div class="eventImg greenBorder pastEventImg"></div>
+								<div class="eventDetails pastEvent">
+									<p>Name:<?php echo $oEvent -> title; ?></p>
+									<p>Date:<?php echo $oEvent -> date; ?></p>
+									<p>Time:<?php echo $oEvent -> time; ?></p>
+									<p class="eventDescription"><?php echo $oEvent -> description; ?></p>
+									<div class="ratingContainer">
+										<span>RATE:</span>
+										<form class="rating">
+											<input type="radio" id="star5" name="rating" value="5" class=" starRating"/>
+											<label class = "full" for="star5"></label>
+											
+											<input type="radio" id="star4" name="rating" value="4"  class=" starRating"/>
+											<label class = "full" for="star4"></label>
 
+											<input type="radio" id="star3" name="rating" value="3"  class=" starRating"/>
+											<label class = "full" for="star3"></label>
+											
+											<input type="radio" id="star2" name="rating" value="2"  class=" starRating"/>
+											<label class = "full" for="star2"></label>
+
+											<input type="radio" id="star1" name="rating" value="1"  class=" starRating"/>
+											<label class = "full" for="star1"></label>
+
+										</form>
+									</div>
+								</div>	
+							</div>						
+						<?php
+					} else {
+						?> 
+							<div class="eventBox">
+								<div class="eventImg greenBorder"></div>
+								<div class="eventDetails">
+									<p>Name: <?php echo $oEvent -> title; ?></p>
+									<p>Date: <?php echo $oEvent -> date; ?></p>
+									<p>Time: <?php echo $oEvent -> time; ?></p>
+									<p class="eventDescription"><?php echo $oEvent -> description; ?></p>
+								</div>	
+							</div>	
+						<?php
+					}
+				}
+			?>
 		</div>
 	</div>
 	<?php
@@ -114,9 +140,9 @@
 			fd.append("rating", rating);
 			fd.append("eventId", 2);
 			ajax.send( fd );
+
 		}
 	});
-
 </script>
  </body>
 </html>

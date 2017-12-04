@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `attendance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `attendance` (
-  `event_id` int(11) NOT NULL,
+  `event_id` char(24) NOT NULL,
   `user_id` int(11) NOT NULL,
   `rating` char(1) DEFAULT NULL,
   KEY `fk_users_events_users1_idx` (`user_id`),
