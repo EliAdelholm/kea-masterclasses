@@ -43,10 +43,10 @@ event.deleteEvent = (iEventId, fCallback) => {
 	})
 }
 
-/******************** DISPLAY ALL EVENTS *************/
+/******************** GET ALL ACTIVE EVENTS *************/
 event.getEvents = (fCallback) => {
 	// get the data from the collection events
-	global.db.collection('events').find().toArray((err, ajEvents) => {
+	global.db.collection('events').find({status: 'active'}).toArray((err, ajEvents) => {
 		if (err) {
 			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
 			console.log(jError)

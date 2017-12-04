@@ -70,7 +70,7 @@ app.post('/create-event', (req, res) => {
             if (err) throw err;
             console.log("Upload completed!");
         });
-        
+
     } else {
         console.log("No valid image")
         // Set the path for default image
@@ -146,7 +146,7 @@ app.get('/delete-event', (req, res) => {
     })
 })
 
-//DISPLAY ALL EVENTS
+//GET ALL ACTIVE EVENTS
 app.get('/events', (req, res) => {
     event.getEvents((err, jStatus, ajEvents) => {
         if (err) {
@@ -174,7 +174,7 @@ app.get('/event/:id', (req, res) => {
             return
         }
         console.log(jStatus, jEvent)
-        var jEventNiceView = "<pre><code>" + JSON.stringify(jEvent, null, 4) + "</code></pre>"
+        var jEventNiceView = JSON.stringify(jEvent, null, 4)
         res.send(jEventNiceView)
         return
     })
