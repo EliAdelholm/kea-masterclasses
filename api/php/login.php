@@ -2,20 +2,13 @@
 session_start();
 
 // The database connection. You might need to change this if you're not using mamp!
-$servername = "localhost";
-$username = "root";
-$password = "root";
-// Please use the same database name
-$dbname = "kea_masterclasses";
 
+// get ready to connect to the database
+include 'db.php';
 // Get the data from the client
 
 $sUserName = $_POST['txtUserLoginName'];
 $sPassword = $_POST['txtUserLoginPassword'];
-
-
-// get ready to connect to the database
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
 // create a query
 $query = $conn->prepare("SELECT id, admin FROM users WHERE name = :name  AND password = :password");
@@ -24,7 +17,6 @@ $query->bindParam(':name' , $sUserName);
 $query->bindParam(':password' , $sPassword);
 
 // run the query
-
 
 $bResult = $query->execute();
 
