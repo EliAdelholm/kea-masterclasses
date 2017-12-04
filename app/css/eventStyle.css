@@ -214,3 +214,13 @@ span {
 
 #upcomingBtn:hover {
   color: #0969B2; }
+
+#pendingContainer {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  flex-wrap: wrap; }
+
+#pendingContainer p {
+  margin: 0 10px 10px 10px; }
