@@ -1,6 +1,6 @@
 <?php
 
-$servername = "localhost:8889";
+$servername = "localhost";
 $username = "root";
 $password = "root";
 $dbname = "kea_masterclasses";

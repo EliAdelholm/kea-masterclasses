@@ -43,10 +43,10 @@ event.deleteEvent = (iEventId, fCallback) => {
 	})
 }
 
-/******************** DISPLAY ALL EVENTS *************/
-event.getEvents = (fCallback) => {
+/******************** GET ALL ACTIVE EVENTS *************/
+event.getActiveEvents = (fCallback) => {
 	// get the data from the collection events
-	global.db.collection('events').find().toArray((err, ajEvents) => {
+	global.db.collection('events').find({status: 'active'}).toArray((err, ajEvents) => {
 		if (err) {
 			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
 			console.log(jError)
@@ -55,6 +55,36 @@ event.getEvents = (fCallback) => {
 		var jOk = { "status": "Displaying Events", "message": "event.js -> Displaying Events -> 006" }
 		console.log(jOk, ajEvents)
 		return fCallback(false, jOk, ajEvents)
+	})
+}
+
+/******************** GET ALL PENDING EVENTS *************/
+event.getPendingEvents = (fCallback) => {
+	// get the data from the collection events
+	global.db.collection('events').find({status: 'pending'}).toArray((err, ajEvents) => {
+		if (err) {
+			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
+			console.log(jError)
+			return fCallback(true, jError)
+		}
+		var jOk = { "status": "Displaying Events", "message": "event.js -> Displaying Events -> 006" }
+		console.log(jOk, ajEvents)
+		return fCallback(false, jOk, ajEvents)
+	})
+}
+
+/******************** COUNT PENDING EVENTS *************/
+event.countPendingEvents = (fCallback) => {
+	// get the data from the collection events
+	global.db.collection('events').count({status: 'pending'}, (err, iCount) => {
+		if (err) {
+			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
+			console.log(jError)
+			return fCallback(true, jError)
+		}
+		var jOk = { "status": "Displaying Events", "message": "event.js -> Displaying Events -> 006" }
+		console.log(jOk, iCount)
+		return fCallback(false, jOk, iCount)
 	})
 }
 

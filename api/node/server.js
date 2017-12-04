@@ -3,6 +3,7 @@ var app = express()
 var formidable = require('express-formidable')
 var path = require('path')
 var fs = require('fs-extra')
+var os = require('os')
 app.use(formidable())
 
 // ALLOW CROSS ORIGIN RESSOURCE SHARING
@@ -54,16 +55,22 @@ app.post('/create-event', (req, res) => {
         // Generate new path, using timestamp to avoid duplication errors
         var timestamp = + new Date()
         var imagePath = "assets/img/" + timestamp + extName
-        // File path for linux users
-        //var targetPath = path.resolve('app/' + imagePath)
-        //For windows master race
-        var targetPath = path.resolve('../../app/' + imagePath)
+
+        // Handle OS file system differences
+        if (os.platform() == 'linux') {
+            // File path for linux users
+            var targetPath = path.resolve('app/' + imagePath)
+        } else {
+            // For windows n00bs
+            var targetPath = path.resolve('../../app/' + imagePath)
+        }
 
         // Actually move the file to permanent storage
         fs.move(tempPath, targetPath, function(err) {
             if (err) throw err;
             console.log("Upload completed!");
         });
+
     } else {
         console.log("No valid image")
         // Set the path for default image
@@ -139,9 +146,9 @@ app.get('/delete-event', (req, res) => {
     })
 })
 
-//DISPLAY ALL EVENTS
+//GET ALL ACTIVE EVENTS
 app.get('/events', (req, res) => {
-    event.getEvents((err, jStatus, ajEvents) => {
+    event.getActiveEvents((err, jStatus, ajEvents) => {
         if (err) {
             console.log(jStatus)
             res.send('<html><body>ERROR</body></html>')
@@ -150,6 +157,36 @@ app.get('/events', (req, res) => {
         console.log(jStatus)
         var ajEventsNiceView = JSON.stringify(ajEvents, null, 4)
         res.send(ajEventsNiceView)
+        return
+    })
+})
+
+//GET ALL PENDING EVENTS
+app.get('/pending-events', (req, res) => {
+    event.getPendingEvents((err, jStatus, ajEvents) => {
+        if (err) {
+            console.log(jStatus)
+            res.send('<html><body>ERROR</body></html>')
+            return
+        }
+        console.log(jStatus)
+        var ajEventsNiceView = JSON.stringify(ajEvents, null, 4)
+        res.send(ajEventsNiceView)
+        return
+    })
+})
+
+// COUNT PENDING EVENTS
+app.get('/count-pending-events', (req, res) => {
+    event.countPendingEvents((err, jStatus, iCount) => {
+        if (err) {
+            console.log(jStatus)
+            res.send('<html><body>ERROR</body></html>')
+            return
+        }
+        console.log(jStatus)
+        var sCount = JSON.stringify(iCount, null, 4)
+        res.send(sCount)
         return
     })
 })
@@ -167,7 +204,7 @@ app.get('/event/:id', (req, res) => {
             return
         }
         console.log(jStatus, jEvent)
-        var jEventNiceView = "<pre><code>" + JSON.stringify(jEvent, null, 4) + "</code></pre>"
+        var jEventNiceView = JSON.stringify(jEvent, null, 4)
         res.send(jEventNiceView)
         return
     })

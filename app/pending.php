@@ -1,0 +1,101 @@
+<?php
+    session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PENDING</title>
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/eventStyle.css">
+
+    <style>
+       
+            
+    </style>
+</head>
+</head>
+
+<body>
+
+    <?php
+        include 'nav.php';
+        include 'login.html';
+    ?>
+
+     <section id="topBanner">
+        <h1><span>PENDING EVENTS</span></h1>
+    </section>
+
+    <div class="main-container">
+        <div id="pendingContainer">
+            <h2>There are no pending events right now</h2>
+        </div>
+
+    </div>
+
+    <?php
+		include 'footer.html';
+	?>
+
+    <?php
+        if (!isset($_SESSION['sUserId'])) {
+            echo '<script src="js/login.js"></script>';
+        }
+        else {
+            echo '<script src="js/logout.js"></script>';
+        }
+    ?>
+    
+    <script>
+    
+        var ajax = new XMLHttpRequest();
+		ajax.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var sajEvents = this.responseText;
+				var ajEvents = JSON.parse(sajEvents)
+                console.log(ajEvents);
+                
+                if(ajEvents.length > 0) {
+                    displayEvents(ajEvents);
+                }
+			}
+		}
+		ajax.open( "GET", 'http://localhost:3333/pending-events', true );
+        ajax.send();
+
+        function displayEvents(ajEvents) {
+            var event, borderColor, sDivEvent = '';
+
+            for(var i = 0; i < ajEvents.length; i++) {
+                event = ajEvents[i];
+                borderColor = event.type == "ui" ? "greenBorder" : event.type == "ux" ? "redBorder" : "yellowBorder";
+
+                sDivEvent +=   '<div class="eventBox">\
+                                    <a href="event.php?id='+ event._id +'" style="font-weight: inherit;">\
+                                        <div style="background-image: url('+ event.image +')" class="eventImg '+ borderColor +'"></div>\
+                                        <p><b>Title:</b> '+ event.title +'</p>\
+                                        <p><b>Type:</b> '+ event.type +'</p>\
+                                        <p><b>Date:</b> '+ event.date +'</p>\
+                                        <p><b>Time:</b> '+ event.time +'</p>\
+                                        <p><b>Speaker:</b> '+ event.speaker +'</p>\
+                                        <p><b>Organizer:</b> '+ event.organizer +'</p>\
+                                        <p><b>Location:</b> '+ event.location.address +'</p>\
+                                        <p><b>Requirements:</b> '+ event.requirements +'</p>\
+                                        <p><b>Description:</b> '+ event.description+'</p>\
+                                    </a>\
+                                </div>'
+
+            }
+
+            pendingContainer.innerHTML = sDivEvent;
+        }
+        
+    </script>
+    
+</body>
+
+</html>

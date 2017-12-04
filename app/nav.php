@@ -7,13 +7,13 @@
 
 			if($_SESSION['bAdmin']) {
 				echo '<a href="stats.php" class="extraMargin">STATS</a>
-					  <a href="approve-event.php" class="extraMargin">PENDING</a>';
+					  <a href="pending.php" class="extraMargin">PENDING</a>';
 			}
 		?>
 
 		<!-- STATIC NAV ITEMS -->
 		<a href="index.php" class="extraMargin">EVENTS</a>
-		<a href="hold-masterclass.php" class="extraMargin">CREATE EVENT</a>
+		<a href="create-event.php" class="extraMargin">CREATE EVENT</a>
 
 		<!-- LOGIN OR PROFILE NAV ITEM -->
 		<?php

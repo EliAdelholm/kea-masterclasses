@@ -65,34 +65,40 @@ h1 {
 	font-size: 60px;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
+	color: $greenColor;
+
+	span {
+		color: $blackColor;
+		background-color: $whiteColor;
+	}
 }
 
-h1 span {
-	background-color: $whiteColor;
-}
-
-h2 span {
-	background-color: $whiteColor;
-	letter-spacing: 0.2em;
-	margin-right: $indexTopSectionWidth * 0.5;
-}
-
-h3 span {
-	background-color: $whiteColor;
-	letter-spacing: 0.2em;
-	font-weight: bold;
-}
 
 h2 { 
 	font-size: 30px;
     letter-spacing: 0.04em;
     font-weight: bold;
-    text-transform: uppercase;
+	text-transform: uppercase;
+	color: $greenColor;
+	span {
+		color: $blackColor;
+		background-color: $whiteColor;
+		letter-spacing: 0.2em;
+		margin-right: $indexTopSectionWidth * 0.5;
+	}
 }
+
 
 h3 {
 	font-size: 18px;
 	font-weight: 400;
+	color: $greenColor;
+	span {
+		color: $blackColor;
+		background-color: $whiteColor;
+		letter-spacing: 0.2em;
+		font-weight: bold;
+	}
 }
 
 
