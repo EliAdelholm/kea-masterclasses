@@ -131,7 +131,7 @@
           $( function() {
             $( "#datepicker" ).datepicker({
                 firstDay: 1,
-                dateFormat: 'd-m-yy'
+                dateFormat: 'd-M-yy'
             });
           });
 
