@@ -16,7 +16,7 @@
 		include 'login.html';
 	?>
 
-	<div id="profileContentBox">
+	<div id="profileContentBox" class="main-container">
 
 		<div class="column1 displayFlex margin">
 			<div id="profilePicture"></div>
@@ -50,12 +50,15 @@
 
             <div class="form-group displayFlex">
 			    <label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
-			    <input type="checkbox" name="notif">
+				<input type="checkbox" name="notif">		
 			</div>
+
 			<div class="form-group">
-                <button class="greenBtn">Save changes</button>
-            </div>
+			<label>Description</label>
+			<textarea name="bio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
+			</div>
 		</form>
+		<button id="btnSaveChanges" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
 		<a href="../api/php/delete_profile.php">
 			<button id="btnDeleteProfile">DELETE PROFILE</button>
 		</a>
@@ -72,10 +75,6 @@
                 <label>Main phone</label>
                 <input class="input-control"/>
                 <button id="addMorePhoneBtn" type="button">more phones</button>
-            </div>
-            <div class="form-group">
-                <label>BIO</label>
-                <textarea name="bio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>
             </div>
 		</div>
 

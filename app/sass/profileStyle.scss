@@ -1,12 +1,13 @@
 @import '_utils/_vars';
 
 #profileContentBox{
-	margin:150px 50px;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-start;
 	align-items: flex-start;
 	flex: 1 0 100%;
+	margin-top:20vh;
+	margin-bottom:10vh;
 }
 
 .column1{
@@ -23,19 +24,38 @@
 
 }
 .column2{
-	flex-flow:column wrap;
+	flex-flow:row wrap;
 	flex: 1 0 33.3%;
+
+	.form-group{
+		flex: 2 0 100%;
+	}
 
 	.greenBtn{
 		border:none !important;
 		background-color:$greenColor !important;
+		opacity: 0.55;
 		padding:15px 30px;
+		margin-left:0;
+		color:white;
+		
+		&:hover{
+			opacity:1;
+		}
 	}
 	
 	#btnDeleteProfile{
 		background-color:$redColor;
 		border:none;
 		padding:15px 30px;
+		margin-left:0;
+		color:white;
+		opacity:0.65;
+
+		&:hover{
+			opacity:1;
+			//transition:2s;
+		}
 	}
 
 }
@@ -76,14 +96,14 @@ input{
 	border-radius:5px !important;
 	border:1px solid $greenColor !important;
 	padding:10px !important;
-	background-color:#f2eeee
+	background-color:$grayColor;
 }
 
 textarea{
 	border-radius:5px !important;
 	border:1px solid $greenColor !important;
 	padding:10px !important;
-	background-color:#f2eeee;
+	background-color:$grayColor;
 }
 
 label{
@@ -91,6 +111,8 @@ label{
 }
 
 // Upload image styling
+
+//CSS for hiding the ugly "choose file" label/input
 .inputfile {
 	width: 0.1px;
 	height: 0.1px;
@@ -99,32 +121,36 @@ label{
 	position: absolute;
 	z-index: -1;
 }
+
 .inputfile + label {
     max-width: 100%;
 	cursor: pointer;	
-	padding: 15px 25px;
+	padding: 15px;
 	display: inline-block;
 	white-space: nowrap;
-	border-radius:5px;
+	font-size:14px;
 }
 
+//CSS ICON
 .inputfile + label svg {
     width: 16px;
     height: 16px;
     vertical-align: middle;
     fill: currentColor;
-	margin-right:10px;
+	margin-right:5px;
 }
 
 .inputfile-1 + label {
-    color: #f1e5e6;
-    background-color: #d3394c;
+    color: $greenColor;
+	background-color: $grayColor;
+	border:1px solid $greenColor;
 }
 
 .inputfile-1:focus + label,
 .inputfile-1.has-focus + label,
 .inputfile-1 + label:hover {
-    background-color: #722040;
+	background-color: $greenColor;
+	color:white;
 }
 
 #addMoreEmailsBtn{
