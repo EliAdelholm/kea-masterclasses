@@ -17,9 +17,68 @@
 	?>
 
 	<div id="profileContentBox">
+
+		<div class="column1 displayFlex margin">
+			<div id="profilePicture"></div>
+			<input type="file" class="input-control" name="img"/>
+
+			<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">
+		</div>
+
+		<div class="column2 displayFlex margin">
+			<div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name">
+            </div>
+
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" name="email">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input class="input-control"/>
+            </div>
+
+            <div class="form-group displayFlex">
+			    <label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
+			    <input type="checkbox" name="notif">
+			</div>
+		</div>
+
+		<div class="column3 displayFlex margin">
+			<h3>ADDITIONAL INFORMATION</h3>
+			<div id="addMoreEmailsDiv" class="form-group">
+            	<label>Additional email</label>
+            	<input class="input-control"/>
+            	<button id="addMoreEmailsBtn" type="button">more emails</button>
+            </div>
+            <div id="addMorePhonesDiv" class="form-group">
+                <label>Main phone</label>
+                <input class="input-control"/>
+                <button id="addMorePhoneBtn" type="button">more phones</button>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input class="input-control" name="desc"/>
+            </div>
+            <div class="form-group">
+                <button class="redBtn">Save changes</button>
+            </div>
+		</form>
+		<a href="../api/php/delete_profile.php">
+			<button>DELETE PROFILE</button>
+		</a>
+		</div>
+
+	</div>
+
+	<!--<div id="profileContentBox">
 		<div id="profilePicture"></div>
 
 		<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">
+		
 
             <div class="form-group">
                 <label for="">Update profile picture</label>
@@ -68,7 +127,8 @@
 		<a href="../api/php/delete_profile.php">
 			<button>DELETE PROFILE</button>
 		</a>
-	</div>
+		</div>
+		-->
 
 
 	<?php
