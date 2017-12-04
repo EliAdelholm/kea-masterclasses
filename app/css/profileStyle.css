@@ -1,10 +1,11 @@
 #profileContentBox {
-  margin: 150px 50px;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  flex: 1 0 100%; }
+  flex: 1 0 100%;
+  margin-top: 20vh;
+  margin-bottom: 10vh; }
 
 .column1 {
   flex-flow: column wrap;
@@ -24,13 +25,21 @@
   .column2 .greenBtn {
     border: none !important;
     background-color: #52B795 !important;
+    opacity: 0.55;
     padding: 15px 30px;
-    margin-left: 0; }
+    margin-left: 0;
+    color: white; }
+    .column2 .greenBtn:hover {
+      opacity: 1; }
   .column2 #btnDeleteProfile {
     background-color: #e7607b;
     border: none;
     padding: 15px 30px;
-    margin-left: 0; }
+    margin-left: 0;
+    color: white;
+    opacity: 0.65; }
+    .column2 #btnDeleteProfile:hover {
+      opacity: 1; }
 
 .column3 {
   flex-flow: column wrap;

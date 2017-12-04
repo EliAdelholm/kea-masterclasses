@@ -1,12 +1,13 @@
 @import '_utils/_vars';
 
 #profileContentBox{
-	margin:150px 50px;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-start;
 	align-items: flex-start;
 	flex: 1 0 100%;
+	margin-top:20vh;
+	margin-bottom:10vh;
 }
 
 .column1{
@@ -33,8 +34,14 @@
 	.greenBtn{
 		border:none !important;
 		background-color:$greenColor !important;
+		opacity: 0.55;
 		padding:15px 30px;
 		margin-left:0;
+		color:white;
+		
+		&:hover{
+			opacity:1;
+		}
 	}
 	
 	#btnDeleteProfile{
@@ -42,6 +49,13 @@
 		border:none;
 		padding:15px 30px;
 		margin-left:0;
+		color:white;
+		opacity:0.65;
+
+		&:hover{
+			opacity:1;
+			//transition:2s;
+		}
 	}
 
 }
