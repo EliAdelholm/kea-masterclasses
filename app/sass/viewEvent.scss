@@ -4,11 +4,12 @@
 	width:100%; 
 	height:70vh;
 	background-color: $grayColor;
-	margin-bottom: 100px;
-	background-image: url("img/bg.jpeg");
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 #descriptionContainer{
 	width: 100%;
@@ -16,8 +17,9 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 150px;
 }
-#containerHeadder{
+#containerHeader{
 	width: 70%;
 	display: flex;
 	justify-content: space-around;
@@ -33,4 +35,16 @@
 	* {
 		margin-bottom: 20px;
 	}
+}
+
+#tagStyle {
+	color: $whiteColor;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	border-radius: 2px;
+	background-color: $greenColor;
+}
+
+#errorMessage {
+	color: $redColor;
 }
