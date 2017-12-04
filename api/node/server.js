@@ -148,7 +148,7 @@ app.get('/delete-event', (req, res) => {
 
 //GET ALL ACTIVE EVENTS
 app.get('/events', (req, res) => {
-    event.getEvents((err, jStatus, ajEvents) => {
+    event.getActiveEvents((err, jStatus, ajEvents) => {
         if (err) {
             console.log(jStatus)
             res.send('<html><body>ERROR</body></html>')
@@ -157,6 +157,36 @@ app.get('/events', (req, res) => {
         console.log(jStatus)
         var ajEventsNiceView = JSON.stringify(ajEvents, null, 4)
         res.send(ajEventsNiceView)
+        return
+    })
+})
+
+//GET ALL PENDING EVENTS
+app.get('/pending-events', (req, res) => {
+    event.getPendingEvents((err, jStatus, ajEvents) => {
+        if (err) {
+            console.log(jStatus)
+            res.send('<html><body>ERROR</body></html>')
+            return
+        }
+        console.log(jStatus)
+        var ajEventsNiceView = JSON.stringify(ajEvents, null, 4)
+        res.send(ajEventsNiceView)
+        return
+    })
+})
+
+// COUNT PENDING EVENTS
+app.get('/count-pending-events', (req, res) => {
+    event.countPendingEvents((err, jStatus, iCount) => {
+        if (err) {
+            console.log(jStatus)
+            res.send('<html><body>ERROR</body></html>')
+            return
+        }
+        console.log(jStatus)
+        var sCount = JSON.stringify(iCount, null, 4)
+        res.send(sCount)
         return
     })
 })

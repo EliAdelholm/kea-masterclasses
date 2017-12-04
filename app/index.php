@@ -107,13 +107,11 @@
 
 		var ajax = new XMLHttpRequest();
 		ajax.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var sajEvents = this.responseText;
-			 //console.log("sajEvents ", sajEvents);
-			 var ajEvents = JSON.parse(sajEvents); 
-			  //console.log("ajEvents ", ajEvents);
-			  displayEvents(ajEvents);
-			 }
+			if (this.readyState == 4 && this.status == 200) {
+				var sajEvents = this.responseText;
+				var ajEvents = JSON.parse(sajEvents)
+				displayEvents(ajEvents);
+			}
 		}
 		ajax.open( "GET", "../api/php/get-all-events.php", true );
 		ajax.send();
