@@ -1,0 +1,36 @@
+@import '_utils/_vars';
+
+#topImageSection{
+	width:100%; 
+	height:70vh;
+	background-color: $grayColor;
+	margin-bottom: 100px;
+	background-image: url("img/bg.jpeg");
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#descriptionContainer{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#containerHeadder{
+	width: 70%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: $grayColor;
+	padding: 20px 35px 20px 30px;
+}
+#eventContainer{
+	width: 70%;
+	padding: 30px 30px 20px 30px;
+	border: solid 3px;
+	border-color: $grayColor;
+	* {
+		margin-bottom: 20px;
+	}
+}
