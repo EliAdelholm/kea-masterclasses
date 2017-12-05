@@ -31,16 +31,13 @@
     </section>
 
     <div class="main-container">
+        <div class="loader"></div>
         <div id="pendingContainer">
             <h2>There are no pending events right now</h2>
         </div>
-
         <div id="dissmissedContainer">
             <button id="btnShowDissmissed">Show Dismissed</button>
         </div>
-
-        
-
     </div>
 
     <?php
