@@ -1,29 +1,45 @@
 #stats-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between; }
+  flex-flow: row wrap;
+  justify-content: space-around; }
+
+.topEvents {
+  background-color: #f2eeee;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
 
 .stats-column {
   width: 45%;
-  display: inline-block; }
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
   .stats-column ol {
     padding: 20px 10px 0px 30px; }
   .stats-column li {
-    padding-bottom: 10px; }
+    padding: 12px 10px; }
+
+.totals-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  flex: 0 0 45%; }
+  .totals-container .column1, .totals-container .column2 {
+    flex: 0 1 50%; }
+    .totals-container .column1 .totals-item, .totals-container .column2 .totals-item {
+      background-color: #f2eeee;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+      height: 25vh;
+      align-items: center;
+      margin: 15px;
+      padding: 25px 25px;
+      text-align: center; }
 
 .stats-item {
-  background-color: #f2eeee;
   padding: 15px;
-  margin-bottom: 20px;
-  position: relative; }
+  margin-bottom: 20px; }
 
 .stats-item-count {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 15px;
-  border-left: 2px solid #282826;
+  margin: 30px auto;
   width: 60px; }
+  .stats-item-count span {
+    font-size: 28px; }
 
 .charts-item {
   margin-top: 20px;
