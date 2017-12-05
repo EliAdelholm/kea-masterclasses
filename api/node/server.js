@@ -74,7 +74,7 @@ app.post('/create-event', (req, res) => {
     } else {
         console.log("No valid image")
         // Set the path for default image
-        imagePath = "assets/img/userimage-5a1d3bce0ad1d.png";
+        imagePath = "assets/img/default-event.jpg";
     }
 
     // Create object from form data
