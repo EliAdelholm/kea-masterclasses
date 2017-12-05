@@ -60,31 +60,49 @@ event.getActiveEvents = (fCallback) => {
 
 /******************** GET ALL PENDING EVENTS *************/
 event.getPendingEvents = (fCallback) => {
-	// get the data from the collection events
 	global.db.collection('events').find({status: 'pending'}).toArray((err, ajEvents) => {
 		if (err) {
-			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
-			console.log(jError)
+			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot GET Pending Events" }
 			return fCallback(true, jError)
 		}
-		var jOk = { "status": "Displaying Events", "message": "event.js -> Displaying Events -> 006" }
-		console.log(jOk, ajEvents)
+		var jOk = { "status": "OK", "message": "event.js -> GET Pending Events" }
 		return fCallback(false, jOk, ajEvents)
 	})
 }
 
 /******************** COUNT PENDING EVENTS *************/
 event.countPendingEvents = (fCallback) => {
-	// get the data from the collection events
-	global.db.collection('events').count({status: 'pending'}, (err, iCount) => {
+	global.db.collection('events').count({ status: "pending" }, (err, iCount) => {
 		if (err) {
-			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
-			console.log(jError)
+			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot GET Count Pending Events" }
 			return fCallback(true, jError)
 		}
-		var jOk = { "status": "Displaying Events", "message": "event.js -> Displaying Events -> 006" }
-		console.log(jOk, iCount)
+		var jOk = { "status": "OK", "message": "event.js -> GET Count Pending Events" }
 		return fCallback(false, jOk, iCount)
+	})
+}
+
+/******************** APPROVE EVENT *************/
+event.approveEvent = (iEventId, fCallback) => {
+	global.db.collection('events').updateOne({ "_id": ObjectId(iEventId) }, { $set: { "status": "active" } }, (err, jResult) => {
+		if (err) {
+			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot Approve Event" }
+			return fCallback(true, jError)
+		}
+		var jOk = { "status": "OK", "message": "event.js -> Approved Event" }
+		return fCallback(false, jOk)
+	})
+}
+
+/******************** DISSMISS EVENT *************/
+event.dissmissEvent = (iEventId, fCallback) => {
+	global.db.collection('events').updateOne({ "_id": ObjectId(iEventId) }, { $set: { "status": "dissmissed" } }, (err, jResult) => {
+		if (err) {
+			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot Dissmiss Event" }
+			return fCallback(true, jError)
+		}
+		var jOk = { "status": "OK", "message": "event.js -> Dissmissed Event" }
+		return fCallback(false, jOk)
 	})
 }
 
@@ -93,10 +111,7 @@ event.displayEventById = (iEventId, fCallback) => {
 	console.log(iEventId);
 	global.db.collection('events').find({ "_id": ObjectId(iEventId) }).toArray((err, ajEvents) => {
 		if (err || ajEvents.length != 1) {
- 			console.log("ajEvents ", ajEvents);
 			var jError = { "status": "error", "message": "ERROR -> event.js -> 009" }
-			// var jError = (err, "Can't Display Event")
-			console.log(jError)
 			return fCallback(true, jError)
 		}
 		var jOk = { "status": "ok", "message": "OK -> event.js -> Displaying Requested Event -> 008" }

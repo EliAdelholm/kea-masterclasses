@@ -1,6 +1,6 @@
 <?php
-include 'db.php';
 session_start();
+include 'db.php';
 
 $iUserId = 2;//$_SESSION['sUserId'];
 $sEmail = $_POST['email'];

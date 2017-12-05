@@ -90,7 +90,7 @@
 		if (e.target.id == "btnRegister") {
 			console.log("X");
 			var sEventId = btnRegister.getAttribute('data-eventId');
-			console.log(sEventId);
+			console.log("Event id:  " + sEventId);
 			var xhttp = new XMLHttpRequest();
   			xhttp.onreadystatechange = function() {
     		if (this.readyState == 4 && this.status == 200) {
@@ -102,9 +102,8 @@
 				 eventContainer.insertAdjacentHTML("beforeend" , btnUnregisterHTML );
     		}
   		};
-  xhttp.open("GET", "../api/php/register_attendance.php?userId=<?php echo $_SESSION['sUserId']?>&eventId="+sEventId, true);
-  xhttp.send();
-
+		xhttp.open("GET", "../api/php/register_attendance.php?userId=<?php echo $_SESSION['sUserId']?>&eventId="+sEventId, true);
+		xhttp.send();
 		}
 	});
 

@@ -1,18 +1,23 @@
 <div id="positionAbsolut" class="nav">
 	<nav class="main-container">
 	
+		
+
+		<!-- STATIC NAV ITEMS -->
+		<a href="index.php" class="extraMargin">HOME</a>
+
 		<!-- ADMIN NAV ITEMS -->
 		<?php 
 		error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 			if($_SESSION['bAdmin']) {
 				echo '<a href="stats.php" class="extraMargin">STATS</a>
-					  <a href="pending.php" class="extraMargin">PENDING</a>';
+					  <a href="pending.php" class="extraMargin" style="position: relative;" id="pendingCount">
+						  PENDING
+					  </a>';
 			}
 		?>
 
-		<!-- STATIC NAV ITEMS -->
-		<a href="index.php" class="extraMargin">EVENTS</a>
 		<a href="create-event.php" class="extraMargin">CREATE EVENT</a>
 
 		<!-- LOGIN OR PROFILE NAV ITEM -->
@@ -35,3 +40,12 @@
 		</div>
 	</div>
 </div>
+
+
+<?php 
+
+	if($_SESSION['bAdmin']) {
+		echo '<script src="js/countPendingEvents.js"></script>';
+	};
+
+?>

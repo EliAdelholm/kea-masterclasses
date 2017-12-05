@@ -74,7 +74,7 @@
                 event = ajEvents[i];
                 borderColor = event.type == "ui" ? "greenBorder" : event.type == "ux" ? "redBorder" : "yellowBorder";
 
-                sDivEvent +=   '<div class="eventBox">\
+                sDivEvent +=   '<div class="eventBox" id="'+ event._id +'">\
                                     <a href="event.php?id='+ event._id +'" style="font-weight: inherit;">\
                                         <div style="background-image: url('+ event.image +')" class="eventImg '+ borderColor +'"></div>\
                                         <p><b>Title:</b> '+ event.title +'</p>\
@@ -85,14 +85,63 @@
                                         <p><b>Organizer:</b> '+ event.organizer +'</p>\
                                         <p><b>Location:</b> '+ event.location.address +'</p>\
                                         <p><b>Requirements:</b> '+ event.requirements +'</p>\
-                                        <p><b>Description:</b> '+ event.description+'</p>\
+                                        <p class="clippedDescription"><b>Description:</b> '+ event.description+'</p>\
                                     </a>\
+                                    <div class="pendingActions">\
+                                        <button class="btnDissmissEvent" data-id="'+ event._id +'">Dismiss</button>\
+                                        <button class="btnApproveEvent" data-id="'+ event._id +'">Approve</button>\
+                                    </div>\
                                 </div>'
 
             }
 
             pendingContainer.innerHTML = sDivEvent;
         }
+
+        document.addEventListener("click", function(e) {
+
+            // DISSMISS EVENT
+            if (e.target.classList.contains("btnDissmissEvent")) {
+                var sEventId = e.target.getAttribute("data-id");
+                
+                ajax.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var sResults = this.responseText;
+                        var jResults = JSON.parse(sResults)
+
+                        if(jResults.status == "OK") {
+                            console.log(sEventId)
+                            document.getElementById(sEventId).remove();
+                        }
+                        
+                    }
+                }
+                ajax.open( "GET", 'http://localhost:3333/dissmiss-event/'+sEventId, true );
+                ajax.send();
+            }
+
+            // APPROVE EVENT
+            if (e.target.classList.contains("btnApproveEvent")) {
+                var sEventId = e.target.getAttribute("data-id");
+                
+                ajax.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var sResults = this.responseText;
+                        var jResults = JSON.parse(sResults)
+
+                        if(jResults.status == "OK") {
+                            console.log(sEventId)
+                            document.getElementById(sEventId).remove();
+                        }
+                        
+                    }
+                }
+                ajax.open( "GET", 'http://localhost:3333/approve-event/'+sEventId, true );
+                ajax.send();
+            }
+            
+            
+        })
         
     </script>
     

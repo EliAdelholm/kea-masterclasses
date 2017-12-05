@@ -6,17 +6,15 @@ var fs = require('fs-extra')
 var os = require('os')
 app.use(formidable())
 
+// GET EVENT CONTROLLER
+var event = require(__dirname + '/event.js')
+
 // ALLOW CROSS ORIGIN RESSOURCE SHARING
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-
-
-// GET EVENT CONTROLLER
-var event = require(__dirname + '/event.js')
-
 
 // CONNECT TO DATABASE
 var mongo = require('mongodb').MongoClient
@@ -33,6 +31,9 @@ mongo.connect(sDatabasePath, (err, db) => {
     return true
 })
 
+// DECLARE PENDING EVENT COUNT
+var iPendingEventsCount = null;
+
 
 
 
@@ -40,7 +41,6 @@ mongo.connect(sDatabasePath, (err, db) => {
 
 // ADD EVENT
 app.post('/create-event', (req, res) => {
-
 
     // Check file extension if any
     var extName = path.extname(req.files.sFile.name)
@@ -107,6 +107,7 @@ app.post('/create-event', (req, res) => {
             return
         }
         console.log(jStatus)
+        iPendingEventsCount++
         res.send('{"status": "ok"}')
         return
     })
@@ -130,6 +131,40 @@ app.post('/update-event', (req, res) => {
     })
 })
 
+// APPROVE EVENT
+app.get('/approve-event/:id', (req, res) => {
+    var iEventId = req.params.id
+
+    event.approveEvent(iEventId, (err, jStatus) => {
+        if (err) {
+            console.log(jStatus)
+            res.json(jStatus)
+            return
+        }
+        console.log(jStatus)
+        iPendingEventsCount--
+        res.json(jStatus)
+        return
+    })
+})
+
+// DISSMISS EVENT
+app.get('/dissmiss-event/:id', (req, res) => {
+    var iEventId = req.params.id
+
+    event.dissmissEvent(iEventId, (err, jStatus) => {
+        if (err) {
+            console.log(jStatus)
+            res.json(jStatus)
+            return
+        }
+        console.log(jStatus)
+        iPendingEventsCount--
+        res.json(jStatus)
+        return
+    })
+})
+
 
 // DELETE EVENT
 app.get('/delete-event', (req, res) => {
@@ -146,7 +181,7 @@ app.get('/delete-event', (req, res) => {
     })
 })
 
-//GET ALL ACTIVE EVENTS
+// GET ALL ACTIVE EVENTS
 app.get('/events', (req, res) => {
     event.getActiveEvents((err, jStatus, ajEvents) => {
         if (err) {
@@ -161,34 +196,34 @@ app.get('/events', (req, res) => {
     })
 })
 
-//GET ALL PENDING EVENTS
+// GET ALL PENDING EVENTS
 app.get('/pending-events', (req, res) => {
     event.getPendingEvents((err, jStatus, ajEvents) => {
         if (err) {
             console.log(jStatus)
-            res.send('<html><body>ERROR</body></html>')
-            return
+            return res.send('<html><body>ERROR</body></html>')
         }
         console.log(jStatus)
-        var ajEventsNiceView = JSON.stringify(ajEvents, null, 4)
-        res.send(ajEventsNiceView)
-        return
+        return res.json(ajEvents)
     })
 })
 
 // COUNT PENDING EVENTS
 app.get('/count-pending-events', (req, res) => {
-    event.countPendingEvents((err, jStatus, iCount) => {
-        if (err) {
-            console.log(jStatus)
-            res.send('<html><body>ERROR</body></html>')
-            return
-        }
-        console.log(jStatus)
-        var sCount = JSON.stringify(iCount, null, 4)
-        res.send(sCount)
-        return
-    })
+    if (iPendingEventsCount == null) {
+        event.countPendingEvents((err, jStatus, iCount) => {
+            if (err) {
+                console.log(jStatus)
+                return res.send("error")
+            } else {
+                console.log(jStatus, iCount)
+                iPendingEventsCount = iCount;
+                return res.json(iCount)
+            }
+        })
+    } else {
+        return res.json(iPendingEventsCount);
+    }
 })
 
 //DISPLAY EVENT BY ID

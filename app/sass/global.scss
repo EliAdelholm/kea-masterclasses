@@ -200,6 +200,18 @@ nav{
     z-index: 1;
 }
 
+.notificationBadge {
+	background-color: $redColor;
+	border-radius: 25px;
+	color: black;
+	padding: 4px 0px 1px 7px;
+	font-size: 13px;
+	position: absolute;
+	top: -3px;
+	right: -25px;
+	width: 21px;
+  }
+
 .nav a {
 	font-weight: bold;
 	text-decoration: none;

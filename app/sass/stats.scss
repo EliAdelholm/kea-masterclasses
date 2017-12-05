@@ -2,38 +2,73 @@
 
 #stats-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 
+
+.topEvents{
+    background-color: $grayColor;   
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+//
 .stats-column {
     width: 45%;
-    display: inline-block;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    //display: inline-block;
 
     ol {
         padding: 20px 10px 0px 30px;
     }
 
     li {
-        padding-bottom: 10px;
+        padding: 12px 10px;
     }
 }
 
+//TOTALS 4 BOXES
+.totals-container{
+    display:flex;
+    flex-flow:row wrap;
+    justify-content: space-between;
+    //width: 45%;
+    flex: 0 0 45%;
+
+    .column1, .column2 {
+        flex: 0 1 50%;
+
+        .totals-item{
+            background-color:$grayColor;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            height:25vh;
+            align-items: center;
+           // flex: 2 0 11.25%;
+           margin:15px;
+           padding: 25px 25px;
+           text-align: center;
+        }
+    }  
+}
+  
 .stats-item {
-    background-color: $grayColor;
+    //background-color: $grayColor;
     padding: 15px;
     margin-bottom: 20px;
-    position: relative;
+    //position: relative;
 }
 
 .stats-item-count {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 15px;
-    border-left: 2px solid $blackColor;
+    margin:30px auto;
+    //border-left: 2px solid $blackColor;
     width: 60px;
+
+    span{
+        font-size:28px;
+        
+    }
 }
+
 
 .charts-item {
     margin-top: 20px;
