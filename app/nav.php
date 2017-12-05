@@ -1,18 +1,23 @@
 <div id="positionAbsolut" class="nav">
 	<nav class="main-container">
 	
+		
+
+		<!-- STATIC NAV ITEMS -->
+		<a href="index.php" class="extraMargin">HOME</a>
+
 		<!-- ADMIN NAV ITEMS -->
 		<?php 
 		error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 			if($_SESSION['bAdmin']) {
 				echo '<a href="stats.php" class="extraMargin">STATS</a>
-					  <a href="pending.php" class="extraMargin">PENDING</a>';
+					  <a href="pending.php" class="extraMargin" style="position: relative;" id="pendingCount">
+						  PENDING
+					  </a>';
 			}
 		?>
 
-		<!-- STATIC NAV ITEMS -->
-		<a href="index.php" class="extraMargin">EVENTS</a>
 		<a href="create-event.php" class="extraMargin">CREATE EVENT</a>
 
 		<!-- LOGIN OR PROFILE NAV ITEM -->
@@ -35,3 +40,21 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var ajax = new XMLHttpRequest();
+		ajax.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var sCount = this.responseText;
+				var iCount = JSON.parse(sCount)
+				
+				if (iCount > 0) {
+					// add count function
+					pendingCount.insertAdjacentHTML("beforeend", '<span  class="notificationBadge">'+ iCount +'</span>');
+				}
+                
+			}
+		}
+		ajax.open( "GET", 'http://localhost:3333/count-pending-events', true );
+        ajax.send();
+</script>
