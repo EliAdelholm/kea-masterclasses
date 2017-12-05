@@ -310,3 +310,14 @@ span{
 	margin: 0 10px 10px 10px;
 }
 
+.pendingActions {
+	position: relative;
+	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+#btnApproveEvent {
+	background-color: $redColor;
+
+}
