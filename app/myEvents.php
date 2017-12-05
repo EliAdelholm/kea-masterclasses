@@ -49,7 +49,7 @@
 					$sEventId =  $aEvents[$i];
 					$sEvent = file_get_contents("http://localhost:3333/event/" . $sEventId);
 					$oEvent = json_decode($sEvent);
-					echo $sEvent;
+					// echo $sEvent;
 					$dt2 = DateTime::createFromFormat("j-M-Y H:i",  $oEvent -> date . " " . $oEvent -> time, new DateTimeZone('CET'));
 
 					$eventTime = $dt2 -> getTimestamp();
@@ -57,8 +57,8 @@
 
 					if($eventTime < $currentTime) {
 						$rating = $aRatings[$sEventId];
-						echo "Ratings: " . var_dump( $aRatings);
-						echo "Rating: " . $rating;
+						// echo "Ratings: " . var_dump( $aRatings);
+						// echo "Rating: " . $rating;
 						?> 
 							<div class="eventBox">
 								<div class="eventImg greenBorder pastEventImg"></div>
@@ -70,20 +70,22 @@
 									<div class="ratingContainer">
 										<span>RATE:</span>
 										<form class="rating">
+											<input id="<?php echo $oEvent -> _id;?>" name="eventId" type="text" value="<?php echo $oEvent -> _id;?>">
+												
 											<input type="radio" id="star5" name="rating" value="5" class=" starRating"/>
-											<label class = "full" for="star5"></label>
+											<label class = "full <?php if ($rating >= 5) echo ' active'; ?>" for="star5"></label>
 											
 											<input type="radio" id="star4" name="rating" value="4"  class=" starRating"/>
-											<label class = "full" for="star4"></label>
+											<label class = "full <?php if ($rating >= 4) echo ' active'; ?>" for="star4"></label>
 
 											<input type="radio" id="star3" name="rating" value="3"  class=" starRating"/>
-											<label class = "full" for="star3"></label>
+											<label class = "full <?php if ($rating >= 3) echo ' active'; ?>" for="star3"></label>
 											
 											<input type="radio" id="star2" name="rating" value="2"  class=" starRating"/>
-											<label class = "full" for="star2"></label>
+											<label class = "full <?php if ($rating >= 3) echo ' active'; ?>" for="star2"></label>
 
 											<input type="radio" id="star1" name="rating" value="1"  class=" starRating"/>
-											<label class = "full" for="star1"></label>
+											<label class = "full <?php if ($rating >= 1) echo ' active'; ?>" for="star1"></label>
 
 										</form>
 									</div>
@@ -127,6 +129,8 @@
 		if(cls != undefined && cls != null && cls.indexOf("starRating") > -1) {
 			console.log(evnt.target);
 			var rating = evnt.target.value;
+			var eventId = document.getElementsByName("eventId")[0].value;
+ 			console.log("eventId ", eventId);
 
 			var ajax = new XMLHttpRequest();
 			ajax.onreadystatechange = function() {
@@ -138,7 +142,7 @@
 			ajax.open( "POST", "../api/php/rate-course.php", true );
 			var fd  = new FormData();
 			fd.append("rating", rating);
-			fd.append("eventId", 2);
+			fd.append("eventId", eventId);
 			ajax.send( fd );
 
 		}
