@@ -8,14 +8,13 @@ include 'db.php';
     $jEvent = json_decode($sjEvent);
     
     try {
-        $query = $conn->prepare("SELECT COUNT(*) AS attendance FROM attendance WHERE event_id=':id'");
+        $query = $conn->prepare("SELECT COUNT(*) AS attendance FROM attendance WHERE event_id=:id");
         $query->bindParam( ':id' , $sEventId );
-        $bResult = $query->execute();
+        $query->execute();
         
         $result = $query->setFetchMode(PDO::FETCH_ASSOC); 
         // This returns an array with 1 element
         $aResult = $query->fetch();
-
         $key = 'attendance';
         // Get the value from our query and add it to our event object
         $jEvent->$key = $aResult[$key]; 

@@ -1,0 +1,44 @@
+#topImageSection {
+  width: 100%;
+  height: 70vh;
+  background-color: #f2eeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; }
+
+#descriptionContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 150px; }
+
+#containerHeader {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f2eeee;
+  padding: 20px 35px 20px 30px; }
+
+#eventContainer {
+  width: 70%;
+  padding: 30px 30px 20px 30px;
+  border: solid 3px;
+  border-color: #f2eeee; }
+  #eventContainer * {
+    margin-bottom: 20px; }
+
+#tagStyle {
+  color: #fdfdfc;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 2px;
+  background-color: #52B795; }
+
+#errorMessage {
+  color: #e7607b; }

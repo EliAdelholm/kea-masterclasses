@@ -5,6 +5,9 @@ UPDATE kea_masterclasses.users
 
 -- Delete User
 START TRANSACTION;
+	
+	DELETE FROM attendance
+	WHERE user_id = 3;
 
 	DELETE FROM users_emails
 	WHERE user_id = 3;
@@ -33,3 +36,4 @@ update attendance set rating=3 WHERE event_id=1 and  user_id=1;
 SELECT event_id, COUNT(user_id) AS registered_users
 FROM  attendance
 GROUP BY event_id;
+
