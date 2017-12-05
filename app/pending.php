@@ -35,6 +35,12 @@
             <h2>There are no pending events right now</h2>
         </div>
 
+        <div id="dissmissedContainer">
+            <button id="btnShowDissmissed">Show Dismissed</button>
+        </div>
+
+        
+
     </div>
 
     <?php
@@ -60,14 +66,14 @@
                 console.log(ajEvents);
                 
                 if(ajEvents.length > 0) {
-                    displayEvents(ajEvents);
+                    displayEvents(ajEvents, "pending");
                 }
 			}
 		}
 		ajax.open( "GET", 'http://localhost:3333/pending-events', true );
         ajax.send();
 
-        function displayEvents(ajEvents) {
+        function displayEvents(ajEvents, type) {
             var event, borderColor, sDivEvent = '';
 
             for(var i = 0; i < ajEvents.length; i++) {
@@ -86,16 +92,21 @@
                                         <p><b>Location:</b> '+ event.location.address +'</p>\
                                         <p><b>Requirements:</b> '+ event.requirements +'</p>\
                                         <p class="clippedDescription"><b>Description:</b> '+ event.description+'</p>\
-                                    </a>\
-                                    <div class="pendingActions">\
-                                        <button class="btnDissmissEvent" data-id="'+ event._id +'">Dismiss</button>\
-                                        <button class="btnApproveEvent" data-id="'+ event._id +'">Approve</button>\
-                                    </div>\
-                                </div>'
+                                    </a>';
+
+                type == "pending" ? sDivEvent += '<div class="pendingActions">\
+                                                    <button class="btnDissmissEvent" data-id="'+ event._id +'">Dismiss</button>\
+                                                    <button class="btnApproveEvent" data-id="'+ event._id +'">Approve</button>\
+                                                 </div>\
+                                            </div>' : sDivEvent += '</div>';
 
             }
 
-            pendingContainer.innerHTML = sDivEvent;
+            if( type == "pending" ) {
+                pendingContainer.innerHTML = sDivEvent;
+            } else {
+                dissmissedContainer.innerHTML = sDivEvent;
+            }
         }
 
         document.addEventListener("click", function(e) {
@@ -139,8 +150,22 @@
                 ajax.open( "GET", 'http://localhost:3333/approve-event/'+sEventId, true );
                 ajax.send();
             }
-            
-            
+        })
+
+        btnShowDissmissed.addEventListener("click", function() {
+            ajax.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var sajEvents = this.responseText;
+				var ajEvents = JSON.parse(sajEvents)
+                console.log(ajEvents);
+                
+                if(ajEvents.length > 0) {
+                    displayEvents(ajEvents, "dissmissed");
+                }
+			}
+		}
+		ajax.open( "GET", 'http://localhost:3333/dissmissed-events', true );
+        ajax.send();
         })
         
     </script>

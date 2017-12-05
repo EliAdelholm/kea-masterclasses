@@ -298,12 +298,20 @@ span{
 	}	
 }
 
-#pendingContainer {
-	min-height: 300px;
+#pendingContainer, #dissmissedContainer {
 	display: flex;
 	justify-content: space-around;
 	margin-top: 50px;
 	flex-wrap: wrap;
+
+	.eventBox {
+		margin-bottom: 0;
+	}
+
+	#btnShowDissmissed {
+		background-color: $redColor;
+		margin-bottom: 50px;
+	}
 }
 
 #pendingContainer p {
