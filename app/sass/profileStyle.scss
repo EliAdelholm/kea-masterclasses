@@ -79,9 +79,14 @@ form{
 }
 
 input[type=checkbox] {
-    transform: scale(2);
-    //margin-top: 2px;
+    width: 4vw;
+	height: 4vh;
     margin-left: 0px;
+}
+
+li{
+	list-style: none;
+	display:-webkit-inline-box;
 }
 
 h3{

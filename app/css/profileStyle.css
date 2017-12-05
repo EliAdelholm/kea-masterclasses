@@ -55,8 +55,13 @@ form {
   margin-bottom: 100px; }
 
 input[type=checkbox] {
-  transform: scale(2);
+  width: 4vw;
+  height: 4vh;
   margin-left: 0px; }
+
+li {
+  list-style: none;
+  display: -webkit-inline-box; }
 
 h3 {
   margin-bottom: 20px;

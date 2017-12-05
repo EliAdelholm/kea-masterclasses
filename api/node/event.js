@@ -70,6 +70,18 @@ event.getPendingEvents = (fCallback) => {
 	})
 }
 
+/******************** GET ALL DISSMISSED EVENTS *************/
+event.getDissmissedEvents = (fCallback) => {
+	global.db.collection('events').find({status: 'dissmissed'}).toArray((err, ajEvents) => {
+		if (err) {
+			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot GET Dissmissed Events" }
+			return fCallback(true, jError)
+		}
+		var jOk = { "status": "OK", "message": "event.js -> GET Dissmissed Events" }
+		return fCallback(false, jOk, ajEvents)
+	})
+}
+
 /******************** COUNT PENDING EVENTS *************/
 event.countPendingEvents = (fCallback) => {
 	global.db.collection('events').count({ status: "pending" }, (err, iCount) => {

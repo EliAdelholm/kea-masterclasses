@@ -12,3 +12,4 @@ ajax.onreadystatechange = function() {
     }
 }
 ajax.open( "GET", 'http://localhost:3333/count-pending-events', true );
+ajax.send();

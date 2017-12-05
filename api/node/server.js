@@ -208,6 +208,18 @@ app.get('/pending-events', (req, res) => {
     })
 })
 
+// GET ALL PENDING EVENTS
+app.get('/dissmissed-events', (req, res) => {
+    event.getDissmissedEvents((err, jStatus, ajEvents) => {
+        if (err) {
+            console.log(jStatus)
+            return res.send('<html><body>ERROR</body></html>')
+        }
+        console.log(jStatus)
+        return res.json(ajEvents)
+    })
+})
+
 // COUNT PENDING EVENTS
 app.get('/count-pending-events', (req, res) => {
     if (iPendingEventsCount == null) {
