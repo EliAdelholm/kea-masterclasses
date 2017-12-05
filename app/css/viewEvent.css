@@ -17,7 +17,7 @@
   align-items: center;
   margin-bottom: 150px; }
 
-#containerHeader {
+#containerHeader, #frmEditEvent {
   width: 70%;
   display: flex;
   justify-content: space-around;
@@ -42,3 +42,16 @@
 
 #errorMessage {
   color: #e7607b; }
+
+#btnRegister {
+  background-color: #52B795; }
+  #btnRegister:hover {
+    border-color: #282826; }
+
+#btnUnregister {
+  background-color: #e7607b; }
+  #btnUnregister:hover {
+    border-color: #282826; }
+
+.bold {
+  font-weight: bold; }
