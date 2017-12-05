@@ -26,7 +26,7 @@
 		</div>
 	</div>
 
-	<div id="eventFilterSection" class="main-container">
+	<div id="eventFilterSection">
 		<h2 class="subtitleMargin">events</h2>
 		<div id="filerButtons">
 			<div id="eventsByTime">
@@ -56,7 +56,7 @@
 				<p id="pastBtn">PAST</p>
 			</div>
 		</div> -->
-		<div id="eventBoxes">
+		<div id="eventBoxes" class="main-container">
 			<!-- <div>{{eventBox}}</div> -->		
 		</div>
 	</div>
@@ -113,7 +113,7 @@
 				displayEvents(ajEvents);
 			}
 		}
-		ajax.open( "GET", "../api/php/get-all-events.php", true );
+		ajax.open( "GET", "http://localhost:3333/events", true );
 		ajax.send();
 
 
