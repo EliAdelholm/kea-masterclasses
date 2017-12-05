@@ -1,5 +1,5 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-fieldset, label {
+fieldset, label, .active {
   margin: 0;
   padding: 0; }
 
@@ -21,7 +21,7 @@ h1 {
 .rating > input {
   display: none; }
 
-.rating > label:before {
+.rating > label:before, .rating > .active:before {
   margin: 5px;
   font-size: 1.25em;
   font-family: FontAwesome;
@@ -32,19 +32,33 @@ h1 {
   content: "\f089";
   position: absolute; }
 
-.rating > label {
+label, .active {
   color: #ddd;
   float: right; }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
-.rating > input:checked ~ label,
+.rating > input:checked ~ label, .rating > input:checked ~ .active,
 .rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
+.rating:not(:checked) > .active:hover,
+.rating:not(:checked) > label:hover ~ label,
+.rating:not(:checked) > .active:hover ~ label,
+.rating:not(:checked) > label:hover ~ .active,
+.rating:not(:checked) > .active:hover ~ .active {
   color: #FFD700; }
 
 /* hover previous stars in list */
-.rating > input:checked + label:hover,
+.rating > input:checked + label:hover, .rating > input:checked + .active:hover,
 .rating > input:checked ~ label:hover,
+.rating > input:checked ~ .active:hover,
 .rating > label:hover ~ input:checked ~ label,
-.rating > input:checked ~ label:hover ~ label {
+.rating > .active:hover ~ input:checked ~ label,
+.rating > label:hover ~ input:checked ~ .active,
+.rating > .active:hover ~ input:checked ~ .active,
+.rating > input:checked ~ label:hover ~ label,
+.rating > input:checked ~ .active:hover ~ label,
+.rating > input:checked ~ label:hover ~ .active,
+.rating > input:checked ~ .active:hover ~ .active {
+  color: #FFED85; }
+
+.active {
   color: #FFED85; }
