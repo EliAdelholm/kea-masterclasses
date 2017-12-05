@@ -97,19 +97,16 @@ h3{
 
 }
 
-input{
-	border-radius:5px !important;
-	border:1px solid $greenColor !important;
-	padding:10px !important;
-	background-color:$grayColor;
-}
+// input{
+// 	// border-radius:5px !important;
+// 	// border:1px solid $greenColor !important;
+// 	// padding:10px !important;
+// 	// background-color:$grayColor;
+// }
 
-textarea{
-	border-radius:5px !important;
-	border:1px solid $greenColor !important;
-	padding:10px !important;
-	background-color:$grayColor;
-}
+// textarea{
+// 	@extend input;
+// }
 
 label{
 	font-weight:bold;

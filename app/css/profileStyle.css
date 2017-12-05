@@ -69,18 +69,6 @@ h3 {
   font-weight: bold;
   color: #52B795; }
 
-input {
-  border-radius: 5px !important;
-  border: 1px solid #52B795 !important;
-  padding: 10px !important;
-  background-color: #f2eeee; }
-
-textarea {
-  border-radius: 5px !important;
-  border: 1px solid #52B795 !important;
-  padding: 10px !important;
-  background-color: #f2eeee; }
-
 label {
   font-weight: bold; }
 

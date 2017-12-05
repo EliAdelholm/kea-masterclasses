@@ -8,7 +8,7 @@
 	<title>PROFILE</title>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/profileStyle.css">
-	<link rel="stylesheet" type="text/css" href="css/hold-masterclass.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/hold-masterclass.css"> -->
 </head>
 <body>
 	<?php
