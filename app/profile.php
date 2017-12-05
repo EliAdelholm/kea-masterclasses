@@ -48,9 +48,8 @@
                 <input class="input-control"/>
             </div>
 
-            <div class="form-group displayFlex">
-			    <label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
-				<input type="checkbox" name="notif">		
+            <div class="form-group">
+				<li><label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label><input type="checkbox" name="notif"></li>		
 			</div>
 
 			<div class="form-group">

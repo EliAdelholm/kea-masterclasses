@@ -1,7 +1,8 @@
 #stats-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around; }
+  justify-content: space-around;
+  margin-top: 75px; }
 
 .topEvents {
   background-color: #f2eeee;

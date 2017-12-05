@@ -18,47 +18,11 @@
         include 'login.php';
     ?>
 
-<!--
-        <div class="topEvents">
-            <h3>MOST POPULAR EVENTS</h3>
-                <ol>
-                    <li>Event Name</li>
-                    <li>Event Name</li>
-                    <li>Event Name</li>
-                    <li>Event Name</li>
-                    <li>Event Name</li>
-                    <li>Event Name</li>
-                    <li>Event Name</li>
-                    <li>Event Name</li>
-                    <li>Event Name</li>
-                    <li>Event Name</li>
-                </ol>
-        </div>
+       <section id="topBanner">
+            <h1><span>STATISTICS</span></h1>
+        </section>
 
-        <div class="totalStatistics">
-            <div class="totalEvents">
-                <h3>TOTAL EVENTS</h3>
-                <span class="dataNumber">30</span>
-            </div>
-            <div class="totalEvents">
-                <h3>TOTAL EVENTS</h3>
-                <span class="dataNumber">30</span>
-            </div>
-            <div class="totalEvents">
-                <h3>TOTAL EVENTS</h3>
-                <span class="dataNumber">30</span>
-            </div>
-            <div class="totalEvents">
-                <h3>TOTAL EVENTS</h3>
-                <span class="dataNumber">30</span>
-            </div>
-        </div>
-
-        <div id="charts-container" class="chartCard">
-        <canvas id="attendanceChart" class="charts-item"></canvas>
-    </div>
--->    
-<div id="stats-container" class="main-container" style="margin: 100px;">
+<div id="stats-container" class="main-container" >
         <div class="stats-column stats-item">
             <h3>MOST POPULAR EVENTS</h3>
             <ol>
