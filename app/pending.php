@@ -35,16 +35,9 @@
         <div id="pendingContainer">
             <h2>There are no pending events right now</h2>
         </div>
-<<<<<<< HEAD
-=======
-
         <div id="dissmissedContainer">
             <button id="btnShowDissmissed">Show Dismissed</button>
         </div>
-
-        
-
->>>>>>> 730c1855dd004c3c35b621ad1c26140a767977e0
     </div>
 
     <?php
