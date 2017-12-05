@@ -7,9 +7,9 @@ $iEventId = $_POST['eventId'];
 $iUserId  = $_SESSION['sUserId'];
 $iRating  = $_POST['rating'];
 
-// echo "eventId " . $iEventId . "<br/>";
-// echo "userId " . $iUserId . "<br/>";
-// echo "rating " . $iRating . "<br/>";
+echo "eventId " . $iEventId . "<br/>";
+echo "userId " . $iUserId . "<br/>";
+echo "rating " . $iRating . "<br/>";
 
 $query = $conn->prepare("UPDATE attendance 
                             SET rating=:rating 
