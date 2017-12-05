@@ -85,7 +85,7 @@
                                         <p><b>Organizer:</b> '+ event.organizer +'</p>\
                                         <p><b>Location:</b> '+ event.location.address +'</p>\
                                         <p><b>Requirements:</b> '+ event.requirements +'</p>\
-                                        <p><b>Description:</b> '+ event.description+'</p>\
+                                        <p class="clippedDescription"><b>Description:</b> '+ event.description+'</p>\
                                     </a>\
                                     <div class="pendingActions">\
                                         <button class="btnDissmissEvent" data-id="'+ event._id +'">Dismiss</button>\
