@@ -48,3 +48,25 @@
 #errorMessage {
 	color: $redColor;
 }
+
+#btnRegister {
+	background-color: $greenColor;
+	&:hover {
+		border-color: $blackColor;
+	}
+}
+
+#btnUnregister {
+	background-color: $redColor;
+	&:hover {
+		border-color: $blackColor;
+	}
+}
+
+.bold {
+	font-weight: bold;
+}
+
+#frmEditEvent {
+	@extend #containerHeader;
+}

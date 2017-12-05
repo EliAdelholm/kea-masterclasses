@@ -131,6 +131,40 @@ app.post('/update-event', (req, res) => {
     })
 })
 
+// APPROVE EVENT
+app.get('/approve-event/:id', (req, res) => {
+    var iEventId = req.params.id
+
+    event.approveEvent(iEventId, (err, jStatus) => {
+        if (err) {
+            console.log(jStatus)
+            res.json(jStatus)
+            return
+        }
+        console.log(jStatus)
+        iPendingEventsCount--
+        res.json(jStatus)
+        return
+    })
+})
+
+// DISSMISS EVENT
+app.get('/dissmiss-event/:id', (req, res) => {
+    var iEventId = req.params.id
+
+    event.dissmissEvent(iEventId, (err, jStatus) => {
+        if (err) {
+            console.log(jStatus)
+            res.json(jStatus)
+            return
+        }
+        console.log(jStatus)
+        iPendingEventsCount--
+        res.json(jStatus)
+        return
+    })
+})
+
 
 // DELETE EVENT
 app.get('/delete-event', (req, res) => {

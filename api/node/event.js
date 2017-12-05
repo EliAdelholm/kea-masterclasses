@@ -72,13 +72,37 @@ event.getPendingEvents = (fCallback) => {
 
 /******************** COUNT PENDING EVENTS *************/
 event.countPendingEvents = (fCallback) => {
-	global.db.collection('events').count({status: 'pending'}, (err, iCount) => {
+	global.db.collection('events').count({ status: "pending" }, (err, iCount) => {
 		if (err) {
 			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot GET Count Pending Events" }
 			return fCallback(true, jError)
 		}
 		var jOk = { "status": "OK", "message": "event.js -> GET Count Pending Events" }
 		return fCallback(false, jOk, iCount)
+	})
+}
+
+/******************** APPROVE EVENT *************/
+event.approveEvent = (iEventId, fCallback) => {
+	global.db.collection('events').updateOne({ "_id": ObjectId(iEventId) }, { $set: { "status": "active" } }, (err, jResult) => {
+		if (err) {
+			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot Approve Event" }
+			return fCallback(true, jError)
+		}
+		var jOk = { "status": "OK", "message": "event.js -> Approved Event" }
+		return fCallback(false, jOk)
+	})
+}
+
+/******************** DISSMISS EVENT *************/
+event.dissmissEvent = (iEventId, fCallback) => {
+	global.db.collection('events').updateOne({ "_id": ObjectId(iEventId) }, { $set: { "status": "dissmissed" } }, (err, jResult) => {
+		if (err) {
+			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot Dissmiss Event" }
+			return fCallback(true, jError)
+		}
+		var jOk = { "status": "OK", "message": "event.js -> Dissmissed Event" }
+		return fCallback(false, jOk)
 	})
 }
 

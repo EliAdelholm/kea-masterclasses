@@ -6,6 +6,7 @@ include 'db.php';
 $sEventId = $_GET['eventId'];
 $iUserId = $_SESSION['sUserId'];
 
+
 $query = $conn->prepare("INSERT INTO attendance (event_id, user_id) VALUES (:event_id, :user_id)"); 
 
 $query->bindParam( ':event_id' , $sEventId );
