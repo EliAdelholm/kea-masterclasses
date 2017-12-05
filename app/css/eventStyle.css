@@ -224,3 +224,13 @@ span {
 
 #pendingContainer p {
   margin: 0 10px 10px 10px; }
+
+.clippedDescription {
+  max-height: 60px;
+  overflow: hidden; }
+
+.pendingActions {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between; }
