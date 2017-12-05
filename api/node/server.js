@@ -117,8 +117,8 @@ app.post('/create-event', (req, res) => {
 app.post('/update-event', (req, res) => {
     var jEvent = {
         "id": req.query.id
-        // Add all fields to update
     }
+    
     event.updateEvent(jEvent, (err, jStatus, jEvent) => {
         if (err) {
             console.log(jStatus)
