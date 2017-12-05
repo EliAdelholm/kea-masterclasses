@@ -218,7 +218,7 @@ span {
 #pendingContainer {
   min-height: 300px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 50px;
   flex-wrap: wrap; }
 
