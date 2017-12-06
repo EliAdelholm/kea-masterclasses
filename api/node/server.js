@@ -116,16 +116,30 @@ app.post('/create-event', (req, res) => {
 // UPDATE EVENT
 app.post('/update-event', (req, res) => {
     var jEvent = {
-        "id": req.query.id
+        "_id": req.fields._id,
+        "title": req.fields.eventTitle,
+        "type": req.fields.eventType,
+        "location": {
+            "type": "Point",
+            "address": req.fields.eventAddress,
+            "coordinates": [req.fields.sLat, req.fields.sLng],
+            "room": req.fields.eventRoom
+        },
+        "date": req.fields.eventDate,
+        "time": req.fields.eventTime,
+        "speaker": req.fields.eventSpeaker,
+        "organizer": req.fields.eventResponsible,
+        "description": req.fields.eventDescription,
+        "requirements": req.fields.eventRequirements
     }
     
-    event.updateEvent(jEvent, (err, jStatus, jEvent) => {
+    event.updateEvent(jEvent, (err, jStatus) => {
         if (err) {
-            console.log(jStatus)
+            console.log(jStatus);
             res.send('<html><body>ERROR</body></html>')
             return
         }
-        console.log(jStatus, jEvent)
+        console.log(jStatus)
         res.send('<html><body>OK</body></html>')
         return
     })
@@ -256,6 +270,21 @@ app.get('/event/:id', (req, res) => {
         return
     })
 })
+
+// INCREMENT EVENT CLICKRATE
+app.get('/increment-clickrate/:id', (req,res) =>{
+    var sEventId = req.params.id;
+    event.incrementClickrate(sEventId, (err, jStatus) => {
+        if (err) {
+            console.log(jStatus);
+            res.send('<html><body>ERROR</body></html>')
+            return
+        }
+        console.log(jStatus)
+        res.send('<html><body>OK</body></html>')
+        return
+    })
+});
 
 ///////////// CREATE INDEX FOR TYPE OF EVENT //////////////
 

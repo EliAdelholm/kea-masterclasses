@@ -124,29 +124,13 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlyupCC9WLDzTBU_rwfqydgqnvUQX8F60&libraries=places&callback=initAutocomplete"
     async defer></script>
+
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+      <script src="js/dateAndTimePicker.js"></script>
       <script>
-          $( function() {
-            $( "#datepicker" ).datepicker({
-                firstDay: 1,
-                dateFormat: 'd-M-yy'
-            });
-          });
-
-
-
-         $('#timepicker').timepicker({
-            timeFormat: 'HH:mm',
-            interval: 60,
-            defaultTime: '15',
-            startTime: '3:00',
-            dynamic: true,
-            dropdown: true,
-            scrollbar: true
-        });
-
+        
 
         var frmValid = false;
 

@@ -45,7 +45,7 @@
 	background-color: $greenColor;
 }
 
-#errorMessage {
+.errorMessage {
 	color: $redColor;	
 }
 
@@ -67,6 +67,7 @@
 	font-weight: bold;
 }
 
-#frmEditEvent {
+#divEditEvent {
+	width: 100%;
 	@extend #containerHeader;
 }
