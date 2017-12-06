@@ -80,7 +80,7 @@ app.post('/create-event', (req, res) => {
     // Create object from form data
     var jEvent = {
         "title": req.fields.sTitle,
-        "type": req.fields.sType,
+        "type": req.fields.sortType,
         "location": {
             "type": "Point",
             "address": req.fields.sAddress,
