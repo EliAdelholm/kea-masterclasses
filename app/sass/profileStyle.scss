@@ -30,34 +30,6 @@
 	.form-group{
 		flex: 2 0 100%;
 	}
-
-	.greenBtn{
-		border:none !important;
-		background-color:$greenColor !important;
-		opacity: 0.55;
-		padding:15px 30px;
-		margin-left:0;
-		color:white;
-		
-		&:hover{
-			opacity:1;
-		}
-	}
-	
-	#btnDeleteProfile{
-		background-color:$redColor;
-		border:none;
-		padding:15px 30px;
-		margin-left:0;
-		color:white;
-		opacity:0.65;
-
-		&:hover{
-			opacity:1;
-			//transition:2s;
-		}
-	}
-
 }
 .column3{
 	flex-flow:column wrap;
@@ -164,3 +136,34 @@ label{
 	@extend #addMoreEmailsBtn;
 }
 
+
+.column5{ 
+	margin:0 20%;
+
+	.greenBtn{
+		border:none !important;
+		background-color:$greenColor !important;
+		opacity: 0.55;
+		padding:15px 30px;
+		margin-left:0;
+		color:white;
+		
+		&:hover{
+			opacity:1;
+		}
+	}
+
+	#btnDeleteProfile{
+		background-color:$redColor;
+		border:none;
+		padding:15px 30px;
+		margin-left:25px;
+		color:white;
+		opacity:0.65;
+
+		&:hover{
+			opacity:1;
+			//transition:2s;
+		}
+	}
+}

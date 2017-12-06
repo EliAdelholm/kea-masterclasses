@@ -22,24 +22,6 @@
   flex: 1 0 33.3%; }
   .column2 .form-group {
     flex: 2 0 100%; }
-  .column2 .greenBtn {
-    border: none !important;
-    background-color: #52B795 !important;
-    opacity: 0.55;
-    padding: 15px 30px;
-    margin-left: 0;
-    color: white; }
-    .column2 .greenBtn:hover {
-      opacity: 1; }
-  .column2 #btnDeleteProfile {
-    background-color: #e7607b;
-    border: none;
-    padding: 15px 30px;
-    margin-left: 0;
-    color: white;
-    opacity: 0.65; }
-    .column2 #btnDeleteProfile:hover {
-      opacity: 1; }
 
 .column3 {
   flex-flow: column wrap;
@@ -109,3 +91,24 @@ label {
 #addMoreEmailsBtn, #addMorePhoneBtn {
   margin-bottom: 30px;
   padding: 15px 30px; }
+
+.column5 {
+  margin: 0 20%; }
+  .column5 .greenBtn {
+    border: none !important;
+    background-color: #52B795 !important;
+    opacity: 0.55;
+    padding: 15px 30px;
+    margin-left: 0;
+    color: white; }
+    .column5 .greenBtn:hover {
+      opacity: 1; }
+  .column5 #btnDeleteProfile {
+    background-color: #e7607b;
+    border: none;
+    padding: 15px 30px;
+    margin-left: 25px;
+    color: white;
+    opacity: 0.65; }
+    .column5 #btnDeleteProfile:hover {
+      opacity: 1; }
