@@ -28,7 +28,8 @@
 .displayFlexStyle{
 	display: flex;
 	margin-bottom: 40px;
-	align-items: top;
+	// align-items: top;
+	flex-wrap: wrap;
 }
   .displayFlex {
 	display: flex;
