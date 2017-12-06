@@ -94,6 +94,34 @@ event.countPendingEvents = (fCallback) => {
 	})
 }
 
+/******************** COUNT ACTIVE EVENTS *************/
+event.countActiveEvents = (fCallback) => {
+	global.db.collection('events').count({ status: "active" }, (err, iCount) => {
+		if (err) {
+			var jError = { "status": "Error", "message": "Cannot GET Count Active Events" }
+			return fCallback(true, jError)
+		}
+		var jOk = { "status": "OK", "message": "GET Count Active Events" }
+		return fCallback(false, jOk, iCount)
+	})
+}
+
+/******************** GET EVENTS IN CURRENT SEMESTER *************/
+event.getSemesterEvents = (sSemester, fCallback) => {
+	// this is terrible D:
+	var aMonths = sSemester == "spring" ? [/Feb/, /Mar/, /Apr/, /May/, /Jun/, /Jul/] : [/Aug/, /Sep/, /Oct/, /Nov/, /Dec/, /Jan/];
+	global.db.collection('events').find({status: 'active', date: { $in: aMonths } }, {_id: 1}).toArray((err, ajEvents) => {
+		if (err) {
+			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
+			console.log(jError)
+			return fCallback(true, jError)
+		}
+		var jOk = { "status": "Displaying Events", "message": "event.js -> Displaying Events -> 006" }
+		console.log(jOk, ajEvents)
+		return fCallback(false, jOk, ajEvents)
+	})
+}
+
 /******************** APPROVE EVENT *************/
 event.approveEvent = (iEventId, fCallback) => {
 	global.db.collection('events').updateOne({ "_id": ObjectId(iEventId) }, { $set: { "status": "active" } }, (err, jResult) => {

@@ -24,15 +24,18 @@
   .totals-container .column1, .totals-container .column2 {
     flex: 0 1 50%; }
     .totals-container .column1 .totals-item, .totals-container .column2 .totals-item {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
       background-color: #f2eeee;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
       height: 25vh;
-      align-items: center;
       margin: 15px;
-      padding: 25px 25px;
+      padding: 15px 25px;
       text-align: center; }
 
 .stats-item {
+  background-color: #f2eeee;
   padding: 15px;
   margin-bottom: 20px; }
 
