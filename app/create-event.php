@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/dropDown.css">
 </head>
 </head>
 
@@ -35,14 +36,18 @@
         </article>
 
         <form id="frmHoldMasterclass" action="">
-            <div class="form-group displayFlex">
-                <label>Select Tag</label>
-                <select required name="sType" class="form-group">
-                  <option value="ui">ui</option>
-                  <option value="ux">ux</option>
-                  <option value="dev">dev</option>
-                </select>
+            <div class="displayFlexStyle">
+                <label>Select type of the event</label>
+                <span class="dropdown-el form-group extraMargin">
+                    <input type="radio" name="sortType" value="ui" checked="checked" id="ui">
+                    <label for="ui">ui</label>
+                    <input type="radio" name="sortType" value="ux" id="ux">
+                    <label for="ux">ux</label>
+                    <input type="radio" name="sortType" value="dev" id="dev">
+                    <label for="dev">dev</label>
+                </span>
             </div>
+
 
             <div class="form-group">
                 <label>Name of the event</label>
@@ -99,13 +104,11 @@
                 <input name="sFile" type="file" class="input-control" />
             </div>
 
-
             <div class="form-group">
                 <button type="button" class="redBtn" id="btnSubmitEvent">Submit</button>
             </div>
-            <p id="msgError"></p>
+            <p id="msg"></p>
         </form>
-
     </section>
 
     <?php
@@ -165,8 +168,17 @@
             validateForm();
 
             if ( !frmValid ) {
-                msgError.innerHTML = "Please fill out all required fields"
+                msg.innerHTML = '<div id="msgError" >\
+                                        <h3>Ooops!</h3>\
+                                        <p>In order to submit your event</p>\
+                                        <p>please fill out all required fields.</p>\
+                                    </div>';
             } else {
+                msg.innerHTML = '<div id="msgOK" >\
+                                        <h3>Your event has been submitted :)</h3>\
+                                        <p>The next step is the approval</p>\
+                                        <p>and than your event will be published.</p>\
+                                    </div>';
                 var frmData = new FormData(frmHoldMasterclass)
                 frmData.append("sAddress", sTextAddress);
                 frmData.append("sLat", sLatitude);
@@ -185,6 +197,17 @@
            
         })
         
+        //dropDown
+        $('.dropdown-el').click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).toggleClass('expanded');
+            $('#'+$(e.target).attr('for')).prop('checked',true);
+        });
+        $(document).click(function() {
+            $('.dropdown-el').removeClass('expanded');
+        });
+
     </script>
 
 </body>
