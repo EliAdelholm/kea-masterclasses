@@ -53,10 +53,10 @@
 					//echo $sEvent . "<br>";
 					$oEvent = json_decode($sEvent);
 					//echo $sEvent . "<br>";
-					$shit = $oEvent -> date . " " . $oEvent -> time;
-					//echo "Shit: " . gettype ($shit). "<br>";
+					$dateAndTime = $oEvent -> date . " " . $oEvent -> time;
+					//echo "dateAndTime: " . gettype ($dateAndTime). "<br>";
 					
-					$dt2 = DateTime::createFromFormat("d-M-Y H:i", $shit , new DateTimeZone('CET'));
+					$dt2 = DateTime::createFromFormat("d-M-Y H:i", $dateAndTime , new DateTimeZone('CET'));
 					//echo gettype ($dt2) . "<br>";
 					$eventTime = $dt2 -> getTimestamp();
 
@@ -70,14 +70,15 @@
 						// echo "Rating: " . $rating;
 						?> 
 							<div class="eventBox">
+								<a href="event.php?id=<?php echo $oEvent -> _id;?>">
 								<div class="pastEventImg">
 									<img src="<?php echo $oEvent -> image; ?>" class="eventImg greenBorder">
 								</div>
 								<div class="eventDetails pastEvent">
-									<p>Name:<?php echo $oEvent -> title; ?></p>
-									<p>Date:<?php echo $oEvent -> date; ?></p>
-									<p>Time:<?php echo $oEvent -> time; ?></p>
-									<p class="eventDescription"><?php echo $oEvent -> description; ?></p>
+										<h3 class="eventTitle"><?php echo $oEvent -> title; ?></h3>
+										<p>Date:<?php echo $oEvent -> date; ?></p>
+										<p>Time:<?php echo $oEvent -> time; ?></p>
+										<p class="eventDescription"><?php echo $oEvent -> description; ?></p>
 									<div class="ratingContainer">
 										<span>RATE:</span>
 										<form class="rating">
@@ -110,7 +111,7 @@
 									<img src="<?php echo $oEvent -> image; ?>" class="eventImg greenBorder">
 								</div>
 								<div class="eventDetails">
-									<p>Name: <?php echo $oEvent -> title; ?></p>
+									<h3 class="eventTitle"><?php echo $oEvent -> title; ?></h3>
 									<p>Date: <?php echo $oEvent -> date; ?></p>
 									<p>Time: <?php echo $oEvent -> time; ?></p>
 									<p class="eventDescription"><?php echo $oEvent -> description; ?></p>
