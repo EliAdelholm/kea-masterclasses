@@ -54,22 +54,22 @@
             <div class="column1">
                 <div class="totals-item">
                     <h3>TOTAL EVENTS</h3>
-                    <div class="stats-item-count"><span>30</span></div>
+                    <div class="stats-item-count"><span id="noTotalEvents">-</span></div>
                 </div>
                 <div class="totals-item">
                     <h3>TOTAL USERS</h3>
-                    <div class="stats-item-count"><span>100</span></div>
+                    <div class="stats-item-count"><span id="noTotalUsers">-</span></div>
                 </div>
             </div>
             
             <div class="column2">
                 <div class="totals-item">
-                    <h3>EVENT ATTENDANCE THIS MONTH</h3>
-                    <div class="stats-item-count"><span>30</span></div>
+                    <h3>EVENT ATTENDANCE THIS SEMESTER</h3>
+                    <div class="stats-item-count"><span id="noAttendeesSemester">-</span></div>
                 </div>
                 <div class="totals-item">
                     <h3>AVERAGE ATTENDANCE PER EVENT</h3>
-                    <div class="stats-item-count"><span>200</span></div>
+                    <div class="stats-item-count"><span id="noAvgAttendees">-</span></div>
                 </div>
             </div>    
         </div>
@@ -111,6 +111,32 @@
     <script src="js/attendanceChart.js"></script>
     <script src="js/clickChart.js"></script>
     <script src="js/ratingChart.js"></script>
+    <script>
+
+        // GET TOTAL EVENTS
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var sStats = this.responseText;
+                var iStats = JSON.parse(sStats)
+
+                if(iStats.status == "OK") {
+                    noTotalEvents.innerHTML = iStats.eventCount;
+                    noTotalUsers.innerHTML = iStats.userCount;
+                    noAttendeesSemester.innerHTML = iStats.semesterAttendance;
+                    noAvgAttendees.innerHTML = Math.round(iStats.avgEventAttendance);
+
+                }
+                
+                console.log(iStats);
+                
+                
+            }
+        }
+        ajax.open( "GET", '../api/php/get-stats.php', true );
+        ajax.send();
+    
+    </script>
     
 </body>
 </html>

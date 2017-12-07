@@ -41,19 +41,28 @@
 
 			<?php
 
+			// echo DateTime::createFromFormat("d-M-Y H:i",  "07-Nov-2017 15:00", new DateTimeZone('CET')) -> getTimestamp();
+
 			// ini_set('display_errors', 1);
 			// ini_set('display_startup_errors', 1);
 			// error_reporting(E_ALL);
-
+				
 				for($i = 0; $i < count($aEvents); $i++) {
 					$sEventId =  $aEvents[$i];
 					$sEvent = file_get_contents("http://localhost:3333/event/" . $sEventId);
+					//echo $sEvent . "<br>";
 					$oEvent = json_decode($sEvent);
-					// echo $sEvent;
-					$dt2 = DateTime::createFromFormat("j-M-Y H:i",  $oEvent -> date . " " . $oEvent -> time, new DateTimeZone('CET'));
-
+					//echo $sEvent . "<br>";
+					$shit = $oEvent -> date . " " . $oEvent -> time;
+					//echo "Shit: " . gettype ($shit). "<br>";
+					
+					$dt2 = DateTime::createFromFormat("d-M-Y H:i", $shit , new DateTimeZone('CET'));
+					//echo gettype ($dt2) . "<br>";
 					$eventTime = $dt2 -> getTimestamp();
+
+					//echo "eventTime " . $eventTime . "<br>";
 					$currentTime = time();
+					//echo "currentTime " . $currentTime . "<br>";
 
 					if($eventTime < $currentTime) {
 						$rating = $aRatings[$sEventId];
@@ -61,7 +70,9 @@
 						// echo "Rating: " . $rating;
 						?> 
 							<div class="eventBox">
-								<div class="eventImg greenBorder pastEventImg"></div>
+								<div class="pastEventImg">
+									<img src="<?php echo $oEvent -> image; ?>" class="eventImg greenBorder">
+								</div>
 								<div class="eventDetails pastEvent">
 									<p>Name:<?php echo $oEvent -> title; ?></p>
 									<p>Date:<?php echo $oEvent -> date; ?></p>
@@ -70,22 +81,22 @@
 									<div class="ratingContainer">
 										<span>RATE:</span>
 										<form class="rating">
-											<input id="<?php echo $oEvent -> _id;?>" name="eventId" type="text" value="<?php echo $oEvent -> _id;?>">
+											<input id="<?php echo $oEvent -> _id;?>" name="eventId" type="hidden" value="<?php echo $oEvent -> _id;?>">
 												
-											<input type="radio" id="star5" name="rating" value="5" class=" starRating"/>
-											<label class = "full <?php if ($rating >= 5) echo ' active'; ?>" for="star5"></label>
+											<input type="radio" id="star5<?php echo $oEvent -> _id;?>" name="rating" value="5" class="starRating"/>
+											<label class = "full <?php if ($rating >= 5) echo ' active'; ?>" for="star5<?php echo $oEvent -> _id;?>"></label>
 											
-											<input type="radio" id="star4" name="rating" value="4"  class=" starRating"/>
-											<label class = "full <?php if ($rating >= 4) echo ' active'; ?>" for="star4"></label>
+											<input type="radio" id="star4<?php echo $oEvent -> _id;?>" name="rating" value="4"  class=" starRating"/>
+											<label class = "full <?php if ($rating >= 4) echo ' active'; ?>" for="star4<?php echo $oEvent -> _id;?>"></label>
 
-											<input type="radio" id="star3" name="rating" value="3"  class=" starRating"/>
-											<label class = "full <?php if ($rating >= 3) echo ' active'; ?>" for="star3"></label>
+											<input type="radio" id="star3<?php echo $oEvent -> _id;?>" name="rating" value="3"  class=" starRating"/>
+											<label class = "full <?php if ($rating >= 3) echo ' active'; ?>" for="star3<?php echo $oEvent -> _id;?>"></label>
 											
-											<input type="radio" id="star2" name="rating" value="2"  class=" starRating"/>
-											<label class = "full <?php if ($rating >= 3) echo ' active'; ?>" for="star2"></label>
+											<input type="radio" id="star2<?php echo $oEvent -> _id;?>" name="rating" value="2"  class=" starRating"/>
+											<label class = "full <?php if ($rating >= 2) echo ' active'; ?>" for="star2<?php echo $oEvent -> _id;?>"></label>
 
-											<input type="radio" id="star1" name="rating" value="1"  class=" starRating"/>
-											<label class = "full <?php if ($rating >= 1) echo ' active'; ?>" for="star1"></label>
+											<input type="radio" id="star1<?php echo $oEvent -> _id;?>" name="rating" value="1"  class=" starRating"/>
+											<label class = "full <?php if ($rating >= 1) echo ' active'; ?>" for="star1<?php echo $oEvent -> _id;?>"></label>
 
 										</form>
 									</div>
@@ -95,7 +106,9 @@
 					} else {
 						?> 
 							<div class="eventBox">
-								<div class="eventImg greenBorder"></div>
+								<div class="greenBorder">
+									<img src="<?php echo $oEvent -> image; ?>" class="eventImg greenBorder">
+								</div>
 								<div class="eventDetails">
 									<p>Name: <?php echo $oEvent -> title; ?></p>
 									<p>Date: <?php echo $oEvent -> date; ?></p>
@@ -125,11 +138,12 @@
 <script>
 
 	document.addEventListener("click", function(evnt){
+		console.log("Clicked: " + evnt.target.parentNode);
 		var cls = evnt.target.className;
 		if(cls != undefined && cls != null && cls.indexOf("starRating") > -1) {
 			console.log(evnt.target);
 			var rating = evnt.target.value;
-			var eventId = document.getElementsByName("eventId")[0].value;
+			var eventId = evnt.target.parentElement.children[0].value;
  			console.log("eventId ", eventId);
 
 			var ajax = new XMLHttpRequest();

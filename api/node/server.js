@@ -45,7 +45,7 @@ app.post('/create-event', (req, res) => {
     // Check file extension if any
     var extName = path.extname(req.files.sFile.name)
 
-    if ( ['.png', '.jpg', '.jpeg'].includes(extName) ) {
+    if (['.png', '.jpg', '.jpeg'].includes(extName)) {
         console.log("Valid image was uploaded")
 
         // Handle image upload
@@ -66,7 +66,7 @@ app.post('/create-event', (req, res) => {
         }
 
         // Actually move the file to permanent storage
-        fs.move(tempPath, targetPath, function(err) {
+        fs.move(tempPath, targetPath, function (err) {
             if (err) throw err;
             console.log("Upload completed!");
         });
@@ -74,13 +74,13 @@ app.post('/create-event', (req, res) => {
     } else {
         console.log("No valid image")
         // Set the path for default image
-        imagePath = "assets/img/userimage-5a1d3bce0ad1d.png";
+        imagePath = "assets/img/default-event.jpg";
     }
 
     // Create object from form data
     var jEvent = {
         "title": req.fields.sTitle,
-        "type": req.fields.sType,
+        "type": req.fields.sortType,
         "location": {
             "type": "Point",
             "address": req.fields.sAddress,
@@ -97,9 +97,9 @@ app.post('/create-event', (req, res) => {
         "description": req.fields.sDescription,
         "requirements": req.fields.sRequirements
     }
-    
+
     console.log(jEvent)
-    
+
     event.createEvent(jEvent, (err, jStatus) => {
         if (err) {
             console.log(jStatus)
@@ -132,8 +132,13 @@ app.post('/update-event', (req, res) => {
         "description": req.fields.eventDescription,
         "requirements": req.fields.eventRequirements
     }
+<<<<<<< HEAD
     
     event.updateEvent(jEvent, (err, jStatus) => {
+=======
+
+    event.updateEvent(jEvent, (err, jStatus, jEvent) => {
+>>>>>>> d7145308c2a22ef7d85b4cf63064951d8f87870f
         if (err) {
             console.log(jStatus);
             res.send('<html><body>ERROR</body></html>')
@@ -234,6 +239,19 @@ app.get('/dissmissed-events', (req, res) => {
     })
 })
 
+// GET ALL EVENTS FROM CURRENT SEMESTER
+app.get('/semester-events/:semester', (req, res) => {
+    var sSemester = req.params.semester
+    event.getSemesterEvents( sSemester, (err, jStatus, ajEvents) => {
+        if (err) {
+            console.log(jStatus)
+            return res.send('<html><body>ERROR</body></html>')
+        }
+        console.log(jStatus)
+        return res.json(ajEvents)
+    })
+})
+
 // COUNT PENDING EVENTS
 app.get('/count-pending-events', (req, res) => {
     if (iPendingEventsCount == null) {
@@ -252,9 +270,22 @@ app.get('/count-pending-events', (req, res) => {
     }
 })
 
+// COUNT ACTIVE EVENTS
+app.get('/count-active-events', (req, res) => {
+    event.countActiveEvents((err, jStatus, iCount) => {
+        if (err) {
+            console.log(jStatus)
+            return res.json(jStatus)
+        } else {
+            console.log(jStatus, iCount)
+            return res.json(iCount)
+        }
+    })
+})
+
 //DISPLAY EVENT BY ID
 app.get('/event/:id', (req, res) => {
- //console.log("req ", req);
+    //console.log("req ", req);
     var iEventId = req.params.id
     //console.log("iEventId ", iEventId)
 
@@ -309,17 +340,17 @@ var indexByType = function (fCallback) {
 };
 
 // GO TO THIS ROUTE TO CREATE THE INDEX
-app.get('/index-events', (req,res) => {
-    
+app.get('/index-events', (req, res) => {
+
     indexByType((err) => {
         if (err) {
             console.log("Indexed collection 'events' by type")
             return
         }
-            console.log("Collection 'events' indexed by type")
-            return
+        console.log("Collection 'events' indexed by type")
+        return
     });
-  
+
 });
 
 /*****************************************************************/

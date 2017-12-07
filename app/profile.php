@@ -8,7 +8,7 @@
 	<title>PROFILE</title>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/profileStyle.css">
-	<link rel="stylesheet" type="text/css" href="css/hold-masterclass.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/hold-masterclass.css"> -->
 </head>
 <body>
 	<?php
@@ -16,13 +16,16 @@
 		include 'login.html';
 	?>
 
+	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">
 	<div id="profileContentBox" class="main-container">
 
 		<div class="column1 displayFlex margin">
 			<div id="profilePicture"></div>
+			<!--	Upload Image button	-->
 			<div class="box">
 					<input type="file" name="img" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multple />
-					<label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/>
+					<label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+						<path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/>
 						<span>Upload Picture</span>
 					</label>
 			</div>
@@ -30,55 +33,61 @@
 
 		</div>
 
-		<!--<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">-->
-		<div class="column2 displayFlex margin">
-		<h3>GENERAL INFORMATION</h3>
-			<div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name">
-            </div>
+			<div class="column2 displayFlex margin">
+			<h3>GENERAL INFORMATION</h3>
+				<div class="form-group">
+					<label>Name</label>
+					<input type="text" name="name">
+				</div>
 
-            <div class="form-group">
-                <label>E-mail</label>
-                <input type="text" name="email">
-            </div>
+				<div class="form-group">
+					<label>E-mail</label>
+					<input type="text" name="email">
+				</div>
 
-            <div class="form-group">
-                <label>Password</label>
-                <input class="input-control"/>
-            </div>
+				<div class="form-group">
+					<label>Password</label>
+					<input class="input-control"/>
+				</div>
 
-            <div class="form-group">
-				<li><label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label><input type="checkbox" name="notif"></li>		
+				<div class="form-group">
+					<li>
+						<label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
+						<input type="checkbox" name="notif">
+					</li>		
+				</div>
+
+				<div class="form-group">
+					<label>Description</label>
+					<textarea name="bio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
+				</div>
+
 			</div>
 
-			<div class="form-group">
-			<label>Description</label>
-			<textarea name="bio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
+
+			<div class="column3 displayFlex margin">
+				<h3>ADDITIONAL INFORMATION</h3>
+				<div id="addMoreEmailsDiv" class="form-group">
+					<label>Additional email</label>
+					<input class="input-control"/>
+					<button id="addMoreEmailsBtn" type="button">more emails</button>
+				</div>
+				<div id="addMorePhonesDiv" class="form-group">
+					<label>Main phone</label>
+					<input class="input-control"/>
+					<button id="addMorePhoneBtn" type="button">more phones</button>
+				</div>
 			</div>
-		</form>
-		<button id="btnSaveChanges" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
-		<a href="../api/php/delete_profile.php">
-			<button id="btnDeleteProfile">DELETE PROFILE</button>
-		</a>
+			
+			<div class="column5 displayFlex">
+				<button id="btnSaveChanges" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
+					<a href="../api/php/delete_profile.php">
+						<button id="btnDeleteProfile">DELETE PROFILE</button>
+					</a>
+			</div>
 		</div>
-
-		<div class="column3 displayFlex margin">
-			<h3>ADDITIONAL INFORMATION</h3>
-			<div id="addMoreEmailsDiv" class="form-group">
-            	<label>Additional email</label>
-            	<input class="input-control"/>
-            	<button id="addMoreEmailsBtn" type="button">more emails</button>
-            </div>
-            <div id="addMorePhonesDiv" class="form-group">
-                <label>Main phone</label>
-                <input class="input-control"/>
-                <button id="addMorePhoneBtn" type="button">more phones</button>
-            </div>
-		</div>
-
-	</div>
-
+	</form>	
+	
 	<!--<div id="profileContentBox">
 		<div id="profilePicture"></div>
 
@@ -166,6 +175,21 @@
 				addMorePhonesDiv.insertAdjacentHTML('beforeend', inputField);
 			}	
 		})
+
+		btnSaveChanges.addEventListener("click", function () {
+        var ajax = new XMLHttpRequest();
+        ajax.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var sResponse = this.responseText;
+                console.log(sResponse);
+                if (sResponse == "Logged out") {
+                    location.reload();
+                }
+            }
+        }
+        ajax.open("GET", "../api/php/update_profile.php", true);
+        ajax.send();
+    })
 
 
 		//JAVASCRIPT FOR UPLOAD IMAGE
