@@ -307,6 +307,18 @@ app.get('/count-active-events', (req, res) => {
     })
 })
 
+// GET POPULAR EVENTS
+app.get('/popular-events', (req, res) => {
+    stats.getPopularEvents((err, jStatus, ajEvents) => {
+        if (err) {
+            console.log(jStatus)
+            return res.send('<html><body>ERROR</body></html>')
+        }
+        console.log(jStatus)
+        return res.json(ajEvents)
+    })
+})
+
 ///////////// CREATE INDEX FOR TYPE OF EVENT //////////////
 
 // CURRENTLY WE ARE NOT ACTUALLY USING THIS BUT IT'S A REQUIREMENT FOR THE ASSIGNMENT

@@ -25,27 +25,8 @@
 <div id="stats-container" class="main-container" >
         <div class="stats-column stats-item">
             <h3>MOST POPULAR EVENTS</h3>
-            <ol>
-                <li>Event Name</li>
-                <hr>
-                <li>Event Name</li>
-                <hr>
-                <li>Event Name</li>
-                <hr>
-                <li>Event Name</li>
-                <hr>
-                <li>Event Name</li>
-                <hr>
-                <li>Event Name</li>
-                <hr>
-                <li>Event Name</li>
-                <hr>
-                <li>Event Name</li>
-                <hr>
-                <li>Event Name</li>
-                <hr>
-                <li>Event Name</li>
-                <hr>
+            <ol id="listPopularEvents">
+                Loading ...
             </ol>
         </div>
 
@@ -125,9 +106,18 @@
                     noTotalUsers.innerHTML = jStats.userCount;
                     noAttendeesSemester.innerHTML = jStats.semesterAttendance;
                     noAvgAttendees.innerHTML = Math.round(jStats.avgEventAttendance);
+
+                    var sListPopularEvents = '';
+                    for (var i = 0; i < jStats.popularEvents.length; i++) {
+                        var event = jStats.popularEvents[i];
+
+                        sListPopularEvents += '<a href="event.php?id='+event._id+'"><li>'+ event.title +'</li></a>'
+                    }
+
+                    listPopularEvents.innerHTML = sListPopularEvents;
                 }
                 
-                console.log(jStats);
+                console.log(jStats, sListPopularEvents);
 
                 // Include charts js with PHP to access data
                 // Only clickChart is actually working with data from db

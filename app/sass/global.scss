@@ -162,7 +162,7 @@ button{
 }
 
 a{
-	font-weight: bold;
+	// font-weight: bold;
 	text-decoration: none;
 }
 /* unvisited link */
@@ -175,15 +175,15 @@ a:visited {
     color: $blackColor;
 }
 
-/* mouse over link */
-a:hover {
-    color: $redColor;
-}
+// /* mouse over link */
+// a:hover {
+//     color: $redColor;
+// }
 
-/* selected link */
-a:active {
-    color: $redColor;
-}
+// /* selected link */
+// a:active {
+//     color: $redColor;
+// }
 
 .extraMargin{
 	margin-left: 50px;

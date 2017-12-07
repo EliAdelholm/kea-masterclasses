@@ -79,6 +79,18 @@ stats.countActiveEvents = (fCallback) => {
 	})
 }
 
+/******************** GET TOP 10 EVENTS BY CLICKRATE *************/
+stats.getPopularEvents = (fCallback) => {
+	global.db.collection('events').find({status: 'active'}, {title: 1}).sort({clickrate: -1}).limit(10).toArray((err, ajEvents) => {
+		if (err) {
+			var jError = { "status": "ERROR", "message": "STATS -> Cannot GET Popular Events" }
+			return fCallback(true, jError, ajEvents)
+		}
+		var jOk = { "status": "OK", "message": "STATS -> GET Popular Events" }
+		return fCallback(false, jOk, ajEvents)
+	})
+}
+
 /**************************************************/
 
 module.exports = stats
