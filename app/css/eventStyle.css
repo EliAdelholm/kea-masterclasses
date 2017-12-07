@@ -32,7 +32,7 @@ span {
 #topSectionBtn {
   background-color: #e7607b; }
 
-#eventFilterSection, #myEventsStyle {
+#eventFilterSection {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -167,6 +167,8 @@ span {
   width: 350px; }
   .eventBox:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+  .eventBox a:hover {
+    color: #282826; }
 
 .pastEventImg {
   opacity: 0.5; }
@@ -244,3 +246,7 @@ span {
   bottom: 0;
   display: flex;
   justify-content: space-between; }
+
+@media (max-width: 700px) {
+  #eventBoxes {
+    justify-content: center; } }
