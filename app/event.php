@@ -73,7 +73,7 @@
 				<p> '+jEvent.requirements+' </p>\
 				<h2> DESCRIPTION </h2>\
 				<p> '+jEvent.description+' <p>\
-				<h3>Location: </h3>\
+				<h2>Location: </h2>\
 				<p>Address: '+jEvent.location.address+' | Room '+jEvent.location.room+' </p>\
 				<p> Amount of registrations: '+jEvent.attendance+' </p>';
 				// GENERATE CONTENT BASED ON THE USER BEING LOGGED IN OR NOT
@@ -113,6 +113,18 @@
 							echo 'eventContainer.insertAdjacentHTML("beforeend" , btnEditHTML);';
 						}
 						?>
+						if (jEvent.type == "ux" ){
+							tagStyle.style.background = "#e7607b";
+						}
+						else if (jEvent.type == "dev") {
+							tagStyle.style.background =	"#F9E131";
+						}
+
+						else {
+							tagStyle.style.background = "#52B795";
+						}
+
+						console.log(jEvent.type);
 						// Increment the clickrate
 						var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -188,9 +200,9 @@ document.addEventListener("click", function(e){
 		<input type="text" name="eventRequirements" value="'+jEvent.requirements+'"> \
 		<h2> DESCRIPTION </h2>\
 		<input type="text" name="eventDescription" value="'+jEvent.description+'"><p>\
-		<h3>Address </h3>\
+		<h2>Address </h2>\
 		<div><input required name="eventAddress" class="input-control" id="autocomplete" value ="'+jEvent.location.address+'" onFocus="geolocate()" type="text" /></div>\
-		<h3>Room </h3>\
+		<h2>Room </h2>\
 		<div><input type="text" name="eventRoom" value="'+jEvent.location.room+'"></div>\
 		</form>\
 		<p> Amount of registrations: '+jEvent.attendance+' </p>\

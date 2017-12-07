@@ -132,13 +132,8 @@ app.post('/update-event', (req, res) => {
         "description": req.fields.eventDescription,
         "requirements": req.fields.eventRequirements
     }
-<<<<<<< HEAD
     
     event.updateEvent(jEvent, (err, jStatus) => {
-=======
-
-    event.updateEvent(jEvent, (err, jStatus, jEvent) => {
->>>>>>> d7145308c2a22ef7d85b4cf63064951d8f87870f
         if (err) {
             console.log(jStatus);
             res.send('<html><body>ERROR</body></html>')
