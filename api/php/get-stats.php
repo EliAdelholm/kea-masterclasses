@@ -30,6 +30,11 @@
         array_push($aSemesterEvents, $ajSemesterEvents[$i]->_id);
     }
 
+    // GET AVERAGE CLICK RATES BY EVENT TYPE
+    $sjAvgClickrates = file_get_contents("http://localhost:3333/average-clickrates");
+    $jAvgClickrates = json_decode($sjAvgClickrates);
+    $jStats->avgClickrates = $jAvgClickrates;
+
     try {
     
         ///////// GET NUMBER OF USERS /////////

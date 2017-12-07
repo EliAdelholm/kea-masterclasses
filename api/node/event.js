@@ -94,31 +94,6 @@ event.getDissmissedEvents = (fCallback) => {
 	})
 }
 
-/******************** COUNT PENDING EVENTS *************/
-event.countPendingEvents = (fCallback) => {
-	global.db.collection('events').count({ status: "pending" }, (err, iCount) => {
-		if (err) {
-			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot GET Count Pending Events" }
-			return fCallback(true, jError, iCount)
-		}
-		var jOk = { "status": "OK", "message": "event.js -> GET Count Pending Events" }
-		return fCallback(false, jOk, iCount)
-	})
-}
-
-/******************** COUNT ACTIVE EVENTS *************/
-event.countActiveEvents = (fCallback) => {
-	global.db.collection('events').count({ status: "active" }, (err, iCount) => {
-		if (err) {
-			console.log(err)
-			var jError = { "status": "Error", "message": "Cannot GET Count Active Events" }
-			return fCallback(true, jError, iCount)
-		}
-		var jOk = { "status": "OK", "message": "GET Count Active Events" }
-		return fCallback(false, jOk, iCount)
-	})
-}
-
 /******************** GET EVENTS IN CURRENT SEMESTER *************/
 event.getSemesterEvents = (sSemester, fCallback) => {
 	// this is terrible D:
@@ -170,21 +145,6 @@ event.displayEventById = (iEventId, fCallback) => {
 		var jOk = { "status": "ok", "message": "OK -> event.js -> Displaying Requested Event -> 008" }
 		return fCallback(false, jOk, ajEvents[0])
 	})
-}
-
-/***************** INCREASE CLICKRATE BY 1  **********************/
-
-event.incrementClickrate = (sEventId, fCallback) => {
-	global.db.collection('events').updateOne({'_id': ObjectId(sEventId)},
-	{$inc: {"clickrate" : 1}}, 
-	(err)=>{
-		if(err){
-			jError = {"status": "error", "message": "ERROR, could not increment clickrate -> event.js"};
-			return fCallback(true, jError);
-		}
-		var jOk = {"status": "ok", "message": "event.js -> clickrate incremented" }
-	    return fCallback(false, jOk);
-	});
 }
 
 /**************************************************/

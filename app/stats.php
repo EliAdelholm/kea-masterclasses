@@ -106,31 +106,36 @@
         }
     ?>
 
-    <!-- INCLUDE CHART.JS AND CHART SCRIPTS -->
+    <!-- INCLUDE CHART.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
-    <script src="js/attendanceChart.js"></script>
-    <script src="js/clickChart.js"></script>
-    <script src="js/ratingChart.js"></script>
-    <script>
 
-        // GET TOTAL EVENTS
+    <script>
+        var jClickrates;
+
+        // GET STATS
         var ajax = new XMLHttpRequest();
         ajax.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                var sStats = this.responseText;
-                var iStats = JSON.parse(sStats)
+                var sjStats = this.responseText;
+                var jStats = JSON.parse(sjStats)
+                jClickrates = jStats.avgClickrates;
 
-                if(iStats.status == "OK") {
-                    noTotalEvents.innerHTML = iStats.eventCount;
-                    noTotalUsers.innerHTML = iStats.userCount;
-                    noAttendeesSemester.innerHTML = iStats.semesterAttendance;
-                    noAvgAttendees.innerHTML = Math.round(iStats.avgEventAttendance);
-
+                if(jStats.status == "OK") {
+                    noTotalEvents.innerHTML = jStats.eventCount;
+                    noTotalUsers.innerHTML = jStats.userCount;
+                    noAttendeesSemester.innerHTML = jStats.semesterAttendance;
+                    noAvgAttendees.innerHTML = Math.round(jStats.avgEventAttendance);
                 }
                 
-                console.log(iStats);
-                
-                
+                console.log(jStats);
+
+                // Include charts js with PHP to access data
+                // Only clickChart is actually working with data from db
+                <?php
+                    include 'js/clickChart.js';
+                    include 'js/attendanceChart.js';
+                    include 'js/ratingChart.js';
+                ?>
             }
         }
         ajax.open( "GET", '../api/php/get-stats.php', true );

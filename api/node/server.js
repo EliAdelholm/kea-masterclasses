@@ -7,8 +7,9 @@ var os = require('os')
 var cors = require('cors')
 app.use(formidable())
 
-// GET EVENT CONTROLLER
+// GET CONTROLLERS
 var event = require(__dirname + '/event.js')
+var stats = require(__dirname + '/stats.js')
 
 // ALLOW CROSS ORIGIN RESSOURCE SHARING
 app.use(cors())
@@ -232,10 +233,53 @@ app.get('/semester-events/:semester', (req, res) => {
     })
 })
 
+//DISPLAY EVENT BY ID
+app.get('/event/:id', (req, res) => {
+    var iEventId = req.params.id
+    event.displayEventById(iEventId, (err, jStatus, jEvent) => {
+        if (err) {
+            console.log(jStatus)
+            return res.send('<html><body>ERROR</body></html>')
+        }
+        console.log(jStatus, jEvent)
+        var jEventNiceView = JSON.stringify(jEvent, null, 4)
+        return res.send(jEventNiceView)
+    })
+})
+
+
+
+///////// ROUTING FOR STATS OPERATIONS //////////
+
+// INCREMENT EVENT CLICKRATE
+app.get('/increment-clickrate/:id', (req,res) =>{
+    var sEventId = req.params.id;
+    stats.incrementClickrate(sEventId, (err, jStatus) => {
+        if (err) {
+            console.log(jStatus);
+            return res.send('<html><body>ERROR</body></html>')
+        }
+        console.log(jStatus)
+        return res.send('<html><body>OK</body></html>')
+    })
+});
+
+// GET AVERAGE CLICKRATES PER EVENT TYPE
+app.get('/average-clickrates', (req, res) => {
+    stats.getClickratesByType((err, jAvgClickrates) => {
+        if (err) {
+            console.log("Indexed collection 'events' by type")
+            return res.json({"status": "ERROR"})
+        }
+        return res.json(jAvgClickrates)
+    });
+
+});
+
 // COUNT PENDING EVENTS
 app.get('/count-pending-events', (req, res) => {
     if (iPendingEventsCount == 0) {
-        event.countPendingEvents((err, jStatus, iCount) => {
+        stats.countPendingEvents((err, jStatus, iCount) => {
             if (err) {
                 console.log(jStatus)
                 return res.send('<html><body>ERROR</body></html>')
@@ -252,7 +296,7 @@ app.get('/count-pending-events', (req, res) => {
 
 // COUNT ACTIVE EVENTS
 app.get('/count-active-events', (req, res) => {
-    event.countActiveEvents((err, jStatus, iCount) => {
+    stats.countActiveEvents((err, jStatus, iCount) => {
         if (err) {
             console.log(jStatus)
             return res.json(jStatus)
@@ -263,54 +307,21 @@ app.get('/count-active-events', (req, res) => {
     })
 })
 
-//DISPLAY EVENT BY ID
-app.get('/event/:id', (req, res) => {
-    //console.log("req ", req);
-    var iEventId = req.params.id
-    //console.log("iEventId ", iEventId)
-
-    event.displayEventById(iEventId, (err, jStatus, jEvent) => {
-        if (err) {
-            console.log(jStatus)
-            return res.send('<html><body>ERROR</body></html>')
-        }
-        console.log(jStatus, jEvent)
-        var jEventNiceView = JSON.stringify(jEvent, null, 4)
-        return res.send(jEventNiceView)
-    })
-})
-
-// INCREMENT EVENT CLICKRATE
-app.get('/increment-clickrate/:id', (req,res) =>{
-    var sEventId = req.params.id;
-    event.incrementClickrate(sEventId, (err, jStatus) => {
-        if (err) {
-            console.log(jStatus);
-            return res.send('<html><body>ERROR</body></html>')
-        }
-        console.log(jStatus)
-        return res.send('<html><body>OK</body></html>')
-    })
-});
-
 ///////////// CREATE INDEX FOR TYPE OF EVENT //////////////
 
 // CURRENTLY WE ARE NOT ACTUALLY USING THIS BUT IT'S A REQUIREMENT FOR THE ASSIGNMENT
 
 // iF WE WANT TO QUERY FOR ALL THE EVENTS OF A CERTAIN TYPE IN THE FUTURE IT WILL BE USEFUL
 
-var indexByType = function (fCallback) {
-    global.db.collection('events').createIndex(
-        // type 1 is an ascending index, type -1 is a descending index
-        { "type": 1 },
-        null,
-        (err, jResult) => {
+indexByType = (fCallback) => {
+    // type 1 is an ascending index, type -1 is a descending index
+    global.db.collection('events').createIndex( { status: 1 }, null, (err, jResult) => {
             if (err) {
                 console.log('err ' + err)
-                return fCallback(false);
+                return fCallback(true);
             }
             console.log(jResult);
-            return fCallback(true);
+            return fCallback(false);
         }
     );
 };
