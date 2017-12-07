@@ -16,18 +16,24 @@ event.createEvent = (jEvent, fcallback) => {
 }
 
 /******************** UPDATE EVENT ****************/
-event.updateEvent = (jEvent, fcallback) => {
-	global.db.collection('events').updateOne({id: jEvent.id}, { jEvent }, (err, jResult) => {
-		if (err) {
-			var jError = { "status": "error", "message": "ERROR -> event.js -> 003" }
-			console.log(jError)
-			return fcallback(true, jError)
+event.updateEvent = (jEvent, fCallback) => {
+	global.db.collection('events').updateOne({'_id': ObjectId(jEvent._id)},
+		{'$set' : {"title" : jEvent.title , "type": jEvent.type, 
+		"location.room" : jEvent.location.room,
+		"location.address" : jEvent.location.address,
+		"location.coordinates" : jEvent.location.coordinates,
+		"date" : jEvent.date,
+	"time": jEvent.time, "speaker" : jEvent.speaker, "organizer" : jEvent.organizer, "description" : jEvent.description, "requirements" : jEvent.requirements}},
+	(err)=>{
+		if(err){
+			jError = {"status": "error", "message": "ERROR, could not update event -> event.js"};
+			return fCallback(true, jError);
 		}
-		var jOk = { "status": "ok", "message": "event.js -> saved -> 002" }
-		console.log(jOk)
-		return fcallback(false, jOk, jResult)
-	})
+		var jOk = {"status": "ok", "message": "event.js -> event updated" }
+	    return fCallback(false, jOk);
+	});
 }
+
 
 /******************** DELETE EVENT ****************/
 event.deleteEvent = (iEventId, fCallback) => {
@@ -157,6 +163,21 @@ event.displayEventById = (iEventId, fCallback) => {
 		var jOk = { "status": "ok", "message": "OK -> event.js -> Displaying Requested Event -> 008" }
 		return fCallback(false, jOk, ajEvents[0])
 	})
+}
+
+/***************** INCREASE CLICKRATE BY 1  **********************/
+
+event.incrementClickrate = (sEventId, fCallback) => {
+	global.db.collection('events').updateOne({'_id': ObjectId(sEventId)},
+	{$inc: {"clickrate" : 1}}, 
+	(err)=>{
+		if(err){
+			jError = {"status": "error", "message": "ERROR, could not increment clickrate -> event.js"};
+			return fCallback(true, jError);
+		}
+		var jOk = {"status": "ok", "message": "event.js -> clickrate incremented" }
+	    return fCallback(false, jOk);
+	});
 }
 
 /**************************************************/

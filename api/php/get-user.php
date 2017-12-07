@@ -29,10 +29,10 @@ $dbname = "kea_masterclasses";
                 $aUser = $query->fetch();
 
                 // Turn the array with 1 user into a string that looks like JSON
-                $saUser = json_encode($aUser);
+                $sjUser = json_encode($aUser);
 
                 // Echo it back to the client
-                echo $saUser;
+                echo $sjUser;
     }
 
     catch(PDOException $e) {

@@ -38,14 +38,14 @@
 }
 
 #tagStyle {
-	color: $whiteColor;
+	color: $blackColor;
 	text-transform: uppercase;
 	padding: 10px 20px;
 	border-radius: 2px;
 	background-color: $greenColor;
 }
 
-#errorMessage {
+.errorMessage {
 	color: $redColor;	
 }
 
@@ -67,6 +67,7 @@
 	font-weight: bold;
 }
 
-#frmEditEvent {
+#divEditEvent {
+	width: 100%;
 	@extend #containerHeader;
 }

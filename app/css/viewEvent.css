@@ -17,7 +17,7 @@
   align-items: center;
   margin-bottom: 150px; }
 
-#containerHeader, #frmEditEvent {
+#containerHeader, #divEditEvent {
   width: 70%;
   display: flex;
   justify-content: space-around;
@@ -34,13 +34,13 @@
     margin-bottom: 20px; }
 
 #tagStyle {
-  color: #fdfdfc;
+  color: #282826;
   text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 2px;
   background-color: #52B795; }
 
-#errorMessage {
+.errorMessage {
   color: #e7607b; }
 
 #btnRegister {
@@ -55,3 +55,6 @@
 
 .bold {
   font-weight: bold; }
+
+#divEditEvent {
+  width: 100%; }
