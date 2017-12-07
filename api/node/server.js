@@ -4,17 +4,14 @@ var formidable = require('express-formidable')
 var path = require('path')
 var fs = require('fs-extra')
 var os = require('os')
+var cors = require('cors')
 app.use(formidable())
 
 // GET EVENT CONTROLLER
 var event = require(__dirname + '/event.js')
 
 // ALLOW CROSS ORIGIN RESSOURCE SHARING
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+app.use(cors())
 
 // CONNECT TO DATABASE
 var mongo = require('mongodb').MongoClient
@@ -32,7 +29,7 @@ mongo.connect(sDatabasePath, (err, db) => {
 })
 
 // DECLARE PENDING EVENT COUNT
-var iPendingEventsCount = null;
+var iPendingEventsCount = 0;
 
 
 
@@ -103,13 +100,11 @@ app.post('/create-event', (req, res) => {
     event.createEvent(jEvent, (err, jStatus) => {
         if (err) {
             console.log(jStatus)
-            res.send('{"status": "error"}')
-            return
+            return res.send('{"status": "error"}')
         }
         console.log(jStatus)
         iPendingEventsCount++
-        res.send('{"status": "ok"}')
-        return
+        return res.send('{"status": "ok"}')
     })
 })
 
@@ -136,12 +131,10 @@ app.post('/update-event', (req, res) => {
     event.updateEvent(jEvent, (err, jStatus) => {
         if (err) {
             console.log(jStatus);
-            res.send('<html><body>ERROR</body></html>')
-            return
+            return res.send('<html><body>ERROR</body></html>')
         }
         console.log(jStatus)
-        res.send('<html><body>OK</body></html>')
-        return
+        return res.send('<html><body>OK</body></html>')
     })
 })
 
@@ -152,13 +145,11 @@ app.get('/approve-event/:id', (req, res) => {
     event.approveEvent(iEventId, (err, jStatus) => {
         if (err) {
             console.log(jStatus)
-            res.json(jStatus)
-            return
+            return res.json(jStatus)
         }
         console.log(jStatus)
         iPendingEventsCount--
-        res.json(jStatus)
-        return
+        return res.json(jStatus)
     })
 })
 
@@ -169,13 +160,11 @@ app.get('/dissmiss-event/:id', (req, res) => {
     event.dissmissEvent(iEventId, (err, jStatus) => {
         if (err) {
             console.log(jStatus)
-            res.json(jStatus)
-            return
+            return res.json(jStatus)
         }
         console.log(jStatus)
         iPendingEventsCount--
-        res.json(jStatus)
-        return
+        return res.json(jStatus)
     })
 })
 
@@ -183,30 +172,26 @@ app.get('/dissmiss-event/:id', (req, res) => {
 // DELETE EVENT
 app.get('/delete-event', (req, res) => {
     var iEventId = req.query.id
-    event.deleteEvent(iEventId, (err) => {
+    event.deleteEvent(iEventId, (err, jStatus) => {
         if (err) {
             console.log(iEventId)
-            res.send('<html><body>ERROR</body></html>')
-            return
+            return res.send('<html><body>ERROR</body></html>')
         }
         console.log('DELETED EVENT WITH ID', iEventId)
-        res.send('<html><body>OK</body></html>')
-        return
+        return res.send('<html><body>OK</body></html>')
     })
 })
 
 // GET ALL ACTIVE EVENTS
-app.get('/events', (req, res) => {
+app.get('/events', (req, res, next) => {
     event.getActiveEvents((err, jStatus, ajEvents) => {
         if (err) {
             console.log(jStatus)
-            res.send('<html><body>ERROR</body></html>')
-            return
+            return res.send('<html><body>ERROR</body></html>')
         }
         console.log(jStatus)
         var ajEventsNiceView = JSON.stringify(ajEvents, null, 4)
-        res.send(ajEventsNiceView)
-        return
+        return res.send(ajEventsNiceView)
     })
 })
 
@@ -249,11 +234,11 @@ app.get('/semester-events/:semester', (req, res) => {
 
 // COUNT PENDING EVENTS
 app.get('/count-pending-events', (req, res) => {
-    if (iPendingEventsCount == null) {
+    if (iPendingEventsCount == 0) {
         event.countPendingEvents((err, jStatus, iCount) => {
             if (err) {
                 console.log(jStatus)
-                return res.send("error")
+                return res.send('<html><body>ERROR</body></html>')
             } else {
                 console.log(jStatus, iCount)
                 iPendingEventsCount = iCount;
@@ -287,13 +272,11 @@ app.get('/event/:id', (req, res) => {
     event.displayEventById(iEventId, (err, jStatus, jEvent) => {
         if (err) {
             console.log(jStatus)
-            res.send('<html><body>ERROR</body></html>')
-            return
+            return res.send('<html><body>ERROR</body></html>')
         }
         console.log(jStatus, jEvent)
         var jEventNiceView = JSON.stringify(jEvent, null, 4)
-        res.send(jEventNiceView)
-        return
+        return res.send(jEventNiceView)
     })
 })
 
@@ -303,12 +286,10 @@ app.get('/increment-clickrate/:id', (req,res) =>{
     event.incrementClickrate(sEventId, (err, jStatus) => {
         if (err) {
             console.log(jStatus);
-            res.send('<html><body>ERROR</body></html>')
-            return
+            return res.send('<html><body>ERROR</body></html>')
         }
         console.log(jStatus)
-        res.send('<html><body>OK</body></html>')
-        return
+        return res.send('<html><body>OK</body></html>')
     })
 });
 
@@ -340,10 +321,10 @@ app.get('/index-events', (req, res) => {
     indexByType((err) => {
         if (err) {
             console.log("Indexed collection 'events' by type")
-            return
+            return res.json({"status": "ERROR"})
         }
         console.log("Collection 'events' indexed by type")
-        return
+        return res.json({"status": "OK"})
     });
 
 });
