@@ -39,6 +39,12 @@ span {
   align-items: center;
   flex-wrap: wrap; }
 
+.eventDesc {
+  display: flex;
+  justify-content: space-around; }
+  .eventDesc a:hover {
+    color: #282826; }
+
 #filerButtons {
   display: flex;
   width: 86vw;
@@ -137,7 +143,7 @@ span {
     color: #e7607b;
     text-transform: uppercase; }
   .eventDate .day {
-    font-weight: 400; }
+    font-weight: 600; }
 
 .eventDetails {
   display: inline-block;
@@ -161,6 +167,8 @@ span {
   width: 350px; }
   .eventBox:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+  .eventBox a:hover {
+    color: #282826; }
 
 .pastEventImg {
   opacity: 0.5; }

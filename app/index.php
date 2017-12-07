@@ -135,15 +135,17 @@
 				var oEvent = '<div class="eventBox" id="'+id+'">\
 								<a href="event.php?id='+id+'">\
 									<div style="background-image: url('+img+')" class="eventImg '+ borderColor +'"></div>\
-									<div class="eventDate">\
-										<h3 class="month">'+ sMonth +'</h3>\
-										<p class="day">'+ sDay +'</p>\
-									</div>\
-									<div class="eventDetails">\
-										<h3 class="eventTitle">'+ sTitle +'</h3>\
-										<p>'+ sAddress +'</p>\
-										<p>Held by '+ sSpeaker +'</p>\
-										<p>'+ sTime +'</p>\
+									<div class="eventDesc">\
+										<div class="eventDate">\
+											<h3 class="month">'+ sMonth +'</h3>\
+											<p class="day">'+ sDay +'</p>\
+										</div>\
+										<div class="eventDetails">\
+											<h3 class="eventTitle">'+ sTitle +'</h3>\
+											<p>'+ sAddress +'</p>\
+											<p>Held by '+ sSpeaker +'</p>\
+											<p>'+ sTime +'</p>\
+										</div>\
 									</div>\
 								</a>\
 							</div>';
