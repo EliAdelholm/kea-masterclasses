@@ -54,12 +54,22 @@ event.getActiveEvents = (fCallback) => {
 	// get the data from the collection events
 	global.db.collection('events').find({status: 'active'}).toArray((err, ajEvents) => {
 		if (err) {
-			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
+			var jError = { "status": "ERROR", "message": "ERROR -> event.js -> 007" }
 			console.log(jError)
 			return fCallback(true, jError)
 		}
+		
+		// We know we fucked up the date format in mongo and this is just a quick fix
+		ajEvents.sort(function(a,b) { 
+			return new Date(b.date) - new Date(a.date) 
+		});
+
+		
+
 		var jOk = { "status": "Displaying Events", "message": "event.js -> Displaying Events -> 006" }
-		console.log(jOk, ajEvents)
+		
+		
+		// console.log(jOk, ajEvents)
 		return fCallback(false, jOk, ajEvents)
 	})
 }
