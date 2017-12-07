@@ -32,7 +32,7 @@ span {
 #topSectionBtn {
   background-color: #e7607b; }
 
-#eventFilterSection, #myEventsStyle {
+#eventFilterSection {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -246,3 +246,7 @@ span {
   bottom: 0;
   display: flex;
   justify-content: space-between; }
+
+@media (max-width: 700px) {
+  #eventBoxes {
+    justify-content: center; } }

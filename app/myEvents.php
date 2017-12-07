@@ -115,7 +115,7 @@
 									<h3 class="eventTitle"><?php echo $oEvent -> title; ?></h3>
 									<p>Date: <?php echo $oEvent -> date; ?></p>
 									<p>Time: <?php echo $oEvent -> time; ?></p>
-									<p class="eventDescription"><?php echo $oEvent -> description; ?></p>
+									<p class="eventDescription clippedDescription"><?php echo $oEvent -> description; ?></p>
 								</div>	
 							</div>	
 						<?php
