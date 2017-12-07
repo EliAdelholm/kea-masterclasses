@@ -36,7 +36,8 @@
 		include 'login.html';
 	?>
 
-	<div id="myEventsStyle">
+	<div id="myEvents" class="main-container">
+		<h2 class="sectionHeader">Registered Attendance</h2>
 		<div id="eventBoxes">
 
 			<?php
