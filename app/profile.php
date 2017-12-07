@@ -11,13 +11,14 @@
 	<!-- <link rel="stylesheet" type="text/css" href="css/hold-masterclass.css"> -->
 </head>
 <body>
+
 	<?php
 		include 'nav.php';
 		include 'login.html';
 	?>
 
 	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">
-	<div id="profileContentBox" class="main-container">
+	<div id="instertUserDetailsHere" class="main-container">
 
 		<div class="column1 displayFlex margin">
 			<div id="profilePicture"></div>
@@ -37,29 +38,29 @@
 			<h3>GENERAL INFORMATION</h3>
 				<div class="form-group">
 					<label>Name</label>
-					<input type="text" name="name">
+					<input id="txtUserName" type="text" name="txtUserName">
 				</div>
 
 				<div class="form-group">
 					<label>E-mail</label>
-					<input type="text" name="email">
+					<input id="txtUserEmail" type="text" name="txtUserEmail">
 				</div>
 
 				<div class="form-group">
 					<label>Password</label>
-					<input class="input-control"/>
+					<input id="txtUserPassword" class="input-control" name="txtUserPassword"/>
 				</div>
 
 				<div class="form-group">
 					<li>
 						<label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
-						<input type="checkbox" name="notif">
+						<input id="notification" value="0" type="checkbox" name="checkNotification">
 					</li>		
 				</div>
 
 				<div class="form-group">
 					<label>Description</label>
-					<textarea name="bio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
+					<textarea id="txtUserDescription" name="txtBio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
 				</div>
 
 			</div>
@@ -69,13 +70,19 @@
 				<h3>ADDITIONAL INFORMATION</h3>
 				<div id="addMoreEmailsDiv" class="form-group">
 					<label>Additional email</label>
-					<input class="input-control"/>
+					<input id="txtUserEmail2" class="input-control"/>
 					<button id="addMoreEmailsBtn" type="button">more emails</button>
 				</div>
 				<div id="addMorePhonesDiv" class="form-group">
 					<label>Main phone</label>
-					<input class="input-control"/>
+					<input id="txtUserPhone2" class="input-control"/>
 					<button id="addMorePhoneBtn" type="button">more phones</button>
+				</div>
+
+				<div class="selectInterest displayFlex">
+					<button id="btnUI" class="">UI</button>
+					<button id="btnUX" class="">UX</button>
+					<button id="btnDEV" class="">DEV</button>
 				</div>
 			</div>
 			
@@ -176,13 +183,14 @@
 			}	
 		})
 
+		//UPDATE USER PROFILE --AJAX
 		btnSaveChanges.addEventListener("click", function () {
         var ajax = new XMLHttpRequest();
         ajax.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var sResponse = this.responseText;
                 console.log(sResponse);
-                if (sResponse == "Logged out") {
+                if (sResponse == "Profile updated") {
                     location.reload();
                 }
             }
@@ -214,6 +222,36 @@
 	});
 });
 	
+
+	//GET USER DETAILS
+	var ajax = new XMLHttpRequest();
+	ajax.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var sjUser = this.responseText;
+			var jUser = JSON.parse(sjUser)
+			console.log(jUser);
+			txtUserName.value = jUser.name;
+			txtUserEmail.value = jUser.email;
+			txtUserPassword.value = jUser.password;
+			txtUserDescription.value = jUser.description;
+			notification.checked = JSON.parse(jUser.notification);
+			
+		}
+	}
+	ajax.open( "GET", "../api/php/get-user.php?id=<?php echo $_SESSION['sUserId']?>", true );
+	ajax.send();
+
+	notification.addEventListener("click", function () {
+		if (this.checked) {
+			this.value = 1;
+			console.log(this.value);
+		}
+		else {
+			this.value = 0;
+			console.log(this.value);                
+		}
+	});
+
 	</script>
 	
 </body>
