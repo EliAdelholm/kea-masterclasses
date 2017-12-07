@@ -107,6 +107,7 @@
 					} else {
 						?> 
 							<div class="eventBox">
+								<a href="event.php?id=<?php echo $oEvent -> _id;?>">
 								<div class="greenBorder">
 									<img src="<?php echo $oEvent -> image; ?>" class="eventImg greenBorder">
 								</div>
