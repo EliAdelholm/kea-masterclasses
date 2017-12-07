@@ -55,9 +55,11 @@ span{
 		color: $blackColor;
 	}
 }
-#myEventsStyle{
-	@extend #eventFilterSection;
-}
+// #myEventsStyle{
+// 	@extend #eventFilterSection;
+// }
+
+
 
 #filerButtons{
 	display: flex;
@@ -139,7 +141,7 @@ span{
 }
 #eventBoxes{
 	display: flex;
-	justify-content: space-around;
+    justify-content: space-around;
 	flex-wrap: wrap;
 	margin-top: 70px;
 	margin-bottom: 200px;
@@ -336,3 +338,9 @@ span{
 	display: flex;
 	justify-content: space-between;
 }
+
+@media (max-width: 700px) {
+	#eventBoxes{
+		justify-content: center;
+	}
+ }
