@@ -41,28 +41,18 @@
 
 			<?php
 
-			// echo DateTime::createFromFormat("d-M-Y H:i",  "07-Nov-2017 15:00", new DateTimeZone('CET')) -> getTimestamp();
-
 			// ini_set('display_errors', 1);
 			// ini_set('display_startup_errors', 1);
-			// error_reporting(E_ALL);
-				
+			// error_reporting(E_ALL);	
 				for($i = 0; $i < count($aEvents); $i++) {
 					$sEventId =  $aEvents[$i];
 					$sEvent = file_get_contents("http://localhost:3333/event/" . $sEventId);
-					//echo $sEvent . "<br>";
 					$oEvent = json_decode($sEvent);
-					//echo $sEvent . "<br>";
 					$dateAndTime = $oEvent -> date . " " . $oEvent -> time;
-					//echo "dateAndTime: " . gettype ($dateAndTime). "<br>";
 					
 					$dt2 = DateTime::createFromFormat("d-M-Y H:i", $dateAndTime , new DateTimeZone('CET'));
-					//echo gettype ($dt2) . "<br>";
 					$eventTime = $dt2 -> getTimestamp();
-
-					//echo "eventTime " . $eventTime . "<br>";
 					$currentTime = time();
-					//echo "currentTime " . $currentTime . "<br>";
 
 					if($eventTime < $currentTime) {
 						$rating = $aRatings[$sEventId];

@@ -45,36 +45,26 @@
 			</div>
 		</div>
 	</div>
-
-		<!-- <div id="filters">
-			<div id="categories">
-				<p id="uiBtn">UI</p>
-				<p id="uxBtn">UX</p>
-				<p id="devBtn">DEV</p>
-			</div>
-			<div id="timeFilters">
-				<p id="upcomingBtn">UPCOMING</p>
-				<p id="pastBtn">PAST</p>
-			</div>
-		</div> -->
-		<div id="eventBoxes" class="main-container">
-			<!-- <div>{{eventBox}}</div> -->		
-		</div>
+	<div><button id="locationBtn" >events near me</button></div>
+	<div id="eventBoxes" class="main-container">
+		<!-- <div>{{eventBox}}</div> -->		
+	</div>
 	
 	<?php
 		include 'footer.html';
 	?>
 	
 	<?php
-	if (!isset($_SESSION['sUserId'])) {
-		echo '<script src="js/login.js"></script>';
-	}
-	else {
-		echo '<script src="js/logout.js"></script>';
-	}
+		if (!isset($_SESSION['sUserId'])) {
+			echo '<script src="js/login.js"></script>';
+		}
+		else {
+			echo '<script src="js/logout.js"></script>';
+		}
 	?>
 
 	<script>
+		// ******************* FILTER EVENTS BY TYPE *********************
 		var filterByType = document.getElementsByClassName("filterByType");
 		for ( i = 0; i < filterByType.length; i++){
 			filterByType[i].addEventListener("click", function(e){
@@ -92,20 +82,8 @@
 			  }
 			});
 		}
-		
-		// var filterByTime = document.getElementsByClassName("filterByTime");
-		// for ( i = 0; i < filterByTime.length; i++){
-		// 	filterByTime[i].addEventListener("click", function(e){
-		// 	  for ( j = 0; j < filterByTime.length; j++){
-		// 	  	if (e.target == filterByTime[j]){
-		// 	  		filterByTime[j].style.background = "inherit";
-		// 	  	} else {
-		// 	  		filterByTime[j].style.background = "#c1c1c1";
-		// 	  	}
-		// 	  }
-		// 	});
-		// }
 
+		// ******************* GET ALL EVENTS FROM MONGO *******************
 		var ajax = new XMLHttpRequest();
 		ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -116,7 +94,6 @@
 		}
 		ajax.open( "GET", "http://localhost:3333/events", true );
 		ajax.send();
-
 
 		function displayEvents(ajEvents) {
 			 for (var i = 0; i<ajEvents.length; i++) {
@@ -155,6 +132,7 @@
 			}
 		};
 
+		// ******************* DISPLAY PAST EVENTS IN GRAY *******************
 		function checkPastDate(sDate, id){
 			var date = sDate.split("-");
 			if (Date.parse(date) < Date.now()) {
@@ -167,6 +145,8 @@
 				upcommingEvent.classList.add("upcommingEvent");
 			}
 		}
+
+		// ******************* FILTER PAST AND UPCOMMING EVENTS *******************
 		var aUpcommingEvents = document.getElementsByClassName("upcommingEvent");
 		var aPastEvents = document.getElementsByClassName("pastEvent");
 		filterPastEventBtn.addEventListener("click", function(){
@@ -179,7 +159,6 @@
 				aPastEvents[i].style.display = "block";
 			 }
 		});
-
 		filterUpcommingEventBtn.addEventListener("click", function(){
 			filterPastEventBtn.style.opacity = "0.5";
 			filterUpcommingEventBtn.style.opacity = "1";
@@ -190,37 +169,58 @@
 				aUpcommingEvents[i].style.display = "block";
 			 }	
 		});
-		
-function appear(elm, i, step, speed){
-    var t_o;
-    //initial opacity
-    i = i || 0;
-    //opacity increment
-    step = step || 5;
-    //time waited between two opacity increments in msec
-    speed = speed || 50; 
 
-    t_o = setInterval(function(){
-        //get opacity in decimals
-        var opacity = i / 100;
-        //set the next opacity step
-        i = i + step; 
-        if(opacity > 1 || opacity < 0){
-            clearInterval(t_o);
-            //if 1-opaque or 0-transparent, stop
-            return; 
-        }
-        //modern browsers
-        elm.style.opacity = opacity;
-        //older IE
-        elm.style.filter = 'alpha(opacity=' + opacity*100 + ')';
-    }, speed);
-}
+		//*************************** SHOW TEXT SLOWLY ************************
+		function appear(elm, i, step, speed){
+			var toAppar;
+			//initial opacity
+			i = i || 0;
+			//opacity increment
+			step = step || 5;
+			//time waited between two opacity increments in msec
+			speed = speed || 50; 
+			toAppar = setInterval(function(){
+				//get opacity in decimals
+				var opacity = i / 100;
+				//set the next opacity step
+				i = i + step; 
+				if(opacity > 1 || opacity < 0){
+					clearInterval(toAppar);
+					//if 1-opaque or 0-transparent, stop
+					return; 
+				}
+				//modern browsers
+				elm.style.opacity = opacity;
+				//older IE
+				elm.style.filter = 'alpha(opacity=' + opacity*100 + ')';
+			}, speed);
+		}
 
-var spanToAppear =  document.getElementsByTagName('span');
-for (var i = 0; i<spanToAppear.length; i++){
-	appear(spanToAppear[i], 0, 5, 60);
-}
+		var spanToAppear =  document.getElementsByTagName('span');
+		for (var i = 0; i<spanToAppear.length; i++){
+			appear(spanToAppear[i], 0, 5, 60);
+		}
+
+		// ************************* GET USERS LOCATION *************************
+		locationBtn.addEventListener("click", function(){
+			// /user-location/:usersLat/:usersLng
+			getLocation();
+		})
+
+		function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				} else {
+					console.log("Geolocation is not supported by this browser.q");
+				}
+		}
+
+		function showPosition(position) {
+			var usersLat = position.coords.latitude;
+			var usersLng = position.coords.longitude;
+			var userPosition = "Latitude: " + usersLat + " Longitude: " + usersLng; 
+			console.log(userPosition);
+		}
 
 	</script>
  </body>

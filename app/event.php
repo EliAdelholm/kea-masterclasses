@@ -206,7 +206,8 @@ document.addEventListener("click", function(e){
 		<div><input type="text" name="eventRoom" value="'+jEvent.location.room+'"></div>\
 		</form>\
 		<p> Amount of registrations: '+jEvent.attendance+' </p>\
-		<button id="btnConfirmEdit"> Confirm changes</button>';
+		<button id="btnConfirmEdit"> Confirm changes</button>\
+		<button id="btnDeleteEvent"> Cancel event</button>';
 		eventContainer.innerHTML = eventContainerHTML;
 		
 		$( function() {
@@ -219,6 +220,16 @@ document.addEventListener("click", function(e){
 		initAutocomplete();
 	}
 });
+
+document.addEventListener("click", function(e){
+	if (e.target.id =="btnDeleteEvent"){
+		var txt;
+		var r = confirm("Are you sure you want to cancel this event?");
+		if (r == true) {
+		} else {
+		}
+	}
+})
 
 document.addEventListener("click" , function(e){
 	if (e.target.id=="btnConfirmEdit") {

@@ -81,7 +81,7 @@ app.post('/create-event', (req, res) => {
         "location": {
             "type": "Point",
             "address": req.fields.sAddress,
-            "coordinates": [req.fields.sLat, req.fields.sLng],
+            "coordinates": [parseInt(req.fields.sLat), parseInt(req.fields.sLng)],
             "room": req.fields.sRoom
         },
         "date": req.fields.sDate,
@@ -328,6 +328,22 @@ app.get('/index-events', (req, res) => {
     });
 
 });
+
+// LOCATION
+app.get("/user-location/:usersLat/:usersLng", (req, res) => {
+    var usersLat = 55.660056499999996 //req.params.usersLat;
+    var usersLng = 12.4947511 //req.params.usersLng;
+    console.log("usersLat: "+usersLat+" usersLng: "+usersLng)
+    event.findEventsNearUser(usersLat, usersLng, (err, result, events) => {
+        if (err) {
+            console.log('err ' + err)
+        }
+        console.log(err)
+        console.log(result)
+        console.log(events)
+    })
+})
+
 
 /*****************************************************************/
 

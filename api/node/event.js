@@ -173,7 +173,6 @@ event.displayEventById = (iEventId, fCallback) => {
 }
 
 /***************** INCREASE CLICKRATE BY 1  **********************/
-
 event.incrementClickrate = (sEventId, fCallback) => {
 	global.db.collection('events').updateOne({'_id': ObjectId(sEventId)},
 	{$inc: {"clickrate" : 1}}, 
@@ -186,6 +185,25 @@ event.incrementClickrate = (sEventId, fCallback) => {
 	    return fCallback(false, jOk);
 	});
 }
+
+/***************** GET EVENTS NEAR USER  **********************/
+event.findEventsNearUser = (usersLat, usersLng, fCallback) => {
+	//console.log('x');
+
+	// db.events.find({ location: { $nearSphere: { $geometry: { type: "Point", coordinates: [ 55.66, 12.49  ] }, $maxDistance: 10000 } } })
+	
+	global.db.collection('events').find({ location:
+	{ $geoWithin:
+	   { $centerSphere: [ [ usersLat, usersLng ], 200 / 3963.2 ] } } }).toArray((err, ajEvents) => {
+		if (err) {
+			var jError = { "status": "error", "message": "ERROR -> event.js -> 0011" }
+			return fCallback(true, jError, ajEvents)
+		}
+		var jOk = { "status": "ok", "message": "OK -> event.js -> Displaying Requested Event -> 0010" }
+		return fCallback(false, jOk, ajEvents)
+	})
+}
+
 
 /**************************************************/
 module.exports = event

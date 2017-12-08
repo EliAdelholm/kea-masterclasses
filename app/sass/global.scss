@@ -409,3 +409,23 @@ footer {
 		color: $redColor;
 	}
 }
+
+#btnConfirmEdit{
+	@extend button;
+	background-color: $greenColor;	
+	&:hover{
+		background-color: darken($greenColor, 10%);	
+		color: $whiteColor;
+		border-color: $blackColor;
+	}
+}
+
+#btnDeleteEvent{
+	@extend button;
+	background-color: $redColor;	
+	&:hover{
+		background-color: darken($redColor, 10%);	
+		color: $whiteColor;
+		border-color: $blackColor;
+	}
+}
