@@ -134,6 +134,19 @@ event.dissmissEvent = (iEventId, fCallback) => {
 	})
 }
 
+/************************* CANCEL EVENT  *************/
+event.cancelEvent = (sEventId, fCallback) => {
+	global.db.collection('events').updateOne({"_id": ObjectId(sEventId)}, {$set:{"status" : "cancelled"}}, (err, jResult) => {
+		if(err) {
+			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot cancel Event" }
+			return fCallback(true, jError);
+		}
+		var jOk = { "status": "OK", "message": "event.js -> Event was cancelled" }
+		return fCallback(false, jOk);
+	})
+}
+
+
 /******************** DISPLAY EVENT BY ID ************/
 event.displayEventById = (iEventId, fCallback) => {
 	console.log(iEventId);

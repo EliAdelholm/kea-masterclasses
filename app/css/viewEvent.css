@@ -43,14 +43,14 @@
 .errorMessage {
   color: #e7607b; }
 
-#btnRegister {
+#btnRegister, #btnConfirmEdit, #btnDenieCancel {
   background-color: #52B795; }
-  #btnRegister:hover {
+  #btnRegister:hover, #btnConfirmEdit:hover, #btnDenieCancel:hover {
     border-color: #282826; }
 
-#btnUnregister {
+#btnUnregister, #btnCancelEvent, #btnConfirmCancel {
   background-color: #e7607b; }
-  #btnUnregister:hover {
+  #btnUnregister:hover, #btnCancelEvent:hover, #btnConfirmCancel:hover {
     border-color: #282826; }
 
 .bold {
@@ -58,3 +58,34 @@
 
 #divEditEvent {
   width: 100%; }
+
+#warningModalContainer {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: RGBA(0, 0, 0, 0.7);
+  z-index: 100;
+  top: 0; }
+
+#warningModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: white;
+  width: 500px;
+  padding: 15px; }
+  #warningModal h2 {
+    margin-bottom: 5px; }
+  #warningModal .displayFlex {
+    margin-top: 20px; }
+
+#btnDenieCancel {
+  margin-right: 5px; }
+
+#btnConfirmCancel {
+  margin-left: 5px; }

@@ -25,6 +25,9 @@
 span {
   padding: 5px; }
 
+#myEvents {
+  margin-top: 70px; }
+
 .subtitleMargin {
   margin-bottom: 30px; }
 
@@ -106,7 +109,7 @@ span {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-top: 70px;
+  margin-top: 50px;
   margin-bottom: 200px;
   cursor: pointer; }
 
@@ -226,7 +229,8 @@ span {
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-bottom: 50px; }
   #pendingContainer .eventBox, #dissmissedContainer .eventBox {
     margin-bottom: 0; }
   #pendingContainer #btnShowDissmissed, #dissmissedContainer #btnShowDissmissed {

@@ -171,14 +171,14 @@ app.get('/dissmiss-event/:id', (req, res) => {
 
 
 // DELETE EVENT
-app.get('/delete-event', (req, res) => {
-    var iEventId = req.query.id
-    event.deleteEvent(iEventId, (err, jStatus) => {
+app.get('/delete-event/:id', (req, res) => {
+    var sEventId = req.params.id
+    event.deleteEvent(sEventId, (err, jStatus) => {
         if (err) {
-            console.log(iEventId)
+            console.log(sEventId)
             return res.send('<html><body>ERROR</body></html>')
         }
-        console.log('DELETED EVENT WITH ID', iEventId)
+        console.log('DELETED EVENT WITH ID', sEventId)
         return res.send('<html><body>OK</body></html>')
     })
 })
@@ -247,6 +247,19 @@ app.get('/event/:id', (req, res) => {
     })
 })
 
+
+// CANCEL EVENT
+app.get('/cancel-event/:id', (req, res) => {
+    var sEventId = req.params.id
+    event.cancelEvent(sEventId, (err, jStatus) => {
+        if (err) {
+            console.log(jStatus);
+            return res.send('<html><body>ERROR</body></html>')   
+        }
+        console.log(jStatus);
+        return res.send('<html><body>OK</body></html>')        
+    });
+})
 
 
 ///////// ROUTING FOR STATS OPERATIONS //////////

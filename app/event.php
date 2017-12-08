@@ -105,7 +105,7 @@
 				}
 				eventContainer.innerHTML = eventContainerHTML; 
 				
-				// Edit for the admin. It's inside the AJAX call to it's generated at the same time as the rest of the event.
+				// Edit for the admin. It's inside the AJAX call to so the button gets generated as at the same time as the rest.
 				<?php 
 						if (isset($_SESSION['bAdmin'])) {
 							echo 'var btnEditHTML = "<button id=btnEdit>Edit this event</button>";';
@@ -182,6 +182,7 @@ document.addEventListener("click" , function(e){
 	}
 });
 
+// Change the page view to allow editing
 document.addEventListener("click", function(e){
 	if (e.target.id == "btnEdit"){
 		var eventContainerHTML = '<form id="frmEditEvent">\
@@ -203,10 +204,14 @@ document.addEventListener("click", function(e){
 		<div><input required name="eventAddress" class="input-control" id="autocomplete" value ="'+jEvent.location.address+'" onFocus="geolocate()" type="text" /></div>\
 		<h2>Room </h2>\
 		<div><input type="text" name="eventRoom" value="'+jEvent.location.room+'"></div>\
+		<button id="btnConfirmEdit"> Confirm changes</button>\
 		</form>\
 		<p> Amount of registrations: '+jEvent.attendance+' </p>\
-		<button id="btnConfirmEdit"> Confirm changes</button>';
+		<button id="btnCancelEvent"> Cancel event </button>';
+		
 		eventContainer.innerHTML = eventContainerHTML;
+		
+		
 		
 		$( function() {
 			$( "#datepicker" ).datepicker({
@@ -219,6 +224,7 @@ document.addEventListener("click", function(e){
 	}
 });
 
+// Update the event with the changes
 document.addEventListener("click" , function(e){
 	if (e.target.id=="btnConfirmEdit") {
 		var ajax = new XMLHttpRequest();
@@ -239,6 +245,44 @@ document.addEventListener("click" , function(e){
 	}
 });
 
+// Cancel the event
+
+document.addEventListener("click" , function(e) {
+	if (e.target.id=="btnCancelEvent") {
+		var warningHTML = '<div id="warningModalContainer">\
+							<div id="warningModal">\
+								<h2>Are you sure you want to cancel the event?</h2>\
+									<p>This change is final and cannot be undone</p>\
+										<div class="displayFlex">\
+										<button id="btnConfirmCancel"> Cancel the event </button>\
+											<button id="btnDenieCancel"> Do not cancel the event</button>\
+										</div>\
+							</div>\
+						  </div>'
+		topImageSection.insertAdjacentHTML('afterbegin', warningHTML);
+	}
+})
+
+document.addEventListener("click", function(e) {
+	if (e.target.id == "btnDenieCancel") {
+		warningModalContainer.remove();
+	}
+})
+
+document.addEventListener("click" , function(e) {
+	if (e.target.id == "btnConfirmCancel") {
+		var xhttp = new XMLHttpRequest();
+  		xhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+			var sResponse = this.responseText;
+			console.log(sResponse);
+			window.location.href = "index.php";			
+    	}
+  	};
+  		xhttp.open("GET", "http://localhost:3333/delete-event/"+jEvent._id, true);
+  		xhttp.send();
+	}
+})
 
 </script>
 	

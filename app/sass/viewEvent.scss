@@ -71,3 +71,53 @@
 	width: 100%;
 	@extend #containerHeader;
 }
+
+#btnConfirmEdit {
+	@extend #btnRegister;
+}
+
+#btnCancelEvent {
+	@extend #btnUnregister;
+}
+
+#warningModalContainer {
+	display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: RGBA(0,0,0, 0.7);
+	z-index: 100;
+	top: 0;  
+}
+
+#warningModal {
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+    align-items: center;
+    background-color: white;
+    padding: 2%;
+    max-width: 600px;
+	
+	h2{
+		margin-bottom: 5px;
+	}
+	
+	.displayFlex {
+		margin-top: 20px;
+	}
+}
+
+#btnDenieCancel {
+	@extend #btnRegister;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+#btnConfirmCancel {
+	@extend #btnUnregister;
+	
+}
