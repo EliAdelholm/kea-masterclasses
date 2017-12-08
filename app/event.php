@@ -49,8 +49,7 @@
 				console.log(sjEvent);
 				// This is a global variable
 				jEvent = JSON.parse(sjEvent);
-				console.log(jEvent);
-				
+				console.log(jEvent);	
 				var sDate = jEvent.date;
 				var bPastDate;
 				var date = sDate.split("-");
@@ -252,14 +251,6 @@ document.addEventListener("click" , function(e){
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	
-	<!-- If the user is an admin, allow them to edit -->
-	<?php
-	/*
-	if (isset($_SESSION['bAdmin'])) {
-		echo '<script src="js/allowAdminEdit.js></script>;';
-	}
-	*/
-	?>
 	<?php
 	if (!isset($_SESSION['sUserId'])) {
 		echo '<script src="js/login.js"></script>';
