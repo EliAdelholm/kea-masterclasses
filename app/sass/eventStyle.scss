@@ -31,6 +31,10 @@ span{
 	padding: 5px;
 }
 
+#myEvents {
+	margin-top: 70px;
+}
+
 .subtitleMargin{
 	margin-bottom: 30px;
 }
@@ -54,16 +58,12 @@ span{
 		color: $blackColor;
 	}
 }
-#myEventsStyle{
-	@extend #eventFilterSection;
-}
 
 #filerButtons{
 	display: flex;
 	width: 86vw;
 	flex-wrap: wrap;
 	justify-content: center;
-
 }
 
 #eventsByType {
@@ -78,6 +78,7 @@ span{
   flex-shrink: 0; 
   margin-top: 10px;
 }
+
 .eventsByTypeWidth{
 	max-width:300px;
 }
@@ -138,17 +139,19 @@ span{
 }
 #eventBoxes{
 	display: flex;
-	justify-content: space-around;
+    justify-content: space-around;
 	flex-wrap: wrap;
-	margin-top: 70px;
+	margin-top: 50px;
 	margin-bottom: 200px;
 	cursor: pointer;
 }
+
 .eventDescription{
 	justify-content: justify;
 	margin: 20px 20px 0px 20px;
 	line-height: 130%;
 }
+
 .eventImg {
 	height: 170px;
 	width: 100%;
@@ -220,6 +223,9 @@ span{
 	width: 350px;
 		&:hover {
 		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+		}
+		a:hover{
+			color: $blackColor;
 		}
 }
 .pastEventImg{
@@ -306,6 +312,7 @@ span{
 	justify-content: space-around;
 	margin-top: 50px;
 	flex-wrap: wrap;
+	margin-bottom: 50px;
 
 	.eventBox {
 		margin-bottom: 0;
@@ -332,3 +339,9 @@ span{
 	display: flex;
 	justify-content: space-between;
 }
+
+@media (max-width: 700px) {
+	#eventBoxes{
+		justify-content: center;
+	}
+ }

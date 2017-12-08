@@ -46,6 +46,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
 		<!-- <div id="filters">
 			<div id="categories">
@@ -61,7 +62,7 @@
 		<div id="eventBoxes" class="main-container">
 			<!-- <div>{{eventBox}}</div> -->		
 		</div>
-	</div>
+	
 	<?php
 		include 'footer.html';
 	?>

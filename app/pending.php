@@ -32,10 +32,13 @@
 
     <div class="main-container">
         <div class="loader"></div>
+
+        <h2 class="sectionHeader">Pending Events</h2>
         <div id="pendingContainer">
             <h2>There are no pending events right now</h2>
         </div>
 
+        <h2 class="sectionHeader">Dismissed Events</h2>
         <div id="dissmissedContainer">
             <button id="btnShowDissmissed">Show Dismissed</button>
         </div>

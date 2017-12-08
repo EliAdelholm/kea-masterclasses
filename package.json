@@ -25,6 +25,7 @@
     "express-formidable": "1.0.0"
   },
   "dependencies": {
+    "cors": "^2.8.4",
     "gulp-connect-php": "^1.0.1"
   }
 }

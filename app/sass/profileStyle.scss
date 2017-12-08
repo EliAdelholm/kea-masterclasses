@@ -1,6 +1,6 @@
 @import '_utils/_vars';
 
-#profileContentBox{
+#instertUserDetailsHere{
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-start;
@@ -34,7 +34,10 @@
 .column3{
 	flex-flow:column wrap;
 	flex: 1 0 33.3%;
-	
+}
+
+.selectInterest{
+	background-color:$grayColor;
 }
 
 .margin{
@@ -51,8 +54,8 @@ form{
 }
 
 input[type=checkbox] {
-    width: 4vw;
-	height: 4vh;
+    width: 3vw;
+	height: 3vh;
     margin-left: 0px;
 }
 
@@ -167,3 +170,4 @@ label{
 		}
 	}
 }
+

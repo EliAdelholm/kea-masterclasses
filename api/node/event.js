@@ -7,7 +7,7 @@ event.createEvent = (jEvent, fcallback) => {
 		if (err) {
 			var jError = { "status": "error", "message": "ERROR -> event.js -> 001" }
 			console.log(jError)
-			return fcallback(true, jError)
+			return fcallback(true, jError, jResults)
 		}
 		var jOk = { "status": "ok", "message": "event.js -> saved -> 000" }
 		console.log(jOk)
@@ -54,12 +54,18 @@ event.getActiveEvents = (fCallback) => {
 	// get the data from the collection events
 	global.db.collection('events').find({status: 'active'}).toArray((err, ajEvents) => {
 		if (err) {
-			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
+			var jError = { "status": "ERROR", "message": "ERROR -> event.js -> 007" }
 			console.log(jError)
-			return fCallback(true, jError)
+			return fCallback(true, jError, ajEvents)
 		}
+		
+		// We know we fucked up the date format in mongo and this is just a quick fix
+		ajEvents.sort(function(a,b) { 
+			return new Date(b.date) - new Date(a.date) 
+		});
+
 		var jOk = { "status": "Displaying Events", "message": "event.js -> Displaying Events -> 006" }
-		console.log(jOk, ajEvents)
+		// console.log(jOk, ajEvents)
 		return fCallback(false, jOk, ajEvents)
 	})
 }
@@ -69,7 +75,7 @@ event.getPendingEvents = (fCallback) => {
 	global.db.collection('events').find({status: 'pending'}).toArray((err, ajEvents) => {
 		if (err) {
 			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot GET Pending Events" }
-			return fCallback(true, jError)
+			return fCallback(true, jError, ajEvents)
 		}
 		var jOk = { "status": "OK", "message": "event.js -> GET Pending Events" }
 		return fCallback(false, jOk, ajEvents)
@@ -81,34 +87,10 @@ event.getDissmissedEvents = (fCallback) => {
 	global.db.collection('events').find({status: 'dissmissed'}).toArray((err, ajEvents) => {
 		if (err) {
 			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot GET Dissmissed Events" }
-			return fCallback(true, jError)
+			return fCallback(true, jError, ajEvents)
 		}
 		var jOk = { "status": "OK", "message": "event.js -> GET Dissmissed Events" }
 		return fCallback(false, jOk, ajEvents)
-	})
-}
-
-/******************** COUNT PENDING EVENTS *************/
-event.countPendingEvents = (fCallback) => {
-	global.db.collection('events').count({ status: "pending" }, (err, iCount) => {
-		if (err) {
-			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot GET Count Pending Events" }
-			return fCallback(true, jError)
-		}
-		var jOk = { "status": "OK", "message": "event.js -> GET Count Pending Events" }
-		return fCallback(false, jOk, iCount)
-	})
-}
-
-/******************** COUNT ACTIVE EVENTS *************/
-event.countActiveEvents = (fCallback) => {
-	global.db.collection('events').count({ status: "active" }, (err, iCount) => {
-		if (err) {
-			var jError = { "status": "Error", "message": "Cannot GET Count Active Events" }
-			return fCallback(true, jError)
-		}
-		var jOk = { "status": "OK", "message": "GET Count Active Events" }
-		return fCallback(false, jOk, iCount)
 	})
 }
 
@@ -120,7 +102,7 @@ event.getSemesterEvents = (sSemester, fCallback) => {
 		if (err) {
 			var jError = { "status": "Can't Display Events", "message": "ERROR -> event.js -> 007" }
 			console.log(jError)
-			return fCallback(true, jError)
+			return fCallback(true, jError, ajEvents)
 		}
 		var jOk = { "status": "Displaying Events", "message": "event.js -> Displaying Events -> 006" }
 		console.log(jOk, ajEvents)
@@ -158,26 +140,11 @@ event.displayEventById = (iEventId, fCallback) => {
 	global.db.collection('events').find({ "_id": ObjectId(iEventId) }).toArray((err, ajEvents) => {
 		if (err || ajEvents.length != 1) {
 			var jError = { "status": "error", "message": "ERROR -> event.js -> 009" }
-			return fCallback(true, jError)
+			return fCallback(true, jError, ajEvents[0])
 		}
 		var jOk = { "status": "ok", "message": "OK -> event.js -> Displaying Requested Event -> 008" }
 		return fCallback(false, jOk, ajEvents[0])
 	})
-}
-
-/***************** INCREASE CLICKRATE BY 1  **********************/
-
-event.incrementClickrate = (sEventId, fCallback) => {
-	global.db.collection('events').updateOne({'_id': ObjectId(sEventId)},
-	{$inc: {"clickrate" : 1}}, 
-	(err)=>{
-		if(err){
-			jError = {"status": "error", "message": "ERROR, could not increment clickrate -> event.js"};
-			return fCallback(true, jError);
-		}
-		var jOk = {"status": "ok", "message": "event.js -> clickrate incremented" }
-	    return fCallback(false, jOk);
-	});
 }
 
 /**************************************************/
