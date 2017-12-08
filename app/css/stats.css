@@ -1,8 +1,10 @@
 #stats-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-top: 75px; }
+  #stats-container h3 {
+    text-align: center; }
 
 .topEvents {
   background-color: #f2eeee;

@@ -94,31 +94,6 @@ event.getDissmissedEvents = (fCallback) => {
 	})
 }
 
-/******************** COUNT PENDING EVENTS *************/
-event.countPendingEvents = (fCallback) => {
-	global.db.collection('events').count({ status: "pending" }, (err, iCount) => {
-		if (err) {
-			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot GET Count Pending Events" }
-			return fCallback(true, jError, iCount)
-		}
-		var jOk = { "status": "OK", "message": "event.js -> GET Count Pending Events" }
-		return fCallback(false, jOk, iCount)
-	})
-}
-
-/******************** COUNT ACTIVE EVENTS *************/
-event.countActiveEvents = (fCallback) => {
-	global.db.collection('events').count({ status: "active" }, (err, iCount) => {
-		if (err) {
-			console.log(err)
-			var jError = { "status": "Error", "message": "Cannot GET Count Active Events" }
-			return fCallback(true, jError, iCount)
-		}
-		var jOk = { "status": "OK", "message": "GET Count Active Events" }
-		return fCallback(false, jOk, iCount)
-	})
-}
-
 /******************** GET EVENTS IN CURRENT SEMESTER *************/
 event.getSemesterEvents = (sSemester, fCallback) => {
 	// this is terrible D:
@@ -158,6 +133,19 @@ event.dissmissEvent = (iEventId, fCallback) => {
 		return fCallback(false, jOk)
 	})
 }
+
+/************************* CANCEL EVENT  *************/
+event.cancelEvent = (sEventId, fCallback) => {
+	global.db.collection('events').updateOne({"_id": ObjectId(sEventId)}, {$set:{"status" : "cancelled"}}, (err, jResult) => {
+		if(err) {
+			var jError = { "status": "Error", "message": "ERROR -> event.js -> Cannot cancel Event" }
+			return fCallback(true, jError);
+		}
+		var jOk = { "status": "OK", "message": "event.js -> Event was cancelled" }
+		return fCallback(false, jOk);
+	})
+}
+
 
 /******************** DISPLAY EVENT BY ID ************/
 event.displayEventById = (iEventId, fCallback) => {

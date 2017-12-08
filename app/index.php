@@ -27,21 +27,23 @@
 	</div>
 
 	<div id="eventFilterSection">
-		<h2 class="subtitleMargin">events</h2>
-		<div id="filerButtons">
-			<div id="eventsByTime">
-				<button id="filterPastEventBtn" class="filterByTime">past</button>
-				<button id="filterUpcommingEventBtn" class="filterByTime">upcomming</button>
-			</div>
-			<section id="eventsByType">
-				<div id="eventsByTypeWidth">
-				<button id="filterUiBtn" class="filterByType">ui</button>
-				<button id="filterUxBtn" class="filterByType">ux</button>
-				<button id="filterDevBtn" class="filterByType">dev</button>	
-				<div>			
-			</section>
-			<div id="searchEvent">
-				<input id="search" type="text" name="" placeholder="SEARCH">
+		<div id="filterTopBar">
+			<h2 class="subtitleMargin">events</h2>
+			<div id="filerButtons">
+				<div id="eventsByTime">
+					<button id="filterPastEventBtn" class="filterByTime">past</button>
+					<button id="filterUpcommingEventBtn" class="filterByTime">upcomming</button>
+				</div>
+				<section id="eventsByType">
+					<div id="eventsByTypeWidth">
+					<button id="filterUiBtn" class="filterByType">ui</button>
+					<button id="filterUxBtn" class="filterByType">ux</button>
+					<button id="filterDevBtn" class="filterByType">dev</button>	
+					<div>			
+				</section>
+				<div id="searchEvent">
+					<input id="search" type="text" name="" placeholder="SEARCH">
+				</div>
 			</div>
 		</div>
 	</div>

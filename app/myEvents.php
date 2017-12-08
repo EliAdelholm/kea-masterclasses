@@ -36,7 +36,8 @@
 		include 'login.html';
 	?>
 
-	<div id="myEventsStyle">
+	<div id="myEvents" class="main-container">
+		<h2 class="sectionHeader">Registered Attendance</h2>
 		<div id="eventBoxes">
 
 			<?php
@@ -68,7 +69,7 @@
 										<h3 class="eventTitle"><?php echo $oEvent -> title; ?></h3>
 										<p>Date:<?php echo $oEvent -> date; ?></p>
 										<p>Time:<?php echo $oEvent -> time; ?></p>
-										<p class="eventDescription"><?php echo $oEvent -> description; ?></p>
+										<p class="eventDescription clippedDescription"><?php echo $oEvent -> description; ?></p>
 									<div class="ratingContainer">
 										<span>RATE:</span>
 										<form class="rating">
@@ -88,7 +89,6 @@
 
 											<input type="radio" id="star1<?php echo $oEvent -> _id;?>" name="rating" value="1"  class=" starRating"/>
 											<label class = "full <?php if ($rating >= 1) echo ' active'; ?>" for="star1<?php echo $oEvent -> _id;?>"></label>
-
 										</form>
 									</div>
 								</div>	
