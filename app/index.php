@@ -47,7 +47,7 @@
 			</div>
 		</div>
 	</div>
-	<div><button id="locationBtn" >events near me</button></div>
+	<a id="getLocation"><button id="locationBtn">events near me</button></a>
 	<div id="eventBoxes" class="main-container">
 		<!-- <div>{{eventBox}}</div> -->		
 	</div>
@@ -222,6 +222,19 @@
 			var usersLng = position.coords.longitude;
 			var userPosition = "Latitude: " + usersLat + " Longitude: " + usersLng; 
 			console.log(userPosition);
+
+			var ajax = new XMLHttpRequest();
+			ajax.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var sajEvents = this.responseText;
+					//console.log("sajEvents ", sajEvents);
+					var ajEvents = JSON.parse(sajEvents);
+					document.getElementById("eventBoxes").innerHTML = "";
+					displayEvents(ajEvents);
+				}
+			}
+			ajax.open( "GET", "http://localhost:3333/user-location/"+usersLat+"/"+usersLng, true );
+			ajax.send();
 		}
 
 	</script>

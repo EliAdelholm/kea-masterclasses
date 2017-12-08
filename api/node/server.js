@@ -118,7 +118,7 @@ app.post('/update-event', (req, res) => {
         "location": {
             "type": "Point",
             "address": req.fields.eventAddress,
-            "coordinates": [req.fields.sLat, req.fields.sLng],
+            "coordinates": [parseInt(req.fields.sLat), parseInt(req.fields.sLng)],
             "room": req.fields.eventRoom
         },
         "date": req.fields.eventDate,
@@ -370,13 +370,15 @@ app.get("/user-location/:usersLat/:usersLng", (req, res) => {
     var usersLat = 55.660056499999996 //req.params.usersLat;
     var usersLng = 12.4947511 //req.params.usersLng;
     console.log("usersLat: "+usersLat+" usersLng: "+usersLng)
-    event.findEventsNearUser(usersLat, usersLng, (err, result, events) => {
+    event.findEventsNearUser(usersLat, usersLng, (err, jResult, ajEvents) => {
         if (err) {
             console.log('err ' + err)
         }
         console.log(err)
-        console.log(result)
-        console.log(events)
+        console.log(jResult)
+        console.log(ajEvents)
+        var ajEventsNiceView = JSON.stringify(ajEvents, null, 4)
+        return res.send(ajEventsNiceView)
     })
 })
 
