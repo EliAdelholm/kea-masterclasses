@@ -250,7 +250,7 @@
 		locationBtn.addEventListener("click", function(){
 			// /user-location/:usersLat/:usersLng
 			if(locationClickCount % 2 == 1){
-				getLocation();
+				getLocalEvents();
 				locationBtn.className += " activeLocation";
 				locationClickCount++
 			}else{
@@ -262,20 +262,7 @@
 			
 		})
 
-		function getLocation() {
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(showPosition);
-				} else {
-					console.log("Geolocation is not supported by this browser.q");
-				}
-		}
-
-		function showPosition(position) {
-			var usersLat = position.coords.latitude;
-			var usersLng = position.coords.longitude;
-			var userPosition = "Latitude: " + usersLat + " Longitude: " + usersLng; 
-			console.log(userPosition);
-
+		function getLocalEvents() {
 			var ajax = new XMLHttpRequest();
 			ajax.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -285,8 +272,23 @@
 					displayEvents(ajEvents);
 				}
 			}
-			ajax.open( "GET", "http://localhost:3333/user-location/"+usersLat+"/"+usersLng, true );
+			ajax.open( "GET", "http://localhost:3333/user-location/"+gUsersLat+"/"+gUsersLng, true );
 			ajax.send();
+		}
+
+		function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				} else {
+					console.log("Geolocation is not supported by this browser.q");
+				}
+		}
+
+		function showPosition(position) {
+			gUsersLat = position.coords.latitude;
+			gUsersLng = position.coords.longitude;
+			gUserPosition = "Latitude: " + gUsersLat + " Longitude: " + gUsersLng; 
+			console.log(gUserPosition);
 		}
 
 		// ************* SHOW AND HIDE FILTERS BOX ****************
@@ -305,6 +307,10 @@
 				}
 			});
 		});
+
+		window.onload = function(e){ 
+			getLocation();
+		}
 
 	</script>
  </body>
