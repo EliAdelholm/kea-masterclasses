@@ -49,7 +49,10 @@
 			<!-- <a id="getLocation"><button id="locationBtn">events near me</button></a> -->
 			
 			<!-- ***************** FILTER DESIGN TEST ************** -->
-			<p id="filtersBtn">FILTERS</p>
+			<div id="filtersBtn">
+				<p id="filtersText">FILTERS</p>
+				<img id="arrow" class="openFilters" src="css/img/arrow.svg">
+			</div>
 			<div id="displayAllFilters">
 				
 				<div class="FlexColumnCenter">
@@ -125,14 +128,15 @@
 		ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var sajEvents = this.responseText;
-				var ajEvents = JSON.parse(sajEvents)
-				displayEvents(ajEvents);
+				gajEvents = JSON.parse(sajEvents)
+				displayEvents(gajEvents);
 			}
 		}
 		ajax.open( "GET", "http://localhost:3333/events", true );
 		ajax.send();
 
 		function displayEvents(ajEvents) {
+			document.getElementById("eventBoxes").innerHTML = "";
 			 for (var i = 0; i<ajEvents.length; i++) {
 				var id = ajEvents[i]._id
 				var img = ajEvents[i].image;
@@ -242,9 +246,20 @@
 		}
 
 		// ************************* GET USERS LOCATION *************************
+		var locationClickCount = 1;
 		locationBtn.addEventListener("click", function(){
 			// /user-location/:usersLat/:usersLng
-			getLocation();
+			if(locationClickCount % 2 == 1){
+				getLocation();
+				locationBtn.className += " activeLocation";
+				locationClickCount++
+			}else{
+				displayEvents(gajEvents);
+				locationBtn.classList.remove("activeLocation");
+				locationClickCount++
+
+			}
+			
 		})
 
 		function getLocation() {
@@ -267,7 +282,6 @@
 					var sajEvents = this.responseText;
 					//console.log("sajEvents ", sajEvents);
 					var ajEvents = JSON.parse(sajEvents);
-					document.getElementById("eventBoxes").innerHTML = "";
 					displayEvents(ajEvents);
 				}
 			}
@@ -275,19 +289,23 @@
 			ajax.send();
 		}
 
+		// ************* SHOW AND HIDE FILTERS BOX ****************
 		var count = 0;
 		$("#displayAllFilters").hide();
 		$(document).ready(function(){
 			$("#filtersBtn").click(function(){
 				if(count % 2 == 1){
 					$("#displayAllFilters").hide(1000);
+					$( "#arrow" ).addClass( "openFilters" );
 					count ++
 				}else{
 					$("#displayAllFilters").show(1000);
+					$( "#arrow" ).removeClass( "openFilters" )
 					count ++
 				}
 			});
 		});
+
 	</script>
  </body>
 </html>

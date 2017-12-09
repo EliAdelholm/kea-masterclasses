@@ -1,5 +1,22 @@
 @import '_utils/_vars';
 
+
+@mixin underlineColor($color) {
+	border-bottom: 3px solid rgba(0, 0, 0 ,0);
+	transition: border-bottom 1s;
+	transition: color 1s;
+	&:hover{
+		border-bottom: 3px solid $color;
+		color: $color;
+		cursor: pointer;
+	}
+}
+
+@mixin selectedFilterColor($color){
+	border-bottom: 3px solid $color;
+	color: $color;
+	cursor: pointer;
+}
 #topSection{
 	width:$indexTopSectionWidth; 
 	height:$indexTopSectionHeith;
@@ -130,19 +147,19 @@ span{
 // 	@extend #filterPastEventBtn;
 // }
 
-#search{	
-	border: solid 2px;
-    border-radius: 5px;
-    padding: 15px 48px 15px 48px;
-    width: 255px;
-    font-size: 13px;
-    letter-spacing: 0.2em; 
-    font-weight: bold;
-    text-transform: uppercase;
-    background: transparent;
-    position:relative;
-    margin: 0 auto;
-}
+// #search{	
+// 	border: solid 2px;
+//     border-radius: 5px;
+//     padding: 15px 48px 15px 48px;
+//     width: 255px;
+//     font-size: 13px;
+//     letter-spacing: 0.2em; 
+//     font-weight: bold;
+//     text-transform: uppercase;
+//     background: transparent;
+//     position:relative;
+//     margin: 0 auto;
+// }
 #eventBoxes{
 	display: flex;
     justify-content: space-around;
@@ -241,16 +258,6 @@ span{
 	span{
 		margin-top: 7px;
 		font-weight: bold;
-	}
-}
-
-@media only screen and (max-width: 950px) {
-    h1 {
-        font-size: 30px;
-    }
-    #attentionText h3 {
-    width: 300px;
-    font-size: 15px;
 	}
 }
 
@@ -390,13 +397,23 @@ span{
 	background-color: $yellowColorTransparent;
 }
 #filtersBtn{
-	background-color: $blackColor;
-	color: $whiteColor;
+	display: flex;
+	padding: 20px;
+	//@include underlineColor($blackColor);
+}
+#arrow{
+	width: 15px;
+	height: 10px;
+	margin: 3px 10px;
+}
+#filtersText{
+	// background-color: $blackColor;
+	// color: $whiteColor;
 	font-weight: 550;
 	letter-spacing: 0.2em;
 	border-radius: 5px;
-	font-size: 13px;
-	padding: 15px 48px 15px 48px;
+	//font-size: 13px;
+	//padding: 15px 48px 15px 48px;
 	cursor: pointer;
 }
 .displayFilters{
@@ -421,16 +438,9 @@ span{
 	letter-spacing: 0.04em;
 }
 
-
-@mixin underlineColor($color) {
-	border-bottom: 3px solid rgba(0, 0, 0 ,0);
-	transition: border-bottom 1s;
-	transition: color 1s;
-	&:hover{
-		border-bottom: 3px solid $color;
-		color: $color;
-		cursor: pointer;
-	}
+.openFilters{
+	transform: rotate(180deg);
+    top: .55em;
 }
   
 .underline {
@@ -445,7 +455,9 @@ span{
 #underlineDev{
 	@include underlineColor($yellowColor);
 }
-
+.activeLocation{
+	@include selectedFilterColor($blackColor)
+}
 // ******************* MEDIA QUERIES **************
 @media screen and (max-width: 857px) {
 	#displayAllFilters{
@@ -461,5 +473,15 @@ span{
 		p{
 			margin-top: 10px;
 		}
+	}
+}
+
+@media only screen and (max-width: 950px) {
+    h1 {
+        font-size: 30px;
+    }
+    #attentionText h3 {
+    width: 300px;
+    font-size: 15px;
 	}
 }
