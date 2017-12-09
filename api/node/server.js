@@ -25,15 +25,19 @@ mongo.connect(sDatabasePath, (err, db) => {
         return false
     }
     global.db = db
+    global.db.collection('events').createIndex( { location: "2dsphere" }, null, (err, jResult) => {
+        if (err) {
+            console.log('Index not created: ' + err)
+        } else {
+            console.log("Index created: " + jResult);
+        }
+    })
     console.log('OK 002 -> Connected to the database')
     return true
 })
 
 // DECLARE PENDING EVENT COUNT
 var iPendingEventsCount = 0;
-
-
-
 
 ///////////// ROUTING //////////////
 
@@ -82,7 +86,7 @@ app.post('/create-event', (req, res) => {
         "location": {
             "type": "Point",
             "address": req.fields.sAddress,
-            "coordinates": [req.fields.sLat, req.fields.sLng],
+            "coordinates": [parseInt(req.fields.sLat), parseInt(req.fields.sLng)],
             "room": req.fields.sRoom
         },
         "date": req.fields.sDate,
@@ -118,7 +122,7 @@ app.post('/update-event', (req, res) => {
         "location": {
             "type": "Point",
             "address": req.fields.eventAddress,
-            "coordinates": [req.fields.sLat, req.fields.sLng],
+            "coordinates": [parseInt(req.fields.sLat), parseInt(req.fields.sLng)],
             "room": req.fields.eventRoom
         },
         "date": req.fields.eventDate,
@@ -171,14 +175,14 @@ app.get('/dissmiss-event/:id', (req, res) => {
 
 
 // DELETE EVENT
-app.get('/delete-event', (req, res) => {
-    var iEventId = req.query.id
-    event.deleteEvent(iEventId, (err, jStatus) => {
+app.get('/delete-event/:id', (req, res) => {
+    var sEventId = req.params.id
+    event.deleteEvent(sEventId, (err, jStatus) => {
         if (err) {
-            console.log(iEventId)
+            console.log(sEventId)
             return res.send('<html><body>ERROR</body></html>')
         }
-        console.log('DELETED EVENT WITH ID', iEventId)
+        console.log('DELETED EVENT WITH ID', sEventId)
         return res.send('<html><body>OK</body></html>')
     })
 })
@@ -247,6 +251,19 @@ app.get('/event/:id', (req, res) => {
     })
 })
 
+
+// CANCEL EVENT
+app.get('/cancel-event/:id', (req, res) => {
+    var sEventId = req.params.id
+    event.cancelEvent(sEventId, (err, jStatus) => {
+        if (err) {
+            console.log(jStatus);
+            return res.send('<html><body>ERROR</body></html>')   
+        }
+        console.log(jStatus);
+        return res.send('<html><body>OK</body></html>')        
+    });
+})
 
 
 ///////// ROUTING FOR STATS OPERATIONS //////////
@@ -352,6 +369,26 @@ app.get('/index-events', (req, res) => {
 
 });
 
+// LOCATION
+app.get("/user-location/:usersLat/:usersLng", (req, res) => {
+    var usersLat = 55.660056499999996 //req.params.usersLat;
+    var usersLng = 12.4947511 //req.params.usersLng;
+    console.log("usersLat: "+usersLat+" usersLng: "+usersLng)
+
+
+    event.findEventsNearUser(usersLat, usersLng, (err, jResult, ajEvents) => {
+        if (err) {
+            console.log('err ' + err)
+        }
+        console.log(err)
+        console.log(jResult)
+        console.log(ajEvents)
+        var ajEventsNiceView = JSON.stringify(ajEvents, null, 4)
+        return res.send(ajEventsNiceView)
+    })
+})
+
+
 /*****************************************************************/
 
 // START SERVER
@@ -360,5 +397,6 @@ app.listen(3333, (err) => {
         console.log('ERROR 001 -> Cannot listen to port 3333')
         return false
     }
+
     console.log('OK 000 -> Server listening to port 3333')
 })

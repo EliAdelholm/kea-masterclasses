@@ -113,7 +113,7 @@
 			clickCountEmails += 1;
 			if(clickCountEmails < 3){
 				var inputField = '<div class="transitionStyle"><label>Additional email</label><input class="input-control"/></div>';
-				addMoreEmailsDiv.insertAdjacentHTML('beforeend', inputField);
+				addMoreEmailsDiv.insertAdjacentHTML('afterbegin', inputField);
 			}
 		})
 
@@ -121,7 +121,7 @@
 			clickCountPhones += 1;
 			if(clickCountPhones < 3){
 				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input class="input-control"/></div>';
-				addMorePhonesDiv.insertAdjacentHTML('beforeend', inputField);
+				addMorePhonesDiv.insertAdjacentHTML('afterbegin', inputField);
 			}	
 		})
 

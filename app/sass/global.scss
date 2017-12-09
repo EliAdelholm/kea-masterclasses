@@ -410,7 +410,27 @@ footer {
 	}
 }
 
+#btnConfirmEdit{
+	@extend button;
+	background-color: $greenColor;	
+	&:hover{
+		background-color: darken($greenColor, 10%);	
+		color: $whiteColor;
+		border-color: $blackColor;
+	}
+}
+
+#btnCancelEvent{
+	@extend button;
+	background-color: $redColor;	
+	&:hover{
+		background-color: darken($redColor, 10%);	
+		color: $whiteColor;
+		border-color: $blackColor;
+	}
 .sectionHeader {
 	background-color: $grayColor;
 	padding: 15px;
 }
+
+

@@ -40,3 +40,6 @@
   #frmLogin #btnLogin, #frmLogin #btnCreateAccount, #frmCreateAccount #btnLogin, #frmCreateAccount #btnCreateAccount {
     margin-top: 10px;
     width: 40%; }
+
+.displayFlex {
+  display: flex; }
