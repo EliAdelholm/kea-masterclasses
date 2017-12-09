@@ -32,6 +32,9 @@
   border-color: #f2eeee; }
   #eventContainer * {
     margin-bottom: 20px; }
+  #eventContainer h3 {
+    color: #282826;
+    font-weight: bold; }
 
 #tagStyle {
   color: #282826;

@@ -68,13 +68,14 @@
 				<div>SPEAKER: '+jEvent.speaker+'</div>';
 				
 				topImageSection.innerHTML = '<h1><span>'+jEvent.title+'</span></h1>';
-				var eventContainerHTML = '<h2>REQUIREMENT</h2>\
+				var eventContainerHTML = '<h3>REQUIREMENT</h3>\
 				<p> '+jEvent.requirements+' </p>\
-				<h2> DESCRIPTION </h2>\
+				<h3> DESCRIPTION </h3>\
 				<p> '+jEvent.description+' <p>\
-				<h2>Location: </h2>\
-				<p>Address: '+jEvent.location.address+' | Room '+jEvent.location.room+' </p>\
-				<p> Amount of registrations: '+jEvent.attendance+' </p>';
+				<h3>LOCATION </h3>\
+				<p>ADRESS '+jEvent.location.address+' | ROOM '+jEvent.location.room+' </p>\
+				<h3> AMOUNT OF REGISTRATIONS </h3>\
+				<p>'+jEvent.attendance+' </p>';
 				// GENERATE CONTENT BASED ON THE USER BEING LOGGED IN OR NOT
 				
 				if (!bPastDate) {
@@ -196,17 +197,17 @@ document.addEventListener("click", function(e){
 		containerHeader.style.display = "none";
 		eventContainerHTML += '<h2>TITLE</h2>\
 		<input type="text" name="eventTitle" value="'+jEvent.title+'">\
-		<h2>REQUIREMENT</h2>\
+		<h3>REQUIREMENT</h3>\
 		<input type="text" name="eventRequirements" value="'+jEvent.requirements+'"> \
-		<h2> DESCRIPTION </h2>\
+		<h3> DESCRIPTION </h3>\
 		<input type="text" name="eventDescription" value="'+jEvent.description+'"><p>\
-		<h2>Address </h2>\
+		<h3>Address </h3>\
 		<div><input required name="eventAddress" class="input-control" id="autocomplete" value ="'+jEvent.location.address+'" onFocus="geolocate()" type="text" /></div>\
-		<h2>Room </h2>\
+		<h3>Room </h3>\
 		<div><input type="text" name="eventRoom" value="'+jEvent.location.room+'"></div>\
 		<button id="btnConfirmEdit"> Confirm changes</button>\
 		</form>\
-		<p> Amount of registrations: '+jEvent.attendance+' </p>\
+		<h3> Amount of registrations: '+jEvent.attendance+' </h3>\
 		<button id="btnCancelEvent"> Cancel event </button>';
 
 		eventContainer.innerHTML = eventContainerHTML;
