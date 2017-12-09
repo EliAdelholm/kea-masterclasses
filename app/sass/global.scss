@@ -72,7 +72,7 @@ h1 {
 	font-size: 60px;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	color: $greenColor;
+	//color: $greenColor;
 
 	span {
 		color: $blackColor;
@@ -144,7 +144,7 @@ button{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 79px;
+	//margin-top: 79px;
 	background-position: center;
 }
 
@@ -202,7 +202,7 @@ nav{
     left: 0px;
     top: 0px;
     right: 0px;
-    background-color: $blackColor;
+    //background-color: $blackColor;
     width: 100%;
     z-index: 1;
 }
@@ -253,7 +253,7 @@ nav{
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	background-color: #282826;
+	background-color: $blackColorTransparent;
 	color: #fdfdfc;
 	width: 130px;
 	padding: 15px 20px 0px 20px;
@@ -276,6 +276,7 @@ footer {
 	justify-content: center;
 	align-items: center;
 	color: $whiteColor;
+	width: 100%;
 	p{
 		margin-top: 0px;
 		margin-bottom: 6px;
@@ -428,9 +429,14 @@ footer {
 		color: $whiteColor;
 		border-color: $blackColor;
 	}
+}
 .sectionHeader {
 	background-color: $grayColor;
 	padding: 15px;
 }
-
-
+.FlexColumnCenter{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}

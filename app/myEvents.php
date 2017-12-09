@@ -3,7 +3,7 @@
 	include '../api/php/db.php';
 	
 	$iUserId = $_SESSION['sUserId'];
-	echo "userId " . $iUserId;
+	//echo "userId " . $iUserId;
 	
 	$query = $conn->prepare("SELECT * FROM attendance WHERE user_id = :user_id;"); 
 	
@@ -35,7 +35,9 @@
 		include 'nav.php';
 		include 'login.html';
 	?>
-
+	<section id="topBanner">
+            <h1><span>MY EVENTS</span></h1>
+    </section>
 	<div id="myEvents" class="main-container">
 		<h2 class="sectionHeader">Registered Attendance</h2>
 		<div id="eventBoxes">

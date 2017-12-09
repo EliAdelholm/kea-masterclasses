@@ -8,7 +8,7 @@
 	<title>EVENTS</title>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/eventStyle.css">
-</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 	<?php
@@ -22,14 +22,15 @@
 			<h1><span> MASTERCLASSES</span></h1>
 			<h2><span>I LEARN</span></h2>
 			<h3><span>INTERRESTING STUFF</span></h3>
-			<button id="topSectionBtn">view events</button>
+			<!-- <button id="topSectionBtn">view events</button> -->
 		</div>
 	</div>
 
 	<div id="eventFilterSection">
-		<div id="filterTopBar">
-			<h2 class="subtitleMargin">events</h2>
-			<div id="filerButtons">
+		<div class="FlexColumnCenter">
+			<h1 class="subtitleMargin">events</h1>
+
+			<!-- <div id="filerButtons">
 				<div id="eventsByTime">
 					<button id="filterPastEventBtn" class="filterByTime">past</button>
 					<button id="filterUpcommingEventBtn" class="filterByTime">upcomming</button>
@@ -44,10 +45,44 @@
 				<div id="searchEvent">
 					<input id="search" type="text" name="" placeholder="SEARCH">
 				</div>
+			</div> -->
+			<!-- <a id="getLocation"><button id="locationBtn">events near me</button></a> -->
+			
+			<!-- ***************** FILTER DESIGN TEST ************** -->
+			<p id="filtersBtn">FILTERS</p>
+			<div id="displayAllFilters">
+				
+				<div class="FlexColumnCenter">
+					<p class="filterGroup">DATE</p>
+					<div class="displayFilters">
+						<p id="filterPastEventBtn" class="underline">PAST</p>
+						<p id="filterUpcommingEventBtn" class="underline">UPCOMMING</p>
+					</div>
+				</div>
+
+				<div class="FlexColumnCenter">
+					<p class="filterGroup">CATEGORY</p>
+					<div class="displayFilters">
+						<p id="underlineUi">UI</p>
+						<p id="underlineUx">UX</p>
+						<p id="underlineDev">DEV</p>
+					</div>
+				</div>
+
+				<div class="FlexColumnCenter">
+					<p class="filterGroup">LOCATION</p>
+					<div class="displayFilters">
+						<p id="locationBtn" class="underline">EVENTS NEAR ME</p>
+					</div>
+				</div>
 			</div>
-		</div>
+			<!-- *************************************************** -->
 	</div>
-	<a id="getLocation"><button id="locationBtn">events near me</button></a>
+</div>
+
+
+
+
 	<div id="eventBoxes" class="main-container">
 		<!-- <div>{{eventBox}}</div> -->		
 	</div>
@@ -115,6 +150,9 @@
 				var oEvent = '<div class="eventBox" id="'+id+'">\
 								<a href="event.php?id='+id+'">\
 									<div style="background-image: url('+img+')" class="eventImg '+ borderColor +'"></div>\
+									<div class="photo-overlay '+sType+'">\
+										<h2>'+sType+'</h2>\
+									</div>\
 									<div class="eventDesc">\
 										<div class="eventDate">\
 											<h3 class="month">'+ sMonth +'</h3>\
@@ -237,6 +275,19 @@
 			ajax.send();
 		}
 
+		var count = 0;
+		$("#displayAllFilters").hide();
+		$(document).ready(function(){
+			$("#filtersBtn").click(function(){
+				if(count % 2 == 1){
+					$("#displayAllFilters").hide(1000);
+					count ++
+				}else{
+					$("#displayAllFilters").show(1000);
+					count ++
+				}
+			});
+		});
 	</script>
  </body>
 </html>

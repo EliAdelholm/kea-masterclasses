@@ -16,7 +16,9 @@
 		include 'nav.php';
 		include 'login.html';
 	?>
-
+	<section id="topBanner">
+		<h1><span>PROFILE</span></h1>
+	</section>
 	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">
 	<div id="instertUserDetailsHere" class="main-container">
 
