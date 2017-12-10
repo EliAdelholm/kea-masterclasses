@@ -43,10 +43,9 @@
 		<div id="eventBoxes">
 
 			<?php
-
-			// ini_set('display_errors', 1);
-			// ini_set('display_startup_errors', 1);
-			// error_reporting(E_ALL);	
+				// ini_set('display_errors', 1);
+				// ini_set('display_startup_errors', 1);
+				// error_reporting(E_ALL);	
 				for($i = 0; $i < count($aEvents); $i++) {
 					$sEventId =  $aEvents[$i];
 					$sEvent = file_get_contents("http://localhost:3333/event/" . $sEventId);
@@ -61,55 +60,87 @@
 						$rating = $aRatings[$sEventId];
 						// echo "Ratings: " . var_dump( $aRatings);
 						// echo "Rating: " . $rating;
-						?> 
-							<div class="eventBox">
-								<a href="event.php?id=<?php echo $oEvent -> _id;?>">
-								<div class="pastEventImg">
-									<img src="<?php echo $oEvent -> image; ?>" class="eventImg greenBorder">
+					?> 
+					<!-- ******************** PAST EVENT ******************** -->
+					<div class="pastEvent">
+						<div class="eventBox" id="<?php echo $oEvent -> _id;?>">
+							<a href="event.php?id=<?php echo $oEvent -> _id;?>">
+								<div style="background-image: url('<?php echo $oEvent -> image; ?>')" class="eventImg <?php $sType = $oEvent -> type ; echo $sType == "ui" ? "greenBorder" : $sType == "ux" ? "redBorder" : "yellowBorder"; ?>"></div>
+								<div class="photo-overlay <?php echo $oEvent -> type; ?>">
+									<h2><?php echo $oEvent -> type; ?></h2>
 								</div>
-								<div class="eventDetails pastEvent">
-										<h3 class="eventTitle"><?php echo $oEvent -> title; ?></h3>
-										<p>Date:<?php echo $oEvent -> date; ?></p>
-										<p>Time:<?php echo $oEvent -> time; ?></p>
-										<p class="eventDescription clippedDescription"><?php echo $oEvent -> description; ?></p>
-									<div class="ratingContainer">
-										<span>RATE:</span>
-										<form class="rating">
-											<input id="<?php echo $oEvent -> _id;?>" name="eventId" type="hidden" value="<?php echo $oEvent -> _id;?>">
-												
-											<input type="radio" id="star5<?php echo $oEvent -> _id;?>" name="rating" value="5" class="starRating"/>
-											<label class = "full <?php if ($rating >= 5) echo ' active'; ?>" for="star5<?php echo $oEvent -> _id;?>"></label>
-											
-											<input type="radio" id="star4<?php echo $oEvent -> _id;?>" name="rating" value="4"  class=" starRating"/>
-											<label class = "full <?php if ($rating >= 4) echo ' active'; ?>" for="star4<?php echo $oEvent -> _id;?>"></label>
-
-											<input type="radio" id="star3<?php echo $oEvent -> _id;?>" name="rating" value="3"  class=" starRating"/>
-											<label class = "full <?php if ($rating >= 3) echo ' active'; ?>" for="star3<?php echo $oEvent -> _id;?>"></label>
-											
-											<input type="radio" id="star2<?php echo $oEvent -> _id;?>" name="rating" value="2"  class=" starRating"/>
-											<label class = "full <?php if ($rating >= 2) echo ' active'; ?>" for="star2<?php echo $oEvent -> _id;?>"></label>
-
-											<input type="radio" id="star1<?php echo $oEvent -> _id;?>" name="rating" value="1"  class=" starRating"/>
-											<label class = "full <?php if ($rating >= 1) echo ' active'; ?>" for="star1<?php echo $oEvent -> _id;?>"></label>
-										</form>
+								<div class="eventDesc">
+									<div class="eventDate">
+										<?php
+											$date = $oEvent -> date;
+											list( $day, $month, $year) = split('[/.-]', $date);
+										?>
+										<h3 class="month"><?php echo $month; ?></h3>
+										<p class="day"><?php echo $day; ?></p>
 									</div>
-								</div>	
-							</div>						
-						<?php
+									<div class="eventDetails">
+										<h3 class="eventTitle"><?php echo $oEvent -> title; ?></h3>
+										<p><?php echo $oEvent -> location -> address; ?></p>
+										<p>Held by:  <?php echo $oEvent -> speaker; ?></p>
+										<p><?php echo $oEvent -> time; ?></p>
+									</div>
+								</div>
+								<!-- ******************** RATE EVENT ******************** -->
+								<div class="ratingContainer">
+									<span>RATE:</span>
+									<form class="rating">
+										<input id="<?php echo $oEvent -> _id;?>" name="eventId" type="hidden" value="<?php echo $oEvent -> _id;?>">
+											
+										<input type="radio" id="star5<?php echo $oEvent -> _id;?>" name="rating" value="5" class="starRating"/>
+										<label class = "full <?php if ($rating >= 5) echo ' active'; ?>" for="star5<?php echo $oEvent -> _id;?>"></label>
+										
+										<input type="radio" id="star4<?php echo $oEvent -> _id;?>" name="rating" value="4"  class=" starRating"/>
+										<label class = "full <?php if ($rating >= 4) echo ' active'; ?>" for="star4<?php echo $oEvent -> _id;?>"></label>
+
+										<input type="radio" id="star3<?php echo $oEvent -> _id;?>" name="rating" value="3"  class=" starRating"/>
+										<label class = "full <?php if ($rating >= 3) echo ' active'; ?>" for="star3<?php echo $oEvent -> _id;?>"></label>
+										
+										<input type="radio" id="star2<?php echo $oEvent -> _id;?>" name="rating" value="2"  class=" starRating"/>
+										<label class = "full <?php if ($rating >= 2) echo ' active'; ?>" for="star2<?php echo $oEvent -> _id;?>"></label>
+
+										<input type="radio" id="star1<?php echo $oEvent -> _id;?>" name="rating" value="1"  class=" starRating"/>
+										<label class = "full <?php if ($rating >= 1) echo ' active'; ?>" for="star1<?php echo $oEvent -> _id;?>"></label>
+									</form>
+								</div>
+								<!-- ****************************************************** -->
+							</a>
+						</div>
+					</div>						
+					
+					<?php
 					} else {
 						?> 
-							<div class="eventBox">
+							<!-- ******************** UPCOMMING EVENT ******************** -->
+							<div class="eventBox" id="<?php echo $oEvent -> _id;?>">
 								<a href="event.php?id=<?php echo $oEvent -> _id;?>">
-								<div class="greenBorder">
-									<img src="<?php echo $oEvent -> image; ?>" class="eventImg greenBorder">
-								</div>
-								<div class="eventDetails">
-									<h3 class="eventTitle"><?php echo $oEvent -> title; ?></h3>
-									<p>Date: <?php echo $oEvent -> date; ?></p>
-									<p>Time: <?php echo $oEvent -> time; ?></p>
-									<p class="eventDescription clippedDescription"><?php echo $oEvent -> description; ?></p>
-								</div>	
-							</div>	
+									<div style="background-image: url('<?php echo $oEvent -> image; ?>')" class="eventImg <?php $sType = $oEvent -> type ; echo $sType == "ui" ? "greenBorder" : $sType == "ux" ? "redBorder" : "yellowBorder"; ?>"></div>
+									<div class="photo-overlay <?php echo $oEvent -> type; ?>">
+										<h2><?php echo $oEvent -> type; ?></h2>
+									</div>
+									<div class="eventDesc">
+										<div class="eventDate">
+											<?php
+												$date = $oEvent -> date;
+												list( $day, $month, $year) = split('[/.-]', $date);
+											?>
+											<h3 class="month"><?php echo $month; ?></h3>
+											<p class="day"><?php echo $day; ?></p>
+										</div>
+										<div class="eventDetails">
+											<h3 class="eventTitle"><?php echo $oEvent -> title; ?></h3>
+											<p><?php echo $oEvent -> location -> address; ?></p>
+											<p>Held by:  <?php echo $oEvent -> speaker; ?></p>
+											<p><?php echo $oEvent -> time; ?></p>
+										</div>
+									</div>
+								</a>
+							</div>
+
 						<?php
 					}
 				}

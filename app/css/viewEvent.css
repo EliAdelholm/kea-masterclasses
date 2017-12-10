@@ -36,6 +36,8 @@
     color: #282826;
     font-weight: bold;
     margin-bottom: 5px; }
+  #eventContainer #autocomplete {
+    margin-bottom: 0px; }
 
 #tagStyle {
   color: #282826;

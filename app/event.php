@@ -195,20 +195,20 @@ document.addEventListener("click", function(e){
 		</div>';
 		
 		containerHeader.style.display = "none";
-		eventContainerHTML += '<h2>TITLE</h2>\
+		eventContainerHTML += '<h3>TITLE</h3>\
 		<input type="text" name="eventTitle" value="'+jEvent.title+'">\
 		<h3>REQUIREMENT</h3>\
 		<input type="text" name="eventRequirements" value="'+jEvent.requirements+'"> \
 		<h3> DESCRIPTION </h3>\
-		<input type="text" name="eventDescription" value="'+jEvent.description+'"><p>\
-		<h3>Address </h3>\
+		<input type="text" name="eventDescription" value="'+jEvent.description+'">\
+		<h3>ADDRESS </h3>\
 		<div><input required name="eventAddress" class="input-control" id="autocomplete" value ="'+jEvent.location.address+'" onFocus="geolocate()" type="text" /></div>\
-		<h3>Room </h3>\
+		<h3>ROOM </h3>\
 		<div><input type="text" name="eventRoom" value="'+jEvent.location.room+'"></div>\
 		<button id="btnConfirmEdit"> Confirm changes</button>\
-		</form>\
-		<h3> Amount of registrations: '+jEvent.attendance+' </h3>\
-		<button id="btnCancelEvent"> Cancel event </button>';
+		</form>'
+		// <h3> Amount of registrations: '+jEvent.attendance+' </h3>\
+		'<button id="btnCancelEvent"> Cancel event </button>';
 
 		eventContainer.innerHTML = eventContainerHTML;
 		

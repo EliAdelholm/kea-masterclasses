@@ -148,6 +148,39 @@ button{
 	background-position: center;
 }
 
+@mixin test($img){
+	width: 100%;
+	height: 40vh;
+	background-image: ($img);
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	//margin-top: 79px;
+	background-position: center;
+}
+
+#topBanner{
+	@include test(url("img/test.png"));
+}
+
+#topBannerStats{
+	@include test(url("img/stats.svg"));
+}
+
+#topBannerPending{
+	@include test(url("img/pending.jpg"));
+}
+
+#topBannerCreateEvent{
+	@include test(url("img/createEvent.jpg"));
+}
+
+#topBannerProfile{
+	@include test(url("img/profile.jpg"));
+}
+
 .textColumns {
 	columns: 2 400px;
 	padding: 30px;

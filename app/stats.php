@@ -18,7 +18,7 @@
             include 'nav.php';
         ?>
 
-        <section id="topBanner">
+        <section id="topBannerStats">
             <h1><span>STATISTICS</span></h1>
         </section>
 

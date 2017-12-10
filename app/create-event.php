@@ -22,7 +22,7 @@
         include 'nav.php';
     ?>
 
-    <section id="topBanner">
+    <section id="topBannerCreateEvent">
         <h1><span>CREATE EVENT</span></h1>
     </section>
 
