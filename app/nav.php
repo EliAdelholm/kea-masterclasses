@@ -1,7 +1,7 @@
 <div id="positionAbsolut" class="nav">
 	<nav class="main-container">
 	
-	<a href="#" class="toggleNav">
+	<a href="#" class="toggleNav" id="hamburgerBtn">
 		<div class="hamburgerContainer">
 			<div class="bar1"></div>
 			<div class="bar2"></div>
@@ -32,20 +32,21 @@
 			if (!isset($_SESSION['sUserId'])) {
 				echo '<a href="#" id="btnOpenLogin" class="extraMargin hideResponsive">LOGIN</a>';
 			} else {
-				echo '<a href="myEvents.php" class="extraMargin hideResponsive">MY EVENTS</a>
-					  <a href="#" id="btnOpenDropdown" class="extraMargin hideResponsive">PROFILE</a>';
+				echo '<a href="my-events.php" class="extraMargin hideResponsive">MY EVENTS</a>
+						<a href="profile.php" class="extraMargin hideResponsive">PROFILE</a>
+						<a href="#" id="btnLogout" class="extraMargin hideResponsive">LOGOUT</a>';
 			}
 		?>
 
 		
 		
 	</nav>
-	<div id="navDropdown" class="main-container" style="position: relative;">
+	<!-- <div id="navDropdown" class="main-container" style="position: relative;">
 		<div id="nav-dropdown" class="arrow_box hideResponsive">
 			<a href="profile.php" class="displayResponsive">SETTINGS</a>
 			<a href="#" id="btnLogout" class="displayResponsive">LOGOUT</a>
 		</div>
-	</div>
+	</div> -->
 </div>
 
 
@@ -64,7 +65,8 @@
     
     $(function(){
       $('.toggleNav').on('click', function(){
-        $('nav').toggleClass('open');
+				$('nav').toggleClass('open');
+				$('#navDropdown').toggleClass('showResponsive')
       });
     });
 	

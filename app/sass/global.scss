@@ -260,8 +260,12 @@ nav{
 
 @media screen and (max-width: 800px){
 	nav{
-		justify-content: flex-end;
-		align-items: flex-end;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 38px;
+	}
+	#navDropdown{
+		display: block;
 	}
 	.extraMargin{
 		margin: 10px 0px 5px 0px;
@@ -273,6 +277,7 @@ nav{
 	  display: none;
 	}
 	nav.open{
+		background-color: $blackColorTransparent;
 		flex-direction: column;
 		.hideResponsive{
 			display: flex;
@@ -281,6 +286,9 @@ nav{
 			display: flex;
 			flex-direction: column;
 		}
+	}
+	.showResponsive{
+		display: block;
 	}
 
 }
@@ -551,4 +559,14 @@ footer {
 	border-bottom-color: $blackColorTransparent;
 	border-width: 15px;
 	margin-left: -15px;
+}
+
+@media only screen and (max-width: 950px) {
+    h1 {
+        font-size: 30px;
+    }
+    #attentionText h3 {
+    width: 300px;
+    font-size: 15px;
+	}
 }

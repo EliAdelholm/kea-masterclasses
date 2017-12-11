@@ -139,7 +139,6 @@
 			console.log(jUser);
 			txtUserName.value = jUser.name;
 			txtUserEmail.value = jUser.email;
-			txtUserEmail2.value = jUser.email;
 			txtUserPassword.value = jUser.password;
 			txtUserDescription.value = jUser.description;
 			image.src = jUser.image;
@@ -181,13 +180,15 @@
 		if (this.readyState == 4 && this.status == 200) {
 			var sjUser = this.responseText;
 			var jUser = JSON.parse(sjUser);
+			jUser.email = JSON.parse(jUser.email);
+			jUser.phone = JSON.parse(jUser.phone);
 			console.log(jUser);
 			txtUserName.value = jUser.name;
-			txtUserEmail.value = jUser.email;
-			//txtUserEmail2.value = jUser.email;
+			txtUserEmail.value = jUser.email[0].email;
+			txtUserEmail2.value = jUser.email[1].email;
 			txtUserPassword.value = jUser.password;
 			txtUserDescription.value = jUser.description;
-			txtUserPhone2.value = jUser.phone;
+			txtUserPhone2.value = jUser.phone[0].phone;
 			notification.checked = JSON.parse(jUser.notification);
 			//imgProfilePicture.src = jUser.image;
 			//Javascript to create img tag & source

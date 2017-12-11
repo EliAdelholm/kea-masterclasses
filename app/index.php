@@ -164,9 +164,9 @@
 										</div>\
 										<div class="eventDetails">\
 											<h3 class="eventTitle">'+ sTitle +'</h3>\
-											<p>'+ sAddress +'</p>\
-											<p>Held by '+ sSpeaker +'</p>\
-											<p>'+ sTime +'</p>\
+											<div class="iconDiv"><img src="css/img/location.svg"><p>'+ sAddress +'</p></div>\
+											<div class="iconDiv"><img src="css/img/person.svg"><p>Held by '+ sSpeaker +'</p></div>\
+											<div class="iconDiv"><img src="css/img/time.svg"><p>'+ sTime +'</p></div>\
 										</div>\
 									</div>\
 								</a>\
