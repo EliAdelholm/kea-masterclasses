@@ -2,20 +2,23 @@
 var dropdown = document.getElementById('btnOpenDropdown');
 var isDropdownOpen = false;
 
-if (dropdown) {
+var browserWidth = window.innerWidth;;
+    if (dropdown) {
+        // TOGGLE DROPDOWN MENU
+        btnOpenDropdown.addEventListener('click', function () {
+            if(browserWidth > 800){
+                console.log(browserWidth);
+                if (!isDropdownOpen) {
+                    navDropdown.style.display = "block";
+                } else {
+                    navDropdown.style.display = "none";
+                }
+                isDropdownOpen = !isDropdownOpen;
+            }
+        })
 
-    // TOGGLE DROPDOWN MENU
-    btnOpenDropdown.addEventListener('click', function () {
-        if (!isDropdownOpen) {
-            navDropdown.style.display = "block";
-        } else {
-            navDropdown.style.display = "none";
-        }
+    }
 
-        isDropdownOpen = !isDropdownOpen;
-    })
-
-}
 
 // AJAX FOR LOGGING OUT
 btnLogout.addEventListener("click", function () {
