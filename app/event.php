@@ -225,16 +225,6 @@ document.addEventListener("click", function(e){
 	}
 });
 
-// document.addEventListener("click", function(e){
-// 	if (e.target.id =="btnDeleteEvent"){
-// 		var txt;
-// 		var r = confirm("Are you sure you want to cancel this event?");
-// 		if (r == true) {
-// 		} else {
-// 		}
-// 	}
-// })
-
 // Update the event with the changes
 document.addEventListener("click" , function(e){
 	if (e.target.id=="btnConfirmEdit") {

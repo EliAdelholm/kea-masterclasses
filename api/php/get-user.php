@@ -47,7 +47,7 @@ $dbname = "kea_masterclasses";
                 $query->execute();   
 
                 // get the data
-                $result = $query->setFetchMode(PDO::FETCH_ASSOC);
+                $result = $query->setFetchMode(PDO::FETCH_OBJ);
 
                 // Get the result
                 $mails = $query->fetch();
@@ -79,7 +79,7 @@ $dbname = "kea_masterclasses";
 
                 // Turn the array with 1 user into a string that looks like JSON
                 $sjUser = json_encode($aUser);                
-                
+                               
                 echo $sjUser;                
 
     }

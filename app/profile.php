@@ -142,14 +142,14 @@
 			txtUserEmail2.value = jUser.email;
 			txtUserPassword.value = jUser.password;
 			txtUserDescription.value = jUser.description;
-			profileImage.value = jUser.image;
+			image.src = jUser.image;
 			notification.checked = JSON.parse(jUser.notification);
 			
 		}
 	}
         ajax.open("GET", "../api/php/update_profile.php", true);
         ajax.send();
-    })
+    });
 
 
 		//JAVASCRIPT FOR UPLOAD IMAGE
@@ -180,16 +180,21 @@
 	ajax.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var sjUser = this.responseText;
-			var jUser = JSON.parse(sjUser)
+			var jUser = JSON.parse(sjUser);
 			console.log(jUser);
 			txtUserName.value = jUser.name;
 			txtUserEmail.value = jUser.email;
-			txtUserEmail2.value = jUser.email;
+			//txtUserEmail2.value = jUser.email;
 			txtUserPassword.value = jUser.password;
 			txtUserDescription.value = jUser.description;
-			imgProfilePicture.filePath = jUser.image;
 			txtUserPhone2.value = jUser.phone;
 			notification.checked = JSON.parse(jUser.notification);
+			//imgProfilePicture.src = jUser.image;
+			//Javascript to create img tag & source
+			var image = document.createElement("img");
+			image.id = "imgProfilePicture";	
+			image.src = jUser.image;
+			profilePicture.appendChild(image);
 			
 		}
 	}
@@ -206,13 +211,6 @@
 			console.log(this.value);                
 		}
 	});
-
-	//Javascript to create img tag & source
-	var image = document.createElement("img");
-	var imageParent = document.getElementById("profilePicture");
-	image.id = "imgProfilePicture";
-	image.src = "assets/img/userimage-5a298b35eba80.jpg".src;
-	imageParent.appendChild(image);
 
 	</script>
 	

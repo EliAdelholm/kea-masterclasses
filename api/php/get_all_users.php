@@ -20,7 +20,7 @@ $dbname = "kea_masterclasses";
             echo $v;
         }
     }
-
+    
     catch(PDOException $e) {
         echo "Error";
     }
