@@ -73,7 +73,7 @@
 									<div class="eventDate">
 										<?php
 											$date = $oEvent -> date;
-											list( $day, $month, $year) = split('[/.-]', $date);
+											list( $day, $month, $year) = explode('-', $date);
 										?>
 										<h3 class="month"><?php echo $month; ?></h3>
 										<p class="day"><?php echo $day; ?></p>
@@ -126,7 +126,7 @@
 										<div class="eventDate">
 											<?php
 												$date = $oEvent -> date;
-												list( $day, $month, $year) = split('[/.-]', $date);
+												list( $day, $month, $year) = explode('-', $date);
 											?>
 											<h3 class="month"><?php echo $month; ?></h3>
 											<p class="day"><?php echo $day; ?></p>
