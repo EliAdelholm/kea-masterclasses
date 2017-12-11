@@ -98,7 +98,9 @@
             ajax.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var sjStats = this.responseText;
+                    console.log("sjStats ", sjStats);
                     var jStats = JSON.parse(sjStats)
+                    console.log("jStats ", jStats);
                     jClickrates = jStats.avgClickrates;
 
                     if(jStats.status == "OK") {
