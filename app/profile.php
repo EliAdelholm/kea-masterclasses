@@ -19,13 +19,12 @@
 	<section id="topBannerProfile">
 		<h1><span>PROFILE</span></h1>
 	</section>
-	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">
 	<div id="instertUserDetailsHere" class="main-container">
 
+	<!--<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">-->
 		<div class="column1 displayFlex margin">
-			<div id="profilePicture">
-				
-			</div>
+			<div id="profilePicture"></div>
+			
 			<!--	Upload Image button	-->
 			<div class="box">
 					<input type="file" name="imageName" id="fileInput" class="inputfile inputfile-1"/>
@@ -90,10 +89,10 @@
 			
 			<div class="column5 displayFlex">
 				<button id="btnSaveChanges" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
-	</form>			
+
 				<a href="../api/php/delete_profile.php">
 						<button id="btnDeleteProfile">DELETE PROFILE</button>
-					</a>
+				</a>
 			</div>
 		</div>	
 
@@ -124,31 +123,26 @@
 		addMorePhoneBtn.addEventListener("click", function(){
 			clickCountPhones += 1;
 			if(clickCountPhones < 3){
-				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input class="input-control"/></div>';
+				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input id="txtUserPhone3" class="input-control"/></div>';
 				addMorePhonesDiv.insertAdjacentHTML('afterbegin', inputField);
 			}	
 		})
 
 		//UPDATE USER PROFILE --AJAX
-		btnSaveChanges.addEventListener("click", function () {
+		/*btnSaveChanges.addEventListener("click", function () {
 		var ajax = new XMLHttpRequest();
 		ajax.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			var sjUser = this.responseText;
-			var jUser = JSON.parse(sjUser)
-			console.log(jUser);
-			txtUserName.value = jUser.name;
-			txtUserEmail.value = jUser.email;
-			txtUserPassword.value = jUser.password;
-			txtUserDescription.value = jUser.description;
-			image.src = jUser.image;
-			notification.checked = JSON.parse(jUser.notification);
+			var sResponse = this.responseText;
+                console.log(sResponse);
+                divCreateAccountResponse.innerHTML = "Account updated successfully"
+            }
+        }
 			
-		}
 	}
-        ajax.open("GET", "../api/php/update_profile.php", true);
+        ajax.open("POST", "../api/php/update_profile.php", true);
         ajax.send();
-    });
+    });*/
 
 
 		//JAVASCRIPT FOR UPLOAD IMAGE
@@ -182,6 +176,7 @@
 			var jUser = JSON.parse(sjUser);
 			jUser.email = JSON.parse(jUser.email);
 			jUser.phone = JSON.parse(jUser.phone);
+			jUser.interests = JSON.parse(jUser.interests);
 			console.log(jUser);
 			txtUserName.value = jUser.name;
 			txtUserEmail.value = jUser.email[0].email;
@@ -196,6 +191,11 @@
 			image.id = "imgProfilePicture";	
 			image.src = jUser.image;
 			profilePicture.appendChild(image);
+
+			/*for(var i=0; i<jUser.length; i++){
+				var user = jUser[i];
+				console.log();
+			}*/
 			
 		}
 	}

@@ -138,9 +138,9 @@
 										</div>
 										<div class="eventDetails">
 											<h3 class="eventTitle"><?php echo $oEvent -> title; ?></h3>
-											<p><?php echo $oEvent -> location -> address; ?></p>
-											<p>Held by:  <?php echo $oEvent -> speaker; ?></p>
-											<p><?php echo $oEvent -> time; ?></p>
+											<div class="iconDiv"><img src="css/img/location.svg"><p><?php echo $oEvent -> location -> address; ?></p></div>
+											<div class="iconDiv"><img src="css/img/person.svg"><p>Held by: <?php echo $oEvent -> speaker; ?></p></div>
+											<div class="iconDiv"><img src="css/img/time.svg"><p><?php echo $oEvent -> time; ?></p></div>
 										</div>
 									</div>
 								</a>
