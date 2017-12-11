@@ -1,23 +1,24 @@
 // If a user is logged in make dropdown menu and login available
-var dropdown = document.getElementById('btnOpenDropdown');
-var isDropdownOpen = false;
+// var dropdown = document.getElementById('btnOpenDropdown');
+// var isDropdownOpen = false;
 
-var browserWidth = window.innerWidth;;
-    if (dropdown) {
-        // TOGGLE DROPDOWN MENU
-        btnOpenDropdown.addEventListener('click', function () {
-            if(browserWidth > 800){
-                console.log(browserWidth);
-                if (!isDropdownOpen) {
-                    navDropdown.style.display = "block";
-                } else {
-                    navDropdown.style.display = "none";
-                }
-                isDropdownOpen = !isDropdownOpen;
-            }
-        })
+// var browserWidth = window.innerWidth;;
+//     if (dropdown) {
+//         // TOGGLE DROPDOWN MENU
+//         btnOpenDropdown.addEventListener('click', function () {
+//             // if(browserWidth > 800){
+//                 console.log(browserWidth);
+//                 if (!isDropdownOpen) {
+//                     navDropdown.style.display = "block";
+//                 } else {
+//                     navDropdown.style.display = "none";
+//                 }
+//                 isDropdownOpen = !isDropdownOpen;
+//             // }
+//         })
 
-    }
+//     }
+
 
 
 // AJAX FOR LOGGING OUT
