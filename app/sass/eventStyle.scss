@@ -337,18 +337,22 @@ span{
 	flex-wrap: wrap;
 	margin-bottom: 50px;
 
+	p {
+		margin: 10px;
+	}
+
 	.eventBox {
 		margin-bottom: 0;
+		padding-bottom: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	#btnShowDissmissed {
 		background-color: $redColor;
 		margin-bottom: 50px;
 	}
-}
-
-#pendingContainer p {
-	margin: 0 10px 10px 10px;
 }
 
 .clippedDescription {
