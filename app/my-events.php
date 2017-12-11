@@ -47,13 +47,13 @@
 				ini_set('display_errors', 1);
 				ini_set('display_startup_errors', 1);
 				error_reporting(E_ALL);	
-				
+
 				for($i = 0; $i < count($aEvents); $i++) {
 					//echo "aEvents" . var_dump( $aEvents);
 					$sEventId =  $aEvents[$i];
 					//echo "sEventId " . $sEventId . "</br>";
 					$sEvent = file_get_contents("http://localhost:3333/event/" . $sEventId);
-					//echo "sEvent " . $sEvent . "</br>";
+					// echo "sEvent " . $sEvent . "</br>";
 					$oEvent = json_decode($sEvent);
 					//echo "oEvent " . $oEvent . "</br>";
 					$dateAndTime = $oEvent -> date . " " . $oEvent -> time;
@@ -62,16 +62,24 @@
 					$eventTime = $dt2 -> getTimestamp();
 					$currentTime = time();
 
+					$clz = "";
+					switch($oEvent -> type) {
+						case "ui": $clz = "greenBorder"; break;
+						case "ux": $clz = "redBorder"; break;
+						case "dev": $clz = "yellowBorder"; break;
+					}
+	
 					if($eventTime < $currentTime) {
 						$rating = $aRatings[$sEventId];
 						echo "Ratings: " . var_dump( $aRatings);
 						echo "Rating: " . $rating;
+						
 					?> 
 					<!-- ******************** PAST EVENT ******************** -->
 					<div class="pastEvent">
 						<div class="eventBox" id="<?php echo $oEvent -> _id;?>">
 							<a href="event.php?id=<?php echo $oEvent -> _id;?>">
-								<div style="background-image: url('<?php echo $oEvent -> image; ?>')" class="eventImg <?php $sType = $oEvent -> type ; echo $sType == "ui" ? "greenBorder" : $sType == "ux" ? "redBorder" : "yellowBorder"; ?>"></div>
+								<div style="background-image: url('<?php echo $oEvent -> image; ?>')" class="eventImg <?php echo $clz; ?>"></div>
 								<div class="photo-overlay <?php echo $oEvent -> type; ?>">
 									<h2><?php echo $oEvent -> type; ?></h2>
 								</div>
@@ -120,11 +128,13 @@
 					
 					<?php
 					} else {
+						// echo "sEvent " . $sEvent . "</br>";
+						// echo "sEvent " . $oEvent -> type . "</br>";
 						?> 
 							<!-- ******************** UPCOMMING EVENT ******************** -->
 							<div class="eventBox" id="<?php echo $oEvent -> _id;?>">
 								<a href="event.php?id=<?php echo $oEvent -> _id;?>">
-									<div style="background-image: url('<?php echo $oEvent -> image; ?>')" class="eventImg <?php $sType = $oEvent -> type ; echo $sType == "ui" ? "greenBorder" : $sType == "ux" ? "redBorder" : "yellowBorder"; ?>"></div>
+									<div style="background-image: url('<?php echo $oEvent -> image; ?>')" class="eventImg <?php echo $clz; ?>"></div>
 									<div class="photo-overlay <?php echo $oEvent -> type; ?>">
 										<h2><?php echo $oEvent -> type; ?></h2>
 									</div>
