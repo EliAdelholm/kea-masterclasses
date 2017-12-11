@@ -23,11 +23,13 @@
 	<div id="instertUserDetailsHere" class="main-container">
 
 		<div class="column1 displayFlex margin">
-			<div id="profilePicture"></div>
+			<div id="profilePicture">
+				
+			</div>
 			<!--	Upload Image button	-->
 			<div class="box">
-					<input id="profileImage" type="file" name="img" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multple />
-					<label for="file-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+					<input type="file" name="imageName" id="fileInput" class="inputfile inputfile-1"/>
+					<label id="lblProfilePicture" for="fileInput"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
 						<path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/>
 						<span>Upload Picture</span>
 					</label>
@@ -129,19 +131,25 @@
 
 		//UPDATE USER PROFILE --AJAX
 		btnSaveChanges.addEventListener("click", function () {
-        var ajax = new XMLHttpRequest();
-        ajax.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var sResponse = this.responseText;
-                console.log(sResponse);
-                if (sResponse == "Profile updated") {
-                    location.reload();
-                }
-            }
-        }
+		var ajax = new XMLHttpRequest();
+		ajax.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var sjUser = this.responseText;
+			var jUser = JSON.parse(sjUser)
+			console.log(jUser);
+			txtUserName.value = jUser.name;
+			txtUserEmail.value = jUser.email;
+			txtUserEmail2.value = jUser.email;
+			txtUserPassword.value = jUser.password;
+			txtUserDescription.value = jUser.description;
+			image.src = jUser.image;
+			notification.checked = JSON.parse(jUser.notification);
+			
+		}
+	}
         ajax.open("GET", "../api/php/update_profile.php", true);
         ajax.send();
-    })
+    });
 
 
 		//JAVASCRIPT FOR UPLOAD IMAGE
@@ -172,14 +180,21 @@
 	ajax.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var sjUser = this.responseText;
-			var jUser = JSON.parse(sjUser)
+			var jUser = JSON.parse(sjUser);
 			console.log(jUser);
 			txtUserName.value = jUser.name;
 			txtUserEmail.value = jUser.email;
+			//txtUserEmail2.value = jUser.email;
 			txtUserPassword.value = jUser.password;
 			txtUserDescription.value = jUser.description;
-			profileImage.val = jUser.image;
+			txtUserPhone2.value = jUser.phone;
 			notification.checked = JSON.parse(jUser.notification);
+			//imgProfilePicture.src = jUser.image;
+			//Javascript to create img tag & source
+			var image = document.createElement("img");
+			image.id = "imgProfilePicture";	
+			image.src = jUser.image;
+			profilePicture.appendChild(image);
 			
 		}
 	}
