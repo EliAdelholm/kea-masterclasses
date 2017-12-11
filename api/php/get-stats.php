@@ -12,9 +12,9 @@
     $jStats->eventCount = $iEventCount;
 
     // GET CURRENT SEMESTER BY MONTH
-    $aToday = getdate();
-    $sMonth = $aToday["month"];
-    $aSpring = array("February", "March", "April", "May", "June", "July");
+    $sMonth = date('M');
+    // $sMonth = $aToday["month"];
+    $aSpring = array("Feb", "Mar", "Apr", "May", "Jun", "Jul");
 
     if (in_array($sMonth, $aSpring, true)) {
         $sSemester = "spring";
