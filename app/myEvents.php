@@ -58,8 +58,8 @@
 
 					if($eventTime < $currentTime) {
 						$rating = $aRatings[$sEventId];
-						// echo "Ratings: " . var_dump( $aRatings);
-						// echo "Rating: " . $rating;
+						echo "Ratings: " . var_dump( $aRatings);
+						echo "Rating: " . $rating;
 					?> 
 					<!-- ******************** PAST EVENT ******************** -->
 					<div class="pastEvent">
@@ -73,7 +73,7 @@
 									<div class="eventDate">
 										<?php
 											$date = $oEvent -> date;
-											list( $day, $month, $year) = split('[/.-]', $date);
+											list( $day, $month, $year) = explode('[/.-]', $date);
 										?>
 										<h3 class="month"><?php echo $month; ?></h3>
 										<p class="day"><?php echo $day; ?></p>
