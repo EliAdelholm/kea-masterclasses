@@ -287,7 +287,7 @@ document.addEventListener("click" , function(e) {
     	if (this.readyState == 4 && this.status == 200) {
 			var sResponse = this.responseText;
 			console.log(sResponse);
-			window.location.href = "index.php";			
+			window.location.href = "index.php";	
     	}
   	};
   		xhttp.open("GET", "http://localhost:3333/delete-event/"+jEvent._id, true);
