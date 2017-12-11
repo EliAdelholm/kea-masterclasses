@@ -33,22 +33,22 @@
 
             <div class="totals-container">
                 <div class="column1">
-                    <div class="totals-item" style="margin: 0px 10px 20px 0px;">
+                    <div class="totals-item topLeft">
                         <h3>TOTAL EVENTS</h3>
                         <div class="stats-item-count"><span id="noTotalEvents">-</span></div>
                     </div>
-                    <div class="totals-item" style="margin: 0px 10px 0px 0px;">
+                    <div class="totals-item bottomLeft">
                         <h3>TOTAL USERS</h3>
                         <div class="stats-item-count"><span id="noTotalUsers">-</span></div>
                     </div>
                 </div>
                 
                 <div class="column2">
-                    <div class="totals-item" style="margin: 0px 00px 20px 10px;">
+                    <div class="totals-item topRight">
                         <h3>EVENT ATTENDANCE THIS SEMESTER</h3>
                         <div class="stats-item-count"><span id="noAttendeesSemester">-</span></div>
                     </div>
-                    <div class="totals-item" style="margin: 0px 0px 0px 10px;">
+                    <div class="totals-item bottomRight">
                         <h3>AVERAGE ATTENDANCE PER EVENT</h3>
                         <div class="stats-item-count"><span id="noAvgAttendees">-</span></div>
                     </div>
