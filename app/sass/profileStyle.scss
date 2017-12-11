@@ -43,11 +43,11 @@
 }
 
 .selectInterest{
-	background-color:$grayColor;
-	margin-top:10px;
+	//background-color:$grayColor;
+	margin-top:25px;
 
-	#btnUI{
-		
+	#filterUiBtn{
+		background-color:$grayColor; 
 	}
 }
 
@@ -185,13 +185,13 @@ label{
 
 //************	MEDIA QUERIES	******************/
 //************	MAX-WIDTH:1000PX	******************/
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1115px) {
 	#instertUserDetailsHere{
 		justify-content: center;
 		flex-flow: column wrap;
 		width:75%;
 	}
-	
+
 	.column1{
 		margin:0 auto;
 	}
