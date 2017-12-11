@@ -1,26 +1,13 @@
 <?php
-//echo 'x';
+
 session_start();
 include 'db.php';
 
-$iUserId = 2;//$_SESSION['sUserId'];
-echo "userId " . $iUserId;
-
-$query = $conn->prepare("START TRANSACTION;
-	DELETE FROM users_emails
-	WHERE user_id = :id;
-	DELETE FROM users_interests
-	WHERE users_id = :id;
-	DELETE FROM users_phones
-	WHERE users_id = :id;   
-	DELETE FROM users
-	WHERE id = :id;
-COMMIT;"); 
+$iUserId = $_GET['id'];
+						// This is a stored procedure. If it doesn't work for you it's because you haven't imported it. Code is in the root folder. 
+$query = $conn->prepare("call deleteUser(:id);"); 
 
 $query->bindParam( ':id' , $iUserId,  PDO::PARAM_INT );
 $query->execute();        
-
-echo var_dump($query);
-
 
 ?>
