@@ -73,9 +73,30 @@ $dbname = "kea_masterclasses";
                 $phones = $query->fetchAll();
 
                 // ****************** USERS PHONES TABLE END*******************/
+
+                //****************** USERS INTERESTS TABLE START*******************/
+                $query = $conn->prepare("SELECT  interests
+                                        FROM users_interests
+                                        WHERE users_id=:users_id"); 
+
+
+                // Bind param, this if for security
+                $query->bindParam( ':users_id' , $iUserId ,  PDO::PARAM_INT);
+
+                // Run the query
+                $query->execute();   
+
+                // get the data
+                $result = $query->setFetchMode(PDO::FETCH_OBJ);
+
+                // Get the result
+                $interests = $query->fetchAll();
+
+                // ****************** USERS INTERESTS TABLE END*******************/
                 
                 $aUser->email = json_encode($mails);
                 $aUser->phone = json_encode($phones);
+                $aUser->interests = json_encode($interests);
 
                 // Turn the array with 1 user into a string that looks like JSON
                 $sjUser = json_encode($aUser);                

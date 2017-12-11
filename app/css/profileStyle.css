@@ -1,8 +1,7 @@
 #instertUserDetailsHere {
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
   flex: 1 0 100%;
   margin-top: 100px;
   margin-bottom: 10vh; }
@@ -120,3 +119,11 @@ label {
     opacity: 0.65; }
     .column5 #btnDeleteProfile:hover {
       opacity: 1; }
+
+@media screen and (max-width: 1000px) {
+  #instertUserDetailsHere {
+    justify-content: center;
+    flex-flow: column wrap;
+    width: 75%; }
+  .column1 {
+    margin: 0 auto; } }
