@@ -49,14 +49,14 @@
 .errorMessage {
   color: #e7607b; }
 
-#btnRegister, #btnConfirmEdit {
+#btnRegister, #btnConfirmEdit, #btnDenieCancel {
   background-color: #52B795; }
-  #btnRegister:hover, #btnConfirmEdit:hover {
+  #btnRegister:hover, #btnConfirmEdit:hover, #btnDenieCancel:hover {
     border-color: #282826; }
 
-#btnUnregister, #btnCancelEvent {
+#btnUnregister, #btnCancelEvent, #btnConfirmCancel {
   background-color: #e7607b; }
-  #btnUnregister:hover, #btnCancelEvent:hover {
+  #btnUnregister:hover, #btnCancelEvent:hover, #btnConfirmCancel:hover {
     border-color: #282826; }
 
 .bold {

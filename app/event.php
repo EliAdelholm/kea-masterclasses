@@ -205,10 +205,10 @@ document.addEventListener("click", function(e){
 		<div><input required name="eventAddress" class="input-control" id="autocomplete" value ="'+jEvent.location.address+'" onFocus="geolocate()" type="text" /></div>\
 		<h3>ROOM </h3>\
 		<div><input type="text" name="eventRoom" value="'+jEvent.location.room+'"></div>\
-		<button id="btnConfirmEdit"> Confirm changes</button>\
-		</form>'
-		// <h3> Amount of registrations: '+jEvent.attendance+' </h3>\
-		'<button id="btnCancelEvent"> Cancel event </button>';
+		<h3> Amount of registrations: '+jEvent.attendance+' </h3>\
+		<button type="button" id="btnConfirmEdit"> Confirm changes</button>\
+		</form>\
+		<button id="btnCancelEvent"> Cancel event </button>';
 
 		eventContainer.innerHTML = eventContainerHTML;
 		
@@ -287,7 +287,7 @@ document.addEventListener("click" , function(e) {
     	if (this.readyState == 4 && this.status == 200) {
 			var sResponse = this.responseText;
 			console.log(sResponse);
-			window.location.href = "index.php";			
+			window.location.href = "index.php";	
     	}
   	};
   		xhttp.open("GET", "http://localhost:3333/delete-event/"+jEvent._id, true);
