@@ -27,6 +27,30 @@
 	background-color: $grayColor;
 	padding: 20px 35px 20px 30px;
 }
+
+.iconDivLoad{
+	display: flex;
+	align-items: center;
+	img{
+		margin-bottom: 0px;
+		height: 22px;
+		opacity: 0.3;
+		margin-right: 5px;
+	}
+}
+.iconDivEdit{
+	display: flex;
+	align-items: center;
+	img{
+		height: 22px;
+		opacity: 0.3;
+		margin-right: 5px;
+		margin-left: 10px;
+	}
+}
+
+
+
 #eventContainer{
 	width: 70%;
 	padding: 30px 30px 20px 30px;
