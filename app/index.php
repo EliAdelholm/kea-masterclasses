@@ -8,7 +8,7 @@
 	<title>EVENTS</title>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/eventStyle.css">
-</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 	<?php
@@ -22,14 +22,15 @@
 			<h1><span> MASTERCLASSES</span></h1>
 			<h2><span>I LEARN</span></h2>
 			<h3><span>INTERRESTING STUFF</span></h3>
-			<button id="topSectionBtn">view events</button>
+			<!-- <button id="topSectionBtn">view events</button> -->
 		</div>
 	</div>
 
 	<div id="eventFilterSection">
-		<div id="filterTopBar">
-			<h2 class="subtitleMargin">events</h2>
-			<div id="filerButtons">
+		<div class="FlexColumnCenter">
+			<h1 class="subtitleMargin">events</h1>
+
+			<!-- <div id="filerButtons">
 				<div id="eventsByTime">
 					<button id="filterPastEventBtn" class="filterByTime">past</button>
 					<button id="filterUpcommingEventBtn" class="filterByTime">upcomming</button>
@@ -44,39 +45,66 @@
 				<div id="searchEvent">
 					<input id="search" type="text" name="" placeholder="SEARCH">
 				</div>
+			</div> -->
+			<!-- <a id="getLocation"><button id="locationBtn">events near me</button></a> -->
+			
+			<!-- ***************** FILTER DESIGN TEST ************** -->
+			<div id="filtersBtn">
+				<p id="filtersText">FILTERS</p>
+				<img id="arrow" class="openFilters" src="css/img/arrow.svg">
 			</div>
-		</div>
-	</div>
+			<div id="displayAllFilters">
+				
+				<div class="FlexColumnCenter">
+					<p class="filterGroup">DATE</p>
+					<div class="displayFilters">
+						<p id="filterPastEventBtn" class="underline">PAST</p>
+						<p id="filterUpcommingEventBtn" class="underline">UPCOMMING</p>
+					</div>
+				</div>
 
-		<!-- <div id="filters">
-			<div id="categories">
-				<p id="uiBtn">UI</p>
-				<p id="uxBtn">UX</p>
-				<p id="devBtn">DEV</p>
+				<div class="FlexColumnCenter">
+					<p class="filterGroup">CATEGORY</p>
+					<div class="displayFilters">
+						<p id="underlineUi">UI</p>
+						<p id="underlineUx">UX</p>
+						<p id="underlineDev">DEV</p>
+					</div>
+				</div>
+
+				<div class="FlexColumnCenter">
+					<p class="filterGroup">LOCATION</p>
+					<div class="displayFilters">
+						<p id="locationBtn" class="underline">EVENTS NEAR ME</p>
+					</div>
+				</div>
 			</div>
-			<div id="timeFilters">
-				<p id="upcomingBtn">UPCOMING</p>
-				<p id="pastBtn">PAST</p>
-			</div>
-		</div> -->
-		<div id="eventBoxes" class="main-container">
-			<!-- <div>{{eventBox}}</div> -->		
-		</div>
+			<!-- *************************************************** -->
+	</div>
+</div>
+
+
+
+
+	<div id="eventBoxes" class="main-container">
+		<!-- <div>{{eventBox}}</div> -->		
+	</div>
 	
 	<?php
 		include 'footer.html';
 	?>
 	
 	<?php
-	if (!isset($_SESSION['sUserId'])) {
-		echo '<script src="js/login.js"></script>';
-	}
-	else {
-		echo '<script src="js/logout.js"></script>';
-	}
+		if (!isset($_SESSION['sUserId'])) {
+			echo '<script src="js/login.js"></script>';
+		}
+		else {
+			echo '<script src="js/logout.js"></script>';
+		}
 	?>
 
 	<script>
+		// ******************* FILTER EVENTS BY TYPE *********************
 		var filterByType = document.getElementsByClassName("filterByType");
 		for ( i = 0; i < filterByType.length; i++){
 			filterByType[i].addEventListener("click", function(e){
@@ -94,33 +122,21 @@
 			  }
 			});
 		}
-		
-		// var filterByTime = document.getElementsByClassName("filterByTime");
-		// for ( i = 0; i < filterByTime.length; i++){
-		// 	filterByTime[i].addEventListener("click", function(e){
-		// 	  for ( j = 0; j < filterByTime.length; j++){
-		// 	  	if (e.target == filterByTime[j]){
-		// 	  		filterByTime[j].style.background = "inherit";
-		// 	  	} else {
-		// 	  		filterByTime[j].style.background = "#c1c1c1";
-		// 	  	}
-		// 	  }
-		// 	});
-		// }
 
+		// ******************* GET ALL EVENTS FROM MONGO *******************
 		var ajax = new XMLHttpRequest();
 		ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var sajEvents = this.responseText;
-				var ajEvents = JSON.parse(sajEvents)
-				displayEvents(ajEvents);
+				gajEvents = JSON.parse(sajEvents)
+				displayEvents(gajEvents);
 			}
 		}
 		ajax.open( "GET", "http://localhost:3333/events", true );
 		ajax.send();
 
-
 		function displayEvents(ajEvents) {
+			document.getElementById("eventBoxes").innerHTML = "";
 			 for (var i = 0; i<ajEvents.length; i++) {
 				var id = ajEvents[i]._id
 				var img = ajEvents[i].image;
@@ -138,6 +154,9 @@
 				var oEvent = '<div class="eventBox" id="'+id+'">\
 								<a href="event.php?id='+id+'">\
 									<div style="background-image: url('+img+')" class="eventImg '+ borderColor +'"></div>\
+									<div class="photo-overlay '+sType+'">\
+										<h2>'+sType+'</h2>\
+									</div>\
 									<div class="eventDesc">\
 										<div class="eventDate">\
 											<h3 class="month">'+ sMonth +'</h3>\
@@ -157,6 +176,7 @@
 			}
 		};
 
+		// ******************* DISPLAY PAST EVENTS IN GRAY *******************
 		function checkPastDate(sDate, id){
 			var date = sDate.split("-");
 			if (Date.parse(date) < Date.now()) {
@@ -169,6 +189,8 @@
 				upcommingEvent.classList.add("upcommingEvent");
 			}
 		}
+
+		// ******************* FILTER PAST AND UPCOMMING EVENTS *******************
 		var aUpcommingEvents = document.getElementsByClassName("upcommingEvent");
 		var aPastEvents = document.getElementsByClassName("pastEvent");
 		filterPastEventBtn.addEventListener("click", function(){
@@ -181,7 +203,6 @@
 				aPastEvents[i].style.display = "block";
 			 }
 		});
-
 		filterUpcommingEventBtn.addEventListener("click", function(){
 			filterPastEventBtn.style.opacity = "0.5";
 			filterUpcommingEventBtn.style.opacity = "1";
@@ -192,37 +213,104 @@
 				aUpcommingEvents[i].style.display = "block";
 			 }	
 		});
-		
-function appear(elm, i, step, speed){
-    var t_o;
-    //initial opacity
-    i = i || 0;
-    //opacity increment
-    step = step || 5;
-    //time waited between two opacity increments in msec
-    speed = speed || 50; 
 
-    t_o = setInterval(function(){
-        //get opacity in decimals
-        var opacity = i / 100;
-        //set the next opacity step
-        i = i + step; 
-        if(opacity > 1 || opacity < 0){
-            clearInterval(t_o);
-            //if 1-opaque or 0-transparent, stop
-            return; 
-        }
-        //modern browsers
-        elm.style.opacity = opacity;
-        //older IE
-        elm.style.filter = 'alpha(opacity=' + opacity*100 + ')';
-    }, speed);
-}
+		//*************************** SHOW TEXT SLOWLY ************************
+		function appear(elm, i, step, speed){
+			var toAppar;
+			//initial opacity
+			i = i || 0;
+			//opacity increment
+			step = step || 5;
+			//time waited between two opacity increments in msec
+			speed = speed || 50; 
+			toAppar = setInterval(function(){
+				//get opacity in decimals
+				var opacity = i / 100;
+				//set the next opacity step
+				i = i + step; 
+				if(opacity > 1 || opacity < 0){
+					clearInterval(toAppar);
+					//if 1-opaque or 0-transparent, stop
+					return; 
+				}
+				//modern browsers
+				elm.style.opacity = opacity;
+				//older IE
+				elm.style.filter = 'alpha(opacity=' + opacity*100 + ')';
+			}, speed);
+		}
 
-var spanToAppear =  document.getElementsByTagName('span');
-for (var i = 0; i<spanToAppear.length; i++){
-	appear(spanToAppear[i], 0, 5, 60);
-}
+		var spanToAppear =  document.getElementsByTagName('span');
+		for (var i = 0; i<spanToAppear.length; i++){
+			appear(spanToAppear[i], 0, 5, 60);
+		}
+
+		// ************************* GET USERS LOCATION *************************
+		var locationClickCount = 1;
+		locationBtn.addEventListener("click", function(){
+			// /user-location/:usersLat/:usersLng
+			if(locationClickCount % 2 == 1){
+				getLocalEvents();
+				locationBtn.className += " activeLocation";
+				locationClickCount++
+			}else{
+				displayEvents(gajEvents);
+				locationBtn.classList.remove("activeLocation");
+				locationClickCount++
+
+			}
+			
+		})
+
+		function getLocalEvents() {
+			var ajax = new XMLHttpRequest();
+			ajax.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var sajEvents = this.responseText;
+					//console.log("sajEvents ", sajEvents);
+					var ajEvents = JSON.parse(sajEvents);
+					displayEvents(ajEvents);
+				}
+			}
+			ajax.open( "GET", "http://localhost:3333/user-location/"+gUsersLat+"/"+gUsersLng, true );
+			ajax.send();
+		}
+
+		function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				} else {
+					console.log("Geolocation is not supported by this browser.q");
+				}
+		}
+
+		function showPosition(position) {
+			gUsersLat = position.coords.latitude;
+			gUsersLng = position.coords.longitude;
+			gUserPosition = "Latitude: " + gUsersLat + " Longitude: " + gUsersLng; 
+			console.log(gUserPosition);
+		}
+
+		// ************* SHOW AND HIDE FILTERS BOX ****************
+		var count = 0;
+		$("#displayAllFilters").hide();
+		$(document).ready(function(){
+			$("#filtersBtn").click(function(){
+				if(count % 2 == 1){
+					$("#displayAllFilters").hide(1000);
+					$( "#arrow" ).addClass( "openFilters" );
+					count ++
+				}else{
+					$("#displayAllFilters").show(1000);
+					$( "#arrow" ).removeClass( "openFilters" )
+					count ++
+				}
+			});
+		});
+
+		window.onload = function(e){ 
+			getLocation();
+		}
 
 	</script>
  </body>

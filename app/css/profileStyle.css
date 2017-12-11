@@ -4,7 +4,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex: 1 0 100%;
-  margin-top: 20vh;
+  margin-top: 100px;
   margin-bottom: 10vh; }
 
 .column1 {
@@ -28,7 +28,8 @@
   flex: 1 0 33.3%; }
 
 .selectInterest {
-  background-color: #f2eeee; }
+  background-color: #f2eeee;
+  margin-top: 10px; }
 
 .margin {
   margin-right: 5%; }
@@ -93,7 +94,7 @@ label {
 
 #addMoreEmailsBtn, #addMorePhoneBtn {
   margin-bottom: 30px;
-  padding: 15px 30px; }
+  padding: 10px; }
 
 .column5 {
   margin: 0 20%; }

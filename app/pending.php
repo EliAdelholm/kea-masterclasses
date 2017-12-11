@@ -26,7 +26,7 @@
         include 'login.html';
     ?>
 
-     <section id="topBanner">
+     <section id="topBannerPending">
         <h1><span>PENDING EVENTS</span></h1>
     </section>
 

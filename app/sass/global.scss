@@ -72,7 +72,7 @@ h1 {
 	font-size: 60px;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	color: $greenColor;
+	//color: $greenColor;
 
 	span {
 		color: $blackColor;
@@ -144,8 +144,41 @@ button{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 79px;
+	//margin-top: 79px;
 	background-position: center;
+}
+
+@mixin test($img){
+	width: 100%;
+	height: 40vh;
+	background-image: ($img);
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	//margin-top: 79px;
+	background-position: center;
+}
+
+#topBanner{
+	@include test(url("img/test.png"));
+}
+
+#topBannerStats{
+	@include test(url("img/stats.svg"));
+}
+
+#topBannerPending{
+	@include test(url("img/pending.jpg"));
+}
+
+#topBannerCreateEvent{
+	@include test(url("img/createEvent.jpg"));
+}
+
+#topBannerProfile{
+	@include test(url("img/profile.jpg"));
 }
 
 .textColumns {
@@ -202,7 +235,7 @@ nav{
     left: 0px;
     top: 0px;
     right: 0px;
-    background-color: $blackColor;
+    //background-color: $blackColor;
     width: 100%;
     z-index: 1;
 }
@@ -253,7 +286,7 @@ nav{
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	background-color: #282826;
+	background-color: $blackColorTransparent;
 	color: #fdfdfc;
 	width: 130px;
 	padding: 15px 20px 0px 20px;
@@ -276,6 +309,7 @@ footer {
 	justify-content: center;
 	align-items: center;
 	color: $whiteColor;
+	width: 100%;
 	p{
 		margin-top: 0px;
 		margin-bottom: 6px;
@@ -410,7 +444,52 @@ footer {
 	}
 }
 
+#btnConfirmEdit{
+	@extend button;
+	background-color: $greenColor;	
+	&:hover{
+		background-color: darken($greenColor, 10%);	
+		color: $whiteColor;
+		border-color: $blackColor;
+	}
+}
+
+#btnCancelEvent{
+	@extend button;
+	background-color: $redColor;	
+	&:hover{
+		background-color: darken($redColor, 10%);	
+		color: $whiteColor;
+		border-color: $blackColor;
+	}
+}
 .sectionHeader {
 	background-color: $grayColor;
 	padding: 15px;
+}
+.FlexColumnCenter{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+// arrow on the dopdown nav
+.arrow_box {
+	position: relative;
+	background: $blackColorTransparent;
+}
+.arrow_box:after {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(0, 0, 0, 0);
+	border-bottom-color: $blackColorTransparent;
+	border-width: 15px;
+	margin-left: -15px;
 }

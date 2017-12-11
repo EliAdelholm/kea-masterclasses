@@ -11,7 +11,8 @@ h1 {
   margin: 10px; }
 
 .ratingContainer {
-  display: flex; }
+  display: flex;
+  justify-content: center; }
 
 /****** Style Star Rating Widget *****/
 .rating {

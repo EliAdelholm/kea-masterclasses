@@ -32,6 +32,12 @@
   border-color: #f2eeee; }
   #eventContainer * {
     margin-bottom: 20px; }
+  #eventContainer h3 {
+    color: #282826;
+    font-weight: bold;
+    margin-bottom: 5px; }
+  #eventContainer #autocomplete {
+    margin-bottom: 0px; }
 
 #tagStyle {
   color: #282826;
@@ -43,14 +49,14 @@
 .errorMessage {
   color: #e7607b; }
 
-#btnRegister, #btnConfirmEdit, #btnDenieCancel {
+#btnRegister, #btnConfirmEdit {
   background-color: #52B795; }
-  #btnRegister:hover, #btnConfirmEdit:hover, #btnDenieCancel:hover {
+  #btnRegister:hover, #btnConfirmEdit:hover {
     border-color: #282826; }
 
-#btnUnregister, #btnCancelEvent, #btnConfirmCancel {
+#btnUnregister, #btnCancelEvent {
   background-color: #e7607b; }
-  #btnUnregister:hover, #btnCancelEvent:hover, #btnConfirmCancel:hover {
+  #btnUnregister:hover, #btnCancelEvent:hover {
     border-color: #282826; }
 
 .bold {
@@ -77,15 +83,13 @@
   text-align: center;
   align-items: center;
   background-color: white;
-  width: 500px;
-  padding: 15px; }
+  padding: 2%;
+  max-width: 600px; }
   #warningModal h2 {
     margin-bottom: 5px; }
   #warningModal .displayFlex {
     margin-top: 20px; }
 
 #btnDenieCancel {
-  margin-right: 5px; }
-
-#btnConfirmCancel {
+  margin-right: 5px;
   margin-left: 5px; }
