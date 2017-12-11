@@ -120,11 +120,11 @@
 }
 
 #btnDenieCancel {
-	// @extend #btnRegister;
+	@extend #btnRegister;
 	margin-right: 5px;
 	margin-left: 5px;
 }
 
-// #btnConfirmCancel {
-// 	//@extend #btnUnregister;	
-// }
+#btnConfirmCancel {
+@extend #btnUnregister;	
+}
