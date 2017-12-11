@@ -253,7 +253,7 @@ span{
 		}
 	.iconDiv{
 		display: flex;
-		align-items: end;
+		// align-items: end;
 		img{
 			height: 17px;
 			opacity: 0.3;
@@ -337,18 +337,22 @@ span{
 	flex-wrap: wrap;
 	margin-bottom: 50px;
 
+	p {
+		margin: 10px;
+	}
+
 	.eventBox {
 		margin-bottom: 0;
+		padding-bottom: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	#btnShowDissmissed {
 		background-color: $redColor;
 		margin-bottom: 50px;
 	}
-}
-
-#pendingContainer p {
-	margin: 0 10px 10px 10px;
 }
 
 .clippedDescription {
@@ -460,6 +464,9 @@ span{
 .underline {
 	@include underlineColor($blackColor);
 }
+.underlineLocation{
+	@include underlineColor(#0069AD);
+}
 #underlineUi{
 	@include underlineColor($greenColor);
 }
@@ -470,7 +477,7 @@ span{
 	@include underlineColor($yellowColor);
 }
 .activeLocation{
-	@include selectedFilterColor($blackColor)
+	@include selectedFilterColor(#0069AD)
 }
 // ******************* MEDIA QUERIES **************
 @media screen and (max-width: 857px) {

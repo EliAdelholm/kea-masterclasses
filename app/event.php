@@ -63,9 +63,12 @@
 				topImageSection.style.backgroundImage = 'url('+jEvent.image+')';
 				
 				containerHeader.innerHTML = '<div id="tagStyle">'+jEvent.type+'</div>\
-				<div>DATE: '+jEvent.date+'</div>\
-				<div>TIME: '+jEvent.time+'</div>\
-				<div>SPEAKER: '+jEvent.speaker+'</div>';
+				<div class="iconDivLoad">\
+					<img src="css/img/date.svg">\
+					<div>DATE: '+jEvent.date+'</div>\
+				</div>\
+				<div class="iconDivLoad"><img src="css/img/time.svg">TIME: '+jEvent.time+'</div>\
+				<div class="iconDivLoad"><img src="css/img/person.svg">SPEAKER: '+jEvent.speaker+'</div>';
 				
 				topImageSection.innerHTML = '<h1><span>'+jEvent.title+'</span></h1>';
 				var eventContainerHTML = '<h3>REQUIREMENT</h3>\
@@ -189,9 +192,9 @@ document.addEventListener("click", function(e){
 		var eventContainerHTML = '<form id="frmEditEvent">\
 		<div id="divEditEvent">\
 		<div id="tagStyle">TYPE <input type="text" name="eventType" value="'+jEvent.type+'"></div>\
-		<div>DATE:<input id="datepicker" name="eventDate" value="'+jEvent.date+'"></div>\
-		<div>TIME:<input id="timepicker" name="eventTime" value="'+jEvent.time+'"></div>\
-		<div>SPEAKER:<input type="text" name="eventSpeaker" value="'+jEvent.speaker+'"></div>\
+		<div class="iconDivEdit"><img src="css/img/date.svg"><input id="datepicker" name="eventDate" value="'+jEvent.date+'"></div>\
+		<div class="iconDivEdit"><img src="css/img/time.svg"><input id="timepicker" name="eventTime" value="'+jEvent.time+'"></div>\
+		<div class="iconDivEdit"><img src="css/img/person.svg"><input type="text" name="eventSpeaker" value="'+jEvent.speaker+'"></div>\
 		</div>';
 		
 		containerHeader.style.display = "none";

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>EVENTS</title>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/eventStyle.css">
@@ -75,7 +76,7 @@
 				<div class="FlexColumnCenter">
 					<p class="filterGroup">LOCATION</p>
 					<div class="displayFilters">
-						<p id="locationBtn" class="underline">EVENTS NEAR ME</p>
+						<p id="locationBtn" class="underlineLocation">EVENTS NEAR ME</p>
 					</div>
 				</div>
 			</div>
