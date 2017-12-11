@@ -205,7 +205,7 @@ document.addEventListener("click", function(e){
 		<div><input required name="eventAddress" class="input-control" id="autocomplete" value ="'+jEvent.location.address+'" onFocus="geolocate()" type="text" /></div>\
 		<h3>ROOM </h3>\
 		<div><input type="text" name="eventRoom" value="'+jEvent.location.room+'"></div>\
-		// <h3> Amount of registrations: '+jEvent.attendance+' </h3>\
+		<h3> Amount of registrations: '+jEvent.attendance+' </h3>\
 		<button type="button" id="btnConfirmEdit"> Confirm changes</button>\
 		</form>\
 		<button id="btnCancelEvent"> Cancel event </button>';
