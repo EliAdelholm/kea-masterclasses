@@ -34,7 +34,7 @@
 		
 	</nav>
 	<div id="navDropdown" class="main-container" style="position: relative;">
-		<div id="nav-dropdown">
+		<div id="nav-dropdown" class="arrow_box">
 			<a href="profile.php">SETTINGS</a>
 			<a href="#" id="btnLogout">LOGOUT</a>
 		</div>
