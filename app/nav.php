@@ -32,7 +32,7 @@
 			if (!isset($_SESSION['sUserId'])) {
 				echo '<a href="#" id="btnOpenLogin" class="extraMargin hideResponsive">LOGIN</a>';
 			} else {
-				echo '<a href="myEvents.php" class="extraMargin hideResponsive">MY EVENTS</a>
+				echo '<a href="my-events.php" class="extraMargin hideResponsive">MY EVENTS</a>
 					  <a href="#" id="btnOpenDropdown" class="extraMargin hideResponsive">PROFILE</a>';
 			}
 		?>
