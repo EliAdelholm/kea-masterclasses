@@ -76,7 +76,7 @@
 				<div class="FlexColumnCenter">
 					<p class="filterGroup">LOCATION</p>
 					<div class="displayFilters">
-						<p id="locationBtn" class="underline">EVENTS NEAR ME</p>
+						<p id="locationBtn" class="underlineLocation">EVENTS NEAR ME</p>
 					</div>
 				</div>
 			</div>

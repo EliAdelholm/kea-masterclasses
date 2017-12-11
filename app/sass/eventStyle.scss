@@ -460,6 +460,9 @@ span{
 .underline {
 	@include underlineColor($blackColor);
 }
+.underlineLocation{
+	@include underlineColor(#0069AD);
+}
 #underlineUi{
 	@include underlineColor($greenColor);
 }
@@ -470,7 +473,7 @@ span{
 	@include underlineColor($yellowColor);
 }
 .activeLocation{
-	@include selectedFilterColor($blackColor)
+	@include selectedFilterColor(#0069AD)
 }
 // ******************* MEDIA QUERIES **************
 @media screen and (max-width: 857px) {

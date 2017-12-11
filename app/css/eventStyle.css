@@ -313,6 +313,15 @@ span {
     color: #282826;
     cursor: pointer; }
 
+.underlineLocation {
+  border-bottom: 3px solid transparent;
+  transition: border-bottom 1s;
+  transition: color 1s; }
+  .underlineLocation:hover {
+    border-bottom: 3px solid #0069AD;
+    color: #0069AD;
+    cursor: pointer; }
+
 #underlineUi {
   border-bottom: 3px solid transparent;
   transition: border-bottom 1s;
@@ -341,8 +350,8 @@ span {
     cursor: pointer; }
 
 .activeLocation {
-  border-bottom: 3px solid #282826;
-  color: #282826;
+  border-bottom: 3px solid #0069AD;
+  color: #0069AD;
   cursor: pointer; }
 
 @media screen and (max-width: 857px) {
