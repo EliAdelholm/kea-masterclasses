@@ -153,8 +153,7 @@ span {
   .eventBox a:hover {
     color: #282826; }
   .eventBox .iconDiv {
-    display: flex;
-    align-items: end; }
+    display: flex; }
     .eventBox .iconDiv img {
       height: 17px;
       opacity: 0.3;

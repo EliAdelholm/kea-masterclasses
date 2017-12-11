@@ -24,6 +24,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>MY EVENTS</title>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/eventStyle.css">
@@ -46,10 +47,7 @@
 				ini_set('display_errors', 1);
 				ini_set('display_startup_errors', 1);
 				error_reporting(E_ALL);	
-<<<<<<< HEAD:app/myEvents.php
-=======
 				
->>>>>>> 8bb047cf7b02718fd04c4ad7b215705f9483dddf:app/my-events.php
 				for($i = 0; $i < count($aEvents); $i++) {
 					//echo "aEvents" . var_dump( $aEvents);
 					$sEventId =  $aEvents[$i];
