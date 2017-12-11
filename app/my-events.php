@@ -43,13 +43,18 @@
 		<div id="eventBoxes">
 
 			<?php
-				// ini_set('display_errors', 1);
-				// ini_set('display_startup_errors', 1);
-				// error_reporting(E_ALL);	
+				ini_set('display_errors', 1);
+				ini_set('display_startup_errors', 1);
+				error_reporting(E_ALL);	
+				
 				for($i = 0; $i < count($aEvents); $i++) {
+					//echo "aEvents" . var_dump( $aEvents);
 					$sEventId =  $aEvents[$i];
+					//echo "sEventId " . $sEventId . "</br>";
 					$sEvent = file_get_contents("http://localhost:3333/event/" . $sEventId);
+					//echo "sEvent " . $sEvent . "</br>";
 					$oEvent = json_decode($sEvent);
+					//echo "oEvent " . $oEvent . "</br>";
 					$dateAndTime = $oEvent -> date . " " . $oEvent -> time;
 					
 					$dt2 = DateTime::createFromFormat("d-M-Y H:i", $dateAndTime , new DateTimeZone('CET'));

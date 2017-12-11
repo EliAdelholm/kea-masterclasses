@@ -229,6 +229,7 @@ span{
 	}
 	h3{
 		color: $blackColor;
+		margin-bottom: 20px;
 	}
 }
 
@@ -250,6 +251,15 @@ span{
 		a:hover{
 			color: $blackColor;
 		}
+	.iconDiv{
+		display: flex;
+		align-items: end;
+		img{
+			height: 17px;
+			opacity: 0.3;
+			margin-right: 5px;
+		}
+	}
 }
 .pastEventImg{
 	opacity: 0.5;
