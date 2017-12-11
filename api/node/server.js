@@ -115,25 +115,65 @@ app.post('/create-event', (req, res) => {
 
 // UPDATE EVENT
 app.post('/update-event', (req, res) => {
-    var jEvent = {
-        "_id": req.fields._id,
-        "title": req.fields.eventTitle,
-        "type": req.fields.eventType,
-        "location": {
-            "type": "Point",
-            "address": req.fields.eventAddress,
-            "coordinates": [parseInt(req.fields.sLat), parseInt(req.fields.sLng)],
-            "room": req.fields.eventRoom
-        },
-        "date": req.fields.eventDate,
-        "time": req.fields.eventTime,
-        "speaker": req.fields.eventSpeaker,
-        "organizer": req.fields.eventResponsible,
-        "description": req.fields.eventDescription,
-        "requirements": req.fields.eventRequirements
-    }
     
-    event.updateEvent(jEvent, (err, jStatus) => {
+    var bImageUploaded = true;
+    // Check file extension if any
+    var extName = path.extname(req.files.eventImage.name)
+    
+        if (['.png', '.jpg', '.jpeg'].includes(extName)) {
+            console.log("Valid image was uploaded")
+    
+            // Handle image upload
+            // Get temporary file path
+            var tempPath = req.files.eventImage.path
+    
+            // Generate new path, using timestamp to avoid duplication errors
+            var timestamp = + new Date()
+            var imagePath = "assets/img/" + timestamp + extName
+    
+            // Handle OS file system differences
+            if (os.platform() == 'linux') {
+                // File path for linux users
+                var targetPath = path.resolve('app/' + imagePath)
+            } else {
+                // For windows n00bs
+                var targetPath = path.resolve('../../app/' + imagePath)
+            }
+    
+            // Actually move the file to permanent storage
+            fs.move(tempPath, targetPath, function (err) {
+                if (err) throw err;
+                console.log("Upload completed!");
+            });
+            
+        } else {
+            bImageUploaded = false;
+            console.log("No valid image")
+            // Set the path for default image
+        }
+
+    
+        var jEvent = {
+            "_id": req.fields._id,
+            "title": req.fields.eventTitle,
+            "type": req.fields.eventType,
+            "image": imagePath,
+            "location": {
+                "type": "Point",
+                "address": req.fields.eventAddress,
+                "coordinates": [parseInt(req.fields.sLat), parseInt(req.fields.sLng)],
+                "room": req.fields.eventRoom
+            },
+            "date": req.fields.eventDate,
+            "time": req.fields.eventTime,
+            "speaker": req.fields.eventSpeaker,
+            "organizer": req.fields.eventResponsible,
+            "description": req.fields.eventDescription,
+            "requirements": req.fields.eventRequirements
+        }
+
+    
+    event.updateEvent(jEvent, bImageUploaded, (err, jStatus) => {
         if (err) {
             console.log(jStatus);
             return res.send('<html><body>ERROR</body></html>')
@@ -175,9 +215,22 @@ app.get('/dissmiss-event/:id', (req, res) => {
 
 
 // DELETE EVENT
-app.get('/delete-event/:id', (req, res) => {
+app.get('/delete-event/:id/:imageToDelete', (req, res) => {
     var sEventId = req.params.id
-    event.deleteEvent(sEventId, (err, jStatus) => {
+    var sImageToDelete = req.params.imageToDelete
+    if (os.platform() == 'linux') {
+        // File path for linux users
+        sImageToDelete = path.resolve('app/assets/img/' + sImageToDelete)
+    } else {
+        // For windows n00bs
+        sImageToDelete = path.resolve('../../app/assets/img/' + sImageToDelete)
+    }
+    fs.unlink(sImageToDelete, (err) => {
+        if (err) throw err;
+        console.log("could not delete image");
+        return;
+    })
+    event.deleteEvent(sEventId, sImageToDelete, (err, jStatus) => {
         if (err) {
             console.log(sEventId)
             return res.send('<html><body>ERROR</body></html>')

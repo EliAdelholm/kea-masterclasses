@@ -205,10 +205,11 @@ document.addEventListener("click", function(e){
 		<div><input required name="eventAddress" class="input-control" id="autocomplete" value ="'+jEvent.location.address+'" onFocus="geolocate()" type="text" /></div>\
 		<h3>ROOM </h3>\
 		<div><input type="text" name="eventRoom" value="'+jEvent.location.room+'"></div>\
+		<div><input type="file" name="eventImage"</div>\
 		<h3> Amount of registrations: '+jEvent.attendance+' </h3>\
 		<button type="button" id="btnConfirmEdit"> Confirm changes</button>\
 		</form>\
-		<button id="btnCancelEvent"> Cancel event </button>';
+		<button id="btnCancelEvent" type="button"> Cancel event </button>';
 
 		eventContainer.innerHTML = eventContainerHTML;
 		
@@ -279,8 +280,10 @@ document.addEventListener("click" , function(e) {
 			console.log(sResponse);
 			window.location.href = "index.php";	
     	}
-  	};
-  		xhttp.open("GET", "http://localhost:3333/delete-event/"+jEvent._id, true);
+	  };
+	  	// Since we cannot have slashes in what we pass, we have to get rid of them
+	  	var sImagePath = jEvent.image.replace('assets/img/' , '');
+  		xhttp.open("GET", "http://localhost:3333/delete-event/"+jEvent._id+"/"+sImagePath, true);
   		xhttp.send();
 	}
 })
