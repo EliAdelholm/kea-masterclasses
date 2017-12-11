@@ -42,7 +42,7 @@ $dbname = "kea_masterclasses";
 
                 // Bind param, this if for security
                 $query->bindParam( ':user_id' , $iUserId ,  PDO::PARAM_INT);
-                  
+      
                 // Run the query
                 $query->execute();   
 
@@ -50,11 +50,11 @@ $dbname = "kea_masterclasses";
                 $result = $query->setFetchMode(PDO::FETCH_OBJ);
 
                 // Get the result
-                $mails = $query->fetch();
-
+                $mails = $query->fetchAll();
+                
                 // ****************** USERS EMAIL TABLE END*******************/
 
-                //****************** USERS EMAIL TABLE START*******************/
+                //****************** USERS PHONES TABLE START*******************/
                 $query = $conn->prepare("SELECT  phone
                                         FROM users_phones
                                         WHERE users_id=:users_id"); 
@@ -67,12 +67,12 @@ $dbname = "kea_masterclasses";
                 $query->execute();   
 
                 // get the data
-                $result = $query->setFetchMode(PDO::FETCH_ASSOC);
+                $result = $query->setFetchMode(PDO::FETCH_OBJ);
 
                 // Get the result
-                $phones = $query->fetch();
+                $phones = $query->fetchAll();
 
-                // ****************** USERS EMAIL TABLE END*******************/
+                // ****************** USERS PHONES TABLE END*******************/
                 
                 $aUser->email = json_encode($mails);
                 $aUser->phone = json_encode($phones);
