@@ -109,6 +109,7 @@
 	}
 	?>
 	<script>
+		
 		var clickCountEmails = 0;
 		var clickCountPhones = 0;
 
@@ -141,7 +142,7 @@
 			jUser.interests = JSON.parse(jUser.interests);
 			console.log(jUser);
 			jUser.name = txtUserName.value
-			jUser.email[0].email = txtUserEmail.value;
+			jUser.email[0].email = txtUserEmail.newValue;
 			jUser.email[1].email = txtUserEmail2.value;
 			jUser.password = txtUserPassword.value;
 			jUser.description = txtUserDescription.value;
@@ -155,7 +156,7 @@
 			
 		}
 	}
-	ajax.open( "POST", "../api/php/update_profile.php?id="+sUserId, true );
+	ajax.open( "POST", "../api/php/update_profile.php?id=<?php echo $_SESSION['sUserId']?>", true );
 	var oFrmUser = new FormData(frmUpdateProfile);
 	ajax.send(oFrmUser);
 		
@@ -208,11 +209,6 @@
 			image.id = "imgProfilePicture";	
 			image.src = jUser.image;
 			profilePicture.appendChild(image);
-
-			/*for(var i=0; i<jUser.length; i++){
-				var user = jUser[i];
-				console.log();
-			}*/
 			
 		}
 	}
@@ -229,6 +225,38 @@
 			console.log(this.value);                
 		}
 	});
+
+
+	//DELETE USER
+	btnDeleteProfile.addEventListener("click", function()
+	{
+		console.log("delete button clicked");
+		var ajax = new XMLHttpRequest();
+		ajax.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				var jUser =this.responseText;
+				window.location.href = "index.php";
+
+				var ajax2 = new XMLHttpRequest();
+				ajax2.onreadystatechange = function()
+				{
+					if (this.readyState == 4 && this.status == 200)
+					{
+						var jUser2 =this.responseText;
+						window.location.href = "index.php";
+					} 
+			};
+			ajax2.open("POST", "../api/php/logout.php?id=<?php echo $_SESSION['sUserId']?>", true);
+			ajax2.send();
+			} 
+		};
+		ajax.open("GET", "../api/php/delete_profile.php?id=<?php echo $_SESSION['sUserId']?>", true);
+		ajax.send();
+		
+	});
+
 
 	</script>
 	
