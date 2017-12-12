@@ -107,6 +107,11 @@ h3 {
 	}
 }
 
+span{
+	padding: 5px;
+}
+
+
 
 button{
 	border: solid 2px;
@@ -589,6 +594,10 @@ footer {
 
 @media only screen and (max-width: 650px) {
 
+	#topSection #attentionText {
+		padding-left: 0;
+	}
+	
 	#formContainer form {
 		padding: 50px 0px;
 
