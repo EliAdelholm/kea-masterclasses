@@ -44,7 +44,6 @@
   
   #formContainer {
 	display: flex;
-	margin-bottom: 100px;
 	flex-direction: column;
 	align-items: center; }
   
@@ -105,6 +104,11 @@ h3 {
 		font-weight: bold;
 	}
 }
+
+span{
+	padding: 5px;
+}
+
 
 
 button{
@@ -540,6 +544,8 @@ footer {
 	text-align: center;
 	color: $blackColor;
 	border-bottom: 3px solid $grayColor;
+	width: 300px;
+	margin: 0 auto;
 }
 
 .FlexColumnCenter{
@@ -572,9 +578,48 @@ footer {
 @media only screen and (max-width: 950px) {
     h1 {
         font-size: 30px;
-    }
-    #attentionText h3 {
-    width: 300px;
-    font-size: 15px;
 	}
+	
+    #attentionText h3 {
+		width: 300px;
+		font-size: 15px;
+	}
+
+	#formContainer form {
+		width: 90%;
+	}
+}
+
+@media only screen and (max-width: 890px) {
+
+	.textColumns {
+		width: 90%;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+
+	#topSection #attentionText {
+		padding-left: 0;
+	}
+	
+	#formContainer form {
+		padding: 50px 0px;
+
+	}
+
+	.textColumns {
+		width: 100%;
+	}
+
+	.displayFlexStyle {
+		flex-direction: column;
+
+		.dropdown-el {
+			width: 100px;
+			margin: 0px;
+		}
+	}
+
+	
 }

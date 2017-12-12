@@ -49,6 +49,12 @@
 	#filterUiBtn{
 		background-color:$grayColor; 
 	}
+	#filterUxBtn{
+		@extend #filterUiBtn;
+	}
+	#filterDevBtn{
+		@extend #filterUiBtn;
+	}
 }
 
 

@@ -1,22 +1,6 @@
 @import '_utils/_vars';
+@import '_utils/_mixins';
 
-
-@mixin underlineColor($color) {
-	border-bottom: 3px solid rgba(0, 0, 0 ,0);
-	transition: border-bottom 1s;
-	transition: color 1s;
-	&:hover{
-		border-bottom: 3px solid $color;
-		color: $color;
-		cursor: pointer;
-	}
-}
-
-@mixin selectedFilterColor($color){
-	border-bottom: 3px solid $color;
-	color: $color;
-	cursor: pointer;
-}
 #topSection{
 	width:$indexTopSectionWidth; 
 	height:$indexTopSectionHeith;
@@ -42,10 +26,6 @@
 		width: $indexTopSectionWidth * 0.8;
 		margin-bottom: 30px;
 	}
-}
-
-span{
-	padding: 5px;
 }
 
 // #myEvents {
