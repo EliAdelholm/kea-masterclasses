@@ -40,7 +40,7 @@
             <h1><span>MY EVENTS</span></h1>
     </section>
 	<div id="myEvents" class="main-container">
-		<h2 class="sectionHeader">Registered Attendance</h2>
+		<h2 class="sectionHeader">Attendance</h2>
 		<div id="eventBoxes">
 
 			<?php

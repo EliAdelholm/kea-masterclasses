@@ -35,10 +35,12 @@
             <p>&ldquo;Tell me something about yourself and the country you came from,&rdquo; said the Scarecrow, when she had finished her dinner.  So she told him all about Kansas, and how gray everything was there, and how the cyclone had carried her to this queer Land of Oz.</p>
         </article>
 
+        <h2 class="sectionHeader">New Event</h2>
+
         <form id="frmHoldMasterclass" action="">
             <div class="displayFlexStyle">
                 <label>Select type of the event</label>
-                <span class="dropdown-el form-group extraMargin">
+                <span class="dropdown-el form-group ">
                     <input type="radio" name="sortType" value="ui" checked="checked" id="ui">
                     <label for="ui">ui</label>
                     <input type="radio" name="sortType" value="ux" id="ux">
