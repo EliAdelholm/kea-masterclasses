@@ -1,7 +1,7 @@
 <?php
 
 // The database connection. You might need to change this if you're not using mamp!
-$servername = "localhost";
+$servername = "localhost:8889";
 $username = "root";
 $password = "root";
 
@@ -9,7 +9,7 @@ $password = "root";
 $dbname = "kea_masterclasses";
 
     $iUserId = $_GET['id'];
-
+   // echo "iUserId " . $iUserId;
     try {
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -38,7 +38,6 @@ $dbname = "kea_masterclasses";
                 $query = $conn->prepare("SELECT  email
                                          FROM users_emails
                                          WHERE user_id=:user_id"); 
-
 
                 // Bind param, this if for security
                 $query->bindParam( ':user_id' , $iUserId ,  PDO::PARAM_INT);
@@ -93,7 +92,7 @@ $dbname = "kea_masterclasses";
                 $interests = $query->fetchAll();
 
                 // ****************** USERS INTERESTS TABLE END*******************/
-                
+
                 $aUser->email = json_encode($mails);
                 $aUser->phone = json_encode($phones);
                 $aUser->interests = json_encode($interests);
@@ -101,7 +100,7 @@ $dbname = "kea_masterclasses";
                 // Turn the array with 1 user into a string that looks like JSON
                 $sjUser = json_encode($aUser);                
                                
-                echo $sjUser;                
+                echo "sjUser " . $sjUser;                
 
     }
 
