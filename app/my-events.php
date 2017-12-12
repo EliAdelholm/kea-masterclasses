@@ -47,11 +47,6 @@
 				ini_set('display_errors', 1);
 				ini_set('display_startup_errors', 1);
 				error_reporting(E_ALL);	
-<<<<<<< HEAD
-				
-=======
-
->>>>>>> 598bfbcb0d10927e000156307da53795b746deed
 				for($i = 0; $i < count($aEvents); $i++) {
 					//echo "aEvents" . var_dump( $aEvents);
 					$sEventId =  $aEvents[$i];

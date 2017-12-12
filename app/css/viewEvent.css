@@ -10,15 +10,10 @@
   background-position: center; }
 
 #descriptionContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 150px; }
 
 #containerHeader, #divEditEvent {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -44,7 +39,7 @@
     margin-left: 10px; }
 
 #eventContainer {
-  width: 70%;
+  width: 100%;
   padding: 30px 30px 20px 30px;
   border: solid 3px;
   border-color: #f2eeee; }
