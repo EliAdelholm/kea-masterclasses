@@ -40,14 +40,13 @@
             <h1><span>MY EVENTS</span></h1>
     </section>
 	<div id="myEvents" class="main-container">
-		<h2 class="sectionHeader">Registered Attendance</h2>
+		<h2 class="sectionHeader">Attendance</h2>
 		<div id="eventBoxes">
 
 			<?php
 				ini_set('display_errors', 1);
 				ini_set('display_startup_errors', 1);
 				error_reporting(E_ALL);	
-
 				for($i = 0; $i < count($aEvents); $i++) {
 					//echo "aEvents" . var_dump( $aEvents);
 					$sEventId =  $aEvents[$i];
