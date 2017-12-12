@@ -19,13 +19,12 @@
 	<section id="topBannerProfile">
 		<h1><span>PROFILE</span></h1>
 	</section>
-	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="POST">
+
 	<div id="instertUserDetailsHere" class="main-container">
 
 		<div class="column1 displayFlex margin">
-			<div id="profilePicture">
-				
-			</div>
+			<div id="profilePicture"></div>
+		<form id="frmUpdateProfile">	
 			<!--	Upload Image button	-->
 			<div class="box">
 					<input type="file" name="imageName" id="fileInput" class="inputfile inputfile-1"/>
@@ -80,7 +79,7 @@
 					<input id="txtUserPhone2" class="input-control"/>
 					<button id="addMorePhoneBtn" type="button">more phones</button>
 				</div>
-				<p>SELECT DESIRED INTERESTS
+				<p>SELECT DESIRED INTERESTS</p>
 				<div class="selectInterest displayFlex">
 					<button id="filterUiBtn" class="">UI</button>
 					<button id="filterUxBtn" class="">UX</button>
@@ -90,10 +89,10 @@
 			
 			<div class="column5 displayFlex">
 				<button id="btnSaveChanges" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
-	</form>			
-				<a href="../api/php/delete_profile.php">
-						<button id="btnDeleteProfile">DELETE PROFILE</button>
-					</a>
+		</form>
+				
+				<button id="btnDeleteProfile">DELETE PROFILE</button>
+				
 			</div>
 		</div>	
 
@@ -124,32 +123,43 @@
 		addMorePhoneBtn.addEventListener("click", function(){
 			clickCountPhones += 1;
 			if(clickCountPhones < 3){
-				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input class="input-control"/></div>';
+				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input id="txtUserPhone3" class="input-control"/></div>';
 				addMorePhonesDiv.insertAdjacentHTML('afterbegin', inputField);
 			}	
 		})
 
-		//UPDATE USER PROFILE --AJAX
-		btnSaveChanges.addEventListener("click", function () {
+	//UPDATE USER PROFILE --AJAX
+	btnSaveChanges.addEventListener("click",function(){
+		console.log('button clicked');
 		var ajax = new XMLHttpRequest();
 		ajax.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var sjUser = this.responseText;
-			var jUser = JSON.parse(sjUser)
+			var jUser = JSON.parse(sjUser);
+			jUser.email = JSON.parse(jUser.email);
+			jUser.phone = JSON.parse(jUser.phone);
+			jUser.interests = JSON.parse(jUser.interests);
 			console.log(jUser);
-			txtUserName.value = jUser.name;
-			txtUserEmail.value = jUser.email;
-			txtUserPassword.value = jUser.password;
-			txtUserDescription.value = jUser.description;
+			jUser.name = txtUserName.value
+			jUser.email[0].email = txtUserEmail.value;
+			jUser.email[1].email = txtUserEmail2.value;
+			jUser.password = txtUserPassword.value;
+			jUser.description = txtUserDescription.value;
+			jUser.phone[0].phone = txtUserPhone2.value;
+			//imgProfilePicture.src = jUser.image;
+			//Javascript to create img tag & source
+			var image = document.createElement("img");
+			image.id = "imgProfilePicture";	
 			image.src = jUser.image;
-			notification.checked = JSON.parse(jUser.notification);
+			profilePicture.appendChild(image);
 			
 		}
 	}
-        ajax.open("GET", "../api/php/update_profile.php", true);
-        ajax.send();
-    });
-
+	ajax.open( "POST", "../api/php/update_profile.php?id="+sUserId, true );
+	var oFrmUser = new FormData(frmUpdateProfile);
+	ajax.send(oFrmUser);
+		
+	});
 
 		//JAVASCRIPT FOR UPLOAD IMAGE
 		var inputs = document.querySelectorAll( '.inputfile' );
@@ -174,6 +184,7 @@
 });
 	
 
+
 	//GET USER DETAILS
 	var ajax = new XMLHttpRequest();
 	ajax.onreadystatechange = function() {
@@ -182,6 +193,7 @@
 			var jUser = JSON.parse(sjUser);
 			jUser.email = JSON.parse(jUser.email);
 			jUser.phone = JSON.parse(jUser.phone);
+			jUser.interests = JSON.parse(jUser.interests);
 			console.log(jUser);
 			txtUserName.value = jUser.name;
 			txtUserEmail.value = jUser.email[0].email;
@@ -196,6 +208,11 @@
 			image.id = "imgProfilePicture";	
 			image.src = jUser.image;
 			profilePicture.appendChild(image);
+
+			/*for(var i=0; i<jUser.length; i++){
+				var user = jUser[i];
+				console.log();
+			}*/
 			
 		}
 	}
