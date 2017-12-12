@@ -21,7 +21,7 @@
 	</section>
 
 
-	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="post">
+	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="post" enctype="multipart/form-data">
 
 	<div id="instertUserDetailsHere" class="main-container">
 
@@ -63,7 +63,7 @@
 
 			<div class="form-group">
 				<label>Description</label>
-				<textarea id="txtUserDescription" name="txtUserDescription" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
+				<textarea id="txtUserDescription" name="txtBio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
 			</div>
 
 		</div>
@@ -84,15 +84,15 @@
 				</div>
 
 				<p>SELECT DESIRED INTERESTS</p>
-				<div class="selectInterest displayFlex">
-					<button id="filterUiBtn" class="" type="button">UI</button>
-					<button id="filterUxBtn" class="" type="button">UX</button>
+				<div id="filters" class="selectInterest displayFlex">
+					<button id="filterUiBtn" class="" type="button" value="UI">UI</button>
+					<button id="filterUxBtn" class="" type="button"  value="UX">UX</button>
 					<button id="filterDevBtn" class="" type="button">DEV</button>
 				</div>
 			</div>
 			
 			<div class="column5 displayFlex">
-				<button id="btnSaveChanges" type="button"f class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
+				<button id="btnSaveChanges" type="button" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
 	</form>		
 
 				<button id="btnDeleteProfile" type="button">DELETE PROFILE</button>
@@ -164,6 +164,7 @@
 			ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var sjUser = this.responseText;
+				window.location.reload();
 			}
 		}
 		ajax.open( "POST", "../api/php/update_profile.php", true );
