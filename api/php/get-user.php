@@ -8,7 +8,7 @@ $password = "root";
 // Please use the same database name
 $dbname = "kea_masterclasses";
 
-    $iUserId = $_GET['id'];;
+    $iUserId = $_GET['id'];
 
     try {
                 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
