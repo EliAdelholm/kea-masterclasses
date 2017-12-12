@@ -20,10 +20,10 @@
 		<h1><span>PROFILE</span></h1>
 	</section>
 
-	
-	<div id="instertUserDetailsHere" class="main-container">
 
 	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="post">
+
+	<div id="instertUserDetailsHere" class="main-container">
 
 		<div class="column1 displayFlex margin">
 			<div id="profilePicture"></div>	
@@ -57,13 +57,13 @@
 			<div class="form-group">
 				<li>
 				<label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
-				<input id="notification" value="0" type="checkbox" name="checkNotification">
+				<input id="notification" value="0" type="checkbox" name="notification">
 				</li>		
 			</div>
 
 			<div class="form-group">
 				<label>Description</label>
-				<textarea id="txtUserDescription" name="txtBio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
+				<textarea id="txtUserDescription" name="txtUserDescription" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
 			</div>
 
 		</div>
@@ -168,6 +168,7 @@
 		}
 		ajax.open( "POST", "../api/php/update_profile.php", true );
 		var oFrmUser = new FormData(frmUpdateProfile);
+		oFrmUser.append("id", "<?php echo $_SESSION['sUserId']?>" );
 		ajax.send(oFrmUser);
 		});
 
