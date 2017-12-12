@@ -177,19 +177,19 @@
 		ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var sjUser = this.responseText;
- 				//console.log("sjUser ", sjUser);
+ 				console.log("sjUser ", sjUser);
 				
 				var jUser = JSON.parse(sjUser);
  				console.log("jUser ", jUser);
-				jUser.email = JSON.parse(jUser.email);
-				jUser.phone = JSON.parse(jUser.phone);
-				jUser.interests = JSON.parse(jUser.interests);
 				txtUserName.value = jUser.name;
-				txtUserEmail.value = jUser.email[0].email;
-				txtUserEmail2.value = jUser.email[1].email;
+				if(jUser.email.length > 0)
+					txtUserEmail.value = jUser.email[0].email;
+				if(jUser.email.length > 1)
+					txtUserEmail2.value = jUser.email[1].email;
 				txtUserPassword.value = jUser.password;
 				txtUserDescription.value = jUser.description;
-				txtUserPhone2.value = jUser.phone[0].phone;
+				if(jUser.phone.length > 0)
+					txtUserPhone2.value = jUser.phone[0].phone;
 				notification.checked = JSON.parse(jUser.notification);
 				//imgProfilePicture.src = jUser.image;
 				//Javascript to create img tag & source

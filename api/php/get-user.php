@@ -1,18 +1,18 @@
 <?php
+include 'db.php';
+// // The database connection. You might need to change this if you're not using mamp!
+// $servername = "localhost:8889";
+// $username = "root";
+// $password = "root";
 
-// The database connection. You might need to change this if you're not using mamp!
-$servername = "localhost:8889";
-$username = "root";
-$password = "root";
+// // Please use the same database name
+// $dbname = "kea_masterclasses";
 
-// Please use the same database name
-$dbname = "kea_masterclasses";
-
-    $iUserId = $_GET['id'];
-   // echo "iUserId " . $iUserId;
+     $iUserId = $_GET['id'];
+//    // echo "iUserId " . $iUserId;
     try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 // $query = $conn->prepare("SELECT *
                 //                         FROM users"); 
@@ -70,7 +70,6 @@ $dbname = "kea_masterclasses";
 
                 // Get the result
                 $phones = $query->fetchAll();
-
                 // ****************** USERS PHONES TABLE END*******************/
 
                 //****************** USERS INTERESTS TABLE START*******************/
@@ -93,14 +92,14 @@ $dbname = "kea_masterclasses";
 
                 // ****************** USERS INTERESTS TABLE END*******************/
 
-                $aUser->email = json_encode($mails);
-                $aUser->phone = json_encode($phones);
-                $aUser->interests = json_encode($interests);
+                $aUser->email = $mails;
+                $aUser->phone = $phones;
+                $aUser->interests = $interests;
 
                 // Turn the array with 1 user into a string that looks like JSON
                 $sjUser = json_encode($aUser);                
                                
-                echo "sjUser " . $sjUser;                
+                echo $sjUser;                
 
     }
 
