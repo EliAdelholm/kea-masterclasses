@@ -20,11 +20,13 @@
 		<h1><span>PROFILE</span></h1>
 	</section>
 
+	
 	<div id="instertUserDetailsHere" class="main-container">
 
+	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="post">
+
 		<div class="column1 displayFlex margin">
-			<div id="profilePicture"></div>
-		<form id="frmUpdateProfile">	
+			<div id="profilePicture"></div>	
 			<!--	Upload Image button	-->
 			<div class="box">
 					<input type="file" name="imageName" id="fileInput" class="inputfile inputfile-1"/>
@@ -34,67 +36,69 @@
 					</label>
 			</div>
 		</div>
-
-			<div class="column2 displayFlex margin">
+				
+		<div class="column2 displayFlex margin">
 			<h3>GENERAL INFORMATION</h3>
-				<div class="form-group">
-					<label>Name</label>
-					<input id="txtUserName" type="text" name="txtUserName">
-				</div>
-
-				<div class="form-group">
-					<label>E-mail</label>
-					<input id="txtUserEmail" type="text" name="txtUserEmail">
-				</div>
-
-				<div class="form-group">
-					<label>Password</label>
-					<input id="txtUserPassword" class="input-control" name="txtUserPassword"/>
-				</div>
-
-				<div class="form-group">
-					<li>
-						<label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
-						<input id="notification" value="0" type="checkbox" name="checkNotification">
-					</li>		
-				</div>
-
-				<div class="form-group">
-					<label>Description</label>
-					<textarea id="txtUserDescription" name="txtBio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
-				</div>
-
+			<div class="form-group">
+				<label>Name</label>
+				<input id="txtUserName" type="text" name="txtUserName">
 			</div>
 
+			<div class="form-group">
+				<label>E-mail</label>
+				<input id="txtUserEmail" type="text" name="txtUserEmail">
+			</div>
 
-			<div class="column3 displayFlex margin">
-				<h3>ADDITIONAL INFORMATION</h3>
-				<div id="addMoreEmailsDiv" class="form-group">
-					<label>Additional email</label>
-					<input id="txtUserEmail2" class="input-control"/>
-					<button id="addMoreEmailsBtn" type="button">more emails</button>
-				</div>
+			<div class="form-group">
+				<label>Password</label>
+				<input id="txtUserPassword" class="input-control" name="txtUserPassword"/>
+			</div>
+
+			<div class="form-group">
+				<li>
+				<label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
+				<input id="notification" value="0" type="checkbox" name="checkNotification">
+				</li>		
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<textarea id="txtUserDescription" name="txtBio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
+			</div>
+
+		</div>
+
+
+		<div class="column3 displayFlex margin">
+			<h3>ADDITIONAL INFORMATION</h3>
+			<div id="addMoreEmailsDiv" class="form-group">
+				<label>Additional email</label>
+				<input id="txtUserEmail2" class="input-control" name="txtUserEmail2"/>
+				<button id="addMoreEmailsBtn" type="button">more emails</button>
+			</div>
+
 				<div id="addMorePhonesDiv" class="form-group">
 					<label>Main phone</label>
-					<input id="txtUserPhone2" class="input-control"/>
+					<input id="txtUserPhone2" class="input-control" name="txtUserPhone2"/>
 					<button id="addMorePhoneBtn" type="button">more phones</button>
 				</div>
+
 				<p>SELECT DESIRED INTERESTS</p>
 				<div class="selectInterest displayFlex">
-					<button id="filterUiBtn" class="">UI</button>
-					<button id="filterUxBtn" class="">UX</button>
-					<button id="filterDevBtn" class="">DEV</button>
+					<button id="filterUiBtn" class="" type="button">UI</button>
+					<button id="filterUxBtn" class="" type="button">UX</button>
+					<button id="filterDevBtn" class="" type="button">DEV</button>
 				</div>
 			</div>
 			
 			<div class="column5 displayFlex">
-				<button id="btnSaveChanges" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
-		</form>
-				
-				<button id="btnDeleteProfile">DELETE PROFILE</button>
-				
+				<button id="btnSaveChanges" type="button"f class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
+	</form>		
+
+				<button id="btnDeleteProfile" type="button">DELETE PROFILE</button>
 			</div>
-		</div>	
+	
+	</div>	
 
 		
 	<?php
@@ -119,7 +123,7 @@
 				var inputField = '<div class="transitionStyle"><label>Additional email</label><input class="input-control"/></div>';
 				addMoreEmailsDiv.insertAdjacentHTML('afterbegin', inputField);
 			}
-		})
+		});
 
 		addMorePhoneBtn.addEventListener("click", function(){
 			clickCountPhones += 1;
@@ -127,135 +131,117 @@
 				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input id="txtUserPhone3" class="input-control"/></div>';
 				addMorePhonesDiv.insertAdjacentHTML('afterbegin', inputField);
 			}	
-		})
+		});
 
-	//UPDATE USER PROFILE --AJAX
-	btnSaveChanges.addEventListener("click",function(){
-		console.log('button clicked');
-		var ajax = new XMLHttpRequest();
-		ajax.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var sjUser = this.responseText;
-			var jUser = JSON.parse(sjUser);
-			jUser.email = JSON.parse(jUser.email);
-			jUser.phone = JSON.parse(jUser.phone);
-			jUser.interests = JSON.parse(jUser.interests);
-			console.log(jUser);
-			jUser.name = txtUserName.value
-			jUser.email[0].email = txtUserEmail.newValue;
-			jUser.email[1].email = txtUserEmail2.value;
-			jUser.password = txtUserPassword.value;
-			jUser.description = txtUserDescription.value;
-			jUser.phone[0].phone = txtUserPhone2.value;
-			//imgProfilePicture.src = jUser.image;
-			//Javascript to create img tag & source
-			var image = document.createElement("img");
-			image.id = "imgProfilePicture";	
-			image.src = jUser.image;
-			profilePicture.appendChild(image);
-			
-		}
-	}
-	ajax.open( "POST", "../api/php/update_profile.php?id=<?php echo $_SESSION['sUserId']?>", true );
-	var oFrmUser = new FormData(frmUpdateProfile);
-	ajax.send(oFrmUser);
-		
-	});
+			//****************** JAVASCRIPT FOR UPLOAD IMAGE ******************//
+			var inputs = document.querySelectorAll( '.inputfile' );
+		Array.prototype.forEach.call( inputs, function( input )
+		{
+		var label	 = input.nextElementSibling,
+			labelVal = label.innerHTML;
 
-		//JAVASCRIPT FOR UPLOAD IMAGE
-		var inputs = document.querySelectorAll( '.inputfile' );
-	Array.prototype.forEach.call( inputs, function( input )
-	{
-	var label	 = input.nextElementSibling,
-		labelVal = label.innerHTML;
+		input.addEventListener( 'change', function( e )
+		{
+			var fileName = '';
+			if( this.files && this.files.length > 1 )
+				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+			else
+				fileName = e.target.value.split( '\\' ).pop();
 
-	input.addEventListener( 'change', function( e )
-	{
-		var fileName = '';
-		if( this.files && this.files.length > 1 )
-			fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-		else
-			fileName = e.target.value.split( '\\' ).pop();
-
-		if( fileName )
-			label.querySelector( 'span' ).innerHTML = fileName;
-		else
-			label.innerHTML = labelVal;
-	});
-});
+			if( fileName )
+				label.querySelector( 'span' ).innerHTML = fileName;
+			else
+				label.innerHTML = labelVal;
+		});
+		});
 	
 
 
-	//GET USER DETAILS
-	var ajax = new XMLHttpRequest();
-	ajax.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var sjUser = this.responseText;
-			var jUser = JSON.parse(sjUser);
-			jUser.email = JSON.parse(jUser.email);
-			jUser.phone = JSON.parse(jUser.phone);
-			jUser.interests = JSON.parse(jUser.interests);
-			console.log(jUser);
-			txtUserName.value = jUser.name;
-			txtUserEmail.value = jUser.email[0].email;
-			txtUserEmail2.value = jUser.email[1].email;
-			txtUserPassword.value = jUser.password;
-			txtUserDescription.value = jUser.description;
-			txtUserPhone2.value = jUser.phone[0].phone;
-			notification.checked = JSON.parse(jUser.notification);
-			//imgProfilePicture.src = jUser.image;
-			//Javascript to create img tag & source
-			var image = document.createElement("img");
-			image.id = "imgProfilePicture";	
-			image.src = jUser.image;
-			profilePicture.appendChild(image);
-			
+		//****************** UPDATE USER PROFILE --AJAX ******************
+		btnSaveChanges.addEventListener("click",function(){
+			console.log('button update clicked');
+			var ajax = new XMLHttpRequest();
+			ajax.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var sjUser = this.responseText;
+			}
 		}
-	}
-	ajax.open( "GET", "../api/php/get-user.php?id=<?php echo $_SESSION['sUserId']?>", true );
-	ajax.send();
+		ajax.open( "POST", "../api/php/update_profile.php", true );
+		var oFrmUser = new FormData(frmUpdateProfile);
+		ajax.send(oFrmUser);
+		});
 
-	notification.addEventListener("click", function () {
-		if (this.checked) {
-			this.value = 1;
-			console.log(this.value);
-		}
-		else {
-			this.value = 0;
-			console.log(this.value);                
-		}
-	});
-
-
-	//DELETE USER
-	btnDeleteProfile.addEventListener("click", function()
-	{
-		console.log("delete button clicked");
+		//****************** GET USER DETAILS ******************
 		var ajax = new XMLHttpRequest();
-		ajax.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200)
-			{
-				var jUser =this.responseText;
-				window.location.href = "index.php";
-
-				var ajax2 = new XMLHttpRequest();
-				ajax2.onreadystatechange = function()
-				{
-					if (this.readyState == 4 && this.status == 200)
-					{
-						var jUser2 =this.responseText;
-						window.location.href = "index.php";
-					} 
-			};
-			ajax2.open("POST", "../api/php/logout.php?id=<?php echo $_SESSION['sUserId']?>", true);
-			ajax2.send();
-			} 
-		};
-		ajax.open("GET", "../api/php/delete_profile.php?id=<?php echo $_SESSION['sUserId']?>", true);
+		ajax.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var sjUser = this.responseText;
+				var jUser = JSON.parse(sjUser);
+				jUser.email = JSON.parse(jUser.email);
+				jUser.phone = JSON.parse(jUser.phone);
+				jUser.interests = JSON.parse(jUser.interests);
+				console.log(jUser);
+				txtUserName.value = jUser.name;
+				txtUserEmail.value = jUser.email[0].email;
+				txtUserEmail2.value = jUser.email[1].email;
+				txtUserPassword.value = jUser.password;
+				txtUserDescription.value = jUser.description;
+				txtUserPhone2.value = jUser.phone[0].phone;
+				notification.checked = JSON.parse(jUser.notification);
+				//imgProfilePicture.src = jUser.image;
+				//Javascript to create img tag & source
+				var image = document.createElement("img");
+				image.id = "imgProfilePicture";	
+				image.src = jUser.image;
+				profilePicture.appendChild(image);
+				
+			}
+		}
+		ajax.open( "GET", "../api/php/get-user.php?id=<?php echo $_SESSION['sUserId']?>", true );
 		ajax.send();
-		
-	});
+
+		notification.addEventListener("click", function () {
+			if (this.checked) {
+				this.value = 1;
+				console.log(this.value);
+			}
+			else {
+				this.value = 0;
+				console.log(this.value);                
+			}
+		});
+
+
+		//****************** DELETE USER ******************
+		btnDeleteProfile.addEventListener("click", function()
+		{
+			console.log("delete button clicked");
+			var ajax = new XMLHttpRequest();
+			ajax.onreadystatechange = function()
+			{
+				if (this.readyState == 4 && this.status == 200)
+				{
+					var jUser =this.responseText;
+					window.location.href = "index.php";
+
+					var ajax2 = new XMLHttpRequest();
+					ajax2.onreadystatechange = function()
+					{
+						if (this.readyState == 4 && this.status == 200)
+						{
+							var jUser2 =this.responseText;
+							window.location.href = "index.php";
+							
+						} 
+				};
+				ajax2.open("POST", "../api/php/logout.php", true);
+				ajax2.send();
+				} 
+			};
+			ajax.open("GET", "../api/php/delete_profile.php?id=<?php echo $_SESSION['sUserId']?>", true);
+			ajax.send();
+			
+		});
 
 
 	</script>

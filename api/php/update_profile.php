@@ -2,25 +2,27 @@
     session_start();
     include 'db.php';
 
-    $iUserId = 2;//$_SESSION['sUserId'];
-    $sEmail = $_POST['email'];
-    $sName = $_POST['name'];
+    $iUserId = $_SESSION['sUserId'];
+    $sEmail = $_POST['txtUserEmail'];
+    $sName = $_POST['txtUserName'];
+    $sPassword = $_POST['txtUserPassword'];
     $sImg = 'ads';//$_POST['img'];
-    $sDesc = $_POST['desc'];
-    $bNotif = $_POST['notif'] == "on" ? 1 : 0;
+    $sDesc = $_POST['txtUserDescription'];
+    $bNotif = $_POST['notification'] == "on" ? 1 : 0;
 
     echo "userId " . $iUserId . "<br/>";
     echo "email " . $sEmail . "<br/>";
     echo "name " . $sName . "<br/>";
+    echo "name " . $sPassword . "<br/>";
     echo "img: " . $sImg . "<br/>";
     echo "desc " . $sDesc . "<br/>";
     echo "notif: " . $bNotif . "<br/>";
 
-    // $statement = "UPDATE users SET `description` = ':desc' WHERE `id` =:id;";
-    // password = ':passwd' , 
-    // email = ':email', 
-    // image =':img', 
-    // `name`=':name', `notification` =':notif',
+    $statement = "UPDATE users SET `description` = ':desc' WHERE `id` =:id;";
+    password = ':passwd', 
+    email = ':email', 
+    image =':img', 
+    `name`=':name', `notification` =':notif',
 
     $query = $conn->prepare("UPDATE users SET name = :name, notification = :notif, description = :desc WHERE id =:id;"); 
     // echo var_dump($statement);
