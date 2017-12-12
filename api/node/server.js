@@ -230,7 +230,7 @@ app.get('/delete-event/:id/:imageToDelete', (req, res) => {
         console.log("could not delete image");
         return;
     })
-    event.deleteEvent(sEventId, sImageToDelete, (err, jStatus) => {
+    event.deleteEvent(sEventId, (err, jStatus) => {
         if (err) {
             console.log(sEventId)
             return res.send('<html><body>ERROR</body></html>')

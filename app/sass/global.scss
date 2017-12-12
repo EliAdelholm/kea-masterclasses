@@ -86,7 +86,6 @@ h2 {
     letter-spacing: 0.04em;
     font-weight: bold;
 	text-transform: uppercase;
-	color: $greenColor;
 	span {
 		color: $blackColor;
 		background-color: $whiteColor;
@@ -99,7 +98,6 @@ h2 {
 h3 {
 	font-size: 18px;
 	font-weight: 400;
-	color: $greenColor;
 	span {
 		color: $blackColor;
 		background-color: $whiteColor;
@@ -402,7 +400,8 @@ footer {
 
 #Modal {
     display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	max-height: 90%;
     align-items: center;
     background-color: $greenColor;
     width: 500px;
@@ -410,14 +409,16 @@ footer {
 	border-radius: 5px;
 	
 	form {
-		padding-bottom: 20px;
-		margin-bottom: 20px;
+		padding-bottom: 10px;
+		margin-bottom: 10	px;
 		border-bottom: 2px solid darken($greenColor, 20%);
 	}
 
 	input {
 		height: 40px;
+		margin-bottom: 1px;
 	}
+
 
 	p {
 		margin: 5px 0 5px 0;
@@ -425,8 +426,12 @@ footer {
 	}
 
 	h2 {
-		margin-bottom: 25px;
+		margin-bottom: 5px;
 		text-align: center;
+	}
+
+	#btnLogin {
+		margin-top: 20px;
 	}
 
 	button {

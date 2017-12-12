@@ -116,6 +116,7 @@
 							echo 'eventContainer.insertAdjacentHTML("beforeend" , btnEditHTML);';
 						}
 						?>
+
 						if (jEvent.type == "ux" ){
 							tagStyle.style.background = "#e7607b";
 						}
@@ -186,12 +187,24 @@ document.addEventListener("click" , function(e){
 	}
 });
 
+
+
 // Change the page view to allow editing
 document.addEventListener("click", function(e){
 	if (e.target.id == "btnEdit"){
+		// Handling the select type input
+		var aEventTypes = ["ui","ux","dev"];
+		var selectEventTypeHTML = '<option value="'+jEvent.type+'">'+jEvent.type+'</option>'
+		
+		for (var i=0; i < aEventTypes.length; i++){
+			if (aEventTypes[i] !== jEvent.type) {
+				selectEventTypeHTML += '<option value="'+aEventTypes[i]+'">'+aEventTypes[i]+'</option>'
+			}
+		}
+
 		var eventContainerHTML = '<form id="frmEditEvent">\
 		<div id="divEditEvent">\
-		<div id="tagStyle">TYPE <input type="text" name="eventType" value="'+jEvent.type+'"></div>\
+		<div id="tagStyle">TYPE <select name="eventType">'+selectEventTypeHTML+'</select></div>\
 		<div class="iconDivEdit"><img src="css/img/date.svg"><input id="datepicker" name="eventDate" value="'+jEvent.date+'"></div>\
 		<div class="iconDivEdit"><img src="css/img/time.svg"><input id="timepicker" name="eventTime" value="'+jEvent.time+'"></div>\
 		<div class="iconDivEdit"><img src="css/img/person.svg"><input type="text" name="eventSpeaker" value="'+jEvent.speaker+'"></div>\
@@ -215,8 +228,7 @@ document.addEventListener("click", function(e){
 		<button id="btnCancelEvent" type="button"> Cancel event </button>';
 
 		eventContainer.innerHTML = eventContainerHTML;
-		
-		
+	
 		
 		$( function() {
 			$( "#datepicker" ).datepicker({
@@ -291,6 +303,7 @@ document.addEventListener("click" , function(e) {
 	}
 })
 
+
 </script>
 	
 	<script src="js/googlePlacesAutocomplete.js"></script>
@@ -299,7 +312,9 @@ document.addEventListener("click" , function(e) {
 	async defer></script>
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 	
 	<?php
