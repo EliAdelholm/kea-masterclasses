@@ -15,5 +15,3 @@ BEGIN
     DELETE FROM users
     where id = userId;
 END
-
-DELIMITER ;

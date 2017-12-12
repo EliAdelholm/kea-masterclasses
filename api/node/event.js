@@ -19,20 +19,29 @@ event.createEvent = (jEvent, fcallback) => {
 
 /******************** UPDATE EVENT ****************/
 event.updateEvent = (jEvent, bImageUploaded, fCallback) => {
-	console.log(bImageUploaded);
-	var jQuery = {'$set' : {"title" : jEvent.title , "type": jEvent.type, "image" : jEvent.image,
-	"location.room" : jEvent.location.room,
-	"location.address" : jEvent.location.address,
-	"location.coordinates" : jEvent.location.coordinates,
-	"date" : jEvent.date,
-"time": jEvent.time, "speaker" : jEvent.speaker, "organizer" : jEvent.organizer, "description" : jEvent.description, "requirements" : jEvent.requirements}};
+	var jEventQuery = {
+		'$set': {
+			"title": jEvent.title,
+			"type": jEvent.type,
+			"image": jEvent.image,
+			"location.room": jEvent.location.room,
+			"location.address": jEvent.location.address,
+			"location.coordinates": jEvent.location.coordinates,
+			"date": jEvent.date,
+			"time": jEvent.time,
+			"speaker": jEvent.speaker,
+			"organizer": jEvent.organizer,
+			"description": jEvent.description,
+			"requirements": jEvent.requirements
+		}
+	};
 
 	// If there was no image uploaded, do not update the image
 	if (!bImageUploaded){
-		delete jQuery.$set.image;
+		delete jEventQuery.$set.image;
 	}
 	global.db.collection('events').updateOne({'_id': ObjectId(jEvent._id)},
-		jQuery,
+		jEventQuery,
 	(err)=>{
 		if(err){
 			jError = {"status": "error", "message": "ERROR, could not update event -> event.js"};

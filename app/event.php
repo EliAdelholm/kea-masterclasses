@@ -17,7 +17,7 @@
 	?>
 	<div id="topImageSection">
 	</div>
-	<div id="descriptionContainer">
+	<div id="descriptionContainer" class="main-container">
 		<div id="containerHeader">
 			</div>
 			
