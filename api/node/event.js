@@ -53,7 +53,7 @@ event.updateEvent = (jEvent, bImageUploaded, fCallback) => {
 }
 
 /******************** DELETE EVENT ****************/
-event.deleteEvent = (iEventId, sImageToDelete, fCallback) => {
+event.deleteEvent = (iEventId, fCallback) => {
 	global.db.collection('events').deleteOne({ "_id": ObjectId(iEventId) }, (err, jResult) => {
 		if (err) {
 			var jError = { "status": "error", "message": "ERROR -> event.js -> 005" }
