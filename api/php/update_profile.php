@@ -6,11 +6,19 @@
     $sEmail = $_POST['txtUserEmail'];
     $sName = $_POST['txtUserName'];
     $sPassword = $_POST['txtUserPassword'];
-    //$sImg = $_POST['imgProfilePicture'];
     $sDesc = $_POST['txtUserDescription'];
     $sPhone = $_POST['txtUserPhone2'];
     $bNotif = $_POST['notification'] == "on" ? 1 : 0;
     //$sInterests = $_POST['filterUiBtn'];
+
+    $sFileExtension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+    
+        $sFolder = '../../app/assets/img/';
+        $sFileName = 'userimage-'.uniqid().'.'.$sFileExtension;
+        $sSaveFileTo = $sFolder.$sFileName;
+        move_uploaded_file( $_FILES['file']['tmp_name'], $sSaveFileTo);
+
+    $sFilePath = 'assets/img/'.$sFileName;    
 
 
     //$statement = "UPDATE users SET `description` = ':desc' WHERE `id` =:id;";
@@ -21,14 +29,14 @@
     //`notification` =':notif',
 
     $query = $conn->prepare("UPDATE users 
-                            SET name = :name, password = :password, description = :description, notification = :notification    
+                            SET name = :name, password = :password, description = :description, notification = :notification, image = :image    
                             WHERE id =:id;");
     // echo var_dump($statement);
 
     $query->bindParam( ':id' , $iUserId,  PDO::PARAM_INT );
     $query->bindParam( ':name' , $sName );
     $query->bindParam( ':password' , $sPassword );
-    //$query->bindParam( ':image' , $sImg );
+    $query->bindParam( ':image' , $sFilePath );
     $query->bindParam( ':description' , $sDesc );
     $query->bindParam( ':notification' , $bNotif,  PDO::PARAM_INT );
 
