@@ -9,9 +9,12 @@
     $sDesc = $_POST['txtUserDescription'];
     $sPhone = $_POST['txtUserPhone2'];
     $bNotif = $_POST['notification'] == "on" ? 1 : 0;
-    //$sInterests = $_POST['UI'];
+    $sInterests = $_POST['UI'];
     $sUserImage = $_FILES['file'];
 
+    $sSQL =  "UPDATE users 
+    SET name = :name, password = :password, description = :description, notification = :notification    
+    WHERE id =:id;";
 
     if( $sUserImage["error"]  == 0){
     $sFileExtension = pathinfo($sUserImage['name'], PATHINFO_EXTENSION);
@@ -22,14 +25,17 @@
         move_uploaded_file($sUserImage['tmp_name'], $sSaveFileTo);
 
     $sFilePath = 'assets/img/'.$sFileName;  
+    
+    $sSQL =  "UPDATE users 
+    SET name = :name, password = :password, description = :description, notification = :notification, image = :image    
+    WHERE id =:id;";
     }
 
    
     
 
-    $query = $conn->prepare("UPDATE users 
-                            SET name = :name, password = :password, description = :description, notification = :notification    
-                            WHERE id =:id;";); 
+    $query = $conn->prepare($sSQL); 
+    // echo var_dump($statement);
 
     $query->bindParam( ':id' , $iUserId,  PDO::PARAM_INT );
     $query->bindParam( ':name' , $sName );
@@ -64,7 +70,7 @@
     $query->execute();
 
 
-    //*****************   INTERESTS TABLE  ******************/
+    //*****************   PHONE TABLE  ******************/
     $query = $conn->prepare("UPDATE users_interests 
                             SET interests = :interests   
                             WHERE users_id =:users_id;");
