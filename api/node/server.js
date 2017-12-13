@@ -10,6 +10,7 @@ app.use(formidable())
 // GET CONTROLLERS
 var event = require(__dirname + '/event.js')
 var stats = require(__dirname + '/stats.js')
+var lookup = require(__dirname + '/lookup.js')
 
 // ALLOW CROSS ORIGIN RESSOURCE SHARING
 app.use(cors())
@@ -441,6 +442,49 @@ app.get("/user-location/:usersLat/:usersLng", (req, res) => {
     })
 })
 
+
+// FUNCTIONS FOR WORKING WITH LOOKUP. WE ARE NOT USING IT, IT'S ONLY TO FUFIL THE EXAM REQUIREMENTS.
+app.get("/create-example-event", (req, res) => {
+    var jEventExample = {"courseName" : "web development", "room" : "251"};
+
+                                    // Name of the collection
+    lookup.createDocument(jEventExample , 'exampleCourse', (err, jStatus, jResult) =>{
+        if (err){
+            console.log('err' +jStatus);
+            return res.send('<html><body>ERROR</body></html>')        
+        }
+        console.log(jStatus);
+        return res.send('<html><body>SUCCESS</body></html>')        
+    });
+});
+
+app.get("/create-example-teacher", (req, res) => {
+    //var jTeacherExample = {"name": "Santiago", "subject" : "web development", "classes" : ["1st semester" , "2nd semester", "3rd semester"]};
+    //var jTeacherExample = {"name": "Roxanna", "subject" : "interface design", "classes" : ["2nd semester", "3rd semester"]};
+    //var jTeacherExample = {"name": "Peter", "subject" : "databases", "classes" : ["1st semester" , "3rd semester"]};
+    var jTeacherExample = {"name": "Jens", "subject" : "web development", "classes" : ["3rd semester"]};
+
+    lookup.createDocument(jTeacherExample , 'teachers', (err, jStatus, jResult) =>{
+        if (err){
+            console.log('err' +jStatus);
+            return res.send('<html><body>ERROR</body></html>')        
+        }
+        console.log(jStatus);
+        return res.send('<html><body>SUCCESS</body></html>')        
+    });
+});
+
+// DO THE LOOKUP
+app.get("/lookup", (req,res) => {
+    lookup.selectCourse((err, jStatus, jResult)=> {
+        if (err) {
+            console.log(jStatus);
+            return res.send('<html><body>'+jResult+'</body></html>')                    
+        }
+        console.log(jStatus);
+        return res.send('<html><body>'+JSON.stringify(jResult)+'</body></html>')                
+    })
+});
 
 /*****************************************************************/
 
