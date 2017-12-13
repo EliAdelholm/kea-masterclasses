@@ -17,11 +17,6 @@ lookup.createDocument = (jEvent, collection, fCallback) => {
 	})
 }
 
-
-/*
-
-*/
-
 /**** SELECTING WITH THE LOOKUP *************/
 lookup.selectCourse = (fCallback) => {
     global.db.collection('exampleCourse').aggregate([

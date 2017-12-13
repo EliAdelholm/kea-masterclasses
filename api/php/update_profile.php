@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include 'db.php';
 
     $iUserId = $_POST['id'];
