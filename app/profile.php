@@ -85,14 +85,18 @@
 
 				<p>SELECT DESIRED INTERESTS</p>
 				<div id="filters" class="selectInterest displayFlex">
-					<button id="filterUiBtn" class="" type="button" value="UI">UI</button>
+					<!--<input type="button" id="filterUiBtn" name="UI" value="UI"/>
+					<label for="UI">UI</label>
+					-->
+
+					<button id="filterUiBtn" class="" type="button" name="UI" value="UI" onclick="changeValue()">UI</button>
 					<button id="filterUxBtn" class="" type="button"  value="UX">UX</button>
 					<button id="filterDevBtn" class="" type="button">DEV</button>
 				</div>
 			</div>
 			
 			<div class="column5 displayFlex">
-				<button id="btnSaveChanges" type="button" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
+				<button id="btnSaveChanges" formmethod="post" type="button" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
 	</form>		
 
 				<button id="btnDeleteProfile" type="button">DELETE PROFILE</button>
@@ -113,6 +117,16 @@
 	}
 	?>
 	<script>
+
+function changeValue()
+    {
+        // Changes the value of the button
+        document.form.button.value = "SELECTED"
+
+        // Changes the text on the button
+        document.form.button.innerHTML = "SELECTED"
+    }
+
 		
 		var clickCountEmails = 0;
 		var clickCountPhones = 0;
@@ -164,7 +178,7 @@
 			ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var sjUser = this.responseText;
-				window.location.reload();
+				location.reload(true);
 			}
 		}
 		ajax.open( "POST", "../api/php/update_profile.php", true );
@@ -193,6 +207,7 @@
 					txtUserPhone2.value = jUser.phone[0].phone;
 				notification.checked = JSON.parse(jUser.notification);
 				//imgProfilePicture.src = jUser.image;
+
 				//Javascript to create img tag & source
 				var image = document.createElement("img");
 				image.id = "imgProfilePicture";	
