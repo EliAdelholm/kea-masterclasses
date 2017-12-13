@@ -45,16 +45,6 @@
 .selectInterest{
 	//background-color:$grayColor;
 	margin-top:25px;
-
-	#filterUiBtn{
-		background-color:$grayColor; 
-	}
-	#filterUxBtn{
-		@extend #filterUiBtn;
-	}
-	#filterDevBtn{
-		@extend #filterUiBtn;
-	}
 }
 
 
@@ -147,6 +137,11 @@ label{
 	background-color: $greenColor;
 	color:white;
 }
+
+.box{
+
+}
+
 
 #addMoreEmailsBtn{
 	margin-bottom: 30px;

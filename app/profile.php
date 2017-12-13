@@ -20,17 +20,17 @@
 		<h1><span>PROFILE</span></h1>
 	</section>
 
-	
-	<div id="instertUserDetailsHere" class="main-container">
 
-	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="post">
+	<form id="frmUpdateProfile" action="../api/php/update_profile.php" method="post" enctype="multipart/form-data">
+
+	<div id="instertUserDetailsHere" class="main-container">
 
 		<div class="column1 displayFlex margin">
 			<div id="profilePicture"></div>	
 			<!--	Upload Image button	-->
 			<div class="box">
-					<input type="file" name="imageName" id="fileInput" class="inputfile inputfile-1"/>
-					<label id="lblProfilePicture" for="fileInput"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+					<input type="file" name="file" id="file" class="inputfile inputfile-1"/>
+					<label id="lblProfilePicture" for="file"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
 						<path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/>
 						<span>Upload Picture</span>
 					</label>
@@ -57,7 +57,7 @@
 			<div class="form-group">
 				<li>
 				<label for="subscribeNews">NOTIFY ME ABOUT MY EVENTS</label>
-				<input id="notification" value="0" type="checkbox" name="checkNotification">
+				<input id="notification" value="0" type="checkbox" name="notification">
 				</li>		
 			</div>
 
@@ -84,15 +84,19 @@
 				</div>
 
 				<p>SELECT DESIRED INTERESTS</p>
-				<div class="selectInterest displayFlex">
-					<button id="filterUiBtn" class="" type="button">UI</button>
-					<button id="filterUxBtn" class="" type="button">UX</button>
+				<div id="filters" class="selectInterest displayFlex">
+					<!--<input type="button" id="filterUiBtn" name="UI" value="UI"/>
+					<label for="UI">UI</label>
+					-->
+
+					<button id="filterUiBtn" class="" type="button" name="UI" value="UI" onclick="changeValue()">UI</button>
+					<button id="filterUxBtn" class="" type="button"  value="UX">UX</button>
 					<button id="filterDevBtn" class="" type="button">DEV</button>
 				</div>
 			</div>
 			
 			<div class="column5 displayFlex">
-				<button id="btnSaveChanges" type="button"f class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
+				<button id="btnSaveChanges" formmethod="post" type="button" class="greenBtn button button--isi button--text-thick button--text-upper button--size-s">Save changes</button>
 	</form>		
 
 				<button id="btnDeleteProfile" type="button">DELETE PROFILE</button>
@@ -113,6 +117,16 @@
 	}
 	?>
 	<script>
+
+function changeValue()
+    {
+        // Changes the value of the button
+        document.form.button.value = "SELECTED"
+
+        // Changes the text on the button
+        document.form.button.innerHTML = "SELECTED"
+    }
+
 		
 		var clickCountEmails = 0;
 		var clickCountPhones = 0;
@@ -164,10 +178,12 @@
 			ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var sjUser = this.responseText;
+				location.reload(true);
 			}
 		}
 		ajax.open( "POST", "../api/php/update_profile.php", true );
 		var oFrmUser = new FormData(frmUpdateProfile);
+		oFrmUser.append("id", "<?php echo $_SESSION['sUserId']?>" );
 		ajax.send(oFrmUser);
 		});
 
@@ -176,19 +192,22 @@
 		ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var sjUser = this.responseText;
+ 				console.log("sjUser ", sjUser);
+				
 				var jUser = JSON.parse(sjUser);
-				jUser.email = JSON.parse(jUser.email);
-				jUser.phone = JSON.parse(jUser.phone);
-				jUser.interests = JSON.parse(jUser.interests);
-				console.log(jUser);
+ 				console.log("jUser ", jUser);
 				txtUserName.value = jUser.name;
-				txtUserEmail.value = jUser.email[0].email;
-				txtUserEmail2.value = jUser.email[1].email;
+				if(jUser.email.length > 0)
+					txtUserEmail.value = jUser.email[0].email;
+				if(jUser.email.length > 1)
+					txtUserEmail2.value = jUser.email[1].email;
 				txtUserPassword.value = jUser.password;
 				txtUserDescription.value = jUser.description;
-				txtUserPhone2.value = jUser.phone[0].phone;
+				if(jUser.phone.length > 0)
+					txtUserPhone2.value = jUser.phone[0].phone;
 				notification.checked = JSON.parse(jUser.notification);
 				//imgProfilePicture.src = jUser.image;
+
 				//Javascript to create img tag & source
 				var image = document.createElement("img");
 				image.id = "imgProfilePicture";	
