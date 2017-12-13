@@ -36,7 +36,7 @@
 		include 'nav.php';
 		include 'login.html';
 	?>
-	<section id="topBanner">
+	<section id="topBannerMyEvents">
             <h1><span>MY EVENTS</span></h1>
     </section>
 	<div id="myEvents" class="main-container">
