@@ -112,6 +112,7 @@
                         var sListPopularEvents = '';
                         for (var i = 0; i < jStats.popularEvents.length; i++) {
                             var event = jStats.popularEvents[i];
+                            console.log("event ", event);
 
                             sListPopularEvents += '<a href="event.php?id='+event._id+'"><li>'+ event.title +'</li></a>'
                         }
