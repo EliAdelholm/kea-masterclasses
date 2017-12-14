@@ -15,7 +15,5 @@ $query->bindParam( ':user_id' , $iUserId );
 $query->execute();        
 
 echo "user registered";
-echo "eventId " . $sEventId;
-echo "userId " . $sEventId;
 
 ?>

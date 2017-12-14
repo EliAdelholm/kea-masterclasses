@@ -34,9 +34,9 @@ include 'db.php';
             $aResult = $query->fetch();
             $iNumberOfResults = count($aResult);
             // If the user isn't signed up, the result will be 1
-            if ($iNumberOfResults !== 1) {
-                $jEvent->signedUp = true;        
-            }                      
+        if ($iNumberOfResults !== 1) {
+            $jEvent->signedUp = true;        
+        }                      
             
             
         }
@@ -49,9 +49,6 @@ include 'db.php';
     
     
     catch (Exception $e) {
-        
         echo "ERROR - could not connect to database";
-        
-          
     }  
         ?>

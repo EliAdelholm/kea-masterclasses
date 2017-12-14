@@ -1,21 +1,8 @@
 <?php
 include 'db.php';
-// // The database connection. You might need to change this if you're not using mamp!
-// $servername = "localhost:8889";
-// $username = "root";
-// $password = "root";
-
-// // Please use the same database name
-// $dbname = "kea_masterclasses";
 
      $iUserId = $_GET['id'];
-//    // echo "iUserId " . $iUserId;
     try {
-                // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                // $query = $conn->prepare("SELECT *
-                //                         FROM users"); 
                 $query = $conn->prepare("SELECT  name, password, notification, image, description
                                          FROM users
                                          WHERE id=:id"); 
