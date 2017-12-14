@@ -83,16 +83,23 @@
 					<button id="addMorePhoneBtn" type="button">more phones</button>
 				</div>
 
-				<p>SELECT DESIRED INTERESTS</p>
-				<div id="filters" class="selectInterest displayFlex">
+				<div id="interrestsBox">
+					<h3>WE LOVE TO ORGANIZE EVENTS YOU WANT!</h3>
+					<p>Please help up to do so by providing your interrests :)</p>
+					<!-- <label>Interrests</label> -->
+					<!-- <input id="" type="text" name="txtUserInterrest"> -->
+					<button id="" class="" type="button" name="UI" value="UI" onclick="changeValue()">UI</button>
+					<button id="" class="" type="button"  value="UX">UX</button>
+					<button id="" class="" type="button">DEV</button>
+				</div>
+				<!-- <div id="filters" class="selectInterest displayFlex"> -->
 					<!--<input type="button" id="filterUiBtn" name="UI" value="UI"/>
 					<label for="UI">UI</label>
 					-->
-
-					<button id="filterUiBtn" class="" type="button" name="UI" value="UI" onclick="changeValue()">UI</button>
-					<button id="filterUxBtn" class="" type="button"  value="UX">UX</button>
-					<button id="filterDevBtn" class="" type="button">DEV</button>
-				</div>
+					<!-- <button id="" class="" type="button" name="UI" value="UI" onclick="changeValue()">UI</button>
+					<button id="" class="" type="button"  value="UX">UX</button>
+					<button id="" class="" type="button">DEV</button> -->
+				<!-- </div> -->
 			</div>
 			
 			<div class="column5 displayFlex">

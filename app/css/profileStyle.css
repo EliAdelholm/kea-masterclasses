@@ -112,6 +112,9 @@ label {
       border-color: #282826;
       background-color: #e03456; }
 
+#interrestsBox {
+  margin-top: 30px; }
+
 @media screen and (max-width: 1115px) {
   #instertUserDetailsHere {
     justify-content: center;
