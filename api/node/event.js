@@ -193,13 +193,12 @@ event.incrementClickrate = (sEventId, fCallback) => {
 
 /***************** GET EVENTS NEAR USER  **********************/
 event.findEventsNearUser = (usersLat, usersLng, fCallback) => {
-	//console.log('x');
-
-	// db.events.find({ location: { $nearSphere: { $geometry: { type: "Point", coordinates: [ 55.66, 12.49  ] }, $maxDistance: 10000 } } })
+	var iUsersLng = Number(usersLng);
+	var iUserLat = Number(usersLat);
 	
 	global.db.collection('events').find({ location:
 	{ $geoWithin:
-	   { $centerSphere: [ [ usersLat, usersLng ], 200 / 3963.2 ] } } }).toArray((err, ajEvents) => {
+	   { $centerSphere: [ [ iUserLat, iUsersLng ], 60 / 3963.2 ] } } }).toArray((err, ajEvents) => {
 		if (err) {
 			var jError = { "status": "error", "message": "ERROR -> event.js -> 0011" }
 			return fCallback(true, jError, ajEvents)

@@ -70,8 +70,8 @@
 	
 					if($eventTime < $currentTime) {
 						$rating = $aRatings[$sEventId];
-						echo "Ratings: " . var_dump( $aRatings);
-						echo "Rating: " . $rating;
+						// echo "Ratings: " . var_dump( $aRatings);
+						// echo "Rating: " . $rating;
 						
 					?> 
 					<!-- ******************** PAST EVENT ******************** -->

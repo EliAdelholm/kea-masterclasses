@@ -162,7 +162,7 @@ CREATE VIEW avg_event_rating AS
 
 SELECT event_id, AVG(rating) 
 FROM  attendance
-GROUP BY event_id
+GROUP BY event_id;
 
 
 
