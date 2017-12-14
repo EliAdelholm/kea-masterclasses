@@ -29,6 +29,9 @@
     text-transform: uppercase;
     font-weight: bold;
     border-bottom: 1px solid #c4c1c1; }
+    .stats-column li p {
+      font-weight: normal;
+      text-transform: none; }
 
 .ui {
   transition: color 1s; }

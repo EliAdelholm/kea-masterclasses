@@ -93,4 +93,17 @@ stats.getPopularEvents = (fCallback) => {
 
 /**************************************************/
 
+/******************** COUNT SPEAKERS *************/
+stats.getSpeakers = (fCallback) => {
+	global.db.collection('events').find({ status: "active", creator: {$exists: true} }, {creator: 1}).toArray( (err, ajEvents) => {
+		if (err) {
+			console.log(err)
+			var jError = { "status": "Error", "message": "Cannot GET Speakers" }
+			return fCallback(true, jError, ajEvents)
+		}
+		var jOk = { "status": "OK", "message": "GET Speakers" }
+		return fCallback(false, jOk, ajEvents)
+	})
+}
+
 module.exports = stats

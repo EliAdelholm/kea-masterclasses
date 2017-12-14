@@ -41,6 +41,24 @@
     $ajPopularEvents = json_decode($sajPopularEvents);
     $jStats->popularEvents = $ajPopularEvents;
 
+    // GET SPEAKER IDS
+    $sajSpeakers = file_get_contents("http://localhost:3333/speakers");
+    $ajSpeakers = json_decode($sajSpeakers);
+
+    // GET SPEAKER DATA
+    $aSpeakers = array();
+    for ($i = 0; $i < count($ajSpeakers); $i++) {
+        $iID = $ajSpeakers[$i]->creator;
+        $sResponse = file_get_contents("http://localhost/kea-masterclasses/api/php/get-user.php?id=$iID");
+        // echo 
+        // echo $response;
+        $jResponse = json_decode($sResponse);
+        array_push($aSpeakers, $jResponse);
+    }
+    $jStats->speakers = $aSpeakers;
+
+    
+
     try {
     
         ///////// GET NUMBER OF USERS /////////
