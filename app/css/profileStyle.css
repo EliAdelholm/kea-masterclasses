@@ -101,23 +101,16 @@ label {
 .column5 {
   margin: 0 20%; }
   .column5 .greenBtn {
-    border: none !important;
-    background-color: #52B795 !important;
-    opacity: 0.55;
-    padding: 15px 30px;
-    margin-left: 0;
-    color: white; }
+    background-color: #52B795; }
     .column5 .greenBtn:hover {
-      opacity: 1; }
+      border-color: #282826;
+      background-color: #3f9779; }
   .column5 #btnDeleteProfile {
     background-color: #e7607b;
-    border: none;
-    padding: 15px 30px;
-    margin-left: 25px;
-    color: white;
-    opacity: 0.65; }
+    margin-left: 25px; }
     .column5 #btnDeleteProfile:hover {
-      opacity: 1; }
+      border-color: #282826;
+      background-color: #e03456; }
 
 @media screen and (max-width: 1115px) {
   #instertUserDetailsHere {

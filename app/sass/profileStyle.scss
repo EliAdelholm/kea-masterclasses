@@ -157,29 +157,20 @@ label{
 	margin:0 20%;
 
 	.greenBtn{
-		border:none !important;
-		background-color:$greenColor !important;
-		opacity: 0.55;
-		padding:15px 30px;
-		margin-left:0;
-		color:white;
-		
+		background-color:$greenColor;		
 		&:hover{
-			opacity:1;
+			border-color: $blackColor;
+			background-color: darken($greenColor, 10%);
 		}
 	}
 
 	#btnDeleteProfile{
 		background-color:$redColor;
-		border:none;
-		padding:15px 30px;
 		margin-left:25px;
-		color:white;
-		opacity:0.65;
-
 		&:hover{
-			opacity:1;
-			//transition:2s;
+			border-color: $blackColor;
+			background-color: darken($redColor, 10%);
+
 		}
 	}
 }
