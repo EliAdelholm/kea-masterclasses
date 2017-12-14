@@ -14,6 +14,14 @@
     $bNotif = $_POST['notification'];
     $sInterests = $_POST['UI'];
     $sUserImage = $_FILES['file'];
+    
+    
+    $bUiInterest = json_decode($_POST['uiInterest']);
+    $bUxInterest = json_decode($_POST['uxInterest']);
+    $bDevInterest = json_decode($_POST['devInterest']);
+
+    
+   
 
     $sSQL =  "UPDATE users 
     SET name = :name, password = :password, description = :description, notification = :notification    
@@ -75,14 +83,41 @@
 
 
     //*****************   INTERESTS  ******************/
-    $query = $conn->prepare("UPDATE users_interests 
-                            SET interests = :interests   
-                            WHERE users_id =:users_id;");
+    
+    
+    $mySqlQuery;
+    
+    if($bDevInterest) {
+        $mySqlQuery .= "INSERT INTO users_interests (users_id, interests) VALUES (:users_id, 'dev');";
+    }
+
+    else {
+        $mySqlQuery .= "DELETE FROM users_interests WHERE users_id = :users_id AND interests = 'dev';";
+    }
+
+    if($bUiInterest) {
+        $mySqlQuery .= "INSERT INTO users_interests (users_id, interests) VALUES (:users_id, 'ui');";
+    }
+
+    else {
+        $mySqlQuery .= "DELETE FROM users_interests WHERE users_id = :users_id AND interests = 'ui';";        
+    }
+    
+    if($bUxInterest) {
+        $mySqlQuery .= "INSERT INTO users_interests (users_id, interests) VALUES (:users_id, 'ux');";
+    }
+
+    else {
+        $mySqlQuery .= "DELETE FROM users_interests WHERE users_id = :users_id AND interests = 'ux';";        
+    }
+
+    if ($bUxInterest || $bDevInterest || $bUiInterest){
+    
+    $query = $conn->prepare("$mySqlQuery");
                             
-    $query->bindParam( ':interests' , $sInterests );
     $query->bindParam( ':users_id' , $iUserId,  PDO::PARAM_INT );
 
     $query->execute();
-
-    echo var_dump($query);
-?>
+    }
+        
+        ?>

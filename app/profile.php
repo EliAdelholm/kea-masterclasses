@@ -83,23 +83,15 @@
 					<button id="addMorePhoneBtn" type="button">more phones</button>
 				</div>
 
-				<div id="interrestsBox">
-					<h3>WE LOVE TO ORGANIZE EVENTS YOU WANT!</h3>
-					<p>Please help us to do so by providing your interrests :)</p>
-					<!-- <label>Interrests</label> -->
-					<!-- <input id="" type="text" name="txtUserInterrest"> -->
-					<button id="" class="" type="button" name="UI" value="UI" onclick="changeValue()">UI</button>
-					<button id="" class="" type="button"  value="UX">UX</button>
-					<button id="" class="" type="button">DEV</button>
+				<h3> We would love to hear which kind of events you like so we can organize more in the future </h3>
+				<p>Select desired interests</p>
+				<div id="filters" class="selectInterest displayFlex">
+					
+
+					<button id="btnUi" class="" type="button" name="UI" value="UI"> UI</button>
+					<button id="btnUx" class="" type="button"  value="UX">UX</button>
+					<button id="btnDev" class="" type="button">DEV</button>
 				</div>
-				<!-- <div id="filters" class="selectInterest displayFlex"> -->
-					<!--<input type="button" id="filterUiBtn" name="UI" value="UI"/>
-					<label for="UI">UI</label>
-					-->
-					<!-- <button id="" class="" type="button" name="UI" value="UI" onclick="changeValue()">UI</button>
-					<button id="" class="" type="button"  value="UX">UX</button>
-					<button id="" class="" type="button">DEV</button> -->
-				<!-- </div> -->
 			</div>
 			
 			<div class="column5 displayFlex">
@@ -124,15 +116,6 @@
 	}
 	?>
 	<script>
-
-function changeValue()
-    {
-        // Changes the value of the button
-        document.form.button.value = "SELECTED"
-
-        // Changes the text on the button
-        document.form.button.innerHTML = "SELECTED"
-    }
 
 		
 		var clickCountEmails = 0;
@@ -193,19 +176,30 @@ function changeValue()
 			var ajax = new XMLHttpRequest();
 			ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				var sjUser = this.responseText;
-				location.reload(true);
+				console.log(this.responseText);
+				//location.reload(true);
 			}
 		}
 		ajax.open( "POST", "../api/php/update_profile.php", true );
 		var oFrmUser = new FormData(frmUpdateProfile);
 		oFrmUser.append("id", "<?php echo $_SESSION['sUserId']?>" );
+		console.log(devInterest);
+		oFrmUser.append("devInterest", devInterest);
+		oFrmUser.append("uxInterest", uxInterest);
+		oFrmUser.append("uiInterest", uiInterest);
+		oFrmUser.append("currentUserInterests", jUser.interests)
 		ajax.send(oFrmUser);
 		});
 
 		//****************** GET USER DETAILS ******************
 		// Save the user as a global variable
 		var jUser
+
+		// Use these to switch the btn colors with javascript.
+		var devInterest = false
+		var uxInterest = false
+		var uiInterest = false
+
 		
 		var ajax = new XMLHttpRequest();
 		ajax.onreadystatechange = function() {
@@ -234,6 +228,22 @@ function changeValue()
 				image.id = "imgProfilePicture";	
 				image.src = jUser.image;
 				profilePicture.appendChild(image);
+
+				for (var i=0; i < jUser.interests.length; i++){
+					var sUserInterest = jUser.interests[i].interests;
+					if (sUserInterest == "dev") {
+						btnDev.style.background = '#F9E131';
+						devInterest = true;
+					}
+					else if (sUserInterest == "ui"){
+						btnUi.style.background = '#52B795';
+						uiInterest = true;
+					}
+					else if (sUserInterest == "ux") {
+						btnUx.style.background = '#e7607b';
+						uxInterest = true;
+					}
+				}
 				
 			}
 		}
@@ -251,6 +261,39 @@ function changeValue()
 			}
 		});
 
+		/**** Setting the color upon clicking *****/
+
+		btnDev.addEventListener("click", function(){
+				var btnColor;
+				devInterest ? btnColor = '#FFF' : btnColor = '#F9E131';
+				btnDev.style.background = btnColor;
+				devInterest = !devInterest;
+		});
+
+		btnUx.addEventListener("click", function(){
+				var btnColor;
+				uxInterest ? btnColor = '#FFF' : btnColor = '#e7607b';
+				btnUx.style.background = btnColor;
+				uxInterest = !uxInterest;
+		});
+
+		btnUi.addEventListener("click", function(){
+				var btnColor;
+				uiInterest ? btnColor = '#FFF' : btnColor = '#52B795';
+				btnUi.style.background = btnColor;
+				uiInterest = !uiInterest;
+		});
+	
+
+
+		/*
+		btnDev.addEventListener("click", function(){
+			var btnColor;
+			devInterest ? btnColor = '#FFF' : btnColor = '#F9E131';
+			btnDev.style.background = btnColor;
+			devInterest = !devInterest; 
+		});
+*/
 
 		//****************** DELETE USER ******************
 		btnDeleteProfile.addEventListener("click", function()
