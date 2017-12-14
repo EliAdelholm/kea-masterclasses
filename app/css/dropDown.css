@@ -12,6 +12,7 @@
   outline: none;
   border: 0.06em solid #52B795;
   border-radius: 5px;
+  padding: 0px;
   background-color: whiteColor;
   transition: 0.3s all ease-in-out; }
   .dropdown-el input {

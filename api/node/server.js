@@ -425,8 +425,8 @@ app.get('/index-events', (req, res) => {
 
 // LOCATION
 app.get("/user-location/:usersLat/:usersLng", (req, res) => {
-    var usersLat = 55.660056499999996 //req.params.usersLat;
-    var usersLng = 12.4947511 //req.params.usersLng;
+    var usersLat = req.params.usersLat;
+    var usersLng = req.params.usersLng;
     console.log("usersLat: "+usersLat+" usersLng: "+usersLng)
 
 

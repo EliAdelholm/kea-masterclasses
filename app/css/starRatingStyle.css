@@ -6,10 +6,6 @@ fieldset, label, .active {
 body {
   margin: 0px; }
 
-h1 {
-  font-size: 1.5em;
-  margin: 10px; }
-
 .ratingContainer {
   display: flex;
   justify-content: center; }

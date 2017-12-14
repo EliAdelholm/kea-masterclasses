@@ -182,6 +182,9 @@ button{
 #topBannerProfile{
 	@include test(url("img/profile.jpg"));
 }
+#topBannerMyEvents{
+	@include test(url("img/myEvents.jpg"));
+}
 
 .textColumns {
 	columns: 2 400px;
