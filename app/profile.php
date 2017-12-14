@@ -177,7 +177,7 @@
 			ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				console.log(this.responseText);
-				//location.reload(true);
+				location.reload(true);
 			}
 		}
 		ajax.open( "POST", "../api/php/update_profile.php", true );
