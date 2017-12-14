@@ -3,11 +3,15 @@
 
     $iUserId = $_POST['id'];
     $sEmail = $_POST['txtUserEmail'];
+    $sEmail2 = $_POST['txtUserEmail2'];
+    $sEmail3 = $_POST['txtUserEmail3'];    
     $sName = $_POST['txtUserName'];
     $sPassword = $_POST['txtUserPassword'];
     $sDesc = $_POST['txtUserDescription'];
-    $sPhone = $_POST['txtUserPhone2'];
-    $bNotif = $_POST['notification'] == "on" ? 1 : 0;
+    $sPhone = $_POST['txtUserPhone'];
+    $sPhone2 = $_POST['txtUserPhone2'];
+    $sPhone3 = $_POST['txtUserPhone3'];    
+    $bNotif = $_POST['notification'];
     $sInterests = $_POST['UI'];
     $sUserImage = $_FILES['file'];
 
@@ -52,6 +56,7 @@
                             SET email = :email   
                             WHERE user_id =:user_id;");
                             
+
     $query->bindParam( ':email' , $sEmail );
     $query->bindParam( ':user_id' , $iUserId,  PDO::PARAM_INT );
 
@@ -69,7 +74,7 @@
     $query->execute();
 
 
-    //*****************   PHONE TABLE  ******************/
+    //*****************   INTERESTS  ******************/
     $query = $conn->prepare("UPDATE users_interests 
                             SET interests = :interests   
                             WHERE users_id =:users_id;");

@@ -33,7 +33,7 @@ include 'db.php';
                 // Get the result
                 $aUser = $query->fetch();
 
-
+                
                 //****************** USERS EMAIL TABLE START*******************/
                 $query = $conn->prepare("SELECT  email
                                          FROM users_emails

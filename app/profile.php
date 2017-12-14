@@ -63,7 +63,7 @@
 
 			<div class="form-group">
 				<label>Description</label>
-				<textarea id="txtUserDescription" name="txtBio" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
+				<textarea id="txtUserDescription" name="txtUserDescription" cols="40" rows="8">Sed diam nonummy nibh euismod tincidunt ut laoreet doloremagna aliquam erat volutpat </textarea>		
 			</div>
 
 		</div>
@@ -79,7 +79,7 @@
 
 				<div id="addMorePhonesDiv" class="form-group">
 					<label>Main phone</label>
-					<input id="txtUserPhone2" class="input-control" name="txtUserPhone2"/>
+					<input id="txtUserPhone" class="input-control" name="txtUserPhone"/>
 					<button id="addMorePhoneBtn" type="button">more phones</button>
 				</div>
 
@@ -130,19 +130,28 @@ function changeValue()
 		
 		var clickCountEmails = 0;
 		var clickCountPhones = 0;
-
+		var phoneId = 1;
 		addMoreEmailsBtn.addEventListener("click", function(){
 			clickCountEmails += 1;
-			if(clickCountEmails < 3){
-				var inputField = '<div class="transitionStyle"><label>Additional email</label><input class="input-control"/></div>';
+			if(clickCountEmails < 2){
+
+				var inputField = '<div class="transitionStyle"><label>Additional email</label><input id="txtUserEmail3" name="txtUserEmail3" class="input-control"/></div>';
 				addMoreEmailsDiv.insertAdjacentHTML('afterbegin', inputField);
+				txtUserEmail3.value = jUser.email[2].email;
 			}
 		});
 
 		addMorePhoneBtn.addEventListener("click", function(){
 			clickCountPhones += 1;
+			phoneId += 1;
 			if(clickCountPhones < 3){
-				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input id="txtUserPhone3" class="input-control"/></div>';
+				if (jUser.phone.length > 1){
+				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input id="txtUserPhone'+phoneId+'" name="txtUserPhone'+phoneId+'" value="'+jUser.phone[phoneId-1].phone+'" class="input-control"/></div>';
+				}
+				else {
+				var inputField = '<div class="transitionStyle"><label>Additional phone</label><input id="txtUserPhone'+phoneId+'" name="txtUserPhone'+phoneId+'" class="input-control"/></div>';
+					
+				}
 				addMorePhonesDiv.insertAdjacentHTML('afterbegin', inputField);
 			}	
 		});
@@ -188,23 +197,28 @@ function changeValue()
 		});
 
 		//****************** GET USER DETAILS ******************
+		// Save the user as a global variable
+		var jUser
+		
 		var ajax = new XMLHttpRequest();
 		ajax.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var sjUser = this.responseText;
  				console.log("sjUser ", sjUser);
 				
-				var jUser = JSON.parse(sjUser);
+				jUser = JSON.parse(sjUser);
  				console.log("jUser ", jUser);
 				txtUserName.value = jUser.name;
-				if(jUser.email.length > 0)
-					txtUserEmail.value = jUser.email[0].email;
-				if(jUser.email.length > 1)
+				console.log(jUser.email[0].email);
+				txtUserEmail.value = jUser.email[0].email;
+				if(jUser.email.length > 1) {
 					txtUserEmail2.value = jUser.email[1].email;
+				}
 				txtUserPassword.value = jUser.password;
 				txtUserDescription.value = jUser.description;
-				if(jUser.phone.length > 0)
-					txtUserPhone2.value = jUser.phone[0].phone;
+				if(jUser.phone.length > 0) {
+					txtUserPhone.value = jUser.phone[0].phone;
+				}
 				notification.checked = JSON.parse(jUser.notification);
 				//imgProfilePicture.src = jUser.image;
 
