@@ -44,7 +44,6 @@
 	<div id="navDropdown" class="main-container" style="position: relative;">
 		<div id="nav-dropdown" class="arrow_box hideResponsive">
 			<a href="profile.php" class="displayResponsive">SETTINGS</a>
-			<a href="#" id="btnLogout" class="displayResponsive">LOGOUT</a>
 		</div>
 	</div>
 </div>
