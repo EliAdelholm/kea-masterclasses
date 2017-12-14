@@ -116,8 +116,8 @@
 
                             sListPopularEvents += '<a href="event.php?id='+event._id+'"><li class="'+event.type+'">'+ event.title +'</li></a>'
                         }
-                        setTimeout(function(){listPopularEvents.innerHTML = sListPopularEvents;},2000);
-                        //listPopularEvents.innerHTML = sListPopularEvents;
+                        listPopularEvents.innerHTML = sListPopularEvents;
+                        loader.style.display='none';
                     }
                     
                     console.log(jStats, sListPopularEvents);
@@ -134,10 +134,6 @@
             ajax.open( "GET", '../api/php/get-stats.php', true );
             ajax.send();
         
-            setTimeout(function(){
-                loader.style.display='none';
-            },2000);    
-
         </script>
         
     </body>

@@ -76,10 +76,5 @@
         $('.hamburgerContainer').toggleClass("change");
       });
     });
-
-	// if (window.innerWidth > 800){ 
-	// 	alert(window.innerWidth);
-	// }
-
 	
   </script>
