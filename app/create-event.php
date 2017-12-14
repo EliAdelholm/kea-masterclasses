@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOLD MASTERCLASS</title>
+    <title>CREATE EVENT</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
@@ -140,6 +140,7 @@
         var frmValid = false;
 
         function validateForm() {
+            console.log("<?php echo $_SESSION['sUserId']?>")
             var required = document.querySelectorAll("[required]");
 
             for (var i = 0; i < required.length; i++) {
@@ -169,6 +170,7 @@
                 frmData.append("sAddress", sTextAddress);
                 frmData.append("sLat", sLatitude);
                 frmData.append("sLng", sLongitude);
+                frmData.append("sUserId", "<?php echo $_SESSION['sUserId']?>");
 
                 var ajax = new XMLHttpRequest();
                 ajax.onreadystatechange = function () {

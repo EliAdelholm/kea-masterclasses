@@ -81,7 +81,7 @@ stats.countActiveEvents = (fCallback) => {
 
 /******************** GET TOP 10 EVENTS BY CLICKRATE *************/
 stats.getPopularEvents = (fCallback) => {
-	global.db.collection('events').find({status: 'active'}, {title: 1}).sort({clickrate: -1}).limit(10).toArray((err, ajEvents) => {
+	global.db.collection('events').find({status: 'active'}, {title: 1, type: 1}).sort({clickrate: -1}).limit(10).toArray((err, ajEvents) => {
 		if (err) {
 			var jError = { "status": "ERROR", "message": "STATS -> Cannot GET Popular Events" }
 			return fCallback(true, jError, ajEvents)
