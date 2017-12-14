@@ -83,7 +83,7 @@
 					<button id="addMorePhoneBtn" type="button">more phones</button>
 				</div>
 
-				<h3> We would love to hear which kind of events you like so we can organize more in the future </h3>
+				<h3> We love to organize events you want </h3>
 				<p>Select desired interests</p>
 				<div id="filters" class="selectInterest displayFlex">
 					
@@ -283,16 +283,6 @@
 				uiInterest = !uiInterest;
 		});
 	
-
-
-		/*
-		btnDev.addEventListener("click", function(){
-			var btnColor;
-			devInterest ? btnColor = '#FFF' : btnColor = '#F9E131';
-			btnDev.style.background = btnColor;
-			devInterest = !devInterest; 
-		});
-*/
 
 		//****************** DELETE USER ******************
 		btnDeleteProfile.addEventListener("click", function()
