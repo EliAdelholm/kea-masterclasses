@@ -74,9 +74,9 @@ li{
 
 h3{
 	margin-bottom: 20px;
-	font-size:20px;
+	//font-size:20px;
 	font-weight: bold;
-	color:$greenColor;
+	//color:$greenColor;
 
 }
 
@@ -180,6 +180,13 @@ label{
 }
 
 //************	MEDIA QUERIES	******************/
+
+@media screen and (max-width:1250px) {
+	.column1{
+		margin:0px 35px;
+	}
+}
+
 //************	MAX-WIDTH:1000PX	******************/
 @media screen and (max-width:1115px) {
 	#instertUserDetailsHere{
@@ -189,7 +196,8 @@ label{
 	}
 
 	.column1{
-		margin:0 auto;
+		margin:50px auto;
 	}
 }
+
 
