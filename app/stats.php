@@ -25,8 +25,9 @@
         <div id="stats-container" class="main-container" >
             <div class="stats-column stats-item">
                 <h3>MOST POPULAR EVENTS</h3>
+                <div id="loader"></div>
                 <ol id="listPopularEvents">
-                    Loading ...
+                    <!-- Loading ... -->
                 </ol>
             </div>
 
@@ -112,11 +113,11 @@
                         var sListPopularEvents = '';
                         for (var i = 0; i < jStats.popularEvents.length; i++) {
                             var event = jStats.popularEvents[i];
-                            
+
                             sListPopularEvents += '<a href="event.php?id='+event._id+'"><li class="'+event.type+'">'+ event.title +'</li></a>'
                         }
-
-                        listPopularEvents.innerHTML = sListPopularEvents;
+                        setTimeout(function(){listPopularEvents.innerHTML = sListPopularEvents;},2000);
+                        //listPopularEvents.innerHTML = sListPopularEvents;
                     }
                     
                     console.log(jStats, sListPopularEvents);
@@ -133,6 +134,10 @@
             ajax.open( "GET", '../api/php/get-stats.php', true );
             ajax.send();
         
+            setTimeout(function(){
+                loader.style.display='none';
+            },2000);    
+
         </script>
         
     </body>

@@ -58,7 +58,8 @@ h3 {
   color: #52B795; }
 
 label {
-  font-weight: bold; }
+  font-weight: bold;
+  text-overflow: clip; }
 
 .inputfile {
   width: 0.1px;
@@ -74,7 +75,8 @@ label {
   padding: 15px;
   display: inline-block;
   white-space: nowrap;
-  font-size: 14px; }
+  font-size: 14px;
+  z-index: -1; }
 
 .inputfile + label svg {
   width: 16px;
@@ -86,7 +88,8 @@ label {
 .inputfile-1 + label {
   color: #52B795;
   background-color: #f2eeee;
-  border: 1px solid #52B795; }
+  border: 1px solid #52B795;
+  max-width: 175px; }
 
 .inputfile-1:focus + label,
 .inputfile-1.has-focus + label,
