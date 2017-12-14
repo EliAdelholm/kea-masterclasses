@@ -121,7 +121,6 @@
 
                             sListPopularEvents += '<a href="event.php?id='+event._id+'"><li class="'+event.type+'">'+ event.title +'</li></a>'
                         }
-<<<<<<< HEAD
                         setTimeout(function(){listPopularEvents.innerHTML = sListPopularEvents;},2000);
 
                         var sListSpeakers = '';
@@ -133,10 +132,6 @@
                             sListSpeakers += '<li class="">'+ speaker.name + '<p>Email: '+ speaker.email[0].email +' - Phone: '+ phone +'</p></li>'
                         }
                         listSpeakers.innerHTML = sListSpeakers;
-=======
-                        listPopularEvents.innerHTML = sListPopularEvents;
-                        loader.style.display='none';
->>>>>>> c496607848a91ed8f3dd903d098f65cea3a74dcb
                     }
                     
                     console.log(jStats);
