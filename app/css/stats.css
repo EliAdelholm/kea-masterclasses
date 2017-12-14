@@ -28,10 +28,22 @@
     padding: 12px 10px;
     text-transform: uppercase;
     font-weight: bold;
-    border-bottom: 1px solid #c4c1c1;
-    transition: color 1s; }
-    .stats-column li:hover {
-      color: #0069AD; }
+    border-bottom: 1px solid #c4c1c1; }
+
+.ui {
+  transition: color 1s; }
+  .ui:hover {
+    color: #52B795; }
+
+.ux {
+  transition: color 1s; }
+  .ux:hover {
+    color: #e7607b; }
+
+.dev {
+  transition: color 1s; }
+  .dev:hover {
+    color: #F9E131; }
 
 .totals-container {
   display: flex;
