@@ -4,7 +4,6 @@
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
-	//align-items: flex-start;
 	flex: 1 0 100%;
 	margin-top: 100px;
 	margin-bottom:10vh;
@@ -43,7 +42,6 @@
 }
 
 .selectInterest{
-	//background-color:$grayColor;
 	margin-top:25px;
 }
 
@@ -74,31 +72,16 @@ li{
 
 h3{
 	margin-bottom: 20px;
-	//font-size:20px;
 	font-weight: bold;
-	//color:$greenColor;
-
 }
 
-// input{
-// 	// border-radius:5px !important;
-// 	// border:1px solid $greenColor !important;
-// 	// padding:10px !important;
-// 	// background-color:$grayColor;
-// }
-
-// textarea{
-// 	@extend input;
-// }
 
 label{
 	font-weight:bold;
 	text-overflow: clip;
 }
 
-// Upload image styling
 
-//CSS for hiding the ugly "choose file" label/input
 .inputfile {
 	width: 0.1px;
 	height: 0.1px;
