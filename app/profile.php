@@ -187,7 +187,6 @@
 		oFrmUser.append("devInterest", devInterest);
 		oFrmUser.append("uxInterest", uxInterest);
 		oFrmUser.append("uiInterest", uiInterest);
-		oFrmUser.append("currentUserInterests", jUser.interests)
 		ajax.send(oFrmUser);
 		});
 

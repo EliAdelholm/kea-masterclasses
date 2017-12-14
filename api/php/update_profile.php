@@ -88,36 +88,34 @@
     $mySqlQuery;
     
     if($bDevInterest) {
-        $mySqlQuery .= "INSERT INTO users_interests (users_id, interests) VALUES (:users_id, 'dev');";
+        $mySqlQuery .= "INSERT INTO users_interests (users_id, interests) VALUES (:users_id, 'dev'); ";
     }
 
     else {
-        $mySqlQuery .= "DELETE FROM users_interests WHERE users_id = :users_id AND interests = 'dev';";
+        $mySqlQuery .= "DELETE FROM users_interests WHERE users_id = :users_id AND interests = 'dev'; ";
     }
 
     if($bUiInterest) {
-        $mySqlQuery .= "INSERT INTO users_interests (users_id, interests) VALUES (:users_id, 'ui');";
+        $mySqlQuery .= "INSERT INTO users_interests (users_id, interests) VALUES (:users_id, 'ui'); ";
     }
 
     else {
-        $mySqlQuery .= "DELETE FROM users_interests WHERE users_id = :users_id AND interests = 'ui';";        
+        $mySqlQuery .= "DELETE FROM users_interests WHERE users_id = :users_id AND interests = 'ui'; ";        
     }
     
     if($bUxInterest) {
-        $mySqlQuery .= "INSERT INTO users_interests (users_id, interests) VALUES (:users_id, 'ux');";
+        $mySqlQuery .= "INSERT INTO users_interests (users_id, interests) VALUES (:users_id, 'ux'); ";
     }
 
     else {
-        $mySqlQuery .= "DELETE FROM users_interests WHERE users_id = :users_id AND interests = 'ux';";        
+        $mySqlQuery .= "DELETE FROM users_interests WHERE users_id = :users_id AND interests = 'ux'; ";        
     }
-
-    if ($bUxInterest || $bDevInterest || $bUiInterest){
-    
+  
     $query = $conn->prepare("$mySqlQuery");
                             
     $query->bindParam( ':users_id' , $iUserId,  PDO::PARAM_INT );
 
     $query->execute();
-    }
+    
         
         ?>
