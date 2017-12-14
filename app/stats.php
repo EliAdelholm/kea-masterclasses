@@ -126,7 +126,6 @@
                         var sListSpeakers = '';
                         for (var i = 0; i < jStats.speakers.length; i++) {
                             var speaker = jStats.speakers[i];
-                            console.log(speaker.phone)
                             var phone = speaker.phone.length > 0 ? speaker.phone[0].phone : "none"
 
                             sListSpeakers += '<li class="">'+ speaker.name + '<p>Email: '+ speaker.email[0].email +' - Phone: '+ phone +'</p></li>'
