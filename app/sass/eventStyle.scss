@@ -5,12 +5,12 @@
 	width:$indexTopSectionWidth; 
 	height:$indexTopSectionHeith;
 	background-image: url("img/bg.jpg");
+	background-color: #d4c54d;
 	background-repeat: no-repeat;
 	background-size: cover;
 	display:flex;
 	justify-content: center;
 	align-items: center;
-	//margin-top: 78px;
 }
 
 #attentionText{
@@ -28,10 +28,6 @@
 	}
 }
 
-// #myEvents {
-// 	margin-top: 70px;
-// }
-
 .subtitleMargin{
 	margin-bottom: 30px;
 }
@@ -42,11 +38,6 @@
 
 #eventFilterSection{
 	margin-top: 100px;
-	//display: flex;
-	// flex-direction: column;
-	// justify-content: center;
-	// align-items: center;
-	// flex-wrap: wrap;
 }
 
 .eventDesc{
@@ -115,31 +106,6 @@
     }
 }
 
-// #filterPastEventBtn{
-// 	&:hover{
-//     	color: $blackColor;
-//     	border-color: $blackColor;
-//     	background: $grayColor;
-//     }
-// }
-
-// #filterUpcommingEventBtn{
-// 	@extend #filterPastEventBtn;
-// }
-
-// #search{	
-// 	border: solid 2px;
-//     border-radius: 5px;
-//     padding: 15px 48px 15px 48px;
-//     width: 255px;
-//     font-size: 13px;
-//     letter-spacing: 0.2em; 
-//     font-weight: bold;
-//     text-transform: uppercase;
-//     background: transparent;
-//     position:relative;
-//     margin: 0 auto;
-// }
 #eventBoxes{
 	display: flex;
     justify-content: space-around;
@@ -214,7 +180,6 @@
 }
 
 .eventTitle {
-	//margin-bottom: 10px;
 	text-transform: uppercase;
 	font-weight: 600;
 }
@@ -229,7 +194,6 @@
 		}
 	.iconDiv{
 		display: flex;
-		// align-items: end;
 		img{
 			height: 17px;
 			opacity: 0.3;
@@ -256,18 +220,20 @@
 	display: flex;
 	flex-direction: column;
 }
-#categories{
-	height: 60px;
-	background-color:lighten( #e2e2e2, 5%);
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-#timeFilters{
-	@extend #categories;
-	background-color: #e2e2e2;
-}
+
+// #categories{
+// 	height: 60px;
+// 	background-color:lighten( #e2e2e2, 5%);
+// 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// }
+// #timeFilters{
+// 	@extend #categories;
+// 	background-color: #e2e2e2;
+// }
+
 #devBtn{
 	padding: 0px 10px 0px 10px;
 	font-weight: bold;
@@ -349,7 +315,6 @@
 	}
  }
 
-
 .photo-overlay{
 	transition: transform 1s;
 	height: 170px;
@@ -391,7 +356,6 @@
 #filtersBtn{
 	display: flex;
 	padding: 20px;
-	//@include underlineColor($blackColor);
 }
 #arrow{
 	width: 15px;
@@ -399,13 +363,9 @@
 	margin: 3px 10px;
 }
 #filtersText{
-	// background-color: $blackColor;
-	// color: $whiteColor;
 	font-weight: 550;
 	letter-spacing: 0.2em;
 	border-radius: 5px;
-	//font-size: 13px;
-	//padding: 15px 48px 15px 48px;
 	cursor: pointer;
 }
 .displayFilters{

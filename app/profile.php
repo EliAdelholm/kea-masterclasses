@@ -8,7 +8,6 @@
 	<title>PROFILE</title>
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/profileStyle.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/hold-masterclass.css"> -->
 </head>
 <body>
 
@@ -220,7 +219,7 @@
 					txtUserPhone.value = jUser.phone[0].phone;
 				}
 				notification.checked = JSON.parse(jUser.notification);
-				//imgProfilePicture.src = jUser.image;
+				
 
 				//Javascript to create img tag & source
 				var image = document.createElement("img");
