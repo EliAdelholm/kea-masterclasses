@@ -1,4 +1,5 @@
 @import '_utils/_vars';
+@import '_utils/_mixins';
 
 #stats-container {
     display: flex;
@@ -15,14 +16,16 @@
 }
 
 .topEvents{
+    @include boxShadow;
     background-color: $grayColor;   
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    //box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 //
 .stats-column {
     width: 45%;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    //box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    @include boxShadow;
 
     ol {
         padding: 20px 10px 0px 30px;
@@ -49,7 +52,8 @@
             flex-flow: column nowrap;
             justify-content: space-between;
             background-color:$grayColor;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            @include boxShadow;
+            //box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             height:25vh;
             padding: 15px 25px;
             text-align: center;

@@ -170,7 +170,7 @@ GROUP BY event_id;
 -- EVENTS REGISTRATIONS COUNT  
 
 ALTER TABLE users
-ADD evetnts_registrations int(10) DEFAULT 0;
+ADD evetnts_registrations tinyint(1) UNSIGNED DEFAULT 0;
 
 delimiter |
 
