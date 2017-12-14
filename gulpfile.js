@@ -33,7 +33,7 @@ gulp.task('browserSync', function() {
 })
 
 gulp.task('js', function() {
-    return gulp.src('app/*.html')
+    return gulp.src('app/*.+(html|php)')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulp.dest('dist'))
@@ -44,20 +44,29 @@ gulp.task('css', function () {
         autoprefixer({browsers: ['last 1 version']}),
         cssnano()
     ];
-    return gulp.src('app/*.html')
+    return gulp.src('app/*.+(html|php)')
         .pipe(useref())
         .pipe(gulpIf('*.css', postcss(plugins)))
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('img', function(){
-    return gulp.src('app/assets/img/**/*.+(png|jpg|jpeg|gif|svg)')
-    .pipe(imagemin({
-        // Setting interlaced to true
-        interlaced: true,
-        verbose: true,
+    return gulp.src('app/**/*.+(png|jpg|jpeg|gif|svg)')
+    .pipe(imagemin([
+        imagemin.gifsicle({interlaced: true}),
+        imagemin.jpegtran({progressive: true}),
+        imagemin.optipng({optimizationLevel: 5}),
+        imagemin.svgo({
+            plugins: [
+                {removeViewBox: true},
+                {cleanupIDs: false}
+            ]
+        })
+    ],
+    {
+        verbose: true
     }))
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest('dist'))
   });
 
 gulp.task('html', function() {

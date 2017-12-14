@@ -6,8 +6,10 @@
 <html>
 <head>
 	<title>PROFILE</title>
+	<!-- build:css css/combined.css -->
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/profileStyle.css">
+	<!-- endbuild -->
 </head>
 <body>
 

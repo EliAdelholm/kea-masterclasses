@@ -1,31 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+    <div id="ModalContainer">
+        <div id="Modal">
+            <div id="containerCloseModal">
+                <p id="closeModal">X
+                    <p>
+            </div>
+            <div id="divLogin">
+                <form id="frmLogin">
+                    <h2> Login </h2>
+                    <p> Username </p>
+                    <input type="text" name="txtUserLoginName">
+                    <p>Password</p>
+                    <input type="text" name="txtUserLoginPassword">
+                    <button id="btnLogin" type="button">Login</button>
+                    <div id="divLoginResponse"></div>
+                </form>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+                <p> Don't have an account?</p>
+                <button id="btnSwitchToCreateAccount" class="smallBtn"> Create an account</button>
+            </div>
+            <div id="divCreateAccount">
+                <form id="frmCreateAccount">
+                    <h2> Create an account </h2>
 
-<body>
-
-    <button id="btnLogin">Login</button>
-
-    <div id="loginModal">
-
-        Hello
-
+                    <p>Username</p>
+                    <input type="text" name="txtSaveUserName">
+                    <p>Password</p>
+                    <input type="text" name="txtSaveUserPassword">
+                    <p>Email</p>
+                    <input type="text" "Email" name="txtSaveUserEmail">
+                    <p> Phone number (optional) </p>
+                    <input type="text" name="txtSaveUserPhone">
+                    <p> Upload a profile picture</p>
+                    <input class="file" type="file" name="fileUserImage">
+                    <p> Subscribe to newsletter </p>
+                    <input id="checkNotification" value="0" type="checkbox" name="checkNotification">
+                    <button id="btnCreateAccount" type="button"> Submit </button>
+                </form>
+                <div id="divCreateAccountResponse"></div>
+                <p> Already have an account?</p>
+                <button id="btnSwitchToLogin" class="smallBtn"> Sign in</button>
+            </div>
+        </div>
     </div>
-
-
-    <script>
-    btnLogin.addEventListener("click", function(){
-        loginModal.style.display="block";
-    });
-
-    </script>
-
-</body>
-
-</html>

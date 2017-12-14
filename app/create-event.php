@@ -10,8 +10,11 @@
     <title>CREATE EVENT</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+    <!-- build:css css/combined.css -->
     <link rel="stylesheet" type="text/css" href="css/global.css">
     <link rel="stylesheet" type="text/css" href="css/dropDown.css">
+    <!-- endbuild -->
 </head>
 </head>
 
@@ -125,15 +128,18 @@
 		echo '<script src="js/logout.js"></script>';
 	}
 	?>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <!-- build:js js/combined.js -->
+    <script src="js/dateAndTimePicker.js"></script>
     <script src="js/googlePlacesAutocomplete.js"></script>
+    <!-- endbuild -->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlyupCC9WLDzTBU_rwfqydgqnvUQX8F60&libraries=places&callback=initAutocomplete"
     async defer></script>
-
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-      <script src="js/dateAndTimePicker.js"></script>
       <script>
         
 
