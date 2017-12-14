@@ -93,6 +93,7 @@ app.post('/create-event', (req, res) => {
         "date": req.fields.sDate,
         "time": req.fields.sTime,
         "speaker": req.fields.sLecturer,
+        "creator": req.fields.sUserId,
         "organizer": req.fields.sResponsible,
         "status": "pending",
         "image": imagePath,
