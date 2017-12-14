@@ -132,6 +132,7 @@
                             sListSpeakers += '<li class="">'+ speaker.name + '<p>Email: '+ speaker.email[0].email +' - Phone: '+ phone +'</p></li>'
                         }
                         listSpeakers.innerHTML = sListSpeakers;
+                        loader.style.display="none";
                     }
                     
                     console.log(jStats);
