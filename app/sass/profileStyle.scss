@@ -93,6 +93,7 @@ h3{
 
 label{
 	font-weight:bold;
+	text-overflow: clip;
 }
 
 // Upload image styling
@@ -114,6 +115,7 @@ label{
 	display: inline-block;
 	white-space: nowrap;
 	font-size:14px;
+	z-index: -1;
 }
 
 //CSS ICON
@@ -129,6 +131,8 @@ label{
     color: $greenColor;
 	background-color: $grayColor;
 	border:1px solid $greenColor;
+	max-width:175px;
+	
 }
 
 .inputfile-1:focus + label,
@@ -136,10 +140,6 @@ label{
 .inputfile-1 + label:hover {
 	background-color: $greenColor;
 	color:white;
-}
-
-.box{
-
 }
 
 
