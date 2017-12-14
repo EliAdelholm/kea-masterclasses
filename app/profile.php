@@ -85,7 +85,7 @@
 
 				<div id="interrestsBox">
 					<h3>WE LOVE TO ORGANIZE EVENTS YOU WANT!</h3>
-					<p>Please help up to do so by providing your interrests :)</p>
+					<p>Please help us to do so by providing your interrests :)</p>
 					<!-- <label>Interrests</label> -->
 					<!-- <input id="" type="text" name="txtUserInterrest"> -->
 					<button id="" class="" type="button" name="UI" value="UI" onclick="changeValue()">UI</button>
