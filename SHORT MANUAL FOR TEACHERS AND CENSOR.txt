@@ -1,0 +1,14 @@
+Hello! To view our project properly you should:
+
+-Run the node server
+-Have mongoDB running
+-Run apache
+-and import our database with the mySQL dump
+
+-You can also import the mongodump if you wish to view some example events we created, or you can create your own.
+
+We have created one user in our database with admin priviliges.
+The login for our admin profile is hardcoded in the form as a value
+If you wish to create your admin user you need to manually set the admin status to 1 in the database.
+
+Thanks for reading

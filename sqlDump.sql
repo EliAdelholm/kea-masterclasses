@@ -4,8 +4,6 @@
 -- ------------------------------------------------------
 -- Server version	5.5.41-log
 
-use kea_masterclasses;
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -17,6 +15,8 @@ use kea_masterclasses;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+use kea_masterclasses;
+
 --
 -- Table structure for table `attendance`
 --
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `attendance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `attendance` (
-  `event_id` char(24) NOT NULL,
+  `event_id` varchar(24) NOT NULL,
   `user_id` int(11) NOT NULL,
   `rating` char(1) DEFAULT NULL,
   KEY `fk_users_events_users1_idx` (`user_id`),
@@ -43,6 +43,19 @@ LOCK TABLES `attendance` WRITE;
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `avg_event_rating`
+--
+
+DROP TABLE IF EXISTS `avg_event_rating`;
+/*!50001 DROP VIEW IF EXISTS `avg_event_rating`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `avg_event_rating` AS SELECT 
+ 1 AS `event_id`,
+ 1 AS `AVG(rating)`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `users`
 --
 
@@ -57,8 +70,9 @@ CREATE TABLE `users` (
   `image` varchar(60) DEFAULT NULL,
   `description` varchar(2000) DEFAULT NULL,
   `admin` tinyint(4) NOT NULL,
+  `event_registrations` tinyint(1) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +81,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (9,'useThis','toLoginAsAdmin',1,'assets/img/userimage-5a32bb37e9699.jpg',NULL,1,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,6 +106,7 @@ CREATE TABLE `users_emails` (
 
 LOCK TABLES `users_emails` WRITE;
 /*!40000 ALTER TABLE `users_emails` DISABLE KEYS */;
+INSERT INTO `users_emails` VALUES ('test@email.com',9);
 /*!40000 ALTER TABLE `users_emails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,8 +155,27 @@ CREATE TABLE `users_phones` (
 
 LOCK TABLES `users_phones` WRITE;
 /*!40000 ALTER TABLE `users_phones` DISABLE KEYS */;
+INSERT INTO `users_phones` VALUES (9,'29840193');
 /*!40000 ALTER TABLE `users_phones` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `avg_event_rating`
+--
+
+/*!50001 DROP VIEW IF EXISTS `avg_event_rating`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `avg_event_rating` AS select `attendance`.`event_id` AS `event_id`,avg(`attendance`.`rating`) AS `AVG(rating)` from `attendance` group by `attendance`.`event_id` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -151,50 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-30  9:13:47
-
-
-
--- VIEW  
--- AVG EVENT RATING
-DROP VIEW IF EXISTS avg_event_rating;
-CREATE VIEW avg_event_rating AS
-
-SELECT event_id, AVG(rating) 
-FROM  attendance
-GROUP BY event_id;
-
-
-
--- TRIGGERS
--- EVENTS REGISTRATIONS COUNT  
-
-ALTER TABLE users
-ADD evetnts_registrations tinyint(1) UNSIGNED DEFAULT 0;
-
-delimiter |
-
-DROP TRIGGER IF EXISTS user_event_registration_trigger|
-CREATE TRIGGER user_event_registration_trigger AFTER INSERT on attendance
-FOR EACH ROW
-BEGIN
-  UPDATE users
-    SET events_registrations = events_registrations +1
-    WHERE id = new.user_id;
-END |
-
-delimiter ;
-
-
-delimiter |
-
-DROP TRIGGER IF EXISTS decrease_event_registration_trigger|
-CREATE TRIGGER decrease_event_registration_trigger AFTER DELETE on attendance
-FOR EACH ROW
-BEGIN
-  UPDATE users
-    SET events_registrations = events_registrations -1
-    WHERE id = old.user_id;
-END |
-
-delimiter ;
+-- Dump completed on 2017-12-14 19:55:42
