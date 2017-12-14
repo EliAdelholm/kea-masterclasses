@@ -36,6 +36,11 @@
         text-transform: uppercase;
         font-weight: bold;
         border-bottom: 1px solid #c4c1c1;
+
+        p {
+            font-weight: normal;
+            text-transform: none;
+        }
     }
 }
 

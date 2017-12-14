@@ -1,105 +1,94 @@
 <?php
-include 'db.php';
-// // The database connection. You might need to change this if you're not using mamp!
-// $servername = "localhost:8889";
-// $username = "root";
-// $password = "root";
+    include 'db.php';
 
-// // Please use the same database name
-// $dbname = "kea_masterclasses";
+    $iUserId = $_GET['id'];
 
-     $iUserId = $_GET['id'];
-//    // echo "iUserId " . $iUserId;
     try {
-                // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                // $query = $conn->prepare("SELECT *
-                //                         FROM users"); 
-                $query = $conn->prepare("SELECT  name, password, notification, image, description
-                                         FROM users
-                                         WHERE id=:id"); 
-
-
-                // Bind param, this if for security
-                $query->bindParam( ':id' , $iUserId ,  PDO::PARAM_INT);
-                  
-                // Run the query
-                $query->execute();   
-
-                // get the data
-                $result = $query->setFetchMode(PDO::FETCH_OBJ);
-
-                // Get the result
-                $aUser = $query->fetch();
-
                 
-                //****************** USERS EMAIL TABLE START*******************/
-                $query = $conn->prepare("SELECT  email
-                                         FROM users_emails
-                                         WHERE user_id=:user_id"); 
-
-                // Bind param, this if for security
-                $query->bindParam( ':user_id' , $iUserId ,  PDO::PARAM_INT);
-      
-                // Run the query
-                $query->execute();   
-
-                // get the data
-                $result = $query->setFetchMode(PDO::FETCH_OBJ);
-
-                // Get the result
-                $mails = $query->fetchAll();
-                
-                // ****************** USERS EMAIL TABLE END*******************/
-
-                //****************** USERS PHONES TABLE START*******************/
-                $query = $conn->prepare("SELECT  phone
-                                        FROM users_phones
-                                        WHERE users_id=:users_id"); 
+        $query = $conn->prepare("SELECT  name, password, notification, image, description
+                                    FROM users
+                                    WHERE id=:id"); 
 
 
-                // Bind param, this if for security
-                $query->bindParam( ':users_id' , $iUserId ,  PDO::PARAM_INT);
+        // Bind param, this if for security
+        $query->bindParam( ':id' , $iUserId ,  PDO::PARAM_INT);
+            
+        // Run the query
+        $query->execute();   
 
-                // Run the query
-                $query->execute();   
+        // get the data
+        $result = $query->setFetchMode(PDO::FETCH_OBJ);
 
-                // get the data
-                $result = $query->setFetchMode(PDO::FETCH_OBJ);
+        // Get the result
+        $aUser = $query->fetch();
 
-                // Get the result
-                $phones = $query->fetchAll();
-                // ****************** USERS PHONES TABLE END*******************/
+        
+        //****************** USERS EMAIL TABLE START*******************/
+        $query = $conn->prepare("SELECT  email
+                                    FROM users_emails
+                                    WHERE user_id=:user_id"); 
 
-                //****************** USERS INTERESTS TABLE START*******************/
-                $query = $conn->prepare("SELECT  interests
-                                        FROM users_interests
-                                        WHERE users_id=:users_id"); 
+        // Bind param, this if for security
+        $query->bindParam( ':user_id' , $iUserId ,  PDO::PARAM_INT);
+
+        // Run the query
+        $query->execute();   
+
+        // get the data
+        $result = $query->setFetchMode(PDO::FETCH_OBJ);
+
+        // Get the result
+        $mails = $query->fetchAll();
+        
+        // ****************** USERS EMAIL TABLE END*******************/
+
+        //****************** USERS PHONES TABLE START*******************/
+        $query = $conn->prepare("SELECT  phone
+                                FROM users_phones
+                                WHERE users_id=:users_id"); 
 
 
-                // Bind param, this if for security
-                $query->bindParam( ':users_id' , $iUserId ,  PDO::PARAM_INT);
+        // Bind param, this if for security
+        $query->bindParam( ':users_id' , $iUserId ,  PDO::PARAM_INT);
 
-                // Run the query
-                $query->execute();   
+        // Run the query
+        $query->execute();   
 
-                // get the data
-                $result = $query->setFetchMode(PDO::FETCH_OBJ);
+        // get the data
+        $result = $query->setFetchMode(PDO::FETCH_OBJ);
 
-                // Get the result
-                $interests = $query->fetchAll();
+        // Get the result
+        $phones = $query->fetchAll();
+        // ****************** USERS PHONES TABLE END*******************/
 
-                // ****************** USERS INTERESTS TABLE END*******************/
+        //****************** USERS INTERESTS TABLE START*******************/
+        $query = $conn->prepare("SELECT  interests
+                                FROM users_interests
+                                WHERE users_id=:users_id"); 
 
-                $aUser->email = $mails;
-                $aUser->phone = $phones;
-                $aUser->interests = $interests;
 
-                // Turn the array with 1 user into a string that looks like JSON
-                $sjUser = json_encode($aUser);                
-                               
-                echo $sjUser;                
+        // Bind param, this if for security
+        $query->bindParam( ':users_id' , $iUserId ,  PDO::PARAM_INT);
+
+        // Run the query
+        $query->execute();   
+
+        // get the data
+        $result = $query->setFetchMode(PDO::FETCH_OBJ);
+
+        // Get the result
+        $interests = $query->fetchAll();
+
+        // ****************** USERS INTERESTS TABLE END*******************/
+
+        $aUser->email = $mails;
+        $aUser->phone = $phones;
+        $aUser->interests = $interests;
+
+        // Turn the array with 1 user into a string that looks like JSON
+        $sjUser = json_encode($aUser);                
+                        
+        echo $sjUser;                
 
     }
 

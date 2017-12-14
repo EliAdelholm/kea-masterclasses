@@ -71,6 +71,13 @@
             <canvas id="ratingChart" class="charts-item"></canvas>
         </div>
 
+        <div class="stats-column stats-item">
+                <h3>SPEAKERS</h3>
+                <ol id="listSpeakers">
+                    <!-- Loading ... -->
+                </ol>
+        </div>
+
     </div>
 
 
@@ -99,9 +106,7 @@
             ajax.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var sjStats = this.responseText;
-                    console.log("sjStats ", sjStats);
                     var jStats = JSON.parse(sjStats)
-                    console.log("jStats ", jStats);
                     jClickrates = jStats.avgClickrates;
 
                     if(jStats.status == "OK") {
@@ -117,10 +122,19 @@
                             sListPopularEvents += '<a href="event.php?id='+event._id+'"><li class="'+event.type+'">'+ event.title +'</li></a>'
                         }
                         setTimeout(function(){listPopularEvents.innerHTML = sListPopularEvents;},2000);
-                        //listPopularEvents.innerHTML = sListPopularEvents;
+
+                        var sListSpeakers = '';
+                        for (var i = 0; i < jStats.speakers.length; i++) {
+                            var speaker = jStats.speakers[i];
+                            console.log(speaker.phone)
+                            var phone = speaker.phone.length > 0 ? speaker.phone[0].phone : "none"
+
+                            sListSpeakers += '<li class="">'+ speaker.name + '<p>Email: '+ speaker.email[0].email +' - Phone: '+ phone +'</p></li>'
+                        }
+                        listSpeakers.innerHTML = sListSpeakers;
                     }
                     
-                    console.log(jStats, sListPopularEvents);
+                    console.log(jStats);
 
                     // Include charts js with PHP to access data
                     // Only clickChart is actually working with data from db
