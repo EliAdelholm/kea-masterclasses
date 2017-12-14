@@ -26,9 +26,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>MY EVENTS</title>
+	<!-- build:css css/combined.css -->
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/eventStyle.css">
 	<link rel="stylesheet" type="text/css" href="css/starRatingStyle.css">
+	<!-- endbuild -->
 </head>
 </head>
 <body>

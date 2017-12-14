@@ -7,8 +7,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>EVENTS</title>
+
+	<!-- build:css css/combined.css -->
 	<link rel="stylesheet" type="text/css" href="css/global.css">
 	<link rel="stylesheet" type="text/css" href="css/eventStyle.css">
+	<!-- endbuild -->
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
@@ -23,33 +27,12 @@
 			<h1><span> MASTERCLASSES</span></h1>
 			<h2><span>I LEARN</span></h2>
 			<h3><span>INTERRESTING STUFF</span></h3>
-			<!-- <button id="topSectionBtn">view events</button> -->
 		</div>
 	</div>
 
 	<div id="eventFilterSection">
 		<div class="FlexColumnCenter">
 			<h1 class="subtitleMargin">events</h1>
-
-			<!-- <div id="filerButtons">
-				<div id="eventsByTime">
-					<button id="filterPastEventBtn" class="filterByTime">past</button>
-					<button id="filterUpcommingEventBtn" class="filterByTime">upcomming</button>
-				</div>
-				<section id="eventsByType">
-					<div id="eventsByTypeWidth">
-					<button id="filterUiBtn" class="filterByType">ui</button>
-					<button id="filterUxBtn" class="filterByType">ux</button>
-					<button id="filterDevBtn" class="filterByType">dev</button>	
-					<div>			
-				</section>
-				<div id="searchEvent">
-					<input id="search" type="text" name="" placeholder="SEARCH">
-				</div>
-			</div> -->
-			<!-- <a id="getLocation"><button id="locationBtn">events near me</button></a> -->
-			
-			<!-- ***************** FILTER DESIGN TEST ************** -->
 			<div id="filtersBtn">
 				<p id="filtersText">FILTERS</p>
 				<img id="arrow" class="openFilters" src="css/img/arrow.svg">

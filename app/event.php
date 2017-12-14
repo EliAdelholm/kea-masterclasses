@@ -7,8 +7,12 @@
 <head>
 	<title>EVENT DETAILS</title>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+	<!-- build:css css/combined.css -->
 	<link rel="stylesheet" type="text/css" href="css/viewEvent.css">
 	<link rel="stylesheet" type="text/css" href="css/global.css">
+	<!-- endbuild -->
+	
 </head>
 <body>
 	<?php
