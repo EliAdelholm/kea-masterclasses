@@ -168,22 +168,28 @@ button{
 }
 
 #topBannerStats{
-	@include test(url("img/stats.svg"));
+	@include test(url("img/stats.jpg"));
+	background-color: #67019b;
 }
 
 #topBannerPending{
 	@include test(url("img/pending.jpg"));
+	background-color: #dee5ed;
 }
 
 #topBannerCreateEvent{
 	@include test(url("img/createEvent.jpg"));
+	background-color: #eaccce;
 }
 
 #topBannerProfile{
 	@include test(url("img/profile.jpg"));
+	background-color: #212227;
 }
 #topBannerMyEvents{
 	@include test(url("img/myEvents.jpg"));
+	background-color: #2c2a2b;
+	
 }
 
 .textColumns {
