@@ -128,7 +128,7 @@
                             var speaker = jStats.speakers[i];
                             var phone = speaker.phone.length > 0 ? speaker.phone[0].phone : "none"
 
-                            sListSpeakers += '<li class="">'+ speaker.name + '<p>Email: '+ speaker.email[0].email +' - Phone: '+ phone +'</p></li>'
+                            sListSpeakers += '<li class="">'+ speaker.name + '<p>Email: '+ (speaker.email.length > 0 ? speaker.email[0].email : " none")+' - Phone: '+ phone +'</p></li>'
                         }
                         listSpeakers.innerHTML = sListSpeakers;
                         loader.style.display="none";

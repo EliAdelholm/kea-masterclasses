@@ -1,8 +1,8 @@
 <?php
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    // ini_set('display_errors', 1);
+    // ini_set('display_startup_errors', 1);
+    // error_reporting(E_ALL);
 
     include 'db.php';
     $jStats = json_decode('{"status": "OK"}');
@@ -48,12 +48,14 @@
     // GET SPEAKER DATA
     $aSpeakers = array();
     for ($i = 0; $i < count($ajSpeakers); $i++) {
-        $iID = $ajSpeakers[$i]->creator;
-        $sResponse = file_get_contents("http://localhost/kea-masterclasses/api/php/get-user.php?id=$iID");
+        $iSpeakerId = $ajSpeakers[$i]->creator;
+        // $sResponse = include('../../api/php/get-user.php?id='.$iID);
+        include('../../api/php/get-speaker-data.php');
+        $sResponse = getSpeakerData($iSpeakerId);
         // echo 
         // echo $response;
-        $jResponse = json_decode($sResponse);
-        array_push($aSpeakers, $jResponse);
+        // $jResponse = json_decode($sResponse);
+        array_push($aSpeakers, $sResponse);
     }
     $jStats->speakers = $aSpeakers;
 

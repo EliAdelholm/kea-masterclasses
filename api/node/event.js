@@ -8,7 +8,7 @@ event.createEvent = (jEvent, fcallback) => {
 	global.db.collection('events').insertOne(jEvent, (err, jResult) => {
 		if (err) {
 			var jError = { "status": "error", "message": "ERROR -> event.js -> 001" }
-			console.log(jError)
+			console.log(err)
 			return fcallback(true, jError, jResult)
 		}
 		var jOk = { "status": "ok", "message": "event.js -> saved -> 000" }
