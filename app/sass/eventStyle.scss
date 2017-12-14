@@ -357,10 +357,8 @@
 	background-color: $greenColor;
 }
 
-
 .eventBox:hover {
    .photo-overlay{
-   // transform: translateX(100px) translateY(-100px);
 	   transform: translateY(-100%);
    }
 }
