@@ -598,6 +598,25 @@ footer {
 	border-width: 15px;
 	margin-left: -15px;
 }
+#scrollArrow{
+	margin-top: $indexTopSectionHeith * 0.2;
+	height: 15px;
+	transform: rotate(180deg);
+	animation: scroll 2s infinite;
+}
+
+@keyframes scroll{
+	0% {
+		transform: rotate(180deg) translate(0, 0);
+	}
+	20% {
+		transform: rotate(180deg) translate(0px, 10px);
+	}
+	40% {
+		transform: rotate(180deg) translate(0, 0);
+	}
+}
+
 
 //gray overlay - confirm
 #warningModalContainer {

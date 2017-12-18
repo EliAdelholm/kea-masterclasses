@@ -28,6 +28,7 @@
 			<h2><span>I LEARN</span></h2>
 			<h3><span>INTERRESTING STUFF</span></h3>
 		</div>
+		<img id="scrollArrow" src="css/img/arrow.svg">
 	</div>
 
 	<div id="eventFilterSection">
@@ -201,12 +202,9 @@
 		//*************************** SHOW TEXT SLOWLY ************************
 		function appear(elm, i, step, speed){
 			var toAppar;
-			//initial opacity
-			i = i || 0;
-			//opacity increment
-			step = step || 5;
-			//time waited between two opacity increments in msec
-			speed = speed || 50; 
+			//initial opacity i
+			//opacity increment step
+			//time waited between two opacity increments in msec speed
 			toAppar = setInterval(function(){
 				//get opacity in decimals
 				var opacity = i / 100;
@@ -226,8 +224,9 @@
 
 		var spanToAppear =  document.getElementsByTagName('span');
 		for (var i = 0; i<spanToAppear.length; i++){
-			appear(spanToAppear[i], 0, 5, 60);
+			appear(spanToAppear[i], 0, 5, 50);
 		}
+		appear(scrollArrow, 0,5,150);
 
 		// ************************* GET USERS LOCATION *************************
 		var locationClickCount = 1;
