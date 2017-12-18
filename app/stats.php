@@ -147,14 +147,25 @@
                             
                             sListPopularEvents += '<a href="event.php?id='+event._id+'"><li class="'+event.type+'">'+ event.title +'</li></a>'
                         }
+<<<<<<< HEAD
                         setTimeout(function(){listPopularEvents.innerHTML = sListPopularEvents;},50000);
                         
+=======
+                        listPopularEvents.innerHTML = sListPopularEvents;
+                        loader.style.display="none";
+
+>>>>>>> 67fc1a58efa4bb38b1337f5f40f010a341cd24e1
                         var sListSpeakers = '';
                         for (var i = 0; i < jStats.speakers.length; i++) {
                             var speaker = jStats.speakers[i];
                             var phone = speaker.phone.length > 0 ? speaker.phone[0].phone : "none"
+<<<<<<< HEAD
                             
                             sListSpeakers += '<li class="">'+ speaker.name + '<p>Email: '+ speaker.email[0].email +' - Phone: '+ phone +'</p></li>'
+=======
+
+                            sListSpeakers += '<li class="">'+ speaker.name + '<p>Email: '+ (speaker.email.length > 0 ? speaker.email[0].email : " none")+' - Phone: '+ phone +'</p></li>'
+>>>>>>> 67fc1a58efa4bb38b1337f5f40f010a341cd24e1
                         }
                         listSpeakers.innerHTML = sListSpeakers;
                         

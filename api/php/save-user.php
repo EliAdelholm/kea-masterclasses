@@ -1,13 +1,13 @@
 <?php
 
-// The database connection. You might need to change this if you're not using mamp!
-$servername = "localhost";
-$username = "root";
-$password = "root";
-// Please use the same database name
-$dbname = "kea_masterclasses";
+// // The database connection. You might need to change this if you're not using mamp!
+// $servername = "localhost";
+// $username = "root";
+// $password = "root";
+// // Please use the same database name
+// $dbname = "kea_masterclasses";
 
-
+include 'db.php';
 
 
     // Save the image with a unique ID
@@ -33,7 +33,7 @@ $dbname = "kea_masterclasses";
     
     try {
                 // connect to the database
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                //$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                 
                 // INSERT INTO USERS TABLE
                 // create a query

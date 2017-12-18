@@ -26,7 +26,7 @@
 	<div id="descriptionContainer" class="main-container">
 		<div id="containerHeader">
 			</div>
-			
+
 			<div id="eventContainer">
 				
 				
@@ -74,10 +74,11 @@
 					<div>DATE: '+jEvent.date+'</div>\
 				</div>\
 				<div class="iconDivLoad"><img src="css/img/time.svg">TIME: '+jEvent.time+'</div>\
-				<div class="iconDivLoad"><img src="css/img/person.svg">SPEAKER: '+jEvent.speaker+'</div>';
-				
+				<div id="speakerHover" class="iconDivLoad"><img src="css/img/person.svg">SPEAKER: '+jEvent.speaker+'</div>';
+
 				topImageSection.innerHTML = '<h1><span>'+jEvent.title+'</span></h1>';
-				var eventContainerHTML = '<h3>REQUIREMENT</h3>\
+				var eventContainerHTML = '<div id="displayOnClick" ><h3>Anna Happy</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>\
+				<h3 id="sRequirement" class="paddingTop">REQUIREMENT</h3>\
 				<p> '+jEvent.requirements+' </p>\
 				<h3> DESCRIPTION </h3>\
 				<p> '+jEvent.description+' <p>\
@@ -219,7 +220,7 @@ document.addEventListener("click", function(e){
 		containerHeader.style.display = "none";
 		eventContainerHTML += '<h3>TITLE</h3>\
 		<input type="text" name="eventTitle" value="'+jEvent.title+'">\
-		<h3>REQUIREMENT</h3>\
+		<h3 class="paddingTop">REQUIREMENT</h3>\
 		<input type="text" name="eventRequirements" value="'+jEvent.requirements+'"> \
 		<h3> DESCRIPTION </h3>\
 		<input type="text" name="eventDescription" value="'+jEvent.description+'">\
@@ -308,6 +309,22 @@ document.addEventListener("click" , function(e) {
   		xhttp.send();
 	}
 })
+
+var clickCount = 1;
+document.addEventListener("click", function(e){
+	if(e.target.id == "speakerHover"){
+		if(clickCount % 2 == 1){
+			displayOnClick.style.display = "flex";
+			sRequirement.classList.remove("paddingTop");
+			clickCount ++
+		}else{
+			displayOnClick.style.display = "none";
+			sRequirement.classList.add ("paddingTop");
+			clickCount ++
+		}
+	}
+})
+
 
 
 </script>

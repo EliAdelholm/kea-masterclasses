@@ -599,6 +599,38 @@ footer {
 	margin-left: -15px;
 }
 
+//gray overlay - confirm
+#warningModalContainer {
+	display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: RGBA(0,0,0, 0.7);
+	z-index: 100;
+	top: 0;  
+}
+#warningModal {
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+    align-items: center;
+    background-color: white;
+    padding: 2%;
+    max-width: 600px;
+	
+	h2{
+		margin-bottom: 5px;
+	}
+	
+	.displayFlex {
+		margin-top: 20px;
+	}
+}
+
+
 @media only screen and (max-width: 950px) {
     h1 {
         font-size: 30px;

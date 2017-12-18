@@ -1,10 +1,12 @@
 <?php
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    // ini_set('display_errors', 1);
+    // ini_set('display_startup_errors', 1);
+    // error_reporting(E_ALL);
 
     include 'db.php';
+    include('../../api/php/get-speaker-data.php');
+
     $jStats = json_decode('{"status": "OK"}');
 
     // GET NUMBER OF EVENTS
@@ -46,12 +48,22 @@
     $ajSpeakers = json_decode($sajSpeakers);
 
     // GET SPEAKER DATA
+
+    // KLAUDIAS CODE
+   /*  $aSpeakers = array();
+    for ($i = 0; $i < count($ajSpeakers); $i++) {
+        $iSpeakerId = $ajSpeakers[$i]->creator;
+        include('../../api/php/get-speaker-data.php');
+        $sResponse = getSpeakerData($iSpeakerId);
+        array_push($aSpeakers, $sResponse);
+    }
+    $jStats->speakers = $aSpeakers; */
+
+    // THE REAL CODE
     $aSpeakers = array();
     for ($i = 0; $i < count($ajSpeakers); $i++) {
         $iID = $ajSpeakers[$i]->creator;
         $sResponse = file_get_contents("http://localhost/kea-masterclasses/api/php/get-user.php?id=$iID");
-        // echo 
-        // echo $response;
         $jResponse = json_decode($sResponse);
         array_push($aSpeakers, $jResponse);
     }

@@ -87,7 +87,7 @@ app.post('/create-event', (req, res) => {
         "location": {
             "type": "Point",
             "address": req.fields.sAddress,
-            "coordinates": [parseInt(req.fields.sLat), parseInt(req.fields.sLng)],
+            "coordinates": [parseInt(req.fields.sLng), parseInt(req.fields.sLat)],
             "room": req.fields.sRoom
         },
         "date": req.fields.sDate,
@@ -163,7 +163,7 @@ app.post('/update-event', (req, res) => {
             "location": {
                 "type": "Point",
                 "address": req.fields.eventAddress,
-                "coordinates": [parseInt(req.fields.sLat), parseInt(req.fields.sLng)],
+                "coordinates": [parseInt(req.fields.sLng), parseInt(req.fields.sLat)],
                 "room": req.fields.eventRoom
             },
             "date": req.fields.eventDate,
