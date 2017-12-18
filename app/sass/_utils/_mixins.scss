@@ -29,3 +29,15 @@
         color: $color;
     }
 }
+
+@mixin createLoader($size, $border-size, $margin...) {
+	border: $border-size solid #d0ebe2;
+	border-radius: 50%;
+	border-top: $border-size solid #3f9779;
+	width: $size;
+	height: $size;
+	@each $var in $margin {
+        margin: #{$var};
+    }
+	animation: spin 1s linear infinite;
+}

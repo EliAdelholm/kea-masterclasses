@@ -20,6 +20,8 @@
 		include 'login.html';
 	?>
 	<div id="topImageSection">
+		<div class="loader">
+</div>
 	</div>
 	<div id="descriptionContainer" class="main-container">
 		<div id="containerHeader">
