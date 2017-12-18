@@ -48,15 +48,28 @@
     $ajSpeakers = json_decode($sajSpeakers);
 
     // GET SPEAKER DATA
-    $aSpeakers = array();
+
+    // KLAUDIAS CODE
+   /*  $aSpeakers = array();
     for ($i = 0; $i < count($ajSpeakers); $i++) {
         $iSpeakerId = $ajSpeakers[$i]->creator;
+<<<<<<< HEAD
         // $sResponse = include('../../api/php/get-user.php?id='.$iID);
+=======
+        include('../../api/php/get-speaker-data.php');
+>>>>>>> 8f8bc50ee7fd2c24d7e7f9e9a420dff7d23aff99
         $sResponse = getSpeakerData($iSpeakerId);
-        // echo 
-        // echo $response;
-        // $jResponse = json_decode($sResponse);
         array_push($aSpeakers, $sResponse);
+    }
+    $jStats->speakers = $aSpeakers; */
+
+    // THE REAL CODE
+    $aSpeakers = array();
+    for ($i = 0; $i < count($ajSpeakers); $i++) {
+        $iID = $ajSpeakers[$i]->creator;
+        $sResponse = file_get_contents("http://localhost/kea-masterclasses/api/php/get-user.php?id=$iID");
+        $jResponse = json_decode($sResponse);
+        array_push($aSpeakers, $jResponse);
     }
     $jStats->speakers = $aSpeakers;
 

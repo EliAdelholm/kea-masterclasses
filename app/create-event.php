@@ -32,13 +32,18 @@
     <section id="formContainer" class="main-container">
 
         <article class="main-container textColumns">
-            <p>At noon they sat down by the roadside, near a little brook, and Dorothy opened her basket and got out some bread.  She offered a piece to the Scarecrow, but he refused.</p>
-            <p>&ldquo;I am never hungry,&rdquo; he said, &ldquo;and it is a lucky thing I am not, for my mouth is only painted, and if I should cut a hole in it so I could eat, the straw I am stuffed with would come out, and that would spoil the shape of my head.&rdquo;</p>
-            <p>Dorothy saw at once that this was true, so she only nodded and went on eating her bread.</p>
-            <p>&ldquo;Tell me something about yourself and the country you came from,&rdquo; said the Scarecrow, when she had finished her dinner.  So she told him all about Kansas, and how gray everything was there, and how the cyclone had carried her to this queer Land of Oz.</p>
+            <label>Do you want to hold a masterclass?</label><br>
+            <p>Everyone is welcome to host a masterclass about any topic related to UI, UX og Development.</p><br>
+            <p>We don’t care if you are a student, a teacher, a KEA alumni or an industry professional wanting to share your knowledge. If you have anything you feel might be educational for our students – we welcome you to take the stage.</p>
+            <br>
+            <p>In order to hold a masterclass, you must fill out and submit the form below. The event is then created in our system, but an admin must review and approve the event before it is published to the site.</p>
+            <br>
+            <p>Please make sure that your email and phone are filled in correctly on your profile page, so that we may contact you for further questions or scheduling arrangements.</p> 
+            <br>
+            <p>It would also be helpful to us if you write a bit about yourself and your competencies in the additional information field on your profile, as that we give us a better idea of you qualifications.</p>
         </article>
 
-        <h2 class="sectionHeader">New Event</h2>
+        <h2 class="sectionHeader">Your Event</h2>
 
         <form id="frmHoldMasterclass" action="">
             <div class="displayFlexStyle">
