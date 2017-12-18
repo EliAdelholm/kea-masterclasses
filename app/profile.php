@@ -210,8 +210,10 @@
 				jUser = JSON.parse(sjUser);
  				console.log("jUser ", jUser);
 				txtUserName.value = jUser.name;
-				console.log(jUser.email[0].email);
-				txtUserEmail.value = jUser.email[0].email;
+				if(jUser.email.length > 0) {
+					console.log(jUser.email[0].email);
+					txtUserEmail.value = jUser.email[0].email;
+				}
 				if(jUser.email.length > 1) {
 					txtUserEmail2.value = jUser.email[1].email;
 				}
