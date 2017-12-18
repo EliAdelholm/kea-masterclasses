@@ -5,6 +5,8 @@
     // error_reporting(E_ALL);
 
     include 'db.php';
+    include('../../api/php/get-speaker-data.php');
+
     $jStats = json_decode('{"status": "OK"}');
 
     // GET NUMBER OF EVENTS
@@ -50,7 +52,6 @@
     for ($i = 0; $i < count($ajSpeakers); $i++) {
         $iSpeakerId = $ajSpeakers[$i]->creator;
         // $sResponse = include('../../api/php/get-user.php?id='.$iID);
-        include('../../api/php/get-speaker-data.php');
         $sResponse = getSpeakerData($iSpeakerId);
         // echo 
         // echo $response;
