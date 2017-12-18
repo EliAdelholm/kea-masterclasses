@@ -116,6 +116,18 @@ label {
 #interrestsBox {
   margin-top: 30px; }
 
+#btnDenieDelete {
+  background-color: #52B795;
+  margin-right: 5px;
+  margin-left: 5px; }
+  #btnDenieDelete:hover {
+    border-color: #282826; }
+
+#btnConfirmDelete {
+  background-color: #e7607b; }
+  #btnConfirmDelete:hover {
+    border-color: #282826; }
+
 @media screen and (max-width: 1250px) {
   .column1 {
     margin: 0px 35px; } }

@@ -288,36 +288,58 @@
 	
 
 		//****************** DELETE USER ******************
-		btnDeleteProfile.addEventListener("click", function()
-		{
-			console.log("delete button clicked");
-			var ajax = new XMLHttpRequest();
-			ajax.onreadystatechange = function()
-			{
-				if (this.readyState == 4 && this.status == 200)
+		document.addEventListener("click" , function(e) {
+			if (e.target.id == "btnConfirmDelete") {
+				console.log("delete button clicked");
+				var ajax = new XMLHttpRequest();
+				ajax.onreadystatechange = function()
 				{
-					var jUser =this.responseText;
-					window.location.href = "index.php";
-
-					var ajax2 = new XMLHttpRequest();
-					ajax2.onreadystatechange = function()
+					if (this.readyState == 4 && this.status == 200)
 					{
-						if (this.readyState == 4 && this.status == 200)
+						var jUser =this.responseText;
+						window.location.href = "index.php";
+
+						var ajax2 = new XMLHttpRequest();
+						ajax2.onreadystatechange = function()
 						{
-							var jUser2 =this.responseText;
-							window.location.href = "index.php";
-							
-						} 
+							if (this.readyState == 4 && this.status == 200)
+							{
+								var jUser2 =this.responseText;
+								window.location.href = "index.php";
+								
+							} 
+					};
+					ajax2.open("POST", "../api/php/logout.php", true);
+					ajax2.send();
+					} 
 				};
-				ajax2.open("POST", "../api/php/logout.php", true);
-				ajax2.send();
-				} 
-			};
-			ajax.open("GET", "../api/php/delete_profile.php?id=<?php echo $_SESSION['sUserId']?>", true);
-			ajax.send();
-			
+				ajax.open("GET", "../api/php/delete_profile.php?id=<?php echo $_SESSION['sUserId']?>", true);
+				ajax.send();
+			}	
 		});
 
+		// delete profile dialogue
+		document.addEventListener("click" , function(e) {
+			if (e.target.id=="btnDeleteProfile") {
+				var warningHTML = '<div id="warningModalContainer">\
+									<div id="warningModal">\
+										<h2>Are you sure you want to delete your profile?</h2>\
+											<p>This change is final and cannot be undone</p>\
+												<div class="displayFlex">\
+												<button id="btnConfirmDelete"> Delete profile </button>\
+													<button id="btnDenieDelete"> Do not delete profile </button>\
+												</div>\
+									</div>\
+								</div>'
+				topBannerProfile.insertAdjacentHTML('afterbegin', warningHTML);
+			}
+		})
+
+		document.addEventListener("click", function(e) {
+			if (e.target.id == "btnDenieDelete") {
+				warningModalContainer.remove();
+			}
+		})
 
 	</script>
 	
