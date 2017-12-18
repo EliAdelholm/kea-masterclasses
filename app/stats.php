@@ -125,7 +125,6 @@
 
                             sListPopularEvents += '<a href="event.php?id='+event._id+'"><li class="'+event.type+'">'+ event.title +'</li></a>'
                         }
-                        // setTimeout(function(){listPopularEvents.innerHTML = sListPopularEvents;},2000);
                         listPopularEvents.innerHTML = sListPopularEvents;
                         loader.style.display="none";
 
