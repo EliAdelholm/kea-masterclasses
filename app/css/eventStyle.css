@@ -201,7 +201,6 @@
   #pendingContainer p, #dissmissedContainer p {
     margin: 10px; }
   #pendingContainer .eventBox, #dissmissedContainer .eventBox {
-    margin-bottom: 0;
     padding-bottom: 0;
     display: flex;
     flex-direction: column;
@@ -213,6 +212,9 @@
 .clippedDescription {
   max-height: 60px;
   overflow: hidden; }
+
+.btnDissmissEvent, .btnApproveEvent {
+  padding: 15px 45px 15px 45px; }
 
 .pendingActions {
   position: relative;

@@ -32,7 +32,7 @@
     </section>
 
     <div class="main-container">
-        <div class="loader"></div>
+        <!-- <div class="loader"></div> -->
 
         <h2 class="sectionHeader">Pending</h2>
         <div id="pendingContainer">
