@@ -53,11 +53,7 @@
    /*  $aSpeakers = array();
     for ($i = 0; $i < count($ajSpeakers); $i++) {
         $iSpeakerId = $ajSpeakers[$i]->creator;
-<<<<<<< HEAD
-        // $sResponse = include('../../api/php/get-user.php?id='.$iID);
-=======
         include('../../api/php/get-speaker-data.php');
->>>>>>> 8f8bc50ee7fd2c24d7e7f9e9a420dff7d23aff99
         $sResponse = getSpeakerData($iSpeakerId);
         array_push($aSpeakers, $sResponse);
     }
