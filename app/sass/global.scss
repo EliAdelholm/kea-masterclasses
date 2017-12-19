@@ -650,6 +650,56 @@ footer {
 }
 
 
+//STYLING ON UPDATE IMAGE
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 100%;
+	cursor: pointer;	
+	padding: 15px;
+	display: inline-block;
+	white-space: nowrap;
+	font-size:14px;
+	z-index: 1;
+}
+
+//CSS ICON
+.inputfile + label svg {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    fill: currentColor;
+	margin-right:5px;
+}
+
+.inputfile-1 + label {
+    color: $greenColor;
+	background-color: $grayColor;
+	border:1px solid $greenColor;
+	max-width:175px;
+	
+}
+
+.inputfile-1:focus + label,
+.inputfile-1.has-focus + label,
+.inputfile-1 + label:hover {
+	background-color: $greenColor;
+	color:white;
+}
+
+#lblProfilePicture{
+	margin-bottom:40px;
+}
+
+
 @media only screen and (max-width: 950px) {
     h1 {
         font-size: 30px;
