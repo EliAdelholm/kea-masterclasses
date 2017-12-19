@@ -291,12 +291,13 @@
 			});
 		});
 
+		// ************* SMOOTH ARROW SCROLL ****************
 		scrollArrow.addEventListener("click", function(){
-			document.querySelector('#eventFilterSection').scrollIntoView({ behavior: 'smooth' })
-			//window.scrollBy({ top: 100, left: 0, behavior: 'smooth' });
+			var height = window.innerHeight
+			window.scrollBy({ top: height, left: 0, behavior: 'smooth' });
 		})
 		
-
+		// ************* GET LOCATION ON LOAD ****************
 		window.onload = function(e){ 
 			getLocation();
 		}
