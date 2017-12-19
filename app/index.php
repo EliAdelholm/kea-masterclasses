@@ -315,6 +315,13 @@
 			});
 		});
 
+		// ************* SMOOTH ARROW SCROLL ****************
+		scrollArrow.addEventListener("click", function(){
+			var height = window.innerHeight
+			window.scrollBy({ top: height, left: 0, behavior: 'smooth' });
+		})
+		
+		// ************* GET LOCATION ON LOAD ****************
 		window.onload = function(e){ 
 			getLocation();
 		}

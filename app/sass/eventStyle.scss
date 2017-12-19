@@ -303,8 +303,15 @@
 	overflow: hidden;
 }
 
-.btnDissmissEvent, .btnApproveEvent{
+.btnDissmissEvent{
 	padding: 15px 45px 15px 45px;
+}
+.btnApproveEvent{
+	@extend .btnDissmissEvent;
+	&:hover{
+		background-color: $greenColor;
+		border-color: $greenColor;
+	}
 }
 
 .pendingActions {
