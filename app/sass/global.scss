@@ -698,6 +698,21 @@ footer {
 
 #lblProfilePicture{
 	margin-bottom:40px;
+	border-radius:5px;
+	transition: background-color 0.5s ease, border 0.5s ease, color 0.5s ease;
+}
+
+//This upload image customization applies only for the login.html
+#lblUserProfilePicture{
+	border-radius:5px;
+	padding:8px;
+	margin:8px 0;
+	transition: background-color 0.5s ease, border 0.5s ease, color 0.5s ease;
+
+	&:hover{
+		background-color:$redColor;
+	}
+
 }
 
 
