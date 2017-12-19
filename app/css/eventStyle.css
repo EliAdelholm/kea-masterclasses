@@ -217,6 +217,10 @@
 .btnDissmissEvent, .btnApproveEvent {
   padding: 15px 45px 15px 45px; }
 
+.btnApproveEvent:hover {
+  background-color: #52B795;
+  border-color: #52B795; }
+
 .pendingActions {
   position: relative;
   bottom: 0;
