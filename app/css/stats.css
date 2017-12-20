@@ -83,7 +83,9 @@
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  overflow-y: auto;
+  height: 53vh; }
 
 .stats-item-count {
   display: flex;
