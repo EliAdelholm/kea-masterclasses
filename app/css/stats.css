@@ -85,7 +85,7 @@
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
-  height: 53vh; }
+  height: 350px; }
 
 .stats-item-count {
   display: flex;

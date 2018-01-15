@@ -40,11 +40,15 @@ event.updateEvent = (jEvent, bImageUploaded, fCallback) => {
 	if (!bImageUploaded){
 		delete jEventQuery.$set.image;
 	}
+	if (jEvent.coordinates == undefined) {
+		delete jEventQuery.$set["location.coordinates"];
+	}
 	global.db.collection('events').updateOne({'_id': ObjectId(jEvent._id)},
 		jEventQuery,
 	(err)=>{
 		if(err){
-			jError = {"status": "error", "message": "ERROR, could not update event -> event.js"};
+			console.log(err);
+			var jError = {"status": "error", "message": "ERROR, could not update event -> event.js"};
 			return fCallback(true, jError);
 		}
 		var jOk = {"status": "ok", "message": "event.js -> event updated" }

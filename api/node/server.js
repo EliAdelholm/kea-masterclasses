@@ -30,7 +30,7 @@ mongo.connect(sDatabasePath, (err, db) => {
         if (err) {
             console.log('Index not created: ' + err)
         } else {
-            console.log("Index created: " + jResult);
+            console.log("Index created: " + jResult)
         }
     })
     console.log('OK 002 -> Connected to the database')
@@ -135,6 +135,7 @@ app.post('/update-event', (req, res) => {
     
             // Handle OS file system differences
             if (os.platform() == 'linux') {
+                
                 // File path for linux users
                 var targetPath = path.resolve('app/' + imagePath)
             } else {
@@ -173,7 +174,6 @@ app.post('/update-event', (req, res) => {
             "description": req.fields.eventDescription,
             "requirements": req.fields.eventRequirements
         }
-
     
     event.updateEvent(jEvent, bImageUploaded, (err, jStatus) => {
         if (err) {
